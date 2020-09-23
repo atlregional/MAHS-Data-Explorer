@@ -50,7 +50,7 @@ app.use(flash());
 // Add routes, both API and view
 app.use(routes);
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/MAHS-DATA-EXPLORER';
 
 // Connect to the Mongo DB
 mongoose.connect(
