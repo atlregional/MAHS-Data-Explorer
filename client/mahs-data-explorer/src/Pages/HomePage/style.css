@@ -1,11 +1,12 @@
 .navbar {
     background-color: cornflowerblue;
     justify-content: center;
+    height: 10vh;
 }
 
 .home-container {
     height: 80vh;
-    margin: 30px 20px 30px 20px;
+    margin: 30px 25px 30px 25px;
     display: flex;
     flex-wrap: wrap;
     text-align: center;
