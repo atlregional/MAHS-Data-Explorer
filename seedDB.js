@@ -2,9 +2,18 @@ require('dotenv').config();
 const mongoose = require("mongoose");
 const db = require("./models");
 const MONGODB_URI = process.env.MONGODB_URI;
-const contentSeed = require('');
-const content = contentSeed;
 
+const tractDataSeed = require('');
+const tractInfoSeed = require('');
+const cityCrossWalkSeed = require('');
+const dataInfoSeed = require('');
+
+const collection = 'tractinfo';
+
+const content = 
+  collection === 'tractinfo' ? 
+    tractInfoSeed
+  : null; // ternary for other collections here
 
 mongoose.connect(MONGODB_URI,
   { useNewUrlParser: true,
@@ -12,10 +21,12 @@ mongoose.connect(MONGODB_URI,
   }
 ); 
 
-db.content
+// Use insertMany 
+
+db[collection]
   .remove()
   .then(() => 
-  db.content.insertMany(content))
+  db[collection].insertMany(content))
     .then(data => {
       console.log(data.length + " records inserted!");
       process.exit(0);

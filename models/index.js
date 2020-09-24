@@ -1,4 +1,12 @@
 module.exports = {
     
-    content: require('./content')
+    tractinfo : require('./tractinfo')
 }
+
+
+// create the following models
+
+// tractData
+// tractInfo
+// cityCrossWalk
+// dataInfo

@@ -1,10 +1,10 @@
 const path = require('path');
 const router = require('express').Router();
-const contentRoutes = require('./content')
+const tractInfoRoutes = require('./tractinfo')
 
 
 
-router.use('/content', contentRoutes);
+router.use('/tractinfo', tractInfoRoutes);
 
 // If no API routes are hit, send the React app
 router.use((req, res) => res.sendFile(path.join(__dirname, '../client/build/index.html')));

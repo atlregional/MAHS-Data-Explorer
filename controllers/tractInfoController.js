@@ -1,10 +1,10 @@
-const content = require('../models/content')
+const tractinfo = require('../models/tractinfo')
 
 // Defining methods
 module.exports = {
     findAll: (req, res) => {
       console.log(req.query);
-      content.find(req.query)
+      tractinfo.find(req.query)
         // .sort({ date: -1 })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
@@ -13,16 +13,16 @@ module.exports = {
     
     create: (req, res) => {
       console.log(req.body)
-      content.create(req.body)
+      tractinfo.create(req.body)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     update: (req, res) => {
       const { _id } = req.body;
       
-      content.findByIdAndUpdate(_id, req.body)
+      tractinfo.findByIdAndUpdate(_id, req.body)
         .then(dbModel => 
-          {console.log("Update Content",req.body)
+          {console.log("Update Tract Info",req.body)
           res.json(dbModel)})
         .catch(err => res.status(422).json(err));
     },
