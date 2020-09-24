@@ -1,5 +1,6 @@
-.header {
+.navbar {
     background-color: cornflowerblue;
+    justify-content: center;
 }
 
 .home-container {
@@ -8,19 +9,19 @@
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    padding: 20px;
 }
 
 .subarea-selector {
     background-color: antiquewhite;
     height: 100%;
-    flex: 1 0;
-
+    flex: 0 0;
+    padding: .5rem 1rem;
 }
 
 .map-box {
     background-color: aqua;
-    flex: 8 0;
+    flex: 5 0;
+    padding: .5rem 1rem;
 }
 
 .parent-box {
@@ -33,6 +34,7 @@
     flex-direction: column;
     flex-flow: column;
     height: 50%;
+    padding: .5rem 1rem;
 }
 
 .bottom-box {
@@ -41,4 +43,5 @@
     flex-flow: column;
     flex-direction: column;
     height: 50%;
+    padding: .5rem 1rem;
 }
