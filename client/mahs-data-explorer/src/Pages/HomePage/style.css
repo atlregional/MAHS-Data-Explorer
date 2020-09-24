@@ -1,0 +1,44 @@
+.header {
+    background-color: cornflowerblue;
+}
+
+.home-container {
+    height: 80vh;
+    margin: 30px 20px 30px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 20px;
+}
+
+.subarea-selector {
+    background-color: antiquewhite;
+    height: 100%;
+    flex: 1 0;
+
+}
+
+.map-box {
+    background-color: aqua;
+    flex: 8 0;
+}
+
+.parent-box {
+    flex: 3 0;
+}
+
+.top-box {
+    background-color: blanchedalmond;
+    flex: 3 3;
+    flex-direction: column;
+    flex-flow: column;
+    height: 50%;
+}
+
+.bottom-box {
+    background-color: burlywood;
+    flex: 3 3;
+    flex-flow: column;
+    flex-direction: column;
+    height: 50%;
+}
