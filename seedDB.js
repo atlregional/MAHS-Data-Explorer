@@ -3,17 +3,25 @@ const mongoose = require("mongoose");
 const db = require("./models");
 const MONGODB_URI = process.env.MONGODB_URI;
 
-const tractDataSeed = require('');
-const tractInfoSeed = require('');
-const cityCrossWalkSeed = require('');
-const dataInfoSeed = require('');
+const tractDataSeed = require('./data/tractData.json');
+const tractInfoSeed = require('./data/tractInfo.json');
+const cityCrossWalkSeed = require('./data/tractToCityCrosswalk.json');
+const dataInfoSeed = require('./data/dataLabelManifests.json');
 
 const collection = 'tractinfo';
 
+
 const content = 
+// ternary for each collection here
   collection === 'tractinfo' ? 
     tractInfoSeed
-  : null; // ternary for other collections here
+  :collection === 'tractdata' ? 
+    tractDataSeed
+    :collection === 'citycrosswalk' ? 
+    cityCrossWalkSeed
+    :collection === 'datainfoseed' ? 
+    dataInfoSeed
+  : null; 
 
 mongoose.connect(MONGODB_URI,
   { useNewUrlParser: true,
