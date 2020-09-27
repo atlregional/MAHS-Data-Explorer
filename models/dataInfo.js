@@ -6,7 +6,7 @@ const dataInfoSchema = new Schema({
     Type: {type: String, required: true},
     Units : {type: String},
     Label : {type: String, required: true},
-    Year : {type: Mixed, required: true}
+    Year : {type: String || Number, required: true}
     
 });
 
