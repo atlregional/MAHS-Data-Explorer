@@ -7,30 +7,31 @@ const HomePage = () => {
   return mobile ? (
     // mobile device
     <>
-      <div className="navbar header">App header</div>
       <div className="home-container row">
+        <div className="navbar header">App header</div>
+
         <div className="left-column subarea-selector">SubArea selector</div>
 
         <div className="map-box">Map</div>
 
         <div className="row mobile-row">
           <div
-            className="col-4 map mobile-box"
+            className="col-sm-4 map mobile-box"
             style={{ backgroundColor: 'grey' }}
           >
             Map
           </div>
           <div
-            className="col-4 chart mobile-box"
+            className="col-sm-4 chart mobile-box"
             style={{ backgroundColor: 'maroon' }}
           >
             Chart
           </div>
           <div
-            className="col-4 tab mobile-box"
+            className="col-sm-4 tab mobile-box"
             style={{ backgroundColor: 'purple' }}
           >
-            Tab
+            Table
           </div>
         </div>
       </div>
@@ -45,7 +46,7 @@ const HomePage = () => {
 
         <div className="parent-box">
           <div className="chart top-box">Chart</div>
-          <div className="tab bottom-box">Tab</div>
+          <div className="tab bottom-box">Table</div>
         </div>
       </div>
     </>
