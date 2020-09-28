@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Map = () => {
-  return <>{/* put a fancy Map component in here. */}</>;
+const MapComp = () => {
+  return <>{/* put a fancy Map component in here. */}Map</>;
 };
 
-export default Map;
+export default MapComp;
