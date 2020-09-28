@@ -17,7 +17,7 @@
 .subarea-selector {
     background-color: antiquewhite;
     height: 100%;
-    flex: 0 0;
+    flex: 1 0;
     width: 10vw;
     /* padding: .5rem 1rem; */
 }
