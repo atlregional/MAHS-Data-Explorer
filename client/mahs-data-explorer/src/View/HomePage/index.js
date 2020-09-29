@@ -7,9 +7,12 @@ import MapComp from '../../components/Map';
 
 import './style.css';
 
+// const [mobileOrDesktop, setMobileOrDesktop] = useState();
+
 const HomePage = () => {
   // you will need to reload the page under new screen size but works just fine for implementation.
-  let mobile = window.screen.width < 800;
+  const mobile = window.screen.width < 800;
+  // const desktop = window.screen.width > 800;
 
   return mobile ? (
     // mobile device
