@@ -10,18 +10,29 @@ const dataInfoSeed = require('./data/dataLabelManifests.json');
 
 const collection = 'tractinfo';
 
+const tractInfoWCityArray = collection === 'tractinfo' ? 
+  tractInfoSeed.map(tract => {
+    const tractObj = {...tract};
+    tractObj.cities = [];
+    cityCrossWalkSeed.forEach(tractWCity => 
+      tractWCity.GEOID === tractObj.geoID ?
+        tractObj.citie.push(tractWCity.Cities) 
+      : null);
+    return tractObj;
+    }
+  ) : null;
 
 const content = 
 // ternary for each collection here
   collection === 'tractinfo' ? 
-    tractInfoSeed
+    tractInfoWCityArray
   :collection === 'tractdata' ? 
     tractDataSeed
-    :collection === 'citycrosswalk' ? 
-    cityCrossWalkSeed
-    :collection === 'datainfoseed' ? 
+  :collection === 'datainfoseed' ? 
     dataInfoSeed
   : null; 
+
+
 
 mongoose.connect(MONGODB_URI,
   { useNewUrlParser: true,
