@@ -1,0 +1,43 @@
+body {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+}
+
+div {
+  /* border: solid black 1px; */
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 10vh;
+}
+
+#dynamic-wrapper {
+  position: fixed;
+  width: 100%;
+  top: 10vh;
+  height: 90vh;
+  background-color: cornflowerblue;
+  display: grid;
+  grid-template-columns: 10% 90%;
+}
+
+@media screen and (max-width: 800px) {
+  #dynamic-wrapper {
+    grid-template-rows: 10% 90%;
+    grid-template-columns: none;
+    height: 80vh;
+
+  }
+
+}
+
+
+
+
+
