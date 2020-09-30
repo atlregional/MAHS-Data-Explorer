@@ -63,5 +63,12 @@ body {
   #right-col-viz-view {
     grid-template-rows: 100%;
   }
-}
 
+  #viz-view-selector {
+    position: fixed;
+    background-color: seagreen;
+    bottom: 0;
+    width: 100%;
+    height: 10vh
+  }
+}

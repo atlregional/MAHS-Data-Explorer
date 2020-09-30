@@ -43,7 +43,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      {mobile ? <div id="viz-view-selector"></div> : null}
+      {mobile ? <div id="viz-view-selector"> view selector</div> : null}
     </>
   );
 
