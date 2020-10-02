@@ -1,73 +1,10 @@
 [
   {
-    "ID": "ID001",
-    "Type": "Percent Change",
-    "Units": "",
-    "Label": "Percent Change in Total Housing Units",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID002",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent of Occupied Housing Units, Single Family Owners",
-    "Year": 2017
-  },
-  {
-    "ID": "ID003",
-    "Type": "Percent Change",
-    "Units": "",
-    "Label": "Percent Change in Single Family Renters",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID004",
-    "Type": "Percent Change",
-    "Units": "",
-    "Label": "Percent Change in Single Family Owners",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID005",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent of Occupied Housing Units, Single Family Renters",
-    "Year": 2017
-  },
-  {
-    "ID": "ID006",
-    "Type": "Percent Change",
-    "Units": "",
-    "Label": "Percent Change in Multifamily Units",
-    "Year": "since 2010"
-  },
-  {
     "ID": "ID007",
     "Type": "Job-to-Worker Ratio",
     "Units": "",
     "Label": "Job-to-Worker Ratio",
     "Year": 2017
-  },
-  {
-    "ID": "ID008",
-    "Type": "Change",
-    "Units": "",
-    "Label": "Change in Percent Owner Households",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID009",
-    "Type": "Percent Change",
-    "Units": "",
-    "Label": "Percent Change in Renter Households",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID0010",
-    "Type": "Percent Change",
-    "Units": "",
-    "Label": "Percent Change in Owner Households",
-    "Year": "since 2010"
   },
   {
     "ID": "ID011",
@@ -98,69 +35,6 @@
     "Year": "since 2010"
   },
   {
-    "ID": "ID015",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Renter Households",
-    "Year": 2010
-  },
-  {
-    "ID": "ID016",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Renter Households",
-    "Year": 2017
-  },
-  {
-    "ID": "ID017",
-    "Type": "Change",
-    "Units": "",
-    "Label": "Change in Percent Renter Households",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID018",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Owner Households",
-    "Year": 2010
-  },
-  {
-    "ID": "ID019",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Owner Households",
-    "Year": 2017
-  },
-  {
-    "ID": "ID020",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Population Under 18",
-    "Year": 2010
-  },
-  {
-    "ID": "ID021",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Population Under 18",
-    "Year": 2017
-  },
-  {
-    "ID": "ID022",
-    "Type": "Percent Change",
-    "Units": "",
-    "Label": "Percent Change in Population Under 18",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID023",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Population 65+",
-    "Year": 2010
-  },
-  {
     "ID": "ID024",
     "Type": "Change",
     "Units": "",
@@ -168,24 +42,10 @@
     "Year": "since 2010"
   },
   {
-    "ID": "ID025",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Population 65+",
-    "Year": 2017
-  },
-  {
     "ID": "ID026",
     "Type": "Change",
     "Units": "",
     "Label": "Change in Population 65+",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID027",
-    "Type": "Percent Change",
-    "Units": "",
-    "Label": "Percent Change in Population 65+",
     "Year": "since 2010"
   },
   {
@@ -203,13 +63,6 @@
     "Year": 2017
   },
   {
-    "ID": "ID030",
-    "Type": "Percent Change",
-    "Units": "dollars",
-    "Label": "Percent Change in Per Capita Income",
-    "Year": "since 2010"
-  },
-  {
     "ID": "ID031",
     "Type": "Average",
     "Units": "dollars",
@@ -224,13 +77,6 @@
     "Year": 2017
   },
   {
-    "ID": "ID033",
-    "Type": "Percent Change",
-    "Units": "dollars",
-    "Label": "Percent Change in Mean Household Income",
-    "Year": "since 2010"
-  },
-  {
     "ID": "ID034",
     "Type": "Average",
     "Units": "dollars",
@@ -243,13 +89,6 @@
     "Units": "dollars",
     "Label": "Average Gross Rent",
     "Year": 2017
-  },
-  {
-    "ID": "ID036",
-    "Type": "Percent Change",
-    "Units": "dollars",
-    "Label": "Percent Change in Average Gross Rent",
-    "Year": "since 2010"
   },
   {
     "ID": "ID037",
@@ -285,118 +124,6 @@
     "Units": "",
     "Label": "Home Loan Denial Rate",
     "Year": 2017
-  },
-  {
-    "ID": "ID042",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent of Households without a Vehicle",
-    "Year": 2010
-  },
-  {
-    "ID": "ID043",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent of Households without a Vehicle",
-    "Year": 2017
-  },
-  {
-    "ID": "ID044",
-    "Type": "Change",
-    "Units": "",
-    "Label": "Change in Percent of Households without a Vehicle",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID045",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent of Population in Poverty",
-    "Year": 2010
-  },
-  {
-    "ID": "ID046",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent of Population in Poverty",
-    "Year": 2017
-  },
-  {
-    "ID": "ID047",
-    "Type": "Change",
-    "Units": "",
-    "Label": "Change in Percent of Population in Poverty",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID048",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Cost Burdened Households",
-    "Year": "2017***"
-  },
-  {
-    "ID": "ID049",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Cost Burdened Renters",
-    "Year": "2017***"
-  },
-  {
-    "ID": "ID050",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Cost Burdened Owners",
-    "Year": "2017***"
-  },
-  {
-    "ID": "ID051",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Cost Burdened Households",
-    "Year": "2010***"
-  },
-  {
-    "ID": "ID052",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Cost Burdened Renters",
-    "Year": "2010***"
-  },
-  {
-    "ID": "ID053",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent Cost Burdened Owners",
-    "Year": "2010***"
-  },
-  {
-    "ID": "ID054",
-    "Type": "Change",
-    "Units": "",
-    "Label": "Change in Percent Cost Burdened Households",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID055",
-    "Type": "Change",
-    "Units": "",
-    "Label": "Change in Percent Cost Burdened Renters",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID056",
-    "Type": "Change",
-    "Units": "",
-    "Label": "Change in Percent Cost Burdened Owners",
-    "Year": "since 2010"
-  },
-  {
-    "ID": "ID057",
-    "Type": "Change",
-    "Units": "",
-    "Label": "Change in Percent of Occupied Housing Units, Single Family Owners",
-    "Year": "since 2010"
   },
   {
     "ID": "ID058",
@@ -557,20 +284,6 @@
     "Type": "Total",
     "Units": "",
     "Label": "Total Households without a Vehicle",
-    "Year": 2010
-  },
-  {
-    "ID": "ID081",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent of Occupied Housing Units, Single Family Owners",
-    "Year": 2010
-  },
-  {
-    "ID": "ID082",
-    "Type": "Percent",
-    "Units": "",
-    "Label": "Percent of Occupied Housing Units, Single Family Renters",
     "Year": 2010
   },
   {
