@@ -1,0 +1,3642 @@
+[
+  {
+    "GEOID": 13135050311,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13067030318,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030330,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031311,
+    "County": "Cobb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13067031404,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031405,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031406,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031503,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031505,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13121010122,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030331,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030332,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030333,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031001,
+    "County": "Cobb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13067030320,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030502,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030322,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031307,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030319,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031101,
+    "County": "Cobb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13067030336,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030103,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030504,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031110,
+    "County": "Cobb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13067030101,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030328,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030209,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030214,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030215,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030334,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030335,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030337,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030339,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030310,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030311,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13063040513,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040514,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040515,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040516,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13247060102,
+    "County": "Rockdale",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13063040606,
+    "County": "Clayton",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13063040609,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040613,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067030218,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031205,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030224,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031209,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067031207,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067031208,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067030507,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030506,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030601,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13247060404,
+    "County": "Rockdale",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13247060308,
+    "County": "Rockdale",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13247060403,
+    "County": "Rockdale",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13247060306,
+    "County": "Rockdale",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13247060305,
+    "County": "Rockdale",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13247060405,
+    "County": "Rockdale",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13247060101,
+    "County": "Rockdale",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13247060202,
+    "County": "Rockdale",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13247060406,
+    "County": "Rockdale",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13247060304,
+    "County": "Rockdale",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13247060407,
+    "County": "Rockdale",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13247060309,
+    "County": "Rockdale",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13247060307,
+    "County": "Rockdale",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13247060201,
+    "County": "Rockdale",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13121011417,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011506,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011416,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011421,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021906,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121006601,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121006700,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121009300,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121009402,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121010108,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121010110,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121010205,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121010208,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121010507,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121010508,
+    "County": "Fulton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13121010512,
+    "County": "Fulton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13121010601,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121010603,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121010604,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13097080602,
+    "County": "Douglas",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13097080201,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080202,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080301,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080402,
+    "County": "Douglas",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13089021502,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021602,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021603,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021703,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089022401,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089022402,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089022403,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089022500,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089023700,
+    "County": "DeKalb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13089021704,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021705,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021706,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021805,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089022600,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089022700,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089023501,
+    "County": "DeKalb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13089021907,
+    "County": "DeKalb",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13121000500,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001300,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001400,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001500,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001600,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001800,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001900,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121003600,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121010002,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121010001,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121009802,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121010107,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121009700,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121010210,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121010209,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121010301,
+    "County": "Fulton",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13121002500,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121010304,
+    "County": "Fulton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13121007100,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121010513,
+    "County": "Fulton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13121010510,
+    "County": "Fulton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13121007200,
+    "County": "Fulton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13121006200,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121009101,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121001100,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121007300,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121004200,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121008904,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121011611,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011617,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011620,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121010511,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121011504,
+    "County": "Fulton",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13121011615,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011503,
+    "County": "Fulton",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13121011423,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011425,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011613,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011420,
+    "County": "Fulton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13121011614,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011621,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011619,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011623,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121010211,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011622,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121012000,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007002,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121000600,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001700,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121009000,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121011000,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121009900,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121010303,
+    "County": "Fulton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13121010514,
+    "County": "Fulton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13121000100,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121000200,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121000400,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13135050531,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050212,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050210,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050606,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050525,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050214,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050220,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050723,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050544,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067030345,
+    "County": "Cobb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13067030800,
+    "County": "Cobb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021409,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021301,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021414,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021413,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089022203,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021411,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089020100,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089023000,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021416,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021410,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089020200,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089023102,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089023113,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021504,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089022302,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021503,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021307,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021101,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089020400,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089020700,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021605,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021308,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089020801,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021209,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021306,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021412,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089022800,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089020300,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021405,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089022100,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089022900,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089020600,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089023601,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089020802,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021102,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089022301,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089022204,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089021208,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089020500,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089023801,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13089020900,
+    "County": "DeKalb",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001002,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121004300,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121000700,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001001,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121008903,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121002800,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121009601,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121003500,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121002100,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121003000,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121011900,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121003200,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121003100,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121002900,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121009501,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121004900,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121005000,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121012300,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121008902,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121010114,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001201,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121006900,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121009801,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121009603,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121005300,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121009200,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121009502,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121005200,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121001202,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121009404,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121009602,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13121008800,
+    "County": "Fulton",
+    "Subarea": "Subarea 1"
+  },
+  {
+    "GEOID": 13057090802,
+    "County": "Cherokee",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13057090501,
+    "County": "Cherokee",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13057090200,
+    "County": "Cherokee",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13057090100,
+    "County": "Cherokee",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13057090300,
+    "County": "Cherokee",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13057090502,
+    "County": "Cherokee",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13113140307,
+    "County": "Fayette",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13113140502,
+    "County": "Fayette",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13113140408,
+    "County": "Fayette",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13113140501,
+    "County": "Fayette",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13113140305,
+    "County": "Fayette",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13113140204,
+    "County": "Fayette",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13121010400,
+    "County": "Fulton",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13135050727,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13135050610,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13151070202,
+    "County": "Henry",
+    "Subarea": "Subarea 10"
+  },
+  {
+    "GEOID": 13067031113,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067030229,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067031112,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067030700,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067030228,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067031118,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067031111,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067031108,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067031313,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067031312,
+    "County": "Cobb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021204,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021812,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021417,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021215,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021604,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021808,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089023802,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021810,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021415,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089022001,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021202,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13089021809,
+    "County": "DeKalb",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121009102,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121010113,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121010115,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121010212,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121009403,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121010123,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13121008700,
+    "County": "Fulton",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13135050215,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13135050431,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13135050310,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 2"
+  },
+  {
+    "GEOID": 13067030412,
+    "County": "Cobb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13067031114,
+    "County": "Cobb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13067031116,
+    "County": "Cobb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13089022007,
+    "County": "DeKalb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13089023504,
+    "County": "DeKalb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13089023602,
+    "County": "DeKalb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13089023603,
+    "County": "DeKalb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13089023107,
+    "County": "DeKalb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13089023101,
+    "County": "DeKalb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13089023803,
+    "County": "DeKalb",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121004800,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121004400,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121006602,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121006400,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121008101,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121007500,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121004000,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121005501,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121005800,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121006100,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121004100,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121011100,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121011202,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121010800,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121006000,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121006500,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13121008000,
+    "County": "Fulton",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13135050317,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13135050304,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 3"
+  },
+  {
+    "GEOID": 13063040306,
+    "County": "Clayton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13063040202,
+    "County": "Clayton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13063040308,
+    "County": "Clayton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13067030411,
+    "County": "Cobb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13067030344,
+    "County": "Cobb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13067030413,
+    "County": "Cobb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13067031004,
+    "County": "Cobb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089021911,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089022009,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023112,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089022010,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023410,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023111,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089022008,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023505,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023411,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089022005,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089021806,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023108,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089021910,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089021909,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023114,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089022004,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023507,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023506,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023413,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023425,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023412,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023213,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023206,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023414,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13089023204,
+    "County": "DeKalb",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121006802,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121011800,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121002600,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007604,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007808,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121003800,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121008302,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007400,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121002300,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121005502,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121008602,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121005700,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121008400,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007602,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121003900,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007603,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121011306,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007705,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121006300,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007807,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121008202,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121008301,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121008500,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121008601,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007001,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121011305,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121002400,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007703,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007806,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121011201,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121008102,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007704,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121011301,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121011303,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121008201,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13121007900,
+    "County": "Fulton",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13135050318,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13135050537,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13135050542,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13135050432,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 4"
+  },
+  {
+    "GEOID": 13057090905,
+    "County": "Cherokee",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13057091001,
+    "County": "Cherokee",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13057090601,
+    "County": "Cherokee",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13057090702,
+    "County": "Cherokee",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13057090400,
+    "County": "Cherokee",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13057090904,
+    "County": "Cherokee",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13057091102,
+    "County": "Cherokee",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13057090701,
+    "County": "Cherokee",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030505,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067031211,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030410,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030408,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030407,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030602,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067031115,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030104,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030227,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030902,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030106,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030901,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030230,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067030226,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13067031206,
+    "County": "Cobb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13089021217,
+    "County": "DeKalb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13089021305,
+    "County": "DeKalb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13089021216,
+    "County": "DeKalb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13089021218,
+    "County": "DeKalb",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13113140208,
+    "County": "Fayette",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13113140306,
+    "County": "Fayette",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13113140407,
+    "County": "Fayette",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121010117,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121010120,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121010118,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011422,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011616,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121010119,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011405,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011618,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121010106,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121010121,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011414,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011626,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13121011412,
+    "County": "Fulton",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050315,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050218,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050219,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050309,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050209,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050109,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050217,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050106,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13135050511,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13151070114,
+    "County": "Henry",
+    "Subarea": "Subarea 5"
+  },
+  {
+    "GEOID": 13057091006,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057091005,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057091101,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057091007,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057090602,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057091008,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057090901,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057090804,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057090803,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057091103,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057090902,
+    "County": "Cherokee",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13063040614,
+    "County": "Clayton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030220,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031212,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030340,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030409,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030233,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030236,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030324,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030341,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030343,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030326,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030235,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030329,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030342,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031117,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030327,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030231,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030222,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030238,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030107,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030234,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030232,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030312,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030239,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030314,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030219,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067030313,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13067031106,
+    "County": "Cobb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13089021213,
+    "County": "DeKalb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13089021210,
+    "County": "DeKalb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13089021214,
+    "County": "DeKalb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13089021211,
+    "County": "DeKalb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13089021912,
+    "County": "DeKalb",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13097080507,
+    "County": "Douglas",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13097080509,
+    "County": "Douglas",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13113140206,
+    "County": "Fayette",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13113140303,
+    "County": "Fayette",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13113140207,
+    "County": "Fayette",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13113140404,
+    "County": "Fayette",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13113140203,
+    "County": "Fayette",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13113140405,
+    "County": "Fayette",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13113140304,
+    "County": "Fayette",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13113140403,
+    "County": "Fayette",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011426,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011624,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011419,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011610,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011612,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011505,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121010204,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011625,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121010206,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011418,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011410,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011411,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011424,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13121011427,
+    "County": "Fulton",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050321,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050308,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050322,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050425,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050714,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050718,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050713,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050216,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050547,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050213,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050107,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050108,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050609,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050103,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13135050607,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13151070309,
+    "County": "Henry",
+    "Subarea": "Subarea 6"
+  },
+  {
+    "GEOID": 13057091003,
+    "County": "Cherokee",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040414,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040510,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040611,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040615,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040302,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040416,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040523,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040616,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040525,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040409,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040307,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040509,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040407,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040204,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040619,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040524,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040512,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040526,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040620,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040410,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040413,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040622,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040621,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040411,
+    "County": "Clayton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031507,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031306,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031310,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067030405,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031002,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067030223,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031308,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031408,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031309,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031409,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031005,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067030904,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031508,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031506,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067030905,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13067031509,
+    "County": "Cobb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089021814,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023211,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089021913,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089021303,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089021908,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023212,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023421,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023310,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023313,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023208,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023314,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023311,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023209,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023210,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023424,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023422,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023309,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023316,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023312,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13089023418,
+    "County": "DeKalb",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080505,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080304,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080103,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080508,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080506,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080510,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080604,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13097080511,
+    "County": "Douglas",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13113140406,
+    "County": "Fayette",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13113140102,
+    "County": "Fayette",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13113140101,
+    "County": "Fayette",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13121007805,
+    "County": "Fulton",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050541,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050417,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050433,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050211,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050306,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050729,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050435,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050320,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050522,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050424,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050520,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050434,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050526,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050529,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050418,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050523,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050205,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050540,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050421,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050423,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050430,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050715,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050539,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050521,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050528,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050427,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050422,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050436,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050319,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050105,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050524,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050527,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050410,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050419,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050719,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050415,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050428,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050530,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050314,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050426,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050416,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050535,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050536,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050208,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050538,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050549,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050429,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050712,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050534,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050313,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050720,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050548,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050725,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050543,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050533,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050532,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050730,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050721,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050605,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050545,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050546,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050724,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13135050728,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070113,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070108,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070310,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070111,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070106,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070304,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070311,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070404,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070205,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070107,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070306,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13151070104,
+    "County": "Henry",
+    "Subarea": "Subarea 7"
+  },
+  {
+    "GEOID": 13063040520,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040415,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040521,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040417,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040522,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040303,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040203,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040518,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040408,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040612,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040412,
+    "County": "Clayton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13089023214,
+    "County": "DeKalb",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13089023427,
+    "County": "DeKalb",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13089023426,
+    "County": "DeKalb",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13089023428,
+    "County": "DeKalb",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13089023303,
+    "County": "DeKalb",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13089023416,
+    "County": "DeKalb",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13089023306,
+    "County": "DeKalb",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13089023423,
+    "County": "DeKalb",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13089023419,
+    "County": "DeKalb",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13097080303,
+    "County": "Douglas",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13097080603,
+    "County": "Douglas",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13121010515,
+    "County": "Fulton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13121007802,
+    "County": "Fulton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13121010516,
+    "County": "Fulton",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13135050722,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13135050709,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13151070109,
+    "County": "Henry",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13151070307,
+    "County": "Henry",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13151070305,
+    "County": "Henry",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13151070403,
+    "County": "Henry",
+    "Subarea": "Subarea 8"
+  },
+  {
+    "GEOID": 13063040608,
+    "County": "Clayton",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13089023315,
+    "County": "DeKalb",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13097080403,
+    "County": "Douglas",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13097080102,
+    "County": "Douglas",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13097080404,
+    "County": "Douglas",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13121007706,
+    "County": "Fulton",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13135050731,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13135050726,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13135050608,
+    "County": "Gwinnett",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13151070204,
+    "County": "Henry",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13151070110,
+    "County": "Henry",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13151070501,
+    "County": "Henry",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13151070402,
+    "County": "Henry",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13151070502,
+    "County": "Henry",
+    "Subarea": "Subarea 9"
+  },
+  {
+    "GEOID": 13151070203,
+    "County": "Henry",
+    "Subarea": "Subarea 9"
+  }
+]
