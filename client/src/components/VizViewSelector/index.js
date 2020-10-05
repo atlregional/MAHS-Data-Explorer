@@ -35,15 +35,6 @@ const VizViewSelector = (props) => {
           {item.text}
         </div>
       ))}
-      {/* <a className="button-columns" id="map-selector">
-        Map
-      </a>
-      <a className="button-columns" id="chart-selector">
-        Chart
-      </a>
-      <a className="button-columns" id="table-selector">
-        Table
-      </a> */}
     </div>
   );
 };
