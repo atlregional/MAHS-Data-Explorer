@@ -1,9 +1,9 @@
+
 import getData from './getData';
 import aggregateBySubarea from './aggregateBySubarea';
 import exportCSV from './exportCSV';
 import exportPDF from './exportPDF';
 import exportImage from './exportImage';
-
 
 const utils = {
   getData: (url) => getData(url),

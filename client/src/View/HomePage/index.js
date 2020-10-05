@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import NavBar from '../../components/navbar';
-import SubArea from '../../components/SubArea';
+import SubAreaSelector from '../../components/SubAreaSelector';
 import Chart from '../../components/Chart';
 import Table from '../../components/Table';
 import MapComp from '../../components/Map';
@@ -20,31 +20,38 @@ const HomePage = () => {
 
   return (
     <>
-      <div id="header"><h1>Metro Atlanta Housing Data Explorer</h1></div>
+      <div id="header">
+        <h1>Metro Atlanta Housing Data Explorer</h1>
+      </div>
       <div id="dynamic-wrapper">
         <div id="subarea-selector">Subarea Selector</div>
         <div id="viz-box">
           {!mobile || mobileVizView === 'map' ? (
             <div id="map-box">
-              <MapComp />
+              <MapComp mobileVizView={mobileVizView} />
             </div>
           ) : null}
           <div id="right-col-viz-view">
             {!mobile || mobileVizView === 'chart' ? (
               <div id="chart-box">
-                <Chart />
+                <Chart mobileVizView={mobileVizView} />
               </div>
             ) : null}
             {!mobile || mobileVizView === 'table' ? (
               <div id="table-box">
-                <Table />
+                <Table mobileVizView={mobileVizView} />
               </div>
             ) : null}
           </div>
         </div>
       </div>
 
-      {mobile ? <VizViewSelector /> : null}
+      {mobile ? (
+        <VizViewSelector
+          mobileVizView={mobileVizView}
+          setMobileVizView={setMobileVizView}
+        />
+      ) : null}
     </>
   );
 };
