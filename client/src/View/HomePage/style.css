@@ -50,6 +50,11 @@ body {
 }
 
 @media screen and (max-width: 800px) {
+
+  h1 {
+    font-size: 2em;
+    white-space: wrap;
+  }
   #dynamic-wrapper {
     grid-template-rows: 10% 90%;
     grid-template-columns: none;

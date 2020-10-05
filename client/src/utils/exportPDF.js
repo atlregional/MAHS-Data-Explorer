@@ -1,3 +1,3 @@
-export default exportPDF = (params) => {
+export default (params) => {
     console.log(params);
   };

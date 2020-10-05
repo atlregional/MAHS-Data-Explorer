@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import NavBar from '../../components/Header';
-import SubArea from '../../components/SubAreaSelector';
+// import NavBar from '../../components/navbar';
+import SubAreaSelector from '../../components/SubAreaSelector';
 import Chart from '../../components/Chart';
 import Table from '../../components/Table';
 import MapComp from '../../components/Map';
@@ -20,7 +20,9 @@ const HomePage = () => {
 
   return (
     <>
-      <div id="header">Header</div>
+      <div id="header">
+        <h1>Metro Atlanta Housing Data Explorer</h1>
+      </div>
       <div id="dynamic-wrapper">
         <div id="subarea-selector">Subarea Selector</div>
         <div id="viz-box">
@@ -44,7 +46,12 @@ const HomePage = () => {
         </div>
       </div>
 
-      {mobile ? <VizViewSelector mobileVizView={mobileVizView} setMobileVizView={setMobileVizView} /> : null}
+      {mobile ? (
+        <VizViewSelector
+          mobileVizView={mobileVizView}
+          setMobileVizView={setMobileVizView}
+        />
+      ) : null}
     </>
   );
 };

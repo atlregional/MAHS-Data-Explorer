@@ -1,3 +1,3 @@
-export default exportCSV = (data, params) => {
+export default (data, params) => {
     console.log(data, params);
   };
