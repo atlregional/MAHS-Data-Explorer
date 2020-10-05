@@ -19,15 +19,22 @@ const VizViewSelector = (props) => {
 
   return (
     <div id="viz-view-selector">
-      {buttonParamArr.map((item) => {
-        <a
+      {buttonParamArr.map((item) => (
+        <div
           type="button"
-          className="selector-button"
-          id={`${item.value}-selector`}
+          key={`${item.value}-viz-view-selector-button`}
+          onClick={() => props.setMobileVizView(item.value)}
+          className="viz-view-selector-button"
+          id={
+            props.mobileVizView === item.value
+              ? 'selected-viz-view-button'
+              : null
+          }
+          style={{ width: `${100 / buttonParamArr.length}%` }}
         >
           {item.text}
-        </a>;
-      })}
+        </div>
+      ))}
       {/* <a className="button-columns" id="map-selector">
         Map
       </a>

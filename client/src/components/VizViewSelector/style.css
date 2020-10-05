@@ -1,15 +1,18 @@
-#map-selector{ 
-    background-color: rgb(83, 173, 203);
+.viz-view-selector-button {
+    opacity: .5;
+    float: left;
+    height: 100%;
+    background-color: teal;
 }
 
-#chart-selector{ 
-    background-color: rgb(39, 186, 59);
+#selected-viz-view-button {
+    opacity: 1;
+    color: seashell;
 }
 
-#table-selector{ 
-    background-color: rgb(199, 118, 236);
-}
-
-.selector-button {
-
+#viz-view-selector {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
 }
