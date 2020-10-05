@@ -1,3 +1,3 @@
-export default ExportImage = (divID) => {
+export default (divID) => {
   console.log(divID);
 };

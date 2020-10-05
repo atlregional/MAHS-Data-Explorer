@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NavBar from '../../components/navbar';
+// import NavBar from '../../components/navbar';
 import SubArea from '../../components/SubArea';
 import Chart from '../../components/Chart';
 import Table from '../../components/Table';
@@ -20,7 +20,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div id="header">Header</div>
+      <div id="header"><h1>Metro Atlanta Housing Data Explorer</h1></div>
       <div id="dynamic-wrapper">
         <div id="subarea-selector">Subarea Selector</div>
         <div id="viz-box">

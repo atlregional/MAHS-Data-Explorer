@@ -1,3 +1,3 @@
-export default aggregateBySubarea = (geo, indicator) => {
+export default (geo, indicator) => {
     console.log(geo, indicator);
   };
