@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import getData from './getData';
 import aggregateBySubarea from './aggregateBySubarea';
 import exportCSV from './exportCSV';
