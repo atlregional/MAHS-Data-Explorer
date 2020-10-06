@@ -1,8 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import utils from '../../utils';
 import { Map as LeafletMap, TileLayer, GeoJSON } from 'react-leaflet';
 
-const MapComp = (props) => {
+const MapComp = props => {
+
+  // console.log(props);
+  const mapRef = useRef();
+  const [boundaryGeos, setBoundaryGeos] = useState();
+
   const tileLayerConfig = [
     {
       name: 'ArcGIS Satellite',
@@ -20,64 +25,85 @@ const MapComp = (props) => {
     }
   ];
 
-  const [boundaryGeos, setBoundaryGeos] = useState({});
+  const openDataAPIConfig = [
+    {
+      name: 'cities',
+      visible: true,
+      url:
+        'https://arcgis.atlantaregional.com/arcgis/rest/services/OpenData/FeatureServer/58/query?where=County10%20%3D%20%27YES%27&outFields=OBJECTID,Name,County10,Sq_Miles&outSR=4326&f=geojson',
+    },
+    {
+      name: 'counties',
+      visible: true,
+      url:
+        'https://arcgis.atlantaregional.com/arcgis/rest/services/OpenData/FeatureServer/68/query?where=Reg_Comm%20%3D%20%27ATLANTA%20REGIONAL%20COMMISSION%27&outFields=*&outSR=4326&f=geojson',
+    },
+  ];
 
-  console.log('boundaryGeos: ', boundaryGeos);
+  // console.log('boundaryGeos: ', JSON.stringify(boundaryGeos));
 
   const handleBoundryGeoJSONs = () => {
-    const openDataAPIConfig = [
-      {
-        name: 'cities',
-        visible: true,
-        url:
-          'https://arcgis.atlantaregional.com/arcgis/rest/services/OpenData/FeatureServer/58/query?where=County10%20%3D%20%27YES%27&outFields=OBJECTID,Name,County10,Sq_Miles&outSR=4326&f=geojson',
-      },
-      {
-        name: 'counties',
-        visible: true,
-        url:
-          'https://arcgis.atlantaregional.com/arcgis/rest/services/OpenData/FeatureServer/68/query?where=Reg_Comm%20%3D%20%27ATLANTA%20REGIONAL%20COMMISSION%27&outFields=*&outSR=4326&f=geojson',
-      },
-    ];
-
-    const boundariesObj = {};
-
-    console.log('openDataAPI: ', openDataAPIConfig);
-
-    openDataAPIConfig.map((boundary) =>
+  
+  const getBoundaryGeoJSON = (key, url) => 
+    new Promise(resolve =>
       utils
-        .getData(boundary.url)
-        .then((res) => (boundariesObj[boundary.name] = res))
-        .catch((err) => console.log(err))
-    );
-    setBoundaryGeos(boundariesObj);
+      .getData(url)
+      .then(res => [key, res.data])
+      .catch(err => console.log(err)
+    )
+    .then(data => resolve(data))
+    .catch(err => console.log(err)));
+  
+
+  let returnedGeoJSONs = [];
+
+  // console.log(openDataAPIConfig);
+  
+  openDataAPIConfig.forEach(config =>
+    returnedGeoJSONs.push(
+      getBoundaryGeoJSON(config.name, config.url)
+    )
+  );
+
+  Promise.all(returnedGeoJSONs)
+    .then(boundaryGeoJSONS => {
+      // console.log(boundaryGeoJSONS);
+      const boundaryGeosObj = {};
+      [...boundaryGeoJSONS].forEach(([key,value]) =>
+        boundaryGeosObj[key] = value
+      );
+      setBoundaryGeos(boundaryGeosObj);
+    });
   };
 
-  useEffect(() => {
-    handleBoundryGeoJSONs();
-  }, []);
+  useEffect(() => handleBoundryGeoJSONs(), []);
 
 
   return (
     // container for map
-    <LeafletMap center={[33.753, -84.386]} zoom={10} key={'leaflet-map'}>
-      {/* GeoJSON components are used to draw the boundaries for the api calls;
-      api calls for the 10 & 20 counties boundaries */}
-
+    <LeafletMap
+      animate 
+      center={[33.753, -84.386]} 
+      zoom={10} 
+      key={`leaflet-map-${mapRef}`}>
       {
-        Object.keys(boundaryGeos).length > 0
-          ? Object.entries(boundaryGeos).map(([key, boundaryGeo]) => {
-              console.log("boundaryGeo: line70", boundaryGeo);
-              return <GeoJSON key={`boundary-layer-${key}`} data={boundaryGeo}/>;
-            })
-          : null
+        boundaryGeos ?
+          openDataAPIConfig
+          .filter(config => config.visible)
+          .map(config =>
+            // boundaryLayerKeys.map((key, i) =>
+            <GeoJSON 
+              key={`boundary-layer-${config.name}`} 
+              data={boundaryGeos[config.name]}
+            />          
+          )
+        : null
       }
-      {/* noninteractive layer, tiles that make up the leafletMap; */}
       <TileLayer
       key={`tile-layer-${tileLayerConfig[1].name}`}
         url={tileLayerConfig[1].url}
         attribution={tileLayerConfig[1].attribution}
-      ></TileLayer>
+      />
     </LeafletMap>
   );
 };

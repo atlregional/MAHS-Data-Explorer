@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import NavBar from '../../components/navbar';
 import SubAreaSelector from '../../components/SubAreaSelector';
 import Chart from '../../components/Chart';
@@ -17,6 +17,8 @@ const HomePage = () => {
 
   const [mobileVizView, setMobileVizView] = useState('chart');
 
+
+
   return (
     <>
       <div id="header">
@@ -29,18 +31,24 @@ const HomePage = () => {
         <div id="viz-box">
           {!mobile || mobileVizView === 'map' ? (
             <div id="map-box" className="leaflet-container">
-              <MapComp mobileVizView={mobileVizView} />
+              <MapComp 
+                // mobileVizView={mobileVizView}
+              />
             </div>
           ) : null}
           <div id="right-col-viz-view">
             {!mobile || mobileVizView === 'chart' ? (
               <div id="chart-box">
-                <Chart mobileVizView={mobileVizView} />
+                <Chart 
+                  // mobileVizView={mobileVizView}
+                />
               </div>
             ) : null}
             {!mobile || mobileVizView === 'table' ? (
               <div id="table-box">
-                <Table mobileVizView={mobileVizView} />
+                <Table 
+                  // mobileVizView={mobileVizView} 
+                />
               </div>
             ) : null}
           </div>
