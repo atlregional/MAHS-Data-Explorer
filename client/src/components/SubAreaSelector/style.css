@@ -6,6 +6,7 @@
 }
 
 .subarea-selector-button {
+    cursor: pointer;
     margin: auto;
     height: 90px;
     width: 90px;
@@ -17,5 +18,5 @@
 }
 
 .subarea-selector-button :hover {
-    cursor: crosshair;
+    /* cursor: grab; */
 }
