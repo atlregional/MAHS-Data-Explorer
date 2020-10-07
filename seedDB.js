@@ -16,7 +16,7 @@ const tractInfoWCityArray = collection === 'tractinfo' ?
     tractObj.cities = [];
     cityCrossWalkSeed.forEach(tractWCity => 
       tractWCity.GEOID === tractObj.geoID ?
-        tractObj.citie.push(tractWCity.Cities) 
+        tractObj.cities.push(tractWCity.Cities) 
       : null);
     return tractObj;
     }
