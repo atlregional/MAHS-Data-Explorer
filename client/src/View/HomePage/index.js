@@ -6,8 +6,6 @@ import Table from '../../components/Table';
 import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
 
-
-
 import './style.css';
 
 // const [mobileOrDesktop, setMobileOrDesktop] = useState();
@@ -16,8 +14,7 @@ const HomePage = () => {
   const mobile = window.screen.width < 800;
 
   const [mobileVizView, setMobileVizView] = useState('chart');
-
-
+  const [selectedSubarea, setSelectedSubarea] = useState();
 
   return (
     <>
@@ -26,28 +23,31 @@ const HomePage = () => {
       </div>
       <div id="dynamic-wrapper">
         <div id="subarea-selector">
-          <SubAreaSelector />
+          <SubAreaSelector
+            selectedSubarea={selectedSubarea}
+            setSelectedSubarea={setSelectedSubarea}
+          />
         </div>
         <div id="viz-box">
           {!mobile || mobileVizView === 'map' ? (
             <div id="map-box" className="leaflet-container">
-              <MapComp 
-                // mobileVizView={mobileVizView}
+              <MapComp
+              // mobileVizView={mobileVizView}
               />
             </div>
           ) : null}
           <div id="right-col-viz-view">
             {!mobile || mobileVizView === 'chart' ? (
               <div id="chart-box">
-                <Chart 
-                  // mobileVizView={mobileVizView}
+                <Chart
+                // mobileVizView={mobileVizView}
                 />
               </div>
             ) : null}
             {!mobile || mobileVizView === 'table' ? (
               <div id="table-box">
-                <Table 
-                  // mobileVizView={mobileVizView} 
+                <Table
+                // mobileVizView={mobileVizView}
                 />
               </div>
             ) : null}
