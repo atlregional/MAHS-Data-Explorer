@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import utils from '../../utils';
 import { Map as LeafletMap, TileLayer, GeoJSON } from 'react-leaflet';
+import polygonToLine from '@turf/polygon-to-line';
 
 const MapComp = props => {
 
@@ -32,6 +33,7 @@ const MapComp = props => {
       type: 'boundary',
       url:
         'https://arcgis.atlantaregional.com/arcgis/rest/services/OpenData/FeatureServer/58/query?where=County10%20%3D%20%27YES%27&outFields=OBJECTID,Name,County10,Sq_Miles&outSR=4326&f=geojson',
+      geoField : 'Name'
     },
     {
       name: 'counties',
@@ -39,6 +41,7 @@ const MapComp = props => {
       type: 'boundary',
       url:
         'https://arcgis.atlantaregional.com/arcgis/rest/services/OpenData/FeatureServer/68/query?where=Reg_Comm%20%3D%20%27ATLANTA%20REGIONAL%20COMMISSION%27&outFields=*&outSR=4326&f=geojson',
+      geoField : 'NAME10'
     },
     {
       name: 'tracts',
@@ -55,43 +58,42 @@ const MapComp = props => {
   //   .getData
   // };
 
-  const handleBoundryGeoJSONs = () => {
+  const handleGeoJSONs = () => {
 
-    const getBoundaryGeoJSON = (key, url) =>
+    const getGeoJSON = (key, url) =>
       new Promise(resolve =>
         utils
           .getData(url)
           .then(res => [key, res.data])
-          .catch(err => console.log(err)
-          )
+          // .catch(err => console.log(err))
           .then(data => resolve(data))
-          .catch(err => console.log(err)));
+          .catch(err => console.log(err))
+      );
 
 
     let returnedGeoJSONs = [];
 
-    // console.log(openDataAPIConfig);
+    console.log(returnedGeoJSONs);
 
     openDataAPIConfig.forEach(config =>
       returnedGeoJSONs.push(
-        getBoundaryGeoJSON(config.name, config.url)
+        getGeoJSON(config.name, config.url)
       )
     );
 
     Promise.all(returnedGeoJSONs)
-      .then(boundaryGeoJSONS => {
-        // console.log(boundaryGeoJSONS);
+      .then(geoJSONS => {
         const geoJSONsObj = {};
-        [...boundaryGeoJSONS].forEach(([key, value]) =>
+        [...geoJSONS].forEach(([key, value]) =>
           geoJSONsObj[key] = value
         );
         setGeoJSONs(geoJSONsObj);
       });
   };
 
-  useEffect(handleBoundryGeoJSONs, []);
+  useEffect(handleGeoJSONs, []);
 
-
+  console.log(props.selection)
   return (
     // container for map
     <LeafletMap
@@ -103,14 +105,22 @@ const MapComp = props => {
         geoJSONs ?
           openDataAPIConfig
             .filter(config => config.visible && config.type === 'boundary')
-            .map(config =>
-              // boundaryLayerKeys.map((key, i) =>
-              <GeoJSON
-                onAdd={e => e.target.bringToBack()}
-                key={`boundary-layer-${config.name}`}
-                data={geoJSONs[config.name]}
-              />
-            )
+            .map(config => {
+              const boundary = geoJSONs[config.name].features.map(feature =>
+                polygonToLine(feature));
+              return (
+                <GeoJSON
+                  onAdd={e => e.target.bringToFront()}
+                  key={`boundary-layer-${config.name}-${props.selection.geo}`}
+                  data={boundary}
+                  filter={feature => 
+                    props.selection.geo === '10 Counties' ?
+                      config.name === 'counties'
+                    : feature.properties[config.geoField] === props.selection.geo
+                  }
+                />
+              );
+            })
           : null
       }
       {
@@ -118,17 +128,16 @@ const MapComp = props => {
           openDataAPIConfig
             .filter(config => config.visible && config.type === 'data')
             .map(config =>
-              // boundaryLayerKeys.map((key, i) =>
               <GeoJSON
-              onAdd={e => e.target.bringToBack()}
-              style={{
-                  color: 'red',
-                  weight: 1,
-                  fillColor: 'red',
-                  fillOpacity: .7
-            
-                }}
-                key={`boundary-layer-${config.name}`}
+                onAdd={e => e.target.bringToBack()}
+                style={{
+                    color: 'black',
+                    weight: 1,
+                    fillColor: 'red',
+                    fillOpacity: .7
+              
+                  }}
+                key={`data-layer-${config.name}`}
                 data={geoJSONs[config.name]}
               />
             )
