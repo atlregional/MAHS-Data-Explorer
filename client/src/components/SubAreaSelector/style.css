@@ -11,12 +11,9 @@
     height: 90px;
     width: 90px;
     display: inline-block;
-    background-color: rgb(233, 141, 190);
+    /* background-color: rgb(233, 141, 190); */
     border-radius: 50%;
     /* line-height centers the text */
     line-height: 90px;
 }
 
-.subarea-selector-button :hover {
-    /* cursor: grab; */
-}

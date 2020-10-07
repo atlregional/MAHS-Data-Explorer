@@ -21,10 +21,10 @@ const SubAreaSelector = (props) => {
         <div
           key={`subarea-selector-button-${subarea}`}
           className="subarea-selector-button"
-          style={{ backgroundColor: `"${colormap[subarea] - 1}"` }}
+          style={{ backgroundColor: `${colormap[subarea - 1]}` }}
           onClick={(e) => {
             // event values are not coming through;
-            console.log(e);
+            console.log(subarea);
           }}
           // onMouseEnter={(e) => {
           //   console.log(e);
