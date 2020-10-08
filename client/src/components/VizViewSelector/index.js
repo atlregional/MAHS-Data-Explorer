@@ -21,7 +21,6 @@ const VizViewSelector = (props) => {
     <div id="viz-view-selector">
       {buttonParamArr.map((item) => (
         <div
-          type="button"
           key={`${item.value}-viz-view-selector-button`}
           onClick={() => props.setMobileVizView(item.value)}
           className="viz-view-selector-button"

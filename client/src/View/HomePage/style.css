@@ -8,9 +8,27 @@ body {
 
 #header {
   position: fixed;
+  display: grid;
+  grid-template-columns: 50% 50%;
   top: 0;
   width: 100%;
   height: 10vh;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.geo-selector {
+  font-size: 1.3em;
+  padding: .3em;
+  margin: 1em 0 0 0;
+  border-radius: 10px;
+}
+
+.geo-option {
+  font-size: .5em;
+
 }
 
 #dynamic-wrapper {
@@ -49,12 +67,19 @@ body {
   background-color: salmon;
 }
 
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
 @media screen and (max-width: 800px) {
 
   h1 {
     font-size: 2em;
     white-space: wrap;
   }
+
   #dynamic-wrapper {
     grid-template-rows: 10% 90%;
     grid-template-columns: none;

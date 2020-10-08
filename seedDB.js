@@ -144,4 +144,3 @@ Object.entries(seedConfig).forEach(([key, value]) => {
 //       console.error(err);
 //       process.exit(1);
 //     });
-
