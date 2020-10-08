@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 
 const SubAreaSelector = (props) => {
-<<<<<<< HEAD
 
   const [selectedSubareas, setSelectedSubareas] = useState([])
 
@@ -35,11 +34,6 @@ const SubAreaSelector = (props) => {
 
   useEffect(() => subareas, []);
   return subareas ? (
-=======
-  const subareas = props.subareaOptions;
-  const colormap = props.colormap
-  return (
->>>>>>> 528ab7c5880903e73a84382784748e9658b1d6d3
     <div id="subarea-selector-container">
       {subareas.map((subarea) => (
         <div
