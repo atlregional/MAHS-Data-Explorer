@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 
 const SubAreaSelector = (props) => {
+
+  const [selectedSubareas, setSelectedSubareas] = useState([])
+
   console.log('props: ', props);
   const subareas = props.subareaOptions;
   console.log('subareas: ', subareas);
-  
+
   const colormap = [
     '#F1DB6A',
     '#F08292',
@@ -19,14 +22,14 @@ const SubAreaSelector = (props) => {
     '#338A70',
   ];
 
-  const selectedSubareas = props.selectedSubareas
-    ? [...props.selectedSubareas]
-    : [];
-  console.log(selectedSubareas);
-  const setSelectedSubareas = (array) =>
-    props.setSelectedSubarea
-      ? props.setSelectedSubarea(array)
-      : console.log(array);
+  // const selectedSubareas = props.selectedSubareas
+  //   ? [...props.selectedSubareas]
+  //   : [];
+  // console.log(selectedSubareas);
+  // const setSelectedSubareas = (array) =>
+  //   props.setSelectedSubarea
+  //     ? props.setSelectedSubarea(array)
+  //     : console.log(array);
   // console.log(setSelectedSubareas);
 
   useEffect(() => subareas, []);
@@ -38,11 +41,12 @@ const SubAreaSelector = (props) => {
           className="subarea-selector-button"
           style={{ backgroundColor: `${colormap[subarea - 1]}` }}
           onClick={(e) => {
-            const array = selectedSubareas;
+            const array = [...selectedSubareas];
             array.includes(subarea)
               ? array.splice(array.indexOf(subarea), 1)
               : array.push(subarea);
-            setSelectedSubareas(subareas);
+            console.log(array);
+            setSelectedSubareas(array);
           }}
           // onMouseEnter={(e) => {
           //   console.log(e);
