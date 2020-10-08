@@ -7,30 +7,25 @@ import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
 import './style.css';
 
-// const [mobileOrDesktop, setMobileOrDesktop] = useState();
-
 const HomePage = props => {
 
   const mobile = window.screen.width < 800;
 
   const [mobileVizView, setMobileVizView] = useState('chart');
-  const [data, setData] = useState();
+  const [tractInfo, setTractInfo] = useState();
   const [geoOptions, setGeoOptions] = useState();
-  const [subareaOptions, setSubareaOptions] = useState();
+  const [subareaOptions, setSubareaOptions] = useState([]);
 
-  const [selection, setSelection] = useState({
-    geoType: 'Region',
-    geo: '10 Counties',
-    subareas: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    indicator: null
-  })
+  const [selection, setSelection] = useState({...props.config.selection});
+
+  const style = props.config.style;
 
   const geoTypeOptions = ['Region', 'City', 'County']
 
   const handleGeoOptions = () => {
     const type = selection.geoType;
     const options = [];
-    const data = [...props.data]
+    const data = [...props.tractInfo]
     type === 'City' ?
       data.forEach(tract =>
         tract.Cities.forEach(city =>
@@ -50,25 +45,23 @@ const HomePage = props => {
 
   const handleData = () => {
     const subareaArray = [];
-    const data = [...props.data]
-    data.forEach(tract => {
-      const subarea = parseInt(tract.Subarea.replace('Subarea ', ''))
-      // !subareaArray.includes(subarea) ? 
-      subareaArray.push(subarea)
-      // : null 
-    });
+    const data = [...props.tractInfo]
+    const dataObj = {};
+    data.forEach(tract => 
+      dataObj[tract.GEOID] = tract
+    )
+    data.forEach(tract => 
+      subareaArray.push(parseInt(tract.Subarea.replace('Subarea ', '')))
+    );
     const subareaSet = [
       ...new Set(subareaArray)
     ].sort((a, b) => a > b ? 1 : -1);
     setSubareaOptions(subareaSet)
-    setData(data);
+    setTractInfo(dataObj);
   };
 
   useEffect(handleData, [selection.geo]);
   useEffect(handleGeoOptions, [selection.geoType])
-
-  console.log(data);
-  console.log(geoOptions);
 
   return (
     <>
@@ -86,6 +79,7 @@ const HomePage = props => {
             subareaOptions={subareaOptions}
             selection={selection}
             setSelection={setSelection}
+            colormap={style.colormap}
           />
         </div>
         <div id="viz-box">
@@ -96,8 +90,9 @@ const HomePage = props => {
           >
             <MapComp
               mobile={mobile}
-              data={data}
+              tractInfo={tractInfo}
               selection={selection}
+              config={props.config}
             />
           </div>
           {/* ) : null} */}
@@ -108,7 +103,7 @@ const HomePage = props => {
             >
               <Chart
                 mobile={mobile}
-                data={data}
+                tractInfo={tractInfo}
               />
             </div>
             <div
@@ -117,7 +112,7 @@ const HomePage = props => {
             >
               <Table
                 mobile={mobile}
-                data={data}
+                tractInfo={tractInfo}
               />
             </div>
           </div>

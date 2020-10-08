@@ -4,3 +4,12 @@
     min-width: 100px;
     margin: auto;
 }
+
+#map-loader-spinner {
+  position: fixed;
+  /* width: 100%; */
+  top: 40vh;
+  text-align: center;
+  margin: auto;
+  z-index: 9999999;
+}
