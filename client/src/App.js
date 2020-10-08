@@ -30,14 +30,16 @@ const App = () => {
       subareas: [],
       indicator: null
     },
-    api : [
+    layers : [
       {
         name: 'cities',
         visible: true,
         type: 'boundary',
         url:
           'https://arcgis.atlantaregional.com/arcgis/rest/services/OpenData/FeatureServer/58/query?where=County10%20%3D%20%27YES%27&outFields=OBJECTID,Name,County10,Sq_Miles&outSR=4326&f=geojson',
-        geoField : 'Name'
+        geoField : 'Name',
+        boundaryColor : 'black',
+        boundaryWidth: 3
       },
       {
         name: 'counties',
@@ -45,7 +47,9 @@ const App = () => {
         type: 'boundary',
         url:
           'https://arcgis.atlantaregional.com/arcgis/rest/services/OpenData/FeatureServer/68/query?where=Reg_Comm%20%3D%20%27ATLANTA%20REGIONAL%20COMMISSION%27&outFields=*&outSR=4326&f=geojson',
-        geoField : 'NAME10'
+        geoField : 'NAME10',
+        boundaryColor : 'black',
+        boundaryWidth: 3
       },
       {
         name: 'tracts',
@@ -53,8 +57,9 @@ const App = () => {
         type: 'data',
         url:
           `https://arcgis.atlantaregional.com/arcgis/rest/services/OpenData/FeatureServer/56/query?where=PLNG_REGIO%20%3D%20%27ARC%2010%27&outFields=OBJECTID,STATEFP10,COUNTYFP10,TRACTCE10,GEOID10,NAME10,NAMELSAD10,COUNTY_NM,PLNG_REGIO,COUNTY,TRACT,SqMi_Total,SqMi_Land&outSR=4326&f=geojson`,
-        geoField : 'GEOID10'
-
+        geoField : 'GEOID10',
+        boundaryColor : 'grey',
+        boundaryWidth: 1
       }
     ],
     tilelayers : [

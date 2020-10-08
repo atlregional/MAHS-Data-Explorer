@@ -6,6 +6,7 @@ const Header = props => {
           <div>
           {props.geoTypeOptions ?
           <select
+            placeholder='Choose Geography Type'
             value={props.selection.geoType}
             className='geo-selector'
             onChange={e => props.setSelection({
@@ -32,6 +33,7 @@ const Header = props => {
         <div>
           {props.geoOptions ?
           <select
+            placeholder={`Choose a ${props.selection.geoType}`}
             value={props.selection.geo}
             className='geo-selector'
             onChange={e => props.setSelection({

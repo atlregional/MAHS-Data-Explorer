@@ -32,7 +32,7 @@ const SubAreaSelector = (props) => {
   //     : console.log(array);
   // console.log(setSelectedSubareas);
 
-  useEffect(() => subareas, []);
+  // useEffect(() => subareas, []);
   return subareas ? (
     <div id="subarea-selector-container">
       {subareas.map((subarea) => (
