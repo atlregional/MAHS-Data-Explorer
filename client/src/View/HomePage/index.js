@@ -43,24 +43,50 @@ const HomePage = props => {
 
   };
 
-  const handleData = () => {
-    const subareaArray = [];
+  const handleTractInfo = () => {
     const data = [...props.tractInfo]
+    // .filter(tract =>
+    //   selection.geo === '10 Counties' ? 
+    //     true : selection.geoType === 'County' ?
+    //       tract['County'] === selection.geo
+    //       : selection.geoType === 'City' ?
+    //         tract.Cities.includes(selection.geo)
+    //   : true
+          
+    // );
+    // console.log(data);
     const dataObj = {};
     data.forEach(tract => 
       dataObj[tract.GEOID] = tract
     )
+    setTractInfo(dataObj);
+
+  };
+
+  const handleSubareaOptions = () => {
+    const subareaArray = [];
+    const data = [...props.tractInfo].filter(tract =>
+      selection.geo === '10 Counties' ? 
+        true : selection.geoType === 'County' ?
+          tract['County'] === selection.geo
+          : selection.geoType === 'City' ?
+            tract.Cities.includes(selection.geo)
+      : true
+          
+    );
     data.forEach(tract => 
       subareaArray.push(parseInt(tract.Subarea.replace('Subarea ', '')))
     );
     const subareaSet = [
       ...new Set(subareaArray)
     ].sort((a, b) => a > b ? 1 : -1);
-    setSubareaOptions(subareaSet)
-    setTractInfo(dataObj);
+    setSubareaOptions(subareaSet);
   };
 
-  useEffect(handleData, [selection.geo]);
+  // console.log(subareaOptions);
+
+  useEffect(handleTractInfo, []);
+  useEffect(handleSubareaOptions, [selection.geo])
   useEffect(handleGeoOptions, [selection.geoType])
 
   return (
@@ -93,6 +119,7 @@ const HomePage = props => {
               tractInfo={tractInfo}
               selection={selection}
               config={props.config}
+              subareaOptions={subareaOptions}
             />
           </div>
           {/* ) : null} */}
