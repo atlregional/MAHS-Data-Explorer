@@ -12,8 +12,10 @@ const routes = require('./routes');
 const flash = require('express-flash');
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+const morgan = require('morgan');
 // require('./config/passport');
+
+app.use(morgan("tiny")); // logging framework
 
 
 // Define middleware here

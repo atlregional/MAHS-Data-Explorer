@@ -66,6 +66,10 @@ const MapComp = props => {
     }
   };
 
+  const handleBounds = featureBounds => 
+    Object.keys(featureBounds).length > 0 ? 
+      setBounds(featureBounds)
+    : null;
   useEffect(handleGeoJSONs, []);
 
   // console.log(JSON.stringify(props.tractInfo));
@@ -99,9 +103,7 @@ const MapComp = props => {
                   onAdd={e => {
                     e.target.bringToFront()
                     const featureBounds = e.target.getBounds();
-                    Object.keys(featureBounds).length > 0 ? 
-                      setBounds(featureBounds)
-                    : console.log('no bounds');
+                    handleBounds(featureBounds);
                   }}
                   key={`boundary-layer-${config.name}-${props.selection.geo}`}
                   data={boundary}
