@@ -42,7 +42,7 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "concurrently \"node server.js\" \"npm run client\" ",
+    "start": "concurrently \"npm run client\" \"node server.js\"",
     "client": "cd client && npm run start",
     "seed": "node seed/seedDB.js",
     "install": "cd client && npm install"
