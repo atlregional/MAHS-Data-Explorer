@@ -42,25 +42,9 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "concurrently \"node server.js\" \"npm run client\"",
+    "start": "concurrently \"npm run client\" \"node server.js\"",
     "client": "cd client && npm run start",
     "seed": "node seed/seedDB.js",
-    "install": "cd client && npm install",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "install": "cd client && npm install"
   }
 }
