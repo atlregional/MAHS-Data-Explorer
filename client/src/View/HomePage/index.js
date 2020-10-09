@@ -104,10 +104,11 @@ const HomePage = props => {
       <div id="dynamic-wrapper">
         <div id="subarea-selector">
           <SubAreaSelector
+            colormap={style.colormap}
             subareaOptions={subareaOptions}
             selection={selection}
             setSelection={setSelection}
-            colormap={style.colormap}
+
           />
         </div>
         <div id="viz-box">
