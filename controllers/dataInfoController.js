@@ -1,4 +1,4 @@
-const datainfo = require('../models/datainfo')
+const datainfo = require('../models/dataInfo')
 
 // Defining methods
 module.exports = {
