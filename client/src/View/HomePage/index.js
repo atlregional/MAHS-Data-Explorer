@@ -17,6 +17,8 @@ const HomePage = props => {
   const [subareaOptions, setSubareaOptions] = useState([]);
 
   const [selection, setSelection] = useState({...props.config.selection});
+  const [highlightedSubarea, setHighlightedSubarea] = useState();
+  const [selectedSubareas, setSelectedSubareas] = useState();
 
   const style = props.config.style;
 

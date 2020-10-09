@@ -9,18 +9,7 @@ const SubAreaSelector = (props) => {
   const subareas = props.subareaOptions;
   console.log('subareas: ', subareas);
 
-  const colormap = [
-    '#F1DB6A',
-    '#F08292',
-    '#FD9439',
-    '#335594',
-    '#E556D3',
-    '#8B347F',
-    '#3ECA99',
-    '#878FD9',
-    '#AECF7F',
-    '#338A70',
-  ];
+  const colormap = props.colormap;
 
   // const selectedSubareas = props.selectedSubareas
   //   ? [...props.selectedSubareas]

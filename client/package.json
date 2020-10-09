@@ -9,6 +9,7 @@
     "@turf/polygon-to-line": "^6.0.3",
     "axios": "^0.20.0",
     "leaflet": "^1.7.1",
+    "query-string": "^6.13.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.7.0",

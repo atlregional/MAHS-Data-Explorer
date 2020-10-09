@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const cityCrossWalkController = require("../controllers/cityCrossWalkController");
 
-
 router
 .route("/")
 .get(cityCrossWalkController.findAll)
