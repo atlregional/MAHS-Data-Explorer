@@ -1,15 +1,11 @@
 const path = require('path');
 const router = require('express').Router();
 const tractInfoRoutes = require('./tractinfo')
-// const tractdataRoutes = require('./tractdata')
 const dataInfoRoutes = require('./datainfo')
-// const cityCrossWalkRoutes = require('./citycrosswalk');
 const configRoutes = require('./config');
 
 router.use('/api/tractinfo', tractInfoRoutes);
-// router.use('/api/tractdata', tractdataRoutes);
 router.use('/api/datainfo', dataInfoRoutes);
-// router.use('/api/citycrosswalk', cityCrossWalkRoutes);
 router.use('/api/config', configRoutes);
 
 // If no API routes are hit, send the React app
