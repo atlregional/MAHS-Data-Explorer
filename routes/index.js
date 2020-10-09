@@ -6,11 +6,11 @@ const dataInfoRoutes = require('./datainfo')
 // const cityCrossWalkRoutes = require('./citycrosswalk');
 const configRoutes = require('./config');
 
-router.use('/tractinfo', tractInfoRoutes);
-// router.use('/tractdata', tractdataRoutes);
-router.use('/datainfo', dataInfoRoutes);
-// router.use('/citycrosswalk', cityCrossWalkRoutes);
-router.use('/config', configRoutes);
+router.use('/api/tractinfo', tractInfoRoutes);
+// router.use('/api/tractdata', tractdataRoutes);
+router.use('/api/datainfo', dataInfoRoutes);
+// router.use('/api/citycrosswalk', cityCrossWalkRoutes);
+router.use('/api/config', configRoutes);
 
 // If no API routes are hit, send the React app
 router.use((req, res) => res.sendFile(path.join(__dirname, '../client/build/index.html')));

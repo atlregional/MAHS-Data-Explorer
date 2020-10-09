@@ -20,17 +20,17 @@ const App = () => {
 
   useEffect(() => {
     utils
-    .getData('/tractinfo')
+    .getData('/api/tractinfo')
     .then(res => setTractInfo(res.data))
     .catch(err => console.log(err));
 
     utils
-    .getData('/datainfo')
+    .getData('/api/datainfo')
     .then(res => setDataManifest(res.data))
     .catch(err => console.log(err));
 
     utils
-    .getData('/config')
+    .getData('/api/config')
     .then(res => 
       queryObj.geo && 
       queryObj.geotype ?
