@@ -9,11 +9,10 @@ const MapComp = props => {
 
   const mapRef = useRef();
   const [geoJSONs, setGeoJSONs] = useState();
-  const showSubareas = true;
 
   const tileLayerConfig = props.config.tilelayers;
 
-  const openDataAPIConfig = props.config.api;
+  const layerConfigs = props.config.layers;
 
   const handleGeoJSONs = () => {
 
@@ -32,7 +31,7 @@ const MapComp = props => {
 
     console.log(returnedGeoJSONs);
 
-    openDataAPIConfig.forEach(config =>
+    layerConfigs.forEach(config =>
       returnedGeoJSONs.push(
         getGeoJSON(config.name, config.url)
       )
@@ -48,43 +47,73 @@ const MapComp = props => {
       });
   };
 
-  const tractIDField = openDataAPIConfig.find(info =>
+  const [bounds, setBounds] = useState();
+
+  const tractIDField = layerConfigs.find(info =>
     info.name === 'tracts').geoField
 
+<<<<<<< HEAD
   const tractStyle = feature => {
     const geoID = feature.properties[tractIDField];
     const tractInfo = props.tractInfo[geoID];
     const subarea = tractInfo ? parseInt(tractInfo.Subarea.replace('Subarea ', '')) : null;
     // console.log(subarea);
     const color = subarea ? props.config.style.colormap[subarea - 1] : 'transparent';
+=======
+  const tractStyle = tractInfo => {
+    const subarea = tractInfo ? 
+      parseInt(tractInfo.Subarea.replace('Subarea ', '')) 
+    : null;
+    const config = props.config;
+    // const style = layerConfigs.find(item => item.name === 'tracts')
+    // console.log(subarea);
+    const color = subarea ? config.style.colormap[subarea - 1] : null;
+>>>>>>> 80ea9ab807822d03ef6fd2a961470217605a0dd4
     return {
-    color: color,
-    weight: 2,
     fillColor: color,
-    fillOpacity: 1
+    fillOpacity: .7
     }
   };
 
+  const handleBounds = featureBounds => 
+    Object.keys(featureBounds).length > 0 ? 
+      setBounds(featureBounds)
+    : null;
   useEffect(handleGeoJSONs, []);
 
-  console.log(props.tractInfo)
+  // console.log(JSON.stringify(props.tractInfo));
   return (
     // container for map
     <LeafletMap
       animate
+      boxZoom
+      trackResize
+      doubleClickZoom
+      scrollWheelZoom
+      dragging
       center={[33.753, -84.386]}
       zoom={10}
-      key={`leaflet-map-${mapRef}`}>
+      bounds={bounds ? bounds : null}
+      key={`leaflet-map-${mapRef}`}
+      zoomDelta={0.3}
+      zoomSnap={0.3}
+      maxZoom={20}
+      minZoom={3}
+    >
       {
         geoJSONs ?
-          openDataAPIConfig
+          layerConfigs
             .filter(config => config.visible && config.type === 'boundary')
             .map(config => {
               const boundary = geoJSONs[config.name].features.map(feature =>
                 polygonToLine(feature));
               return (
                 <GeoJSON
-                  onAdd={e => e.target.bringToFront()}
+                  onAdd={e => {
+                    e.target.bringToFront()
+                    const featureBounds = e.target.getBounds();
+                    handleBounds(featureBounds);
+                  }}
                   key={`boundary-layer-${config.name}-${props.selection.geo}`}
                   data={boundary}
                   filter={feature => 
@@ -92,52 +121,60 @@ const MapComp = props => {
                       config.name === 'counties'
                     : feature.properties[config.geoField] === props.selection.geo
                   }
+                  style={{
+                    color: config.boundaryColor,
+                    weight: config.boundaryWidth,
+                  }}
                 />
               );
             })
           : null
       }
       {
-        geoJSONs ?
-          openDataAPIConfig
+        geoJSONs ?  
+          layerConfigs
             .filter(config => config.visible && config.type === 'data')
             .map(config =>
               <GeoJSON
                 onAdd={e => e.target.bringToBack()}
-                style={feature => tractStyle(feature) }
+                key={`data-layer-${config.name}-${props.selection.geo}`}
+                style={feature => {
+                  const geoID = feature.properties[tractIDField];
+                  const tractInfo = props.tractInfo[geoID];
+                  // const style = layerConfigs.find(item => item.name === config)
+
+                  return {
+                    color: config.boundaryColor,
+                    weight: config.boundaryWidth,
+                    ...tractStyle(tractInfo),
+
+                  };
+                }}
                 filter={feature => {
-                  const geoID = feature.properties[config.geoField];
+                  const geoID = feature.properties[config.geoField].toString();
                   const tractInfo = props.tractInfo[geoID];
                   // console.log(tractInfo);
-                  // console.log(feature);
-                  // console.log(props.selection);
-                  // const tractInfo = props.tractInfo
                   return (
                     tractInfo ?
-                    props.selection.geo === '10 Counties' ? 
-                      true :  props.selection.geoType === 'County' ?
-                        feature.properties['COUNTY_NM'] === props.selection.geo
-                        : props.selection.geoType === 'City' ?
-                          tractInfo.Cities.includes(props.selection.geo)
-                          : true
-                          : false
+                      props.selection.geo === '10 Counties' ? 
+                        true :  props.selection.geoType === 'County' ?
+                          feature.properties['COUNTY_NM'] === props.selection.geo
+                          : props.selection.geoType === 'City' ?
+                            tractInfo.Cities.includes(props.selection.geo)
+                      : true
+                    : false
                   );
                 }}
-                key={`data-layer-${config.name}-${props.selection.geo}`}
                 data={geoJSONs[config.name]}
-              >
-                <Tooltip
-                  content={'TEST'}
-                />
-              </GeoJSON>
+              />
             )
           : null
 
       }
       <TileLayer
-        key={`tile-layer-${tileLayerConfig[1].name}`}
-        url={tileLayerConfig[1].url}
-        attribution={tileLayerConfig[1].attribution}
+        key={`tile-layer-${tileLayerConfig[0].name}`}
+        url={tileLayerConfig[0].url}
+        attribution={tileLayerConfig[0].attribution}
       />
     </LeafletMap>
   );

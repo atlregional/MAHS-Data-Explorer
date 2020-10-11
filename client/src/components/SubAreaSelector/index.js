@@ -9,19 +9,22 @@ const SubAreaSelector = (props) => {
   const subareas = props.subareaOptions;
   console.log('subareas: ', subareas);
 
-  const colormap = [
-    '#F1DB6A',
-    '#F08292',
-    '#FD9439',
-    '#335594',
-    '#E556D3',
-    '#8B347F',
-    '#3ECA99',
-    '#878FD9',
-    '#AECF7F',
-    '#338A70',
-  ];
+  const colormap = props.colormap;
 
+<<<<<<< HEAD
+=======
+  // const selectedSubareas = props.selectedSubareas
+  //   ? [...props.selectedSubareas]
+  //   : [];
+  // console.log(selectedSubareas);
+  // const setSelectedSubareas = (array) =>
+  //   props.setSelectedSubarea
+  //     ? props.setSelectedSubarea(array)
+  //     : console.log(array);
+  // console.log(setSelectedSubareas);
+
+  // useEffect(() => subareas, []);
+>>>>>>> 80ea9ab807822d03ef6fd2a961470217605a0dd4
   return subareas ? (
     <div id="subarea-selector-container">
       {subareas.map((subarea) => (

@@ -15,7 +15,13 @@ const HomePage = (props) => {
   const [geoOptions, setGeoOptions] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
 
+<<<<<<< HEAD
   const [selection, setSelection] = useState({ ...props.config.selection });
+=======
+  const [selection, setSelection] = useState({...props.config.selection});
+  const [highlightedSubarea, setHighlightedSubarea] = useState();
+  const [selectedSubareas, setSelectedSubareas] = useState();
+>>>>>>> 80ea9ab807822d03ef6fd2a961470217605a0dd4
 
   const style = props.config.style;
 
@@ -37,6 +43,7 @@ const HomePage = (props) => {
     setGeoOptions(geoSet);
   };
 
+<<<<<<< HEAD
   const handleData = () => {
     const subareaArray = [];
     // const data = [...props.tractInfo];
@@ -64,6 +71,53 @@ const HomePage = (props) => {
 
   useEffect(handleData, [selection.geo]);
   useEffect(handleGeoOptions, [selection.geoType]);
+=======
+  const handleTractInfo = () => {
+    const data = [...props.tractInfo]
+    // .filter(tract =>
+    //   selection.geo === '10 Counties' ? 
+    //     true : selection.geoType === 'County' ?
+    //       tract['County'] === selection.geo
+    //       : selection.geoType === 'City' ?
+    //         tract.Cities.includes(selection.geo)
+    //   : true
+          
+    // );
+    // console.log(data);
+    const dataObj = {};
+    data.forEach(tract => 
+      dataObj[tract.GEOID] = tract
+    )
+    setTractInfo(dataObj);
+
+  };
+
+  const handleSubareaOptions = () => {
+    const subareaArray = [];
+    const data = [...props.tractInfo].filter(tract =>
+      selection.geo === '10 Counties' ? 
+        true : selection.geoType === 'County' ?
+          tract['County'] === selection.geo
+          : selection.geoType === 'City' ?
+            tract.Cities.includes(selection.geo)
+      : true
+          
+    );
+    data.forEach(tract => 
+      subareaArray.push(parseInt(tract.Subarea.replace('Subarea ', '')))
+    );
+    const subareaSet = [
+      ...new Set(subareaArray)
+    ].sort((a, b) => a > b ? 1 : -1);
+    setSubareaOptions(subareaSet);
+  };
+
+  // console.log(subareaOptions);
+
+  useEffect(handleTractInfo, []);
+  useEffect(handleSubareaOptions, [selection.geo])
+  useEffect(handleGeoOptions, [selection.geoType])
+>>>>>>> 80ea9ab807822d03ef6fd2a961470217605a0dd4
 
   return (
     <>
@@ -78,10 +132,11 @@ const HomePage = (props) => {
       <div id="dynamic-wrapper">
         <div id="subarea-selector">
           <SubAreaSelector
+            colormap={style.colormap}
             subareaOptions={subareaOptions}
             selection={selection}
             setSelection={setSelection}
-            colormap={style.colormap}
+
           />
         </div>
         <div id="viz-box">
@@ -95,6 +150,7 @@ const HomePage = (props) => {
               tractInfo={tractInfo}
               selection={selection}
               config={props.config}
+              subareaOptions={subareaOptions}
             />
           </div>
           {/* ) : null} */}

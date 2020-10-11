@@ -1,9 +1,9 @@
-const datainfo = require('../models/datainfo')
+const datainfo = require('../models/dataInfo')
 
 // Defining methods
 module.exports = {
     findAll: (req, res) => {
-      console.log(req.query);
+      console.log('data info query: ', req.query);
       datainfo.find(req.query)
         // .sort({ date: -1 })
         .then(dbModel => res.json(dbModel))
