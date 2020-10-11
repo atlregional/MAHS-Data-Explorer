@@ -22,17 +22,6 @@ const SubAreaSelector = (props) => {
     '#338A70',
   ];
 
-  // const selectedSubareas = props.selectedSubareas
-  //   ? [...props.selectedSubareas]
-  //   : [];
-  // console.log(selectedSubareas);
-  // const setSelectedSubareas = (array) =>
-  //   props.setSelectedSubarea
-  //     ? props.setSelectedSubarea(array)
-  //     : console.log(array);
-  // console.log(setSelectedSubareas);
-
-  useEffect(() => subareas, []);
   return subareas ? (
     <div id="subarea-selector-container">
       {subareas.map((subarea) => (

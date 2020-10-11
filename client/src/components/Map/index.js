@@ -55,7 +55,7 @@ const MapComp = props => {
     const geoID = feature.properties[tractIDField];
     const tractInfo = props.tractInfo[geoID];
     const subarea = tractInfo ? parseInt(tractInfo.Subarea.replace('Subarea ', '')) : null;
-    console.log(subarea);
+    // console.log(subarea);
     const color = subarea ? props.config.style.colormap[subarea - 1] : 'transparent';
     return {
     color: color,
