@@ -3,7 +3,14 @@ import './style.css';
 
 const SubAreaSelector = (props) => {
 
-  const [selectedSubareas, setSelectedSubareas] = useState([])
+  const selectedSubareas = props.selectedSubareas;
+  const setSelectedSubareas = array => props.setSelectedSubareas(array);
+
+  // Add these to mouseenter event and set state to null on mouseleave
+  const highligthedSubarea = props.highligthedSubarea;
+  const setHighlightedSubarea = number => props.setHighlightedSubarea(number); 
+
+  // const [selectedSubareas, setSelectedSubareas] = useState([])
 
   console.log('props: ', props);
   const subareas = props.subareaOptions;
@@ -22,6 +29,7 @@ const SubAreaSelector = (props) => {
   // console.log(setSelectedSubareas);
 
   // useEffect(() => subareas, []);
+
   return subareas ? (
     <div id="subarea-selector-container">
       {subareas.map((subarea) => (
@@ -29,7 +37,7 @@ const SubAreaSelector = (props) => {
           key={`subarea-selector-button-${subarea}`}
           className="subarea-selector-button"
           style={{ backgroundColor: `${colormap[subarea - 1]}` }}
-          onClick={(e) => {
+          onClick={() => {
             const array = [...selectedSubareas];
             array.includes(subarea)
               ? array.splice(array.indexOf(subarea), 1)
@@ -37,12 +45,14 @@ const SubAreaSelector = (props) => {
             console.log(array);
             setSelectedSubareas(array);
           }}
-          // onMouseEnter={(e) => {
-          //   console.log(e);
-          // }}
-          // onMouseLeave={(e) => {
-          //   console.log(e);
-          // }}
+          onMouseEnter={() => {
+            setHighlightedSubarea(subarea)
+            // console.log(subarea);
+          }}
+          onMouseLeave={() => {
+            setHighlightedSubarea()
+            // console.log(subarea);
+          }}
         >
           {subarea}
         </div>

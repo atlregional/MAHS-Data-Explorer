@@ -18,7 +18,9 @@ const HomePage = props => {
 
   const [selection, setSelection] = useState({...props.config.selection});
   const [highlightedSubarea, setHighlightedSubarea] = useState();
-  const [selectedSubareas, setSelectedSubareas] = useState();
+  const [selectedSubareas, setSelectedSubareas] = useState([]);
+
+  // console.log(highlightedSubarea);
 
   const style = props.config.style;
 
@@ -108,7 +110,10 @@ const HomePage = props => {
             subareaOptions={subareaOptions}
             selection={selection}
             setSelection={setSelection}
-
+            highlightedSubarea={highlightedSubarea}
+            setHighlightedSubarea={setHighlightedSubarea}
+            selectedSubareas={selectedSubareas}
+            setSelectedSubareas={setSelectedSubareas}
           />
         </div>
         <div id="viz-box">
@@ -123,6 +128,8 @@ const HomePage = props => {
               selection={selection}
               config={props.config}
               subareaOptions={subareaOptions}
+              highlightedSubarea={highlightedSubarea}
+
             />
           </div>
           {/* ) : null} */}
@@ -133,7 +140,10 @@ const HomePage = props => {
             >
               <Chart
                 mobile={mobile}
-                tractInfo={tractInfo}
+                // tractInfo={tractInfo}
+                highlightedSubarea={highlightedSubarea}
+                selectedSubareas={selectedSubareas}
+                colormap={style.colormap}
               />
             </div>
             <div
@@ -143,6 +153,8 @@ const HomePage = props => {
               <Table
                 mobile={mobile}
                 tractInfo={tractInfo}
+                highlightedSubarea={highlightedSubarea}
+                selectedSubareas={selectedSubareas}
               />
             </div>
           </div>
