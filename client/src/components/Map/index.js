@@ -52,14 +52,6 @@ const MapComp = props => {
   const tractIDField = layerConfigs.find(info =>
     info.name === 'tracts').geoField
 
-<<<<<<< HEAD
-  const tractStyle = feature => {
-    const geoID = feature.properties[tractIDField];
-    const tractInfo = props.tractInfo[geoID];
-    const subarea = tractInfo ? parseInt(tractInfo.Subarea.replace('Subarea ', '')) : null;
-    // console.log(subarea);
-    const color = subarea ? props.config.style.colormap[subarea - 1] : 'transparent';
-=======
   const tractStyle = tractInfo => {
     const subarea = tractInfo ? 
       parseInt(tractInfo.Subarea.replace('Subarea ', '')) 
@@ -68,7 +60,6 @@ const MapComp = props => {
     // const style = layerConfigs.find(item => item.name === 'tracts')
     // console.log(subarea);
     const color = subarea ? config.style.colormap[subarea - 1] : null;
->>>>>>> 80ea9ab807822d03ef6fd2a961470217605a0dd4
     return {
     fillColor: color,
     fillOpacity: .7
