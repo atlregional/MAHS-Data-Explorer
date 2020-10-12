@@ -17,7 +17,9 @@ const HomePage = (props) => {
 
   const [selection, setSelection] = useState({...props.config.selection});
   const [highlightedSubarea, setHighlightedSubarea] = useState();
-  const [selectedSubareas, setSelectedSubareas] = useState();
+  const [selectedSubareas, setSelectedSubareas] = useState([]);
+
+  // console.log(highlightedSubarea);
 
   const style = props.config.style;
 
@@ -102,7 +104,10 @@ const HomePage = (props) => {
             subareaOptions={subareaOptions}
             selection={selection}
             setSelection={setSelection}
-
+            highlightedSubarea={highlightedSubarea}
+            setHighlightedSubarea={setHighlightedSubarea}
+            selectedSubareas={selectedSubareas}
+            setSelectedSubareas={setSelectedSubareas}
           />
         </div>
         <div id="viz-box">
@@ -117,6 +122,8 @@ const HomePage = (props) => {
               selection={selection}
               config={props.config}
               subareaOptions={subareaOptions}
+              highlightedSubarea={highlightedSubarea}
+
             />
           </div>
           {/* ) : null} */}
@@ -125,13 +132,32 @@ const HomePage = (props) => {
               id="chart-box"
               className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
             >
+<<<<<<< HEAD
               <Chart mobile={mobile} tractInfo={tractInfo} />
+=======
+              <Chart
+                mobile={mobile}
+                // tractInfo={tractInfo}
+                highlightedSubarea={highlightedSubarea}
+                selectedSubareas={selectedSubareas}
+                colormap={style.colormap}
+              />
+>>>>>>> 9de81954870bb0ac5453843b229300ba7f530955
             </div>
             <div
               id="table-box"
               className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
             >
+<<<<<<< HEAD
               <Table mobile={mobile} tractInfo={tractInfo} />
+=======
+              <Table
+                mobile={mobile}
+                tractInfo={tractInfo}
+                highlightedSubarea={highlightedSubarea}
+                selectedSubareas={selectedSubareas}
+              />
+>>>>>>> 9de81954870bb0ac5453843b229300ba7f530955
             </div>
           </div>
         </div>
