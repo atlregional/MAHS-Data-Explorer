@@ -15,8 +15,8 @@ import {
 import './style.css';
 
 const Chart = props => {
-  const colormap = props.colormap;
-  console.log('props: ', props);
+  let colormap = props.colormap;
+  // console.log('props: ', props);
 
   const data = props.data
     ? props.data
@@ -47,6 +47,18 @@ const Chart = props => {
         { name: 'Subarea 7', Subarea: 7, ExampleIndicator: 2, amt: 2000 },
         { name: 'Subarea 9', Subarea: 9, ExampleIndicator: 9, amt: 2181 },
       ];
+
+  const barColor = (colormap, data) => {
+    // console.log('colormap: ', colormap);
+    let colorArr = [];
+    data.forEach(element => {
+      let subareaColor = element.Subarea - 1;
+      colorArr.push(colormap[subareaColor]);
+    });
+    console.log(colorArr);
+    return colorArr;
+  };
+  barColor(colormap, data);
 
   const CustomTooltip = ({ active, payload, label }) => {
     // console.log(payload);
@@ -81,7 +93,8 @@ const Chart = props => {
           <Bar
             dataKey="Subarea"
             barSize={20}
-            fill="#413ea0"
+            fill={barColor}
+            // style={{ backgroundColor: `${colormap - 1}` }}
             // label={data}
           />
           {/* <Line
