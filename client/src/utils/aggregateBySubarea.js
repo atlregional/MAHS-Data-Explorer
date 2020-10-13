@@ -27,7 +27,7 @@ export default (data, indicatorInfo, aggregator) => {
  Object.values(data).forEach(tract =>{
   console.log(JSON.stringify(tract))
   const aggregatorId = tract[aggregatorField]
-  console.log(aggregatorId)
+ 
     denominatorValues[aggregatorId] ?
     denominatorValues[aggregatorId] = denominatorValues[aggregatorId] + tract.Data[denominatorId]
     :denominatorValues[aggregatorId] = tract.Data[denominatorId]
@@ -36,35 +36,32 @@ export default (data, indicatorInfo, aggregator) => {
   console.log(denominatorValues)
 
   const calcAggregation = () => {
-    // const type = indicatorInfo.type;
-    const aggregatedDataInfo = []
-    Object.keys(numeratorValues).forEach(function(key) {
-      aggregatedDataInfo.push(key + ': ' + (numeratorValues[key] / denominatorValues[key]));
-    console.log(aggregatedDataInfo)
-      // type === 'percent' ? 
-      // const aggregatedDataInfo = numeratorValues.map(function(n, i) { return n / denominatorValues[i]; })
-      // console.log(aggregatedDataInfo)
-      // aggregatedDataObj.push(aggregatedDataInfo)
-      // const aggregatedDataInfo = [];
-      //  for (var i = 0; i < numeratorValues.length; i++) {
-      //   aggregatedDataInfo.push(numeratorValues[i].key + ':' + numeratorValues[i].value / denominatorValues[i].value);
-      //  }
-       
+    const type = indicatorInfo.type;
+    // type === 'percent' ? 
+    Object.keys(numeratorValues).forEach(key => {
+      aggregatedDataObj[key] = (numeratorValues[key]/ denominatorValues[key])
+    }) 
+      
+    //  :type === 'average' ?
+
+      
+
+    //  :null
+      
+    
 
      
-    //  : 
-    //  type === 'average' ?
-    //  console.log('average')
+    
   
      
     
-    // (total += data[i]) / data.length
     
+  };
     //  : type === 'weighted average' 
     //  console.log('weighted')
     
-  });
-  }
+  
+  
    calcAggregation()
    
  console.log(aggregatedDataObj)
