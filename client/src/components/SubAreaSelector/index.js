@@ -47,7 +47,7 @@ const SubAreaSelector = (props) => {
           }}
           onMouseEnter={() => {
             setHighlightedSubarea(subarea)
-            // console.log(subarea);
+            // console.log("subarea: ", subarea);
           }}
           onMouseLeave={() => {
             setHighlightedSubarea()

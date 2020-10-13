@@ -21,36 +21,44 @@ const Chart = props => {
   const data = props.data
     ? props.data
     : [
-        {
-          Subarea: '1',
-          'Example Indicator': 6,
-        },
-        {
-          Subarea: '5',
-          'Example Indicator': 1,
-        },
-        {
-          Subarea: '6',
-          'Example Indicator': 12,
-        },
-        {
-          Subarea: '7',
-          'Example Indicator': 2,
-        },
-        {
-          Subarea: '9',
-          'Example Indicator': 9,
-        },
+        //     {
+        //       Subarea: '1',
+        //       ExampleIndicator: 6,
+        //     },
+        //     {
+        //       Subarea: '5',
+        //       ExampleIndicator: 1,
+        //     },
+        //     {
+        //       Subarea: '6',
+        //       ExampleIndicator: 12,
+        //     },
+        //     {
+        //       Subarea: '7',
+        //       ExampleIndicator: 2,
+        //     },
+        //     {
+        //       Subarea: '9',
+        //       ExampleIndicator: 9,
+        //     },
+        { name: 'Subarea 1', Subarea: 1, ExampleIndicator: 6, amt: 2400 },
+        { name: 'Subarea 5', Subarea: 5, ExampleIndicator: 1, amt: 2210 },
+        { name: 'Subarea 6', Subarea: 6, ExampleIndicator: 12, amt: 2290 },
+        { name: 'Subarea 7', Subarea: 7, ExampleIndicator: 2, amt: 2000 },
+        { name: 'Subarea 9', Subarea: 9, ExampleIndicator: 9, amt: 2181 },
       ];
 
-  // const CustomTooltip = ({ active, payload, label }) => {
-  //   // console.log(payload);
-  //   const tooltip = (
-  //     <div>
-  //       <span className="tooltip-data">Subarea {data.Subarea}</span>
-  //     </div>
-  //   );
-  // };
+  const CustomTooltip = ({ active, payload, label }) => {
+    // console.log(payload);
+    if (active) {
+      return (
+        <div className="custom-tooltip">
+          <h5 className="tooltip-indicator">{`Example Indicator : ${payload[0].payload.ExampleIndicator}`}</h5>
+          <p className="label">{`Subarea : ${payload[0].value}`}</p>
+        </div>
+      );
+    } else return null;
+  };
 
   return (
     <>
@@ -65,10 +73,10 @@ const Chart = props => {
           height={500}
           data={data}
         >
-          <CartesianGrid stroke="#f5f5f5" />
-          <XAxis dataKey={'Subarea'} />
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey={'name'} />
           <YAxis />
-          <Tooltip dataKey={['Example Indicator']} />
+          <Tooltip content={<CustomTooltip />} />
           <Legend />
           <Bar
             dataKey="Subarea"
