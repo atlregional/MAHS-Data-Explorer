@@ -132,9 +132,6 @@ const HomePage = (props) => {
               id="chart-box"
               className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
             >
-<<<<<<< HEAD
-              <Chart mobile={mobile} tractInfo={tractInfo} />
-=======
               <Chart
                 mobile={mobile}
                 // tractInfo={tractInfo}
@@ -142,22 +139,17 @@ const HomePage = (props) => {
                 selectedSubareas={selectedSubareas}
                 colormap={style.colormap}
               />
->>>>>>> 9de81954870bb0ac5453843b229300ba7f530955
             </div>
             <div
               id="table-box"
               className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
             >
-<<<<<<< HEAD
-              <Table mobile={mobile} tractInfo={tractInfo} />
-=======
               <Table
                 mobile={mobile}
                 tractInfo={tractInfo}
                 highlightedSubarea={highlightedSubarea}
                 selectedSubareas={selectedSubareas}
               />
->>>>>>> 9de81954870bb0ac5453843b229300ba7f530955
             </div>
           </div>
         </div>
