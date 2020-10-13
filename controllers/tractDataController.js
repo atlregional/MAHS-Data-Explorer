@@ -1,4 +1,4 @@
-const tractdata = require('../models/tractdata')
+const tractdata = require('../models/tractData')
 
 // Defining methods
 module.exports = {

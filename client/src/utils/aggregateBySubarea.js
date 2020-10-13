@@ -25,9 +25,9 @@ export default (data, indicatorInfo, aggregator) => {
     console.log(numeratorValues)
     
  Object.values(data).forEach(tract =>{
-  // console.log(JSON.stringify(tract))
+  console.log(JSON.stringify(tract))
   const aggregatorId = tract[aggregatorField]
-  // console.log(aggregatorId)
+  console.log(aggregatorId)
     denominatorValues[aggregatorId] ?
     denominatorValues[aggregatorId] = denominatorValues[aggregatorId] + tract.Data[denominatorId]
     :denominatorValues[aggregatorId] = tract.Data[denominatorId]

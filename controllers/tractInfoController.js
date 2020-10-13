@@ -1,9 +1,9 @@
-const tractinfo = require('../models/tractinfo')
+const tractinfo = require('../models/tractInfo')
 
 // Defining methods
 module.exports = {
     findAll: (req, res) => {
-      console.log(req.query);
+      console.log('tract info query: ',req.query);
       tractinfo.find(req.query)
         // .sort({ date: -1 })
         .then(dbModel => res.json(dbModel))

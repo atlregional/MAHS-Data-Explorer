@@ -6,7 +6,39 @@ const MONGODB_URI = process.env.MONGODB_URI;
 // const tractDataSeed = require('./data/tractData.json');
 const tractInfoSeed = require('./data/tractInfo.json');
 const cityCrossWalkSeed = require('./data/tractToCityCrosswalk.json');
-// const dataInfoSeed = require('./data/dataLabelManifests.json');
+const dataInfoSeed = require('./data/dataLabelManifests.json');
+const configSeed = require('./data/config.json');
+
+const collection = 'config';
+
+const tractInfoWCityArray = collection === 'tractinfo' ? 
+  tractInfoSeed.map(tract => {
+    const tractObj = {...tract};
+    tractObj.Cities = [];
+    cityCrossWalkSeed.forEach(tractWCity => 
+      tractWCity.GEOID === tractObj.geoID ?
+        tractObj.Cities.push(tractWCity.Cities) 
+      : null);
+    tractDataSeed.forEach(tractData =>
+      tractData.GEOID.toString() === tract.GEOID ?
+        tractObj.Data = tractData
+      : null
+    )
+    return tractObj;
+    }
+  ) : null;
+
+const content = 
+// ternary for each collection here
+  collection === 'tractinfo' ? 
+    tractInfoWCityArray
+  // :collection === 'tractdata' ? 
+  //   tractDataSeed
+  :collection === 'datainfo' ? 
+    dataInfoSeed
+  : collection === 'config' ?
+    configSeed
+  : null; 
 
 // const collection = 'tractinfo';
 const infoSeed = () => {
