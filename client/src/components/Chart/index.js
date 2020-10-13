@@ -50,12 +50,12 @@ const Chart = props => {
 
   const barColor = (colormap, data) => {
     // console.log('colormap: ', colormap);
-    let colorArr = [];
-    data.forEach(element => {
-      let subareaColor = element.Subarea - 1;
+    const colorArr = [];
+    data.forEach(obj => {
+      let subareaColor = obj.Subarea - 1;
       colorArr.push(colormap[subareaColor]);
     });
-    console.log(colorArr);
+    console.log('colorArr: ', colorArr);
     return colorArr;
   };
   barColor(colormap, data);
