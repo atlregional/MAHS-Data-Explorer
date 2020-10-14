@@ -16,8 +16,7 @@ const App = () => {
   const [dataManifest, setDataManifest] = useState();
   const [config, setConfig] = useState();
 
-
-  useEffect(() => {
+  const handleStart = () => {
     utils
     .getData('/api/tractinfo')
     .then(res => setTractInfo(res.data))
@@ -45,7 +44,9 @@ const App = () => {
 
     )
     .catch(err => console.log(err));
-  }, []);
+  };
+  
+  useEffect(handleStart, []);
 
   return (
     <div className="App">
