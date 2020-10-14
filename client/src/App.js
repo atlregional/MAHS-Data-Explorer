@@ -10,8 +10,7 @@ import './App.css';
 const App = () => {
 
   const queryObj = queryString.parse(document.location.search);
-  console.log(queryObj);
-
+  // console.log(queryObj);
 
   const [tractInfo, setTractInfo ] = useState();
   const [dataManifest, setDataManifest] = useState();

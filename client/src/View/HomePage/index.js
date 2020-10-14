@@ -7,8 +7,7 @@ import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
 import './style.css';
 
-const HomePage = props => {
-
+const HomePage = (props) => {
   const mobile = window.screen.width < 800;
 
   const [mobileVizView, setMobileVizView] = useState('chart');
@@ -24,27 +23,22 @@ const HomePage = props => {
 
   const style = props.config.style;
 
-  const geoTypeOptions = ['Region', 'City', 'County']
+  const geoTypeOptions = ['Region', 'City', 'County'];
 
   const handleGeoOptions = () => {
     const type = selection.geoType;
     const options = [];
-    const data = [...props.tractInfo]
-    type === 'City' ?
-      data.forEach(tract =>
-        tract.Cities.forEach(city =>
-          options.push(city)
+    const data = [...props.tractInfo];
+    type === 'City'
+      ? data.forEach((tract) =>
+          tract.Cities.forEach((city) => options.push(city))
         )
-      )
-      : type === 'County' ?
-        data.forEach(tract => options.push(tract.County))
-        : options.push('10 Counties');;
-    const geoSet = [
-      ...new Set(options)
-    ].sort((a, b) => a > b ? 1 : -1)
+      : type === 'County'
+      ? data.forEach((tract) => options.push(tract.County))
+      : options.push('10 Counties');
+    const geoSet = [...new Set(options)].sort((a, b) => (a > b ? 1 : -1));
 
-    setGeoOptions(geoSet)
-
+    setGeoOptions(geoSet);
   };
 
   const handleTractInfo = () => {

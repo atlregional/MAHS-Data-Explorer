@@ -12,9 +12,9 @@ const SubAreaSelector = (props) => {
 
   // const [selectedSubareas, setSelectedSubareas] = useState([])
 
-  console.log('props: ', props);
+  // console.log('props: ', props);
   const subareas = props.subareaOptions;
-  console.log('subareas: ', subareas);
+  // console.log('subareas: ', subareas);
 
   const colormap = props.colormap;
 
@@ -47,7 +47,7 @@ const SubAreaSelector = (props) => {
           }}
           onMouseEnter={() => {
             setHighlightedSubarea(subarea)
-            // console.log(subarea);
+            // console.log("subarea: ", subarea);
           }}
           onMouseLeave={() => {
             setHighlightedSubarea()
