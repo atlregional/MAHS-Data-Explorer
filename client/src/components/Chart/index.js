@@ -11,11 +11,13 @@ import {
   Tooltip,
   Legend,
   Scatter,
+  Cell,
 } from 'recharts';
 import './style.css';
 
 const Chart = props => {
   let colormap = props.colormap;
+  console.log(colormap);
   // console.log('props: ', props);
 
   const data = props.data
@@ -48,17 +50,17 @@ const Chart = props => {
         { name: 'Subarea 9', Subarea: 9, ExampleIndicator: 9, amt: 2181 },
       ];
 
-  const barColor = (colormap, data) => {
-    // console.log('colormap: ', colormap);
+  const colorBar = barProps => {
+    // console.log('barProps: ', barProps);
     const colorArr = [];
     data.forEach(obj => {
       let subareaColor = obj.Subarea - 1;
       colorArr.push(colormap[subareaColor]);
     });
     console.log('colorArr: ', colorArr);
-    return colorArr;
+    // return;
   };
-  barColor(colormap, data);
+  // CustomBar();
 
   const CustomTooltip = ({ active, payload, label }) => {
     // console.log(payload);
@@ -90,13 +92,15 @@ const Chart = props => {
           <YAxis />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
-          <Bar
-            dataKey="Subarea"
-            barSize={20}
-            fill={barColor}
-            // style={{ backgroundColor: `${colormap - 1}` }}
-            // label={data}
-          />
+
+          <Bar dataKey="amt">
+            {data.map(barData => 
+              <Cell
+                fill={colormap[barData.Subarea - 1]}
+              />
+            )}
+          </Bar>
+
           {/* <Line
             type="monotone"
             dataKey={data['Example Indicator']}
