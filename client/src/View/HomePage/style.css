@@ -55,6 +55,16 @@ body {
   /* background-color: darkcyan; */
 }
 
+#layer-selector-box {
+  z-index: 9999999;
+  border: solid black 2px;
+  width: 25%;
+  background-color: lightgrey;
+  position: fixed;
+  top: 11vh;
+  left: 41%;
+}
+
 #map-box {
   background-color: darkorange;
 }

@@ -5,7 +5,9 @@ import Chart from '../../components/Chart';
 import Table from '../../components/Table';
 import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
+import LayerSelector from '../../components/LayerSelector';
 import './style.css';
+import { config } from 'yargs';
 
 const HomePage = (props) => {
   const mobile = window.screen.width < 800;
@@ -160,7 +162,12 @@ const HomePage = (props) => {
           mobileVizView={mobileVizView}
           setMobileVizView={setMobileVizView}
         />
-      ) : null}
+      ) 
+      : null}
+
+      <div id='layer-selector-box'>
+        <LayerSelector layers={props.config.layers} />
+      </div>
     </>
   );
 };
