@@ -6,6 +6,7 @@ import RingLoader from "react-spinners/RingLoader";
 
 
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
 
 const App = () => {
 

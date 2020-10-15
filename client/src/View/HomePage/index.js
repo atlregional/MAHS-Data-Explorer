@@ -87,7 +87,7 @@ const HomePage = (props) => {
 
   useEffect(handleTractInfo, []);
   useEffect(handleSubareaOptions, [selection.geo])
-  useEffect(handleGeoOptions, [selection.geoType])
+  // useEffect(handleGeoOptions, [selection.geoType])
 
   return (
     <>
@@ -97,6 +97,7 @@ const HomePage = (props) => {
           selection={selection}
           geoOptions={geoOptions}
           setSelection={setSelection}
+          data={[...props.tractInfo]}
         />
       </div>
       <div id="dynamic-wrapper">
