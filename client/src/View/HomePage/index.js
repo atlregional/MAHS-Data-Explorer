@@ -7,7 +7,8 @@ import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
 import LayerSelector from '../../components/LayerSelector';
 import './style.css';
-import { config } from 'yargs';
+import utils from '../../utils';
+
 
 const HomePage = (props) => {
   const mobile = window.screen.width < 800;
@@ -59,6 +60,22 @@ const HomePage = (props) => {
     data.forEach(tract => 
       dataObj[tract.GEOID] = tract
     )
+    const indicatorInfo =      {
+        name: "Percent in Poverty 2017",
+        type: "weighted average",
+        indicator: {
+           id: "ID088",
+           name: "Population in Poverty 2017"
+        },
+        universe:  {
+           id: "ID102",
+           name:  "Total Population"
+        }
+      }
+    utils.aggregateBySubarea(dataObj, 
+ 
+    indicatorInfo
+    , 'County')
     setTractInfo(dataObj);
 
   };
@@ -88,6 +105,7 @@ const HomePage = (props) => {
   useEffect(handleTractInfo, []);
   useEffect(handleSubareaOptions, [selection.geo])
   // useEffect(handleGeoOptions, [selection.geoType])
+
 
   return (
     <>
