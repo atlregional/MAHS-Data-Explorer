@@ -14,6 +14,7 @@
     "react-leaflet": "^2.7.0",
     "react-scripts": "3.4.3",
     "react-spinners": "^0.9.0",
+    "react-sticky-table": "^5.1.7",
     "recharts": "^1.8.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.0"

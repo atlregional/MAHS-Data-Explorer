@@ -7,7 +7,7 @@ import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
 import LayerSelector from '../../components/LayerSelector';
 import './style.css';
-import utils from '../../utils';
+// import utils from '../../utils';
 
 
 const HomePage = (props) => {
@@ -59,23 +59,23 @@ const HomePage = (props) => {
     const dataObj = {};
     data.forEach(tract => 
       dataObj[tract.GEOID] = tract
-    )
-    const indicatorInfo =      {
-        name: "Percent in Poverty 2017",
-        type: "weighted average",
-        indicator: {
-           id: "ID088",
-           name: "Population in Poverty 2017"
-        },
-        universe:  {
-           id: "ID102",
-           name:  "Total Population"
-        }
-      }
-    utils.aggregateBySubarea(dataObj, 
+    );
+    // const indicatorInfo =      {
+    //     name: "Percent in Poverty 2017",
+    //     type: "weighted average",
+    //     indicator: {
+    //        id: "ID088",
+    //        name: "Population in Poverty 2017"
+    //     },
+    //     universe:  {
+    //        id: "ID102",
+    //        name:  "Total Population"
+    //     }
+    //   }
+    // utils.aggregateBySubarea(dataObj, 
  
-    indicatorInfo
-    , 'County')
+    // indicatorInfo
+    // , 'County')
     setTractInfo(dataObj);
 
   };
@@ -152,14 +152,18 @@ const HomePage = (props) => {
             <div
               id="chart-box"
               className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
-            >
-              <Chart
-                mobile={mobile}
-                // tractInfo={tractInfo}
-                highlightedSubarea={highlightedSubarea}
-                selectedSubareas={selectedSubareas}
-                colormap={style.colormap}
-              />
+            > 
+              {
+                tractInfo ?
+                  <Chart
+                    mobile={mobile}
+                    tractInfo={tractInfo}
+                    highlightedSubarea={highlightedSubarea}
+                    selectedSubareas={selectedSubareas}
+                    colormap={style.colormap}
+                  />
+                : null
+              }
             </div>
             <div
               id="table-box"
