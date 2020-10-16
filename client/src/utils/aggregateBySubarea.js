@@ -8,7 +8,7 @@ export default (data, indicatorInfo, aggregator) => {
   const numeratorId = indicatorInfo.indicator.id;
   const denominatorId = indicatorInfo.universe.id;
   const aggregatedDataObj = {};
-
+  const aggregatedDataInfo = {};
   const numeratorValues = {};
   const denominatorValues = {};
 
@@ -50,27 +50,29 @@ export default (data, indicatorInfo, aggregator) => {
       console.log(myNewArray)
  
   
-    const aggregatedDataInfo =
+    const aggregatedDataObj =
 
       type === 'average' ?
-      arr.reduce((a, b) => a + b, 0) / arr.length
+      Object.assign({ average: arr.reduce((a, b) => a + b, 0) / arr.length }, aggregatedDataInfo)
+      
 
       : type === 'sum' ?
-      arr.reduce((a, b) => a + b, 0)
+      Object.assign({ sum: arr.reduce((a, b) => a + b, 0) }, aggregatedDataInfo)
+      
 
       : type === 'percent' ?
      Object.keys(numeratorValues).forEach(key => {
       aggregatedDataObj[key] = (numeratorValues[key]/ denominatorValues[key])
     })
+    
 
       : type === 'weighted average' ?
-      
-      myNewArray.reduce((a, b) => a + b, 0) / myNewArray.length
+      Object.assign({ weightedAverage: myNewArray.reduce((a, b) => a + b, 0) / myNewArray.length }, aggregatedDataInfo)
+       
 
     : null;
 
-            
-    console.log(aggregatedDataInfo)
+      
 
 
 

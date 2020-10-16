@@ -66,7 +66,7 @@ const HomePage = props => {
     )
     const indicatorInfo =      {
         name: "Percent in Poverty 2017",
-        type: "percent",
+        type: "weighted average",
         indicator: {
            id: "ID088",
            name: "Population in Poverty 2017"
