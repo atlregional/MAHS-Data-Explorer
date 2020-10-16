@@ -6,19 +6,18 @@ import RingLoader from "react-spinners/RingLoader";
 
 
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
 
 const App = () => {
 
   const queryObj = queryString.parse(document.location.search);
-  console.log(queryObj);
-
+  // console.log(queryObj);
 
   const [tractInfo, setTractInfo ] = useState();
   const [dataManifest, setDataManifest] = useState();
   const [config, setConfig] = useState();
 
-
-  useEffect(() => {
+  const handleStart = () => {
     utils
     .getData('/api/tractinfo')
     .then(res => setTractInfo(res.data))
@@ -46,7 +45,9 @@ const App = () => {
 
     )
     .catch(err => console.log(err));
-  }, []);
+  };
+  
+  useEffect(handleStart, []);
 
   return (
     <div className="App">
