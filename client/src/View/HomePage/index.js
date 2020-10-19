@@ -6,68 +6,37 @@ import Table from '../../components/Table';
 import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
 import LayerSelector from '../../components/LayerSelector';
+import utils from '../../utils';
 import './style.css';
-import { config } from 'yargs';
 
 const HomePage = props => {
   const mobile = window.screen.width < 800;
 
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
-  const [geoOptions, setGeoOptions] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
-
-  const [selection, setSelection] = useState({ ...props.config.selection });
+  const [selection, setSelection] = useState({...props.config.selection});
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [selectedLayers, setSelectedLayers] = useState(props.config.layers);
   console.log('selectedLayers: ', selectedLayers);
 
   const style = props.config.style;
-
   const geoTypeOptions = ['Region', 'City', 'County'];
 
-  const handleGeoOptions = () => {
-    const type = selection.geoType;
-    const options = [];
-    const data = [...props.tractInfo];
-    type === 'City'
-      ? data.forEach(tract => tract.Cities.forEach(city => options.push(city)))
-      : type === 'County'
-      ? data.forEach(tract => options.push(tract.County))
-      : options.push('10 Counties');
-    const geoSet = [...new Set(options)].sort((a, b) => (a > b ? 1 : -1));
-
-    setGeoOptions(geoSet);
-  };
-
   const handleTractInfo = () => {
-    const data = [...props.tractInfo];
-    // .filter(tract =>
-    //   selection.geo === '10 Counties' ?
-    //     true : selection.geoType === 'County' ?
-    //       tract['County'] === selection.geo
-    //       : selection.geoType === 'City' ?
-    //         tract.Cities.includes(selection.geo)
-    //   : true
-
-    // );
-    // console.log(data);
+    const data = [...props.tractInfo]
     const dataObj = {};
-    data.forEach(tract => (dataObj[tract.GEOID] = tract));
+    data.forEach(tract => 
+      dataObj[tract.GEOID] = tract
+    );
     setTractInfo(dataObj);
   };
 
   const handleSubareaOptions = () => {
     const subareaArray = [];
     const data = [...props.tractInfo].filter(tract =>
-      selection.geo === '10 Counties'
-        ? true
-        : selection.geoType === 'County'
-        ? tract['County'] === selection.geo
-        : selection.geoType === 'City'
-        ? tract.Cities.includes(selection.geo)
-        : true
+      utils.filterBySelection(tract, selection)
     );
     data.forEach(tract =>
       subareaArray.push(parseInt(tract.Subarea.replace('Subarea ', '')))
@@ -78,11 +47,8 @@ const HomePage = props => {
     setSubareaOptions(subareaSet);
   };
 
-  // console.log(subareaOptions);
-
   useEffect(handleTractInfo, []);
-  useEffect(handleSubareaOptions, [selection.geo]);
-  useEffect(handleGeoOptions, [selection.geoType]);
+  useEffect(handleSubareaOptions, [selection.geo])
 
   return (
     <>
@@ -90,8 +56,9 @@ const HomePage = props => {
         <Header
           geoTypeOptions={geoTypeOptions}
           selection={selection}
-          geoOptions={geoOptions}
+          // geoOptions={geoOptions}
           setSelection={setSelection}
+          data={[...props.tractInfo]}
         />
       </div>
       <div id="dynamic-wrapper">
@@ -127,14 +94,19 @@ const HomePage = props => {
             <div
               id="chart-box"
               className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
-            >
-              <Chart
-                mobile={mobile}
-                // tractInfo={tractInfo}
-                highlightedSubarea={highlightedSubarea}
-                selectedSubareas={selectedSubareas}
-                colormap={style.colormap}
-              />
+            > 
+              {
+                tractInfo ?
+                  <Chart
+                    mobile={mobile}
+                    tractInfo={tractInfo}
+                    highlightedSubarea={highlightedSubarea}
+                    selectedSubareas={selectedSubareas}
+                    colormap={style.colormap}
+                    selection={selection}
+                  />
+                : null
+              }
             </div>
             <div
               id="table-box"

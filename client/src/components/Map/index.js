@@ -88,7 +88,7 @@ const MapComp = props => {
       key={`leaflet-map-${mapRef}`}
       zoomDelta={0.3}
       zoomSnap={0.3}
-      maxZoom={20}
+      maxZoom={16}
       minZoom={3}
     >
       {
@@ -163,9 +163,9 @@ const MapComp = props => {
 
       }
       <TileLayer
-        key={`tile-layer-${tileLayerConfig[0].name}`}
-        url={tileLayerConfig[0].url}
-        attribution={tileLayerConfig[0].attribution}
+        key={`tile-layer-${tileLayerConfig[1].name}`}
+        url={tileLayerConfig[1].url}
+        attribution={tileLayerConfig[1].attribution}
       />
     </LeafletMap>
   );
