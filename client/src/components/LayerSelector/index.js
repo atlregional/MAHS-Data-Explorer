@@ -23,7 +23,7 @@ const LayerSelector = props => {
         selection
         options={layerOptions}
         // renderLabel={(item, index, defaultLabelProps, returns) => console.log(item)}
-        onClick={
+        onChange={
           (event, data) =>
             // loop over props.layers
             // check if data.value === name,
@@ -32,9 +32,9 @@ const LayerSelector = props => {
             // set visibility to false;
             props.layers.forEach(element => {
               // element.visible = false;
-              if (`${data.value}` === element.name) {
-                element.visible = true;
-              }
+              if (`${data.value}` !== element.name) {
+                element.visible = false;
+              } 
               console.log(props.layers);
             })
           // props.setSelectedLayers(data.value)
