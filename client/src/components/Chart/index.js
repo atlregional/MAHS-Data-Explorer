@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   ResponsiveContainer,
   ComposedChart,
-<<<<<<< HEAD
-=======
   // Line,
   // Area,
->>>>>>> 2674bf7d168ebd03a27ad76395a95ccc61de38c9
   Bar,
   XAxis,
   YAxis,
@@ -27,53 +24,51 @@ const Chart = props => {
 
   const [data, setData] = useState();
 
-
   // console.log(JSON.stringify(tractInfo));
-
 
   const indicatorArray = [
     {
-      name: "Percent Renters 2017",
-      type: "percent",
+      name: 'Percent Renters 2017',
+      type: 'percent',
       indicator: {
-        id: "ID093",
-        name: "Total Renter Occupied Housing Units 2017"
+        id: 'ID093',
+        name: 'Total Renter Occupied Housing Units 2017',
       },
       universe: {
-        id: "ID094",
-        name: "Total Occupied Housing Units 2017"
+        id: 'ID094',
+        name: 'Total Occupied Housing Units 2017',
       },
     },
 
     {
-      name: "Change in Percent Owner Households since 2010",
-      type: "weighted average",
+      name: 'Change in Percent Owner Households since 2010',
+      type: 'weighted average',
       indicator: {
-        id: "ID008",
-        name: "Change in Percent Owner Households since 2010"
+        id: 'ID008',
+        name: 'Change in Percent Owner Households since 2010',
       },
       universe: {
-        id: "ID091",
-        name: "Total Occupied Housing Units 2010"
-      }
+        id: 'ID091',
+        name: 'Total Occupied Housing Units 2010',
+      },
     },
     {
-      name: "Averge Population in Poverty 2017",
-      type: "average",
+      name: 'Averge Population in Poverty 2017',
+      type: 'average',
       indicator: {
-        id: "ID088",
-        name: "Population in Poverty 2017"
+        id: 'ID088',
+        name: 'Population in Poverty 2017',
       },
       universe: {
-        id: "ID088",
-        name: "Population in Poverty 2017"
+        id: 'ID088',
+        name: 'Population in Poverty 2017',
       },
-    }
+    },
   ];
 
   const indicatorInfo = indicatorArray[0];
 
-  // const handleAggregate = () => 
+  // const handleAggregate = () =>
   //   tractInfo ?
 
   const handleAggregation = () => {
@@ -87,34 +82,29 @@ const Chart = props => {
       array.push({
         name: key,
         Subarea: parseInt(key.replace('Subarea ', '')),
-        [indicatorInfo.name]: value
+        [indicatorInfo.name]: value,
       })
     );
 
-    array.sort((a, b) => a.Subarea < b.Subarea ? -1 : 1)
-    setData(array)
-
-  }
+    array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
+    setData(array);
+  };
   // : null;
-  console.log(data);
+  // console.log(data);
 
-  useEffect(handleAggregation, [props.selection])
-
+  useEffect(handleAggregation, [props.selection]);
 
   const CustomTooltip = ({ active, payload, label }) =>
-    active ?
-      (
-        <div className="custom-tooltip">
-          <h5 className="tooltip-indicator">{`${payload[0].payload.name}`}</h5>
-          <p className="label">{`${indicatorInfo.name}: ${payload[0].value}`}</p>
-        </div>
-      )
-      : null;
+    active ? (
+      <div className="custom-tooltip">
+        <h5 className="tooltip-indicator">{`${payload[0].payload.name}`}</h5>
+        <p className="label">{`${indicatorInfo.name}: ${payload[0].value}`}</p>
+      </div>
+    ) : null;
 
   return (
     <>
-      {data ?
-
+      {data ? (
         <ResponsiveContainer
           className="chart-responsive-container"
           width="92%"
@@ -133,11 +123,9 @@ const Chart = props => {
             <Legend />
 
             <Bar dataKey={indicatorInfo.name}>
-              {data.map(barData =>
-                <Cell
-                  fill={colormap[barData.Subarea - 1]}
-                />
-              )}
+              {data.map(barData => (
+                <Cell fill={colormap[barData.Subarea - 1]} />
+              ))}
             </Bar>
 
             {/* <Line
@@ -148,8 +136,7 @@ const Chart = props => {
             {/* <Scatter dataKey="cnt" fill="red" /> */}
           </ComposedChart>
         </ResponsiveContainer>
-        : null
-      }
+      ) : null}
     </>
   );
 };

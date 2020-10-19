@@ -60,11 +60,11 @@ body {
 #layer-selector-box {
   /* z-index: 9999999; */
   border: solid black 2px;
-  width: 20%;
+  width: 10%;
   background-color: lightgrey;
   position: fixed;
-  top: 11vh;
-  left: 47.5%;
+  top: 14vh;
+  left: 56%;
 }
 
 #map-box {

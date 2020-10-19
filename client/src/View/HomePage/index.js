@@ -15,21 +15,21 @@ const HomePage = props => {
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
-  const [selection, setSelection] = useState({...props.config.selection});
+  const [selection, setSelection] = useState({ ...props.config.selection });
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
-  const [selectedLayers, setSelectedLayers] = useState(props.config.layers);
-  console.log('selectedLayers: ', selectedLayers);
+  const [layers, setLayers] = useState(props.config.layers);
+  // console.log('selectedLayers: ', selectedLayers);
+
+  // use includes method to filter the stuff;
 
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
 
   const handleTractInfo = () => {
-    const data = [...props.tractInfo]
+    const data = [...props.tractInfo];
     const dataObj = {};
-    data.forEach(tract => 
-      dataObj[tract.GEOID] = tract
-    );
+    data.forEach(tract => (dataObj[tract.GEOID] = tract));
     setTractInfo(dataObj);
   };
 
@@ -48,7 +48,7 @@ const HomePage = props => {
   };
 
   useEffect(handleTractInfo, []);
-  useEffect(handleSubareaOptions, [selection.geo])
+  useEffect(handleSubareaOptions, [selection.geo]);
 
   return (
     <>
@@ -94,19 +94,17 @@ const HomePage = props => {
             <div
               id="chart-box"
               className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
-            > 
-              {
-                tractInfo ?
-                  <Chart
-                    mobile={mobile}
-                    tractInfo={tractInfo}
-                    highlightedSubarea={highlightedSubarea}
-                    selectedSubareas={selectedSubareas}
-                    colormap={style.colormap}
-                    selection={selection}
-                  />
-                : null
-              }
+            >
+              {tractInfo ? (
+                <Chart
+                  mobile={mobile}
+                  tractInfo={tractInfo}
+                  highlightedSubarea={highlightedSubarea}
+                  selectedSubareas={selectedSubareas}
+                  colormap={style.colormap}
+                  selection={selection}
+                />
+              ) : null}
             </div>
             <div
               id="table-box"
@@ -131,10 +129,7 @@ const HomePage = props => {
       ) : null}
 
       <div id="layer-selector-box">
-        <LayerSelector
-          setSelectedLayers={setSelectedLayers}
-          layers={props.config.layers}
-        />
+        <LayerSelector setLayers={setLayers} layers={layers} />
       </div>
     </>
   );

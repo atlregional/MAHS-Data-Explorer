@@ -1,0 +1,4 @@
+.layer-selection-row {
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
