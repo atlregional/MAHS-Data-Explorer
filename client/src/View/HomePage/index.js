@@ -5,9 +5,9 @@ import Chart from '../../components/Chart';
 import Table from '../../components/Table';
 import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
-import LayerSelector from '../../components/LayerSelector';
+// import LayerSelector from '../../components/LayerSelector';
+import utils from '../../utils';
 import './style.css';
-// import utils from '../../utils';
 
 
 const HomePage = (props) => {
@@ -15,7 +15,7 @@ const HomePage = (props) => {
 
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
-  const [geoOptions, setGeoOptions] = useState();
+  // const [geoOptions, setGeoOptions] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
 
   const [selection, setSelection] = useState({...props.config.selection});
@@ -28,21 +28,21 @@ const HomePage = (props) => {
 
   const geoTypeOptions = ['Region', 'City', 'County'];
 
-  const handleGeoOptions = () => {
-    const type = selection.geoType;
-    const options = [];
-    const data = [...props.tractInfo];
-    type === 'City'
-      ? data.forEach((tract) =>
-          tract.Cities.forEach((city) => options.push(city))
-        )
-      : type === 'County'
-      ? data.forEach((tract) => options.push(tract.County))
-      : options.push('10 Counties');
-    const geoSet = [...new Set(options)].sort((a, b) => (a > b ? 1 : -1));
+  // const handleGeoOptions = () => {
+  //   const type = selection.geoType;
+  //   const options = [];
+  //   const data = [...props.tractInfo];
+  //   type === 'City'
+  //     ? data.forEach((tract) =>
+  //         tract.Cities.forEach((city) => options.push(city))
+  //       )
+  //     : type === 'County'
+  //     ? data.forEach((tract) => options.push(tract.County))
+  //     : options.push('10 Counties');
+  //   const geoSet = [...new Set(options)].sort((a, b) => (a > b ? 1 : -1));
 
-    setGeoOptions(geoSet);
-  };
+  //   setGeoOptions(geoSet);
+  // };
 
   const handleTractInfo = () => {
     const data = [...props.tractInfo]
@@ -83,13 +83,8 @@ const HomePage = (props) => {
   const handleSubareaOptions = () => {
     const subareaArray = [];
     const data = [...props.tractInfo].filter(tract =>
-      selection.geo === '10 Counties' ? 
-        true : selection.geoType === 'County' ?
-          tract['County'] === selection.geo
-          : selection.geoType === 'City' ?
-            tract.Cities.includes(selection.geo)
-      : true
-          
+      utils.filterBySelection(tract, selection)
+    
     );
     data.forEach(tract => 
       subareaArray.push(parseInt(tract.Subarea.replace('Subarea ', '')))
@@ -113,7 +108,7 @@ const HomePage = (props) => {
         <Header
           geoTypeOptions={geoTypeOptions}
           selection={selection}
-          geoOptions={geoOptions}
+          // geoOptions={geoOptions}
           setSelection={setSelection}
           data={[...props.tractInfo]}
         />
@@ -161,6 +156,7 @@ const HomePage = (props) => {
                     highlightedSubarea={highlightedSubarea}
                     selectedSubareas={selectedSubareas}
                     colormap={style.colormap}
+                    selection={selection}
                   />
                 : null
               }
@@ -187,10 +183,10 @@ const HomePage = (props) => {
         />
       ) 
       : null}
-
+{/* 
       <div id='layer-selector-box'>
         <LayerSelector layers={props.config.layers} />
-      </div>
+      </div> */}
     </>
   );
 };

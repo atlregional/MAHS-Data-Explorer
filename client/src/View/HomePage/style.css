@@ -68,6 +68,7 @@ body {
 }
 
 #map-box {
+  padding: 1em;
   /* position: absolute;
   height: 90vh; */
   /* box-shadow: inset 0 0 5px red ;
@@ -110,6 +111,7 @@ body {
 
   #right-col-viz-view {
     grid-template-rows: 100%;
+    
   }
 
 }

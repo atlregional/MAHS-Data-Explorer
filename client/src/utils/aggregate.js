@@ -13,7 +13,7 @@ export default (data, indicatorInfo, aggregator) => {
   const denominatorValues = {};
   const numberOfTracts = {};
 
-  Object.values(data).forEach(tract => {
+  data.forEach(tract => {
     // console.log(JSON.stringify(tract))
     const aggregatorId = tract[aggregatorField]
 
@@ -24,7 +24,7 @@ export default (data, indicatorInfo, aggregator) => {
   );
 
 
-  Object.values(data).forEach(tract => {
+  data.forEach(tract => {
     // console.log(JSON.stringify(tract))
     const aggregatorId = tract[aggregatorField]
 
@@ -34,7 +34,7 @@ export default (data, indicatorInfo, aggregator) => {
   }
   );
 
-  Object.values(data).forEach(tract => {
+  data.forEach(tract => {
     const aggregatorId = tract[aggregatorField];
 
     console.log(JSON.stringify(denominatorValues[aggregatorId]));
