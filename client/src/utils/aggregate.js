@@ -37,8 +37,8 @@ export default (data, indicatorInfo, aggregator) => {
   data.forEach(tract => {
     const aggregatorId = tract[aggregatorField];
 
-    console.log(JSON.stringify(denominatorValues[aggregatorId]));
-    console.log(tract.Data[denominatorId])
+    // console.log(JSON.stringify(denominatorValues[aggregatorId]));
+    // console.log(tract.Data[denominatorId])
 
     const weightingFactor = 
       indicatorInfo.type === 'weighted average' ?
@@ -52,7 +52,7 @@ export default (data, indicatorInfo, aggregator) => {
   console.log(numeratorValues)
 
 
-  console.log(denominatorValues)
+  // console.log(denominatorValues)
 
   const calcAggregation = () => {
     const type = indicatorInfo.type;
@@ -62,7 +62,7 @@ export default (data, indicatorInfo, aggregator) => {
     // const denSum = arr2.reduce((a, b) => a + b, 0);
     // const weight = numSum / denSum;
 
-    console.log(arr);
+    // console.log(arr);
 
     const aggregatedDataObj = {};
 
@@ -92,7 +92,7 @@ export default (data, indicatorInfo, aggregator) => {
 
   calcAggregation()
 
-  console.log(calcAggregation())
+  // console.log(calcAggregation())
   return calcAggregation();
   // objects like so...
   // {

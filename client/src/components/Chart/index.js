@@ -20,7 +20,7 @@ const Chart = props => {
   let colormap = props.colormap;
   // console.log(colormap);
   const tractInfo = props.tractInfo;
-  console.log(tractInfo);
+  // console.log(tractInfo);
 
   const [data, setData] = useState();
 
