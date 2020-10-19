@@ -9,7 +9,7 @@ import LayerSelector from '../../components/LayerSelector';
 import './style.css';
 import { config } from 'yargs';
 
-const HomePage = (props) => {
+const HomePage = props => {
   const mobile = window.screen.width < 800;
 
   const [mobileVizView, setMobileVizView] = useState('chart');
@@ -17,11 +17,11 @@ const HomePage = (props) => {
   const [geoOptions, setGeoOptions] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
 
-  const [selection, setSelection] = useState({...props.config.selection});
+  const [selection, setSelection] = useState({ ...props.config.selection });
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
-
-  // console.log(highlightedSubarea);
+  const [selectedLayers, setSelectedLayers] = useState(props.config.layers);
+  console.log('selectedLayers: ', selectedLayers);
 
   const style = props.config.style;
 
@@ -32,11 +32,9 @@ const HomePage = (props) => {
     const options = [];
     const data = [...props.tractInfo];
     type === 'City'
-      ? data.forEach((tract) =>
-          tract.Cities.forEach((city) => options.push(city))
-        )
+      ? data.forEach(tract => tract.Cities.forEach(city => options.push(city)))
       : type === 'County'
-      ? data.forEach((tract) => options.push(tract.County))
+      ? data.forEach(tract => options.push(tract.County))
       : options.push('10 Counties');
     const geoSet = [...new Set(options)].sort((a, b) => (a > b ? 1 : -1));
 
@@ -44,50 +42,47 @@ const HomePage = (props) => {
   };
 
   const handleTractInfo = () => {
-    const data = [...props.tractInfo]
+    const data = [...props.tractInfo];
     // .filter(tract =>
-    //   selection.geo === '10 Counties' ? 
+    //   selection.geo === '10 Counties' ?
     //     true : selection.geoType === 'County' ?
     //       tract['County'] === selection.geo
     //       : selection.geoType === 'City' ?
     //         tract.Cities.includes(selection.geo)
     //   : true
-          
+
     // );
     // console.log(data);
     const dataObj = {};
-    data.forEach(tract => 
-      dataObj[tract.GEOID] = tract
-    )
+    data.forEach(tract => (dataObj[tract.GEOID] = tract));
     setTractInfo(dataObj);
-
   };
 
   const handleSubareaOptions = () => {
     const subareaArray = [];
     const data = [...props.tractInfo].filter(tract =>
-      selection.geo === '10 Counties' ? 
-        true : selection.geoType === 'County' ?
-          tract['County'] === selection.geo
-          : selection.geoType === 'City' ?
-            tract.Cities.includes(selection.geo)
-      : true
-          
+      selection.geo === '10 Counties'
+        ? true
+        : selection.geoType === 'County'
+        ? tract['County'] === selection.geo
+        : selection.geoType === 'City'
+        ? tract.Cities.includes(selection.geo)
+        : true
     );
-    data.forEach(tract => 
+    data.forEach(tract =>
       subareaArray.push(parseInt(tract.Subarea.replace('Subarea ', '')))
     );
-    const subareaSet = [
-      ...new Set(subareaArray)
-    ].sort((a, b) => a > b ? 1 : -1);
+    const subareaSet = [...new Set(subareaArray)].sort((a, b) =>
+      a > b ? 1 : -1
+    );
     setSubareaOptions(subareaSet);
   };
 
   // console.log(subareaOptions);
 
   useEffect(handleTractInfo, []);
-  useEffect(handleSubareaOptions, [selection.geo])
-  useEffect(handleGeoOptions, [selection.geoType])
+  useEffect(handleSubareaOptions, [selection.geo]);
+  useEffect(handleGeoOptions, [selection.geoType]);
 
   return (
     <>
@@ -125,7 +120,6 @@ const HomePage = (props) => {
               config={props.config}
               subareaOptions={subareaOptions}
               highlightedSubarea={highlightedSubarea}
-
             />
           </div>
           {/* ) : null} */}
@@ -162,11 +156,13 @@ const HomePage = (props) => {
           mobileVizView={mobileVizView}
           setMobileVizView={setMobileVizView}
         />
-      ) 
-      : null}
+      ) : null}
 
-      <div id='layer-selector-box'>
-        <LayerSelector layers={props.config.layers} />
+      <div id="layer-selector-box">
+        <LayerSelector
+          setSelectedLayers={setSelectedLayers}
+          layers={props.config.layers}
+        />
       </div>
     </>
   );

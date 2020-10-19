@@ -2,47 +2,23 @@ import React from 'react';
 import {
   ResponsiveContainer,
   ComposedChart,
-  Line,
-  Area,
   Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
-  Scatter,
   Cell,
 } from 'recharts';
 import './style.css';
 
 const Chart = props => {
   let colormap = props.colormap;
-  console.log(colormap);
-  // console.log('props: ', props);
+  // console.log(colormap);
 
   const data = props.data
     ? props.data
     : [
-        //     {
-        //       Subarea: '1',
-        //       ExampleIndicator: 6,
-        //     },
-        //     {
-        //       Subarea: '5',
-        //       ExampleIndicator: 1,
-        //     },
-        //     {
-        //       Subarea: '6',
-        //       ExampleIndicator: 12,
-        //     },
-        //     {
-        //       Subarea: '7',
-        //       ExampleIndicator: 2,
-        //     },
-        //     {
-        //       Subarea: '9',
-        //       ExampleIndicator: 9,
-        //     },
         { name: 'Subarea 1', Subarea: 1, ExampleIndicator: 6, amt: 2400 },
         { name: 'Subarea 5', Subarea: 5, ExampleIndicator: 1, amt: 2210 },
         { name: 'Subarea 6', Subarea: 6, ExampleIndicator: 12, amt: 2290 },
@@ -60,7 +36,7 @@ const Chart = props => {
     console.log('colorArr: ', colorArr);
     // return;
   };
-  // CustomBar();
+  // ColorBar();
 
   const CustomTooltip = ({ active, payload, label }) => {
     // console.log(payload);
@@ -94,11 +70,12 @@ const Chart = props => {
           <Legend />
 
           <Bar dataKey="amt">
-            {data.map(barData => 
+            {data.map(barData => (
               <Cell
+                key={barData.Subarea}
                 fill={colormap[barData.Subarea - 1]}
               />
-            )}
+            ))}
           </Bar>
 
           {/* <Line

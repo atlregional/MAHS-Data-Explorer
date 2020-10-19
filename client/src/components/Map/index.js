@@ -29,7 +29,7 @@ const MapComp = props => {
 
     let returnedGeoJSONs = [];
 
-    console.log(returnedGeoJSONs);
+    // console.log(returnedGeoJSONs);
 
     layerConfigs.forEach(config =>
       returnedGeoJSONs.push(
