@@ -53,20 +53,6 @@ body {
   grid-template-rows: 50% 50%;
 }
 
-/* #subarea-selector {
-
-} */
-
-#layer-selector-box {
-  /* z-index: 9999999; */
-  border: solid black 2px;
-  width: 10%;
-  background-color: lightgrey;
-  position: fixed;
-  top: 14vh;
-  left: 56%;
-}
-
 #map-box {
   padding: 1em;
   /* position: absolute;

@@ -1,4 +1,52 @@
+#layer-selector-box {
+  width: 10%;
+  background-color: lightgrey;
+  position: fixed;
+  transition-delay: 1000ms;
+  top: 16vh;
+  left: 55%;
+  animation: slideIn 0.5s ease-in;
+  /* animation: slideOut 0.5s ease-out; */
+}
+
+.layer-selection-header {
+  /* something here */
+  width: 11%;
+  position: fixed;
+  top: 13vh;
+  left: 56%;
+}
+
+.layer-selection-header .close {
+  height: 100%;
+  float: right;
+  /* animation: slideIn ease-out 0.5s; */
+}
+
+.layer-selection-header .icon {
+  float: right;
+}
+
 .layer-selection-row {
   display: grid;
   grid-template-columns: 25% 75%;
+  text-align: center;
+  padding: 0.5em;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: skewX(5deg) translate(40px);
+  }
+  100% {
+    transform: skewX(0deg);
+  }
+}
+@keyframes slideOut {
+  0% {
+    transform: skewX(0deg);
+  }
+  100% {
+    transform: skewX(5deg) translate(40px);
+  }
 }

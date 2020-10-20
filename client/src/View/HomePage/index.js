@@ -85,6 +85,7 @@ const HomePage = props => {
               tractInfo={tractInfo}
               selection={selection}
               config={props.config}
+              layers={layers}
               subareaOptions={subareaOptions}
               highlightedSubarea={highlightedSubarea}
             />
@@ -128,9 +129,7 @@ const HomePage = props => {
         />
       ) : null}
 
-      <div id="layer-selector-box">
-        <LayerSelector setLayers={setLayers} layers={layers} />
-      </div>
+      <LayerSelector setLayers={setLayers} layers={layers} />
     </>
   );
 };
