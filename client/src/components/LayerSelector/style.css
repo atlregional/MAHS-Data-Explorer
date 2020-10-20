@@ -2,7 +2,6 @@
   width: 10%;
   background-color: lightgrey;
   position: fixed;
-  /* transition-delay: 1000ms; */
   top: 16vh;
   left: 55.25%;
 }
@@ -15,10 +14,8 @@
   opacity: 0;
   animation: slideOut 0.5s ease-out;
   transition: opacity 0.5s ease-out;
-  /* visibility: hidden; */
 }
 .layer-selection-header {
-  /* something here */
   width: 11%;
   position: fixed;
   top: 13vh;
@@ -28,7 +25,6 @@
 .layer-selection-header .close {
   height: 100%;
   float: right;
-  /* visi */
 }
 
 .layer-selection-header .icon {

@@ -25,7 +25,6 @@ const LayerSelector = props => {
         />
       </div>
 
-      {/* {view == 'slide-open' ? ( */}
       <div
         id="layer-selector-box"
         className={view == 'slide-open' ? 'slide-open' : 'slide-closed'}
@@ -57,41 +56,6 @@ const LayerSelector = props => {
           </div>
         ))}
       </div>
-      {/* ) : null} */}
-
-      {/* <Dropdown
-        placeholder="DISPLAY ON MAP"
-        fluid
-        multiple
-        selection
-        options={layerOptions}
-        // renderLabel={(item, index, defaultLabelProps, returns) => console.log(item)}
-        onChange={
-          (event, data) => {
-            // loop over props.layers
-            // check if data.value === name,
-            // if true, do nothing
-            // if false,
-            // set visibility to false;
-            const layerArr = [];
-
-            props.layers.forEach(element => {
-              console.log('data: ', data);
-              // if (`${data.value}` !== element.name) {
-              //   element.visible = false;
-              // }
-              data.value === element.name
-                ? layerArr.push({
-                    ...element,
-                    visible: element.visible ? false : true,
-                  })
-                : layerArr.push({ ...element });
-            });
-            console.log('layerArr: ', layerArr);
-          }
-          props.setSelectedLayers(data.value)
-        }
-      /> */}
     </>
   );
 };
