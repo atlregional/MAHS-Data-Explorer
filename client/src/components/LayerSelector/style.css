@@ -2,13 +2,21 @@
   width: 10%;
   background-color: lightgrey;
   position: fixed;
-  transition-delay: 1000ms;
+  /* transition-delay: 1000ms; */
   top: 16vh;
-  left: 55%;
-  animation: slideIn 0.5s ease-in;
-  /* animation: slideOut 0.5s ease-out; */
+  left: 55.25%;
 }
-
+.slide-open {
+  opacity: 1;
+  animation: slideIn 0.5s ease-in;
+  transition: opacity 0.5s ease-in;
+}
+.slide-closed {
+  opacity: 0;
+  animation: slideOut 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+  /* visibility: hidden; */
+}
 .layer-selection-header {
   /* something here */
   width: 11%;
@@ -20,7 +28,7 @@
 .layer-selection-header .close {
   height: 100%;
   float: right;
-  /* animation: slideIn ease-out 0.5s; */
+  /* visi */
 }
 
 .layer-selection-header .icon {
@@ -36,17 +44,17 @@
 
 @keyframes slideIn {
   0% {
-    transform: skewX(5deg) translate(40px);
+    transform: translate(50px);
   }
   100% {
-    transform: skewX(0deg);
+    transform: translate(0);
   }
 }
 @keyframes slideOut {
   0% {
-    transform: skewX(0deg);
+    transform: translate(0);
   }
   100% {
-    transform: skewX(5deg) translate(40px);
+    transform: translate(50px);
   }
 }

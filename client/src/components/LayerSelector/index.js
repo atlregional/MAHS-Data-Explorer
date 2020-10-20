@@ -5,7 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 const LayerSelector = props => {
   // if vew is true, show the icon that will open the dropdown;
-  const [view, setView] = useState(true);
+  const [view, setView] = useState('slide-open');
 
   console.log('props.layers: ', props.layers);
   const layers = props.layers ? props.layers : [];
@@ -15,42 +15,49 @@ const LayerSelector = props => {
       <div className="layer-selection-header">
         {/* hambugger icon when its closed, dissapears when open,  */}
         <Icon
-          name={view ? 'close' : 'list alternate outline'}
+          name={view == 'slide-open' ? 'close' : 'list alternate outline'}
           size="large"
-          onClick={() => (view ? setView(false) : setView(true))}
+          onClick={() =>
+            view == 'slide-open'
+              ? setView('slide-closed')
+              : setView('slide-open')
+          }
         />
       </div>
 
-      {view ? (
-        <div id="layer-selector-box" className="slide">
-          {layers.map(layer => (
-            <div className="layer-selection-row">
-              <div>
-                {' '}
-                <Checkbox
-                  checked={layer.visible}
-                  onChange={() => {
-                    const arr = [];
-                    layers.forEach(el => {
-                      // if element name is el.name
-                      el.name === layer.name
-                        ? arr.push({
-                            ...el,
-                            visible: el.visible ? false : true,
-                          })
-                        : arr.push({
-                            ...el,
-                          });
-                    });
-                    props.setLayers(arr);
-                  }}
-                />{' '}
-              </div>
-              <div>{layer.label}</div>
+      {/* {view == 'slide-open' ? ( */}
+      <div
+        id="layer-selector-box"
+        className={view == 'slide-open' ? 'slide-open' : 'slide-closed'}
+      >
+        {layers.map(layer => (
+          <div className="layer-selection-row">
+            <div>
+              {' '}
+              <Checkbox
+                checked={layer.visible}
+                onChange={() => {
+                  const arr = [];
+                  layers.forEach(el => {
+                    // if element name is el.name
+                    el.name === layer.name
+                      ? arr.push({
+                          ...el,
+                          visible: el.visible ? false : true,
+                        })
+                      : arr.push({
+                          ...el,
+                        });
+                  });
+                  props.setLayers(arr);
+                }}
+              />{' '}
             </div>
-          ))}
-        </div>
-      ) : null}
+            <div>{layer.label}</div>
+          </div>
+        ))}
+      </div>
+      {/* ) : null} */}
 
       {/* <Dropdown
         placeholder="DISPLAY ON MAP"
