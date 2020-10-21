@@ -18,6 +18,15 @@
     "url": "https://github.com/atlregional/MAHS-Data-Explorer"
   },
   "homepage": "https://github.com/atlregional/MAHS-Data-Explorer#readme",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js | npm run client",
+    "start:dev": "nodemon server.js | npm run client",
+    "client": "cd client && npm run start",
+    "seed": "node seed/seedDB.js",
+    "install": "cd client && npm install",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -40,11 +49,5 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3"
-  },
-  "scripts": {
-    "start": "concurrently \"npm run client\" \"node server.js\"",
-    "client": "cd client && npm run start",
-    "seed": "node seed/seedDB.js",
-    "install": "cd client && npm install"
   }
 }

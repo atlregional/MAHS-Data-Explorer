@@ -114,6 +114,7 @@ const HomePage = (props) => {
               <Table
                 mobile={mobile}
                 tractInfo={tractInfo}
+                selection={selection}
                 highlightedSubarea={highlightedSubarea}
                 selectedSubareas={selectedSubareas}
               />
