@@ -1,9 +1,9 @@
 #layer-selector-box {
-  width: 10%;
+  width: 11%;
   background-color: rgba(214, 171, 171, 0.664);
   position: fixed;
   top: 16vh;
-  left: 55.25%;
+  left: 54%;
 }
 
 .slide-open {
@@ -38,7 +38,8 @@
   display: grid;
   grid-template-columns: 25% 75%;
   text-align: center;
-  padding: 0.75em;
+  padding: 0.5em;
+  padding-right: 1.2em;
 }
 
 @keyframes slideIn {
