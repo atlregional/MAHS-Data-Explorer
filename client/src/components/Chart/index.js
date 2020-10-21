@@ -123,8 +123,11 @@ const Chart = props => {
             <Legend />
 
             <Bar dataKey={indicatorInfo.name}>
-              {data.map(barData => (
-                <Cell fill={colormap[barData.Subarea - 1]} />
+              {data.map((barData, idx) => (
+                <Cell
+                  key={indicatorInfo.name + idx}
+                  fill={colormap[barData.Subarea - 1]}
+                />
               ))}
             </Bar>
 
