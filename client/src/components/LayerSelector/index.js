@@ -29,8 +29,8 @@ const LayerSelector = props => {
         id="layer-selector-box"
         className={view == 'slide-open' ? 'slide-open' : 'slide-closed'}
       >
-        {layers.map(layer => (
-          <div className="layer-selection-row">
+        {layers.map((layer, idx) => (
+          <div key={layer.name + idx} className="layer-selection-row">
             <div>
               {' '}
               <Checkbox

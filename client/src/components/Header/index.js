@@ -3,70 +3,66 @@ import { Dropdown, Menu } from 'semantic-ui-react';
 import './style.css';
 
 const Header = props => {
+  const topMenu = props.geoTypeOptions;
+  const [subMenus, setSubMenus] = useState();
 
-    const topMenu = props.geoTypeOptions;
-    const [subMenus, setSubMenus] = useState();
+  const handleGeoOptions = () => {
+    const subMenusObj = {};
 
-    const handleGeoOptions = () => {
-      const subMenusObj = {};
+    topMenu.forEach(geoType => {
+      const type = geoType;
+      const options = [];
+      const data = [...props.data];
+      type === 'City'
+        ? data.forEach(tract =>
+            tract.Cities.forEach(city => options.push(city))
+          )
+        : type === 'County'
+        ? data.forEach(tract => options.push(tract.County))
+        : options.push('10 Counties');
+      const geoSet = [...new Set(options)].sort((a, b) => (a > b ? 1 : -1));
+      subMenusObj[type] = geoSet;
+    });
 
-      topMenu.forEach(geoType => {
-        const type = geoType;
-        const options = [];
-        const data = [...props.data];
-        type === 'City'
-          ? data.forEach((tract) =>
-              tract.Cities.forEach((city) => options.push(city))
-            )
-          : type === 'County'
-          ? data.forEach((tract) => options.push(tract.County))
-          : options.push('10 Counties');
-        const geoSet = [...new Set(options)].sort((a, b) => (a > b ? 1 : -1));
-        subMenusObj[type] = geoSet;
-      })
-  
-      setSubMenus(subMenusObj);
-    };
+    setSubMenus(subMenusObj);
+  };
 
-    useEffect(handleGeoOptions, []);
+  useEffect(handleGeoOptions, []);
 
-    // console.log(subMenus);
+  // console.log(subMenus);
 
-
-
-    return (
-        <>
-          <Menu horizontal stackable>
-            <Dropdown fluid item text='Change Geography'>
-              <Dropdown.Menu>
-              {
-                subMenus ?
-                topMenu.map(geoType =>
-                  
-                  <Dropdown item text={geoType}>
+  return (
+    <>
+      <Menu horizontal stackable>
+        <Dropdown fluid item text="Change Geography">
+          <Dropdown.Menu>
+            {subMenus
+              ? topMenu.map((geoType, idx) => (
+                  <Dropdown key={idx} item text={geoType}>
                     <Dropdown.Menu>
-                      {subMenus[geoType].map(geo =>
+                      {subMenus[geoType].map((geo, idx) => (
                         <Dropdown.Item
-                          onClick={() => props.setSelection({
-                            ...props.selection,
-                            geoType: geoType,
-                            geo: geo
-                          })}
+                          key={geo + idx}
+                          onClick={() =>
+                            props.setSelection({
+                              ...props.selection,
+                              geoType: geoType,
+                              geo: geo,
+                            })
+                          }
                         >
                           {geo}
                         </Dropdown.Item>
-                      )}
-
+                      ))}
                     </Dropdown.Menu>
-                  </Dropdown>  
-                )
-                : null
-              }              
-              </Dropdown.Menu>
-            </Dropdown>
-          </Menu>
+                  </Dropdown>
+                ))
+              : null}
+          </Dropdown.Menu>
+        </Dropdown>
+      </Menu>
 
-          {/* <div>
+      {/* <div>
           {props.geoTypeOptions ?
           <select
             placeholder='Choose Geography Type'
@@ -118,7 +114,7 @@ const Header = props => {
           : null
           }
         </div> */}
-        </>
-    )
-}
+    </>
+  );
+};
 export default Header;
