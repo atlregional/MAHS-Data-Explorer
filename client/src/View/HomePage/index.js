@@ -10,6 +10,8 @@ import utils from '../../utils';
 import './style.css';
 
 const HomePage = (props) => {
+
+  console.log(props);
   const mobile = window.screen.width < 800;
 
   const [mobileVizView, setMobileVizView] = useState('chart');

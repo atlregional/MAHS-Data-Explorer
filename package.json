@@ -20,7 +20,7 @@
   "homepage": "https://github.com/atlregional/MAHS-Data-Explorer#readme",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js | npm run client",
+    "start:prod": "node server.js & npm run client",
     "start:dev": "nodemon server.js | npm run client",
     "client": "cd client && npm run start",
     "seed": "node seed/seedDB.js",
