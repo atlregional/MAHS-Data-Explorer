@@ -23,6 +23,7 @@ const HomePage = (props) => {
 
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
+  const indicators = props.config.indicators;
 
   const handleTractInfo = () => {
     const data = [...props.tractInfo]
@@ -133,9 +134,9 @@ const HomePage = (props) => {
       ) 
       : null}
 
-      <div id='layer-selector-box'>
+      {/* <div id='layer-selector-box'>
         <LayerSelector layers={props.config.layers} />
-      </div>
+      </div> */}
     </>
   );
 };
