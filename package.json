@@ -39,7 +39,8 @@
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-sticky-table": "^5.1.11"
   },
   "scripts": {
     "start": "concurrently \"npm run client\" \"node server.js\"",
