@@ -9,7 +9,8 @@ router.use('/api/datainfo', dataInfoRoutes);
 router.use('/api/config', configRoutes);
 
 // If no API routes are hit, send the React app
-router.use((req, res) => res.sendFile(path.join(__dirname, '../client/build/index.html')));
+router.use((req, res) => 
+  res.sendFile(path.join(__dirname, '../client/build/index.html')));
 
 router.use((err, req, res, next) => {
   err.statusCode = err.statusCode || 500
