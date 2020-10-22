@@ -2,27 +2,26 @@
   "name": "mahs-data-explorer",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@turf/polygon-to-line": "^6.0.3",
-    "axios": "^0.20.0",
-    "http-proxy-middleware": "^1.0.5",
-    "leaflet": "^1.7.1",
-    "query-string": "^6.13.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-leaflet": "^2.7.0",
-    "react-scripts": "3.4.3",
-    "react-spinners": "^0.9.0",
-    "react-sticky-table": "^5.1.7",
-    "recharts": "^1.8.5",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.0"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@turf/polygon-to-line": "^6.0.3",
+    "axios": "^0.20.0",
+    "leaflet": "^1.7.1",
+    "query-string": "^6.13.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-leaflet": "^2.7.0",
+    "react-scripts": "^2.1.8",
+    "react-spinners": "^0.9.0",
+    "react-sticky-table": "^5.1.7",
+    "recharts": "^1.8.5",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.0"
   },
   "eslintConfig": {
     "extends": "react-app"
