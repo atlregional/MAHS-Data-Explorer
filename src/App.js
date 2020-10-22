@@ -19,17 +19,17 @@ const App = () => {
 
   const handleStart = () => {
     utils
-    .getData('/api/tractinfo')
+    .getData('https://mahs-api-server.herokuapp.com/api/tractinfo')
     .then(res => setTractInfo(res.data))
     .catch(err => console.log(err));
 
     utils
-    .getData('/api/datainfo')
+    .getData('https://mahs-api-server.herokuapp.com/api/datainfo')
     .then(res => setDataManifest(res.data))
     .catch(err => console.log(err));
 
     utils
-    .getData('/api/config')
+    .getData('https://mahs-api-server.herokuapp.com/api/config')
     .then(res => 
       queryObj.geo && 
       queryObj.geotype ?
