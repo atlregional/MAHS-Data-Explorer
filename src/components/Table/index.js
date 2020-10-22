@@ -7,8 +7,9 @@ const Table = props => {
   // Bring in data and map to table with indicator name as row headers and subarea name as column headers
   const tractInfo = props.tractInfo;
   console.log(tractInfo)
-
+  const headerArray = [];
   const [ data, setData ] = useState();
+  const [ header, setheader ] = useState([]);
   const indicatorInfo = [
     {
       name: "Average Number of HHs by Tract, 2017",
@@ -59,7 +60,7 @@ const Table = props => {
       array.push(aggregatedData)
    })
    
-   const headerArray = [];
+   
    data.forEach(tract => 
     !headerArray.includes(tract.Subarea) ? 
       headerArray.push(tract.Subarea)
@@ -68,7 +69,7 @@ const Table = props => {
    )
 
    headerArray.sort((a,b) => parseInt(a.replace('Subarea ', '')) < parseInt(b.replace('Subarea ', '')) ? -1 : 1)
-console.log(headerArray)
+setheader(headerArray)
     // const aggregatedData = utils.aggregate(data, indicatorInfo[0], 'Subarea');
     //   console.log(aggregatedData)
 
@@ -87,40 +88,34 @@ console.log(headerArray)
   }
     // : null;
   console.log(data);
+  console.log(header)
+  console.log(data)
+  console.log(data)
+  var rows = [];
+  var cells;
+
+  for (var r = 0; r < 3; r++) {
+    cells = [];
+
+    for (var c = 0; c < header.length; c++) {
+      cells.push(<Cell key={c}>{( r === 0 && c === 0 ? 'Indicator'
+        :r === 0 ? header[c] 
+        : c === 0 ? data[c].indicator
+        : 'Cell')}
+        </Cell>);
+    }
+
+    rows.push(<Row key={r}>{cells}</Row>);
+  }
+
+
 
   useEffect(handleAggregation, [props.selection])
 
   return (
     <div>
-      <div style={{width: '100%', height: '400px'}}>
-        <StickyTable
-        stickHeaderCount={1}>
-          <Row>
-          {/* {data.map(field => 
-          
-            <Cell
-              style={{
-              
-                width: '100px',
-                textAlign: 'center', 
-                verticalAlign: 'middle', 
-                backgroundColor: '#d5bdbd',
-                padding: '4px'
-              }}
-              key={'column-' + field} 
-              
-              value={'field'} >
-              </Cell>
-           )} */}
-            
-
-            
-          </Row>
-          <Row>
-            <Cell>Cell 1</Cell>
-            <Cell>Cell 2</Cell>
-          </Row>
-        </StickyTable>
+      <div style={{ width: '100%', height: '200px' }}>
+        <StickyTable stickyHeaderCount={2}>{rows}</StickyTable>
       </div>
     </div>
   );
