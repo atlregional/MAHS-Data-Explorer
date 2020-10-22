@@ -113,6 +113,8 @@ const HomePage = (props) => {
               id="table-box"
               className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
             >
+              {
+                tractInfo ?
               <Table
                 mobile={mobile}
                 tractInfo={tractInfo}
@@ -120,6 +122,8 @@ const HomePage = (props) => {
                 highlightedSubarea={highlightedSubarea}
                 selectedSubareas={selectedSubareas}
               />
+              : null
+            }
             </div>
           </div>
         </div>
