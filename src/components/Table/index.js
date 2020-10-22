@@ -70,17 +70,7 @@ const Table = props => {
 
    headerArray.sort((a,b) => parseInt(a.replace('Subarea ', '')) < parseInt(b.replace('Subarea ', '')) ? -1 : 1)
 setheader(headerArray)
-    // const aggregatedData = utils.aggregate(data, indicatorInfo[0], 'Subarea');
-    //   console.log(aggregatedData)
-
-
-    // Object.entries(aggregatedData).forEach(([key, value]) =>
-    //   array.push({
-    //     name: key,
-    //     Subarea: parseInt(key.replace('Subarea ', '')),
-    //     [indicatorInfo.name] : value
-    //   })
-    // );
+  
 
     array.sort((a,b) => a.Subarea < b.Subarea ? -1 : 1)
     setData(array)
@@ -94,13 +84,13 @@ setheader(headerArray)
   var rows = [];
   var cells;
 
-  for (var r = 0; r < 3; r++) {
+  for (var r = 0; r < 4; r++) {
     cells = [];
 
     for (var c = 0; c < header.length; c++) {
       cells.push(<Cell key={c}>{( r === 0 && c === 0 ? 'Indicator'
-        :r === 0 ? header[c] 
-        : c === 0 ? data[c].indicator
+        :r === 0 ? header[c-1] 
+        : c === 0 ? data[r-1].indicator
         : 'Cell')}
         </Cell>);
     }
@@ -114,7 +104,11 @@ setheader(headerArray)
 
   return (
     <div>
-      <div style={{ width: '100%', height: '200px' }}>
+      <div style={{ 
+        width: '50%', 
+        height: '150px',
+        padding: '4px', 
+        }} id="table">
         <StickyTable stickyHeaderCount={2}>{rows}</StickyTable>
       </div>
     </div>
