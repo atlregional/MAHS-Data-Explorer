@@ -1,6 +1,6 @@
 #layer-selector-box {
   width: 11%;
-  background-color: rgba(214, 171, 171, 0.664);
+  background-color: rgba(214, 171, 171, 0.55);
   position: fixed;
   top: 16vh;
   left: 54%;
@@ -44,17 +44,22 @@
 
 @keyframes slideIn {
   0% {
-    transform: translate(50px);
+    transform: translate(50px, -50px);
   }
+  /* 50% {
+    transform: translate(25px, -25px);
+  } */
   100% {
-    transform: translate(0);
+    transform: translate(0px, 0px);
   }
 }
+
 @keyframes slideOut {
   0% {
-    transform: translate(0);
+    transform: translate(0px, 0px);
   }
+
   100% {
-    transform: translate(50px);
+    transform: translate(50px, -50px);
   }
 }
