@@ -2,6 +2,7 @@
   "name": "mahs-data-explorer",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "dependencies": {
     "@turf/polygon-to-line": "^6.0.3",
     "axios": "^0.20.0",
