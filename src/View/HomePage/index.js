@@ -9,11 +9,10 @@ import LayerSelector from '../../components/LayerSelector';
 import utils from '../../utils';
 import './style.css';
 
-const HomePage = (props) => {
+const HomePage = props => {
 
-  console.log(props);
+  // console.log(props);
   const mobile = window.screen.width < 800;
-
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
@@ -62,7 +61,7 @@ const HomePage = (props) => {
           data={[...props.tractInfo]}
         />
       </div>
-      <div id="dynamic-wrapper">
+      {/* <div id="dynamic-wrapper"> */}
         <div id="subarea-selector">
           <SubAreaSelector
             colormap={style.colormap}
@@ -75,7 +74,7 @@ const HomePage = (props) => {
             setSelectedSubareas={setSelectedSubareas}
           />
         </div>
-        <div id="viz-box">
+        {/* <div id="viz-box"> */}
           {/* {!mobile || mobileVizView === 'map' ? ( */}
           <div
             id="map-box"
@@ -92,7 +91,7 @@ const HomePage = (props) => {
             />
           </div>
           {/* ) : null} */}
-          <div id="right-col-viz-view">
+          {/* <div id="right-col-viz-view"> */}
             <div
               id="chart-box"
               className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
@@ -100,6 +99,7 @@ const HomePage = (props) => {
               {
                 tractInfo ?
                   <Chart
+                    indicators={indicators}
                     mobile={mobile}
                     tractInfo={tractInfo}
                     highlightedSubarea={highlightedSubarea}
@@ -122,9 +122,8 @@ const HomePage = (props) => {
                 selectedSubareas={selectedSubareas}
               />
             </div>
-          </div>
-        </div>
-      </div>
+        {/* </div> */}
+      {/* </div> */}
 
       {mobile ? (
         <VizViewSelector
