@@ -28,47 +28,9 @@ const Chart = props => {
   // console.log(JSON.stringify(tractInfo));
 
 
-  const indicatorArray = [
-    {
-      name: "Percent Renters 2017",
-      type: "percent",
-      indicator: {
-        id: "ID093",
-        name: "Total Renter Occupied Housing Units 2017"
-      },
-      universe: {
-        id: "ID094",
-        name: "Total Occupied Housing Units 2017"
-      },
-    },
+  const indicatorArray = props.indicators;
 
-    {
-      name: "Change in Percent Owner Households since 2010",
-      type: "weighted average",
-      indicator: {
-        id: "ID008",
-        name: "Change in Percent Owner Households since 2010"
-      },
-      universe: {
-        id: "ID091",
-        name: "Total Occupied Housing Units 2010"
-      }
-    },
-    {
-      name: "Averge Population in Poverty 2017",
-      type: "average",
-      indicator: {
-        id: "ID088",
-        name: "Population in Poverty 2017"
-      },
-      universe: {
-        id: "ID088",
-        name: "Population in Poverty 2017"
-      },
-    }
-  ];
-
-  const indicatorInfo = indicatorArray[2];
+  const indicatorInfo = indicatorArray[1];
 
   // const handleAggregate = () => 
   //   tractInfo ?
