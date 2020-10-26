@@ -32,7 +32,7 @@ const MapComp = props => {
     );
 
     Promise.all(returnedGeoJSONs).then(geoJSONS => {
-      console.log('returnedGeoJSONs: ', returnedGeoJSONs);
+      // console.log('returnedGeoJSONs: ', returnedGeoJSONs);
       const geoJSONsObj = {};
       [...geoJSONS].forEach(([key, value]) => (geoJSONsObj[key] = value));
       setGeoJSONs(geoJSONsObj);

@@ -2,10 +2,31 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 
 const SubAreaSelector = props => {
+  const windowWidth = window.innerWidth;
+  // console.log(windowWidth);
+
   const [buttonStyle, setButtonStyle] = useState({
     size: 75,
     margin: 5,
   });
+
+  useEffect(() => {
+    let size;
+    if (windowWidth > 800) {
+      size = (windowWidth * 0.1) / 2.5;
+      setButtonStyle({
+        size: size,
+        margin: 5,
+      });
+    }
+    if (windowWidth < 800) {
+      size = windowWidth / 5 - 15;
+      setButtonStyle({
+        size: size,
+        margin: 4,
+      });
+    }
+  }, []);
 
   const selectedSubareas = props.selectedSubareas;
   const setSelectedSubareas = array => props.setSelectedSubareas(array);
@@ -23,6 +44,9 @@ const SubAreaSelector = props => {
   const colormap = props.colormap;
 
   const handleButtonProps = () => {};
+  // windowWidth / 5 -
+
+  // handleButtonProps();
 
   // const selectedSubareas = props.selectedSubareas
   //   ? [...props.selectedSubareas]
@@ -35,6 +59,7 @@ const SubAreaSelector = props => {
   // console.log(setSelectedSubareas);
 
   // useEffect(() => subareas, []);
+  console.log('buttonStyle: ', buttonStyle);
 
   return subareas ? (
     <div id="subarea-selector-container">
@@ -45,7 +70,7 @@ const SubAreaSelector = props => {
           style={{
             height: `${buttonStyle.size}px`,
             width: `${buttonStyle.size}px`,
-            // margin: `${buttonStyle.margin}px auto`,
+            margin: `${buttonStyle.margin}px auto`,
             lineHeight: `${buttonStyle.size}px`,
             backgroundColor: `${colormap[subarea - 1]}`,
           }}

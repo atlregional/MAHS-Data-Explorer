@@ -20,7 +20,7 @@
   #subarea-selector-container {
     flex-direction: row;
   }
-  .subarea-selector-button {
-    /* margin: 5px; */
-  }
+  /* .subarea-selector-button {
+    margin: 2px;
+  } */
 }

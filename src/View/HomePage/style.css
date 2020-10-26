@@ -55,18 +55,17 @@ body {
   height: 90vh;
   left: 0;
   width: 10%;
-  top: 10vh;  
-  /* background-color: darkcyan; */
+  top: 10vh;
 }
 
 #layer-selector-box {
   z-index: 9999999;
   border: solid black 2px;
-  width: 25%;
+  width: 15%;
   background-color: lightgrey;
   position: fixed;
-  top: 11vh;
-  left: 41%;
+  top: 16vh;
+  left: 49.5%;
 }
 
 #map-box {
@@ -141,7 +140,7 @@ body {
 
   #subarea-selector {
     width: 100%;
-    height: 10vh; 
+    height: 10vh;
   }
 
   #map-box,
@@ -152,7 +151,4 @@ body {
     height: 70vh;
     width: 100%;
   }
-
-
-
 }

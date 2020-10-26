@@ -7,7 +7,7 @@ const LayerSelector = props => {
   // if vew is true, show the icon that will open the dropdown;
   const [view, setView] = useState('slide-open');
 
-  console.log('props.layers: ', props.layers);
+  // console.log('props.layers: ', props.layers);
   const layers = props.layers ? props.layers : [];
 
   return (
