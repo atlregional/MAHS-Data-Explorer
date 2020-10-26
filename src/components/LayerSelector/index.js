@@ -18,7 +18,7 @@ const LayerSelector = props => {
           name={view === 'slide-open' ? 'close' : 'list alternate outline'}
           size="large"
           onClick={() =>
-            view == 'slide-open'
+            view === 'slide-open'
               ? setView('slide-closed')
               : setView('slide-open')
           }
@@ -27,7 +27,7 @@ const LayerSelector = props => {
 
       <div
         id="layer-selector-box"
-        className={view == 'slide-open' ? 'slide-open' : 'slide-closed'}
+        className={view === 'slide-open' ? 'slide-open' : 'slide-closed'}
       >
         {layers.map((layer, idx) => (
           <div key={layer.name + idx} className="layer-selection-row">
