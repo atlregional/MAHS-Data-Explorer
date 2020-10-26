@@ -84,14 +84,20 @@ setheader(headerArray)
   var rows = [];
   var cells;
 
-  for (var r = 0; r < 4; r++) {
+  function getMapValue(obj, key) {
+    if (obj.hasOwnProperty(key))
+       return obj[key];
+    throw new Error("Invalid map key."); 
+ }
+
+  for (let r = 0; r < 4; r++) {
     cells = [];
 
-    for (var c = 0; c < header.length; c++) {
+    for (let c = 0; c < header.length; c++) {
       cells.push(<Cell key={c}>{( r === 0 && c === 0 ? 'Indicator'
         :r === 0 ? header[c-1] 
         : c === 0 ? data[r-1].indicator
-        : 'Cell')}
+        : data[r-1].[header[c-1]])}
         </Cell>);
     }
 
@@ -107,8 +113,8 @@ setheader(headerArray)
       <div style={{ 
         width: '50%', 
         height: '150px',
-        padding: '4px', 
-        }} id="table">
+        padding: '4px',
+         }} id="table">
         <StickyTable stickyHeaderCount={2}>{rows}</StickyTable>
       </div>
     </div>
