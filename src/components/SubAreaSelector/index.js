@@ -3,6 +3,11 @@ import './style.css';
 
 const SubAreaSelector = (props) => {
 
+  const [ buttonProps, setButtonProps ] = useState({
+    size: 75,
+    margin: 5
+  })
+
   const selectedSubareas = props.selectedSubareas;
   const setSelectedSubareas = array => props.setSelectedSubareas(array);
 
@@ -18,6 +23,8 @@ const SubAreaSelector = (props) => {
 
   const colormap = props.colormap;
 
+  const handleButtonProps = () =>  {};
+
   // const selectedSubareas = props.selectedSubareas
   //   ? [...props.selectedSubareas]
   //   : [];
@@ -30,13 +37,20 @@ const SubAreaSelector = (props) => {
 
   // useEffect(() => subareas, []);
 
+
   return subareas ? (
     <div id="subarea-selector-container">
       {subareas.map((subarea) => (
         <div
           key={`subarea-selector-button-${subarea}`}
           className="subarea-selector-button"
-          style={{ backgroundColor: `${colormap[subarea - 1]}` }}
+          style={{
+            height: `${buttonProps.size}px`,
+            width: `${buttonProps.size}px`,
+            margin: `${buttonProps.margin}px auto`,
+            lineHeight: `${buttonProps.size}px`,
+            backgroundColor: `${colormap[subarea - 1]}` 
+          }}
           onClick={() => {
             const array = [...selectedSubareas];
             array.includes(subarea)

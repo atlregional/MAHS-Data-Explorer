@@ -92,7 +92,7 @@ export default (data, indicatorInfo, aggregator) => {
 
   calcAggregation()
 
-  // console.log(calcAggregation())
+  console.log(calcAggregation())
   return calcAggregation();
   // objects like so...
   // {

@@ -29,7 +29,7 @@ const Chart = props => {
 
   const indicatorArray = props.indicators;
 
-  const indicatorInfo = indicatorArray[1];
+  const indicatorInfo = indicatorArray[0];
 
   // const handleAggregate = () =>
   //   tractInfo ?

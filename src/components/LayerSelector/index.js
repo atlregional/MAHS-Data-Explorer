@@ -15,7 +15,7 @@ const LayerSelector = props => {
       <div className="layer-selection-header">
         {/* hambugger icon when its closed, dissapears when open,  */}
         <Icon
-          name={view == 'slide-open' ? 'close' : 'list alternate outline'}
+          name={view === 'slide-open' ? 'close' : 'list alternate outline'}
           size="large"
           onClick={() =>
             view == 'slide-open'

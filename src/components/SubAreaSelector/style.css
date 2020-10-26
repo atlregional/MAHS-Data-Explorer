@@ -1,18 +1,19 @@
 #subarea-selector-container {
-    display: grid;
-    grid-template-rows: auto;
+    /* display: grid; */
+    /* grid-template-rows: auto; */
     height: 100%;
-    align-items: center
+    width: 100%;
+    /* align-items: center */
 }
 
 .subarea-selector-button {
     cursor: pointer;
-    margin: auto;
+    /* margin: auto;
     height: 75px;
-    width: 75px;
+    width: 75px; */
     /* line-height centers the text, make === to height of div */
-    line-height: 75px;
-    display: inline-block;
+    /* line-height: 75px; */
+    /* display: inline-block; */
     border-radius: 50%;
 }
 
