@@ -79,8 +79,7 @@ setheader(headerArray)
     // : null;
   console.log(data);
   console.log(header)
-  console.log(data)
-  console.log(data)
+ 
   var rows = [];
   var cells;
 
@@ -91,7 +90,7 @@ setheader(headerArray)
       cells.push(<Cell key={c}>{( r === 0 && c === 0 ? 'Indicator'
         :r === 0 ? header[c-1] 
         : c === 0 ? data[r-1].indicator
-        : 'Cell')}
+        : data[r-1].[header[c-1]])}
         </Cell>);
     }
 
