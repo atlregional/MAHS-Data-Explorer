@@ -105,7 +105,7 @@ setheader(headerArray)
   return (
     <div>
       <div style={{ 
-        width: '50%', 
+        width: '100%', 
         height: '150px',
         padding: '4px', 
         }} id="table">
