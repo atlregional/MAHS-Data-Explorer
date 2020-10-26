@@ -16,20 +16,22 @@ const HomePage = props => {
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
-  const [selection, setSelection] = useState({...props.config.selection});
+  const [selection, setSelection] = useState({ ...props.config.selection });
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
+  const [layers, setLayers] = useState(props.config.layers);
+  // console.log('selectedLayers: ', selectedLayers);
+
+  // use includes method to filter the stuff;
 
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
   const indicators = props.config.indicators;
 
   const handleTractInfo = () => {
-    const data = [...props.tractInfo]
+    const data = [...props.tractInfo];
     const dataObj = {};
-    data.forEach(tract => 
-      dataObj[tract.GEOID] = tract
-    );
+    data.forEach(tract => (dataObj[tract.GEOID] = tract));
     setTractInfo(dataObj);
   };
 
@@ -38,17 +40,17 @@ const HomePage = props => {
     const data = [...props.tractInfo].filter(tract =>
       utils.filterBySelection(tract, selection)
     );
-    data.forEach(tract => 
+    data.forEach(tract =>
       subareaArray.push(parseInt(tract.Subarea.replace('Subarea ', '')))
     );
-    const subareaSet = [
-      ...new Set(subareaArray)
-    ].sort((a, b) => a > b ? 1 : -1);
+    const subareaSet = [...new Set(subareaArray)].sort((a, b) =>
+      a > b ? 1 : -1
+    );
     setSubareaOptions(subareaSet);
   };
 
   useEffect(handleTractInfo, []);
-  useEffect(handleSubareaOptions, [selection.geo])
+  useEffect(handleSubareaOptions, [selection.geo]);
 
   return (
     <>
@@ -85,9 +87,9 @@ const HomePage = props => {
               tractInfo={tractInfo}
               selection={selection}
               config={props.config}
+              layers={layers}
               subareaOptions={subareaOptions}
               highlightedSubarea={highlightedSubarea}
-
             />
           </div>
           {/* ) : null} */}
@@ -130,12 +132,9 @@ const HomePage = props => {
           mobileVizView={mobileVizView}
           setMobileVizView={setMobileVizView}
         />
-      ) 
-      : null}
+      ) : null}
 
-      {/* <div id='layer-selector-box'>
-        <LayerSelector layers={props.config.layers} />
-      </div> */}
+      <LayerSelector setLayers={setLayers} layers={layers} />
     </>
   );
 };

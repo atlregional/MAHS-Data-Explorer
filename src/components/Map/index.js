@@ -4,18 +4,15 @@ import { Map as LeafletMap, TileLayer, GeoJSON, Tooltip } from 'react-leaflet';
 import polygonToLine from '@turf/polygon-to-line';
 // import RingLoader from "react-spinners/RingLoader";
 
-
 const MapComp = props => {
-
   const mapRef = useRef();
   const [geoJSONs, setGeoJSONs] = useState();
 
   const tileLayerConfig = props.config.tilelayers;
 
-  const layerConfigs = props.config.layers;
+  const layerConfigs = props.layers;
 
   const handleGeoJSONs = () => {
-
     const getGeoJSON = (key, url) =>
       new Promise(resolve =>
         utils
@@ -26,50 +23,43 @@ const MapComp = props => {
           .catch(err => console.log(err))
       );
 
-
     let returnedGeoJSONs = [];
 
-    console.log(returnedGeoJSONs);
+    // console.log(returnedGeoJSONs);
 
     layerConfigs.forEach(config =>
-      returnedGeoJSONs.push(
-        getGeoJSON(config.name, config.url)
-      )
+      returnedGeoJSONs.push(getGeoJSON(config.name, config.url))
     );
 
-    Promise.all(returnedGeoJSONs)
-      .then(geoJSONS => {
-        const geoJSONsObj = {};
-        [...geoJSONS].forEach(([key, value]) =>
-          geoJSONsObj[key] = value
-        );
-        setGeoJSONs(geoJSONsObj);
-      });
+    Promise.all(returnedGeoJSONs).then(geoJSONS => {
+      console.log('returnedGeoJSONs: ', returnedGeoJSONs);
+      const geoJSONsObj = {};
+      [...geoJSONS].forEach(([key, value]) => (geoJSONsObj[key] = value));
+      setGeoJSONs(geoJSONsObj);
+    });
   };
 
   const [bounds, setBounds] = useState();
 
-  const tractIDField = layerConfigs.find(info =>
-    info.name === 'tracts').geoField
+  const tractIDField = layerConfigs.find(info => info.name === 'tracts')
+    .geoField;
 
   const tractStyle = tractInfo => {
-    const subarea = tractInfo ? 
-      parseInt(tractInfo.Subarea.replace('Subarea ', '')) 
-    : null;
+    const subarea = tractInfo
+      ? parseInt(tractInfo.Subarea.replace('Subarea ', ''))
+      : null;
     const config = props.config;
     // const style = layerConfigs.find(item => item.name === 'tracts')
     // console.log(subarea);
     const color = subarea ? config.style.colormap[subarea - 1] : null;
     return {
-    fillColor: color,
-    fillOpacity: .7
-    }
+      fillColor: color,
+      fillOpacity: 0.7,
+    };
   };
 
-  const handleBounds = featureBounds => 
-    Object.keys(featureBounds).length > 0 ? 
-      setBounds(featureBounds)
-    : null;
+  const handleBounds = featureBounds =>
+    Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
   useEffect(handleGeoJSONs, []);
 
   // console.log(JSON.stringify(props.tractInfo));
@@ -91,26 +81,27 @@ const MapComp = props => {
       maxZoom={16}
       minZoom={3}
     >
-      {
-        geoJSONs ?
-          layerConfigs
+      {geoJSONs
+        ? layerConfigs
             .filter(config => config.visible && config.type === 'boundary')
             .map(config => {
               const boundary = geoJSONs[config.name].features.map(feature =>
-                polygonToLine(feature));
+                polygonToLine(feature)
+              );
               return (
                 <GeoJSON
                   onAdd={e => {
-                    e.target.bringToFront()
+                    e.target.bringToFront();
                     const featureBounds = e.target.getBounds();
                     handleBounds(featureBounds);
                   }}
                   key={`boundary-layer-${config.name}-${props.selection.geo}`}
                   data={boundary}
-                  filter={feature => 
-                    props.selection.geo === '10 Counties' ?
-                      config.name === 'counties'
-                    : feature.properties[config.geoField] === props.selection.geo
+                  filter={feature =>
+                    props.selection.geo === '10 Counties'
+                      ? config.name === 'counties'
+                      : feature.properties[config.geoField] ===
+                        props.selection.geo
                   }
                   style={{
                     color: config.boundaryColor,
@@ -119,13 +110,11 @@ const MapComp = props => {
                 />
               );
             })
-          : null
-      }
-      {
-        geoJSONs ?  
-          layerConfigs
+        : null}
+      {geoJSONs
+        ? layerConfigs
             .filter(config => config.visible && config.type === 'data')
-            .map(config =>
+            .map(config => (
               <GeoJSON
                 onAdd={e => e.target.bringToBack()}
                 key={`data-layer-${config.name}-${props.selection.geo}`}
@@ -138,30 +127,26 @@ const MapComp = props => {
                     color: config.boundaryColor,
                     weight: config.boundaryWidth,
                     ...tractStyle(tractInfo),
-
                   };
                 }}
                 filter={feature => {
                   const geoID = feature.properties[config.geoField].toString();
                   const tractInfo = props.tractInfo[geoID];
                   // console.log(tractInfo);
-                  return (
-                    tractInfo ?
-                      props.selection.geo === '10 Counties' ? 
-                        true :  props.selection.geoType === 'County' ?
-                          feature.properties['COUNTY_NM'] === props.selection.geo
-                          : props.selection.geoType === 'City' ?
-                            tractInfo.Cities.includes(props.selection.geo)
+                  return tractInfo
+                    ? props.selection.geo === '10 Counties'
+                      ? true
+                      : props.selection.geoType === 'County'
+                      ? feature.properties['COUNTY_NM'] === props.selection.geo
+                      : props.selection.geoType === 'City'
+                      ? tractInfo.Cities.includes(props.selection.geo)
                       : true
-                    : false
-                  );
+                    : false;
                 }}
                 data={geoJSONs[config.name]}
               />
-            )
-          : null
-
-      }
+            ))
+        : null}
       <TileLayer
         key={`tile-layer-${tileLayerConfig[1].name}`}
         url={tileLayerConfig[1].url}

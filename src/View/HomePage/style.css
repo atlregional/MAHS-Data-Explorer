@@ -22,14 +22,13 @@ body {
 
 .geo-selector {
   font-size: 1.3em;
-  padding: .3em;
+  padding: 0.3em;
   margin: 1em 0 0 0;
   border-radius: 10px;
 }
 
 .geo-option {
-  font-size: .5em;
-
+  font-size: 0.5em;
 }
 
 /* #dynamic-wrapper {
@@ -104,8 +103,32 @@ body {
   border-radius: 10px;
 }
 
-@media screen and (max-width: 800px) {
+/* ICON COLORS */
+/* map zoom icons */
+.leaflet-control-zoom a,
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+  font-size: 35px;
+  border: solid thin rgb(119, 148, 123, 0.2);
+  color: rgb(75, 89, 104, 0.95);
+}
 
+/* checkboxes */
+.layer-selection-row,
+.ui.checkbox input:checked ~ .box:after,
+.ui.checkbox input:checked ~ label:after {
+  color: rgb(75, 89, 104, 0.95);
+}
+
+.layer-selection-header i.icon {
+  font-size: 28px;
+  padding: 0;
+  background-color: #ffffff;
+  border: solid thin rgb(119, 148, 123, 0.2);
+  color: rgb(75, 89, 104, 0.95);
+}
+
+@media screen and (max-width: 800px) {
   h1 {
     font-size: 2em;
     white-space: wrap;
