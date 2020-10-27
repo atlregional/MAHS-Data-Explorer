@@ -4,16 +4,23 @@ import './style.css';
 const SubAreaSelector = props => {
   const windowWidth = window.innerWidth;
   // console.log(windowWidth);
-
+  const subareas = props.subareaOptions;
+  console.log('subareas: ', subareas);
   const [buttonStyle, setButtonStyle] = useState({
     size: 75,
     margin: 5,
   });
 
+  const count = subareas.length;
+  console.log(count);
+  const denom = count < 6 ? 1.25 : 2.5;
+  console.log(denom);
+
   useEffect(() => {
     let size;
     if (windowWidth > 800) {
-      size = (windowWidth * 0.1) / 2.5;
+      size = (windowWidth * 0.1) / denom;
+      console.log('size: ', size);
       setButtonStyle({
         size: size,
         margin: 5,
@@ -26,7 +33,7 @@ const SubAreaSelector = props => {
         margin: 4,
       });
     }
-  }, []);
+  }, [denom]);
 
   const selectedSubareas = props.selectedSubareas;
   const setSelectedSubareas = array => props.setSelectedSubareas(array);
@@ -38,8 +45,6 @@ const SubAreaSelector = props => {
   // const [selectedSubareas, setSelectedSubareas] = useState([])
 
   // console.log('props: ', props);
-  const subareas = props.subareaOptions;
-  // console.log('subareas: ', subareas);
 
   const colormap = props.colormap;
 

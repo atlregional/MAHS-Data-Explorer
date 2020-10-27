@@ -143,6 +143,13 @@ body {
     height: 10vh;
   }
 
+  #subarea-selector-enlarged {
+    width: 100%;
+    height: 20vh;
+    top: 10vh;
+    position: absolute;
+  }
+
   #map-box,
   #chart-box,
   #table-box {
@@ -150,5 +157,18 @@ body {
     top: 20vh;
     height: 70vh;
     width: 100%;
+  }
+
+  #map-box-reduced,
+  #chart-box-reduced,
+  #table-box-reduced {
+    position: absolute;
+    left: 0;
+    top: 32vh;
+    height: 58vh;
+    width: 100%;
+  }
+  #map-box-reduced {
+    padding: 1em;
   }
 }
