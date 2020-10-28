@@ -82,14 +82,23 @@ const Chart = props => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey={'Subarea'} />
             <YAxis />
-            <Tooltip content={<CustomTooltip />} />
+            {/* <Tooltip content={<CustomTooltip />} /> */}
             <Legend />
 
             <Bar dataKey={indicatorInfo.name}>
               {data.map((barData, idx) => (
                 <Cell
                   key={indicatorInfo.name + idx}
+                  fillOpacity={barData.Subarea === props.highlightedSubarea ? 1 : props.highlightedSubarea ? .5 : 1 }
+                  stroke={barData.Subarea === props.highlightedSubarea ? 'black' : null }
+                  strokeWidth={barData.Subarea === props.highlightedSubarea ? 3 : null }
                   fill={colormap[barData.Subarea - 1]}
+                  onMouseEnter={() => 
+                    props.setHighlightedSubarea(barData.Subarea)
+                  }
+                  onMouseLeave={() => 
+                    props.setHighlightedSubarea()
+                  }
                 />
               ))}
             </Bar>

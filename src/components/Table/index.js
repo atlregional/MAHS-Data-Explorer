@@ -222,7 +222,7 @@ const Table = props => {
                 item 
               : c === 0 ? 
                   lineBreaker(data[r].indicator)
-                : numeral(data[r][item]).format(0,0.0)
+                : numeral(data[r][item]).format('0,0')
           }
         </Cell>
         )

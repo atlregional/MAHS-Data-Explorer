@@ -6,7 +6,7 @@ const SubAreaSelector = props => {
   const windowWidth = window.innerWidth;
   const subareas = props.subareaOptions;
   const count = subareas.length;
-  const scaler = count < 6 ? 1.25 : 2.5;
+  const scaler = count < 6 ? 1.25 : windowWidth > 1100 ? 2.5 : 2;
 
   const handleButtonSize = () => 
     setButtonSize(
@@ -15,60 +15,22 @@ const SubAreaSelector = props => {
       : windowWidth / 5 - 15
     );
 
-    // if (windowWidth > 800) {
-    //   size = (windowWidth * 0.1) / denom;
-    //   setButtonStyle({
-    //     size: size,
-    //     margin: 5,
-    //   });
-    // }
-    // if (windowWidth < 800) {
-    //   size = windowWidth / 5 - 15;
-    //   setButtonStyle({
-    //     size: size,
-    //     margin: 4,
-    //   });
-    // }
-  // }
-
   useEffect(handleButtonSize, [subareas]);
 
   const selectedSubareas = props.selectedSubareas;
   const setSelectedSubareas = array => props.setSelectedSubareas(array);
 
   // Add these to mouseenter event and set state to null on mouseleave
-  const highligthedSubarea = props.highligthedSubarea;
+  const highlightedSubarea = props.highlightedSubarea;
   const setHighlightedSubarea = number => props.setHighlightedSubarea(number);
-
-  // const [selectedSubareas, setSelectedSubareas] = useState([])
-
-  // console.log('props: ', props);
-
   const colormap = props.colormap;
 
-  const handleButtonProps = () => {};
-  // windowWidth / 5 -
-
-  // handleButtonProps();
-
-  // const selectedSubareas = props.selectedSubareas
-  //   ? [...props.selectedSubareas]
-  //   : [];
-  // console.log(selectedSubareas);
-  // const setSelectedSubareas = (array) =>
-  //   props.setSelectedSubarea
-  //     ? props.setSelectedSubarea(array)
-  //     : console.log(array);
-  // console.log(setSelectedSubareas);
-
-  // useEffect(() => subareas, []);
-  // console.log('buttonStyle: ', buttonStyle);
 
   return subareas ? (
     <div id="subarea-selector-container">
       {subareas.map(subarea => (
         <div
-          key={`subarea-selector-button-${subarea}`}
+          key={`subarea-selector-button-${subarea}-${highlightedSubarea}`}
           className="subarea-selector-button"
           style={{
             height: `${buttonSize}px`,
@@ -76,6 +38,10 @@ const SubAreaSelector = props => {
             margin: 'auto',
             lineHeight: `${buttonSize}px`,
             backgroundColor: `${colormap[subarea - 1]}`,
+            opacity: highlightedSubarea === subarea ? '1' : highlightedSubarea ? '.4' : '1',
+            borderColor: highlightedSubarea === subarea ? 'black' : `${colormap[subarea - 1]}`,
+            borderWidth: '3px',
+            borderStyle: 'solid'
           }}
           onClick={() => {
             const array = [...selectedSubareas];
