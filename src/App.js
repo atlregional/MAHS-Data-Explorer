@@ -100,6 +100,8 @@ const App = () => {
   
   useEffect(handleStart, []);
 
+  console.log(tractInfo);
+
   return (
     <div className="App">
       {

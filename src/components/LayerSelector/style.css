@@ -1,4 +1,5 @@
-#layer-selector-box {
+#layer-selector-box,
+#layer-selector-box-shifted {
   width: 11%;
   /* background-color: rgb(226, 202, 201, 0.65); */
   background-color: white;
@@ -23,7 +24,8 @@
   transition: opacity 0s ease-out;
 }
 
-.layer-selection-header {
+#layer-selection-header,
+#layer-selection-header-shifted {
   height: 40px;
   width: 40px;
   line-height: 40px;
@@ -57,16 +59,16 @@
   padding: 0.5em;
   padding-right: 1.2em;
 }
-.layer-selection-header  i.icon {
+
+#layer-selection-header  i.icon,
+#layer-selection-header-shifted  i.icon
+ {
   font-size: 40px;
   padding: -2px;
-  /* background-color: rgb(226, 202, 201, 1); */
-  
   background-color: white;
   border: solid thin rgb(119, 148, 123, 0.2);
   border-radius: 5px;
   color: rgb(75, 89, 104, 0.95);
-
 } 
 
 @keyframes slideIn {
@@ -100,9 +102,23 @@
     /* opacity: .8; */
   }
 
-  .layer-selection-header {
+  #layer-selection-header {
     top: calc(20vh + 20px);
     left: 20px;
+  }
+
+  #layer-selection-header-shifted {
+    position: fixed;
+    top: calc(30vh + 20px);
+    left: 20px;
+  }
+
+  #layer-selector-box-shifted {
+    position: fixed;
+    width: 50%;
+    top: calc(30vh + 40px);
+    left: 40px;
+    /* opacity: .8; */
   }
 
 

@@ -32,7 +32,7 @@ const MapComp = props => {
     );
 
     Promise.all(returnedGeoJSONs).then(geoJSONS => {
-      console.log('returnedGeoJSONs: ', returnedGeoJSONs);
+      // console.log('returnedGeoJSONs: ', returnedGeoJSONs);
       const geoJSONsObj = {};
       [...geoJSONS].forEach(([key, value]) => (geoJSONsObj[key] = value));
       setGeoJSONs(geoJSONsObj);
@@ -66,6 +66,7 @@ const MapComp = props => {
   return (
     // container for map
     <LeafletMap
+      key={`subarea-map-${props.numberOfSubareas}`}
       animate
       boxZoom
       trackResize
@@ -75,7 +76,6 @@ const MapComp = props => {
       center={[33.753, -84.386]}
       zoom={10}
       bounds={bounds ? bounds : null}
-      key={`leaflet-map-${mapRef}`}
       zoomDelta={0.3}
       zoomSnap={0.3}
       maxZoom={16}
@@ -84,11 +84,15 @@ const MapComp = props => {
     >
       {geoJSONs
         ? layerConfigs
-            .filter(config => config.visible && config.type === 'boundary')
+            .filter(config => 
+              config.visible && config.type === 'boundary')
             .map(config => {
-              const boundary = geoJSONs[config.name].features.map(feature =>
-                polygonToLine(feature)
-              );
+              const boundary = 
+                geoJSONs[config.name]
+                  .features
+                  .map(feature =>
+                    polygonToLine(feature)
+                  );
               return (
                 <GeoJSON
                   onAdd={e => {

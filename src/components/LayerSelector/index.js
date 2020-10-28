@@ -7,12 +7,18 @@ const LayerSelector = props => {
   // if vew is true, show the icon that will open the dropdown;
   const [view, setView] = useState('open');
 
-  console.log('props.layers: ', props.layers);
+  // console.log('props.layers: ', props.layers);
   const layers = props.layers ? props.layers : [];
 
   return (
     <>
-      <div className="layer-selection-header">
+      <div 
+        id={
+          props.numberOfSubareas <= 5 || !props.mobile
+          ? "layer-selection-header"
+          : "layer-selection-header-shifted"
+        }
+      >
         {/* hambugger icon when its closed, dissapears when open,  */}
         <Icon
           name={'list alternate outline'}
@@ -24,7 +30,11 @@ const LayerSelector = props => {
       </div>
 
       <div
-        id="layer-selector-box"
+        id={
+          props.numberOfSubareas <= 5 || !props.mobile
+          ? "layer-selector-box"
+          : "layer-selector-box-shifted"
+        }
         className={view === 'open' ? 'open' : 'closed'}
       >
           {/* <div id='layer-selector-'>

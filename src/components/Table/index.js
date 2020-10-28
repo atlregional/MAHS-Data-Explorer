@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { StickyTable, Row, Cell } from 'react-sticky-table';
 import utils from '../../utils';
+import numeral from 'numeral';
+import './style.css'
 
 
 const Table = props => {
   // Bring in data and map to table with indicator name as row headers and subarea name as column headers
   const tractInfo = props.tractInfo;
   console.log(tractInfo)
-  const headerArray = [];
+  const headerArray = ['indicator'];
   const [ data, setData ] = useState();
   const [ header, setheader ] = useState([]);
   const indicatorInfo = [
@@ -46,8 +48,128 @@ const Table = props => {
         id: "ID088",
         name: "Population in Poverty 2017"
       },
+    },
+    {
+      name: "Average Number of HHs by Tract, 2017",
+      type: "average",
+      indicator: {
+        id: "ID078",
+        name: "Number of HHs 2017"
+      },
+      universe: {
+        id: "ID078",
+        name: "Number of HHs 2017"
+      },
+    },
+    {
+      name: "Change in Percent Owner Households since 2010",
+      type: "weighted average",
+      indicator: {
+        id: "ID008",
+        name: "Change in Percent Owner Households since 2010"
+      },
+      universe: {
+        id: "ID091",
+        name: "Total Occupied Housing Units 2010"
+      }
+    },
+    {
+      name: "Averge Population in Poverty 2017",
+      type: "average",
+      indicator: {
+        id: "ID088",
+        name: "Population in Poverty 2017"
+      },
+      universe: {
+        id: "ID088",
+        name: "Population in Poverty 2017"
+      },
+    },
+    {
+      name: "Average Number of HHs by Tract, 2017",
+      type: "average",
+      indicator: {
+        id: "ID078",
+        name: "Number of HHs 2017"
+      },
+      universe: {
+        id: "ID078",
+        name: "Number of HHs 2017"
+      },
+    },
+    {
+      name: "Change in Percent Owner Households since 2010",
+      type: "weighted average",
+      indicator: {
+        id: "ID008",
+        name: "Change in Percent Owner Households since 2010"
+      },
+      universe: {
+        id: "ID091",
+        name: "Total Occupied Housing Units 2010"
+      }
+    },
+    {
+      name: "Averge Population in Poverty 2017",
+      type: "average",
+      indicator: {
+        id: "ID088",
+        name: "Population in Poverty 2017"
+      },
+      universe: {
+        id: "ID088",
+        name: "Population in Poverty 2017"
+      },
+    },
+    {
+      name: "Average Number of HHs by Tract, 2017",
+      type: "average",
+      indicator: {
+        id: "ID078",
+        name: "Number of HHs 2017"
+      },
+      universe: {
+        id: "ID078",
+        name: "Number of HHs 2017"
+      },
+    },
+    {
+      name: "Change in Percent Owner Households since 2010",
+      type: "weighted average",
+      indicator: {
+        id: "ID008",
+        name: "Change in Percent Owner Households since 2010"
+      },
+      universe: {
+        id: "ID091",
+        name: "Total Occupied Housing Units 2010"
+      }
+    },
+    {
+      name: "Averge Population in Poverty 2017",
+      type: "average",
+      indicator: {
+        id: "ID088",
+        name: "Population in Poverty 2017"
+      },
+      universe: {
+        id: "ID088",
+        name: "Population in Poverty 2017"
+      },
     }
   ];
+
+  const lineBreaker = string =>
+    string
+    .match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g)
+    .map(line =>
+      <p
+        className='indicator-column'
+      >
+        {line}
+      </p>
+    ) 
+
 
   const handleAggregation = () => {
     const array = [];
@@ -69,7 +191,7 @@ const Table = props => {
    )
 
    headerArray.sort((a,b) => parseInt(a.replace('Subarea ', '')) < parseInt(b.replace('Subarea ', '')) ? -1 : 1)
-setheader(headerArray)
+   setheader(headerArray)
   
 
     array.sort((a,b) => a.Subarea < b.Subarea ? -1 : 1)
@@ -81,36 +203,53 @@ setheader(headerArray)
   console.log(header)
  
   var rows = [];
-  var cells;
+  // var cells;
 
-  for (var r = 0; r < 4; r++) {
-    cells = [];
+  indicatorInfo.forEach((indicator, r) => {
+    const cells = [];
 
-    for (var c = 0; c < header.length; c++) {
-      cells.push(<Cell key={c}>{( r === 0 && c === 0 ? 'Indicator'
-        :r === 0 ? header[c-1] 
-        : c === 0 ? data[r-1].indicator
-        : data[r-1].[header[c-1]])}
-        </Cell>);
-    }
+    header.forEach((item, c) =>
+      cells.push(
+        <Cell 
+          key={`${c}-${r}`}
+          className='table-cells'
+        >
+          {
+            r === 0 && 
+            c === 0 ?
+              '' // Could maybe put dropdown selector here
+            : r === 0 ? 
+                item 
+              : c === 0 ? 
+                  lineBreaker(data[r].indicator)
+                : numeral(data[r][item]).format(0,0.0)
+          }
+        </Cell>
+        )
+      );
+    // }
 
     rows.push(<Row key={r}>{cells}</Row>);
-  }
+  })
 
 
 
   useEffect(handleAggregation, [props.selection])
 
   return (
-    <div>
-      <div style={{ 
-        width: '100%', 
-        height: '150px',
-        padding: '4px', 
-        }} id="table">
-        <StickyTable stickyHeaderCount={2}>{rows}</StickyTable>
+    // <div>
+      <div 
+        style={{ 
+          width: '100%', 
+          height: '100%',
+          padding: '4px', 
+        }} 
+        id="table">
+        <StickyTable stickyHeaderCount={1}>
+          {rows}
+        </StickyTable>
       </div>
-    </div>
+    // </div>
   );
 };
 
