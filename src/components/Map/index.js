@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import utils from '../../utils';
-import { Map as LeafletMap, TileLayer, GeoJSON, Tooltip } from 'react-leaflet';
+import { Map as LeafletMap, TileLayer, GeoJSON, ZoomControl } from 'react-leaflet';
 import polygonToLine from '@turf/polygon-to-line';
 // import RingLoader from "react-spinners/RingLoader";
 
@@ -80,6 +80,7 @@ const MapComp = props => {
       zoomSnap={0.3}
       maxZoom={16}
       minZoom={3}
+      zoomControl={false}
     >
       {geoJSONs
         ? layerConfigs
@@ -152,6 +153,7 @@ const MapComp = props => {
         url={tileLayerConfig[1].url}
         attribution={tileLayerConfig[1].attribution}
       />
+      <ZoomControl position='bottomleft'/>
     </LeafletMap>
   );
 };

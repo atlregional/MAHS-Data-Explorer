@@ -5,7 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 const LayerSelector = props => {
   // if vew is true, show the icon that will open the dropdown;
-  const [view, setView] = useState('slide-open');
+  const [view, setView] = useState('open');
 
   console.log('props.layers: ', props.layers);
   const layers = props.layers ? props.layers : [];
@@ -15,24 +15,25 @@ const LayerSelector = props => {
       <div className="layer-selection-header">
         {/* hambugger icon when its closed, dissapears when open,  */}
         <Icon
-          name={view === 'slide-open' ? 'close' : 'list alternate outline'}
-          size="large"
+          name={'list alternate outline'}
           onClick={() =>
-            view == 'slide-open'
-              ? setView('slide-closed')
-              : setView('slide-open')
+            setView(view === 'open' ? 'closed' : 'open')
           }
+          
         />
       </div>
 
       <div
         id="layer-selector-box"
-        className={view == 'slide-open' ? 'slide-open' : 'slide-closed'}
+        className={view === 'open' ? 'open' : 'closed'}
       >
-        {layers.map((layer, idx) => (
+          {/* <div id='layer-selector-'>
+            <em>Turn on and off layers</em>
+          </div> */}
+        {view === 'open' ? layers.map((layer, idx) => (
           <div key={layer.name + idx} className="layer-selection-row">
-            <div>
-              {' '}
+            <div className='layer-selection-checkbox'>
+              
               <Checkbox
                 checked={layer.visible}
                 onChange={() => {
@@ -50,11 +51,12 @@ const LayerSelector = props => {
                   });
                   props.setLayers(arr);
                 }}
-              />{' '}
+              />
             </div>
             <div>{layer.label}</div>
-          </div>
-        ))}
+          </div> 
+        ))
+        : null}
       </div>
     </>
   );

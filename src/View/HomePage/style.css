@@ -59,16 +59,6 @@ body {
   background-color: darkcyan;
 }
 
-#layer-selector-box {
-  z-index: 9999999;
-  border: solid black 2px;
-  width: 25%;
-  background-color: lightgrey;
-  position: fixed;
-  top: 11vh;
-  left: 41%;
-}
-
 #map-box {
   position: fixed;
   left: 10%;
@@ -120,13 +110,13 @@ body {
   color: rgb(75, 89, 104, 0.95);
 }
 
-.layer-selection-header i.icon {
+/* .layer-selection-header i.icon {
   font-size: 28px;
   padding: 0;
   background-color: #ffffff;
   border: solid thin rgb(119, 148, 123, 0.2);
   color: rgb(75, 89, 104, 0.95);
-}
+} */
 
 @media screen and (max-width: 800px) {
   h1 {
