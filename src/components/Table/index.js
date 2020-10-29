@@ -213,6 +213,9 @@ const Table = props => {
         <Cell 
           key={`${c}-${r}`}
           className='table-cells'
+          style={{
+            backgroundColor: item === `Subarea ${props.highlightedSubarea}` ? 'lightgrey' : null
+          }}
         >
           {
             r === 0 && 
