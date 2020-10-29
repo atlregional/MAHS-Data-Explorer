@@ -15,12 +15,8 @@ import {
 } from 'recharts';
 import './style.css';
 import utils from '../../utils';
-import SingleDropdown from '../SingleDropdown';
 
 const Chart = props => {
-  const [indicator, setIndicator] = useState();
-  const [dropDownOpen, setDropdownOpen] = useState();
-
   let colormap = props.colormap;
   // console.log(colormap);
   const tractInfo = props.tractInfo;
@@ -30,13 +26,11 @@ const Chart = props => {
 
   // console.log(JSON.stringify(tractInfo));
 
+
   const indicatorArray = props.indicators;
 
-  const selectedIndicator = indicatorArray[0];
+  const indicatorInfo = indicatorArray[0];
 
-  // setIndicator(selectedIndicator.indicator);
-  console.log('data: ', data);
-  console.log('selectedIndicator: ', selectedIndicator);
   // const handleAggregate = () =>
   //   tractInfo ?
 
@@ -45,13 +39,13 @@ const Chart = props => {
     const data = Object.values(tractInfo).filter(tract =>
       utils.filterBySelection(tract, props.selection)
     );
-    const aggregatedData = utils.aggregate(data, selectedIndicator, 'Subarea');
+    const aggregatedData = utils.aggregate(data, indicatorInfo, 'Subarea');
 
     Object.entries(aggregatedData).forEach(([key, value]) =>
       array.push({
         name: key,
         Subarea: parseInt(key.replace('Subarea ', '')),
-        [selectedIndicator.name]: value,
+        [indicatorInfo.name]: value,
       })
     );
 
@@ -67,7 +61,7 @@ const Chart = props => {
     active ? (
       <div className="custom-tooltip">
         <h5 className="tooltip-indicator">{`${payload[0].payload.name}`}</h5>
-        <p className="label">{`${selectedIndicator.name}: ${payload[0].value}`}</p>
+        <p className="label">{`${indicatorInfo.name}: ${payload[0].value}`}</p>
       </div>
     ) : null;
 
@@ -79,35 +73,6 @@ const Chart = props => {
           width="92%"
           height="85%"
         >
-          <div
-            id="indicator-selector-dropdown"
-            onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
-          >
-            <div id="indicator-selector-dropdown-header">
-              {selectedIndicator.name} //Add triangle icon here
-            </div>
-            {indicatorArray.map(item => {
-              console.log(item);
-              // <div
-              //   id={
-              //     item.name === props.selectedIndicator.name
-              //       ? 'selected-option'
-              //       : null
-              //   }
-              //   className="item-selector-dropdown-option"
-              //   onClick={() => props.setIndicator(item.name)}
-              // >
-              //   {' '}
-              //   {item.name}
-              // </div>;
-            })}
-            {/* {dropDownOpen ? console.log(props) : null} */}
-          </div>
-          {/* <SingleDropdown
-            indicatorArray={indicatorArray}
-            selectedIndicator={selectedIndicator}
-            setIndicator={setIndicator}
-          /> */}
           <ComposedChart
             className="bar-chart"
             width={500}
@@ -117,23 +82,14 @@ const Chart = props => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey={'Subarea'} />
             <YAxis />
-            {/* <Tooltip content={<CustomTooltip />} /> */}
+            <Tooltip content={<CustomTooltip />} />
             <Legend />
 
-            <Bar dataKey={selectedIndicator.name}>
+            <Bar dataKey={indicatorInfo.name}>
               {data.map((barData, idx) => (
                 <Cell
                   key={indicatorInfo.name + idx}
-                  fillOpacity={barData.Subarea === props.highlightedSubarea ? 1 : props.highlightedSubarea ? .5 : 1 }
-                  stroke={barData.Subarea === props.highlightedSubarea ? 'black' : null }
-                  strokeWidth={barData.Subarea === props.highlightedSubarea ? 3 : null }
                   fill={colormap[barData.Subarea - 1]}
-                  onMouseEnter={() => 
-                    props.setHighlightedSubarea(barData.Subarea)
-                  }
-                  onMouseLeave={() => 
-                    props.setHighlightedSubarea()
-                  }
                 />
               ))}
             </Bar>
