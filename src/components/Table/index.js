@@ -202,14 +202,23 @@ const Table = props => {
 
     header.forEach((item, c) =>
       cells.push(
-        <Cell key={`${c}-${r}`} className="table-cells">
-          {r === 0 && c === 0
-            ? '' // Could maybe put dropdown selector here
-            : r === 0
-            ? item
-            : c === 0
-            ? lineBreaker(data[r].indicator)
-            : numeral(data[r][item]).format(0, 0.0)}
+        <Cell 
+          key={`${c}-${r}`}
+          className='table-cells'
+          style={{
+            backgroundColor: item === `Subarea ${props.highlightedSubarea}` ? 'lightgrey' : null
+          }}
+        >
+          {
+            r === 0 && 
+            c === 0 ?
+              '' // Could maybe put dropdown selector here
+            : r === 0 ? 
+                item 
+              : c === 0 ? 
+                  lineBreaker(data[r].indicator)
+                : numeral(data[r][item]).format('0,0')
+          }
         </Cell>
       )
     );

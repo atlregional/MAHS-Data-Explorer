@@ -119,6 +119,7 @@ const HomePage = props => {
             selectedSubareas={selectedSubareas}
             colormap={style.colormap}
             selection={selection}
+            setHighlightedSubarea={setHighlightedSubarea}
           />
         ) : null}
       </div>

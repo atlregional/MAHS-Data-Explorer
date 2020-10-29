@@ -5,7 +5,7 @@ import polygonToLine from '@turf/polygon-to-line';
 // import RingLoader from "react-spinners/RingLoader";
 
 const MapComp = props => {
-  const mapRef = useRef();
+  // const mapRef = useRef();
   const [geoJSONs, setGeoJSONs] = useState();
 
   const tileLayerConfig = props.config.tilelayers;
@@ -54,13 +54,16 @@ const MapComp = props => {
     const color = subarea ? config.style.colormap[subarea - 1] : null;
     return {
       fillColor: color,
-      fillOpacity: 0.7,
+      color: color
+      // fillOpacity: 0.7,
     };
   };
 
   const handleBounds = featureBounds =>
     Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
   useEffect(handleGeoJSONs, []);
+
+  console.log(props.highlightedSubarea);
 
   // console.log(JSON.stringify(props.tractInfo));
   return (
@@ -122,22 +125,27 @@ const MapComp = props => {
             .map(config => (
               <GeoJSON
                 onAdd={e => e.target.bringToBack()}
+
                 key={`data-layer-${config.name}-${props.selection.geo}`}
                 style={feature => {
                   const geoID = feature.properties[tractIDField];
                   const tractInfo = props.tractInfo[geoID];
-                  // const style = layerConfigs.find(item => item.name === config)
-
+                  const subarea = tractInfo['Subarea'];
+                  const highlight = subarea === `Subarea ${props.highlightedSubarea}`;
+                  const style = tractStyle(tractInfo);
                   return {
-                    color: config.boundaryColor,
-                    weight: config.boundaryWidth,
-                    ...tractStyle(tractInfo),
+                    ...style,
+                    color: props.highlightedSubarea && highlight ? 'black' : config.boundaryColor,
+                    weight: props.highlightedSubarea && highlight ? 3 : props.highlightedSubarea ? 0 : config.boundaryWidth,
+                    fillOpacity: props.highlightedSubarea && highlight ? 
+                      1 : props.highlightedSubarea ? .2 : 1
+                    
                   };
                 }}
                 filter={feature => {
                   const geoID = feature.properties[config.geoField].toString();
                   const tractInfo = props.tractInfo[geoID];
-                  // console.log(tractInfo);
+
                   return tractInfo
                     ? props.selection.geo === '10 Counties'
                       ? true
