@@ -27,6 +27,7 @@ const Chart = props => {
 
   const indicatorArray = props.indicators;
   const indicatorInfo = indicatorArray[0];
+  console.log('indicatorInfo: ', indicatorInfo)
 
   useEffect(() => setSelectedIndicator(indicatorInfo), []);
 
