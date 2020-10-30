@@ -159,9 +159,11 @@ const Table = props => {
   ];
 
   const lineBreaker = string =>
-    string
-      .match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g)
-      .map(line => <p className="indicator-column">{line}</p>);
+    string.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g).map(line => (
+      <p key={line} className="indicator-column">
+        {line}
+      </p>
+    ));
 
   const handleAggregation = () => {
     const array = [];
@@ -202,23 +204,23 @@ const Table = props => {
 
     header.forEach((item, c) =>
       cells.push(
-        <Cell 
+        <Cell
           key={`${c}-${r}`}
-          className='table-cells'
+          className="table-cells"
           style={{
-            backgroundColor: item === `Subarea ${props.highlightedSubarea}` ? 'lightgrey' : null
+            backgroundColor:
+              item === `Subarea ${props.highlightedSubarea}`
+                ? 'lightgrey'
+                : null,
           }}
         >
-          {
-            r === 0 && 
-            c === 0 ?
-              '' // Could maybe put dropdown selector here
-            : r === 0 ? 
-                item 
-              : c === 0 ? 
-                  lineBreaker(data[r].indicator)
-                : numeral(data[r][item]).format('0,0')
-          }
+          {r === 0 && c === 0
+            ? '' // Could maybe put dropdown selector here
+            : r === 0
+            ? item
+            : c === 0
+            ? lineBreaker(data[r].indicator)
+            : numeral(data[r][item]).format('0,0')}
         </Cell>
       )
     );

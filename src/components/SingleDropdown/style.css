@@ -1,0 +1,39 @@
+.indicator-container {
+  display: flex;
+  justify-content: flex-end;
+}
+#indicator-selector-dropdown {
+  font-size: 40px;
+  /* padding: -2px; */
+  margin-top: 0.5rem;
+  background-color: white;
+  border: solid thin rgb(119, 148, 123, 0.2);
+  border-radius: 5px;
+  color: rgb(75, 89, 104, 0.95);
+}
+
+.indicator-selector-dropdown-box {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.indicator-selector-dropdown-option {
+  border-bottom: 0.025rem #808080 solid;
+}
+
+#indicator-selector-dropdown-header {
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+#selected-indicator {
+  font-weight: bolder;
+  background-color: rgba(128, 128, 128, 0.468);
+  padding: 0.25rem;
+}

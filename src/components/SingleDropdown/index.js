@@ -1,34 +1,50 @@
 import React, { useState } from 'react';
+import { Icon } from 'semantic-ui-react';
 import './style.css';
 
 const SingleDropdown = props => {
-  const [dropDownOpen, setDropdownOpen] = useState();
+  const [dropDownOpen, setDropdownOpen] = useState(false);
 
   console.log('props:', props);
   return (
-    <div
-      id="indicator-selector-dropdown"
-      onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
-    >
-      <div id="indicator-selector-dropdown-header">
-        {props.selectedIndicator.name} //Add triangle icon here
+    <div className="indicator-container">
+      {' '}
+      <div className="indicator-selector-dropdown-box">
+        <Icon
+          name={'caret square down outline large'}
+          id="indicator-selector-dropdown"
+          onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
+        />
+
+        <div
+          key={props.selectedIndicator.name}
+          id="indicator-selector-dropdown-header"
+        >
+          {props.selectedIndicator.name ? props.selectedIndicator.name : null}
+        </div>
+        {dropDownOpen
+          ? props.indicatorArray.map(item => {
+              console.log(item.indicator.name);
+              return (
+                // console.log('item: ', item.indicator.name);
+                <div
+                  key={item.indicator.name}
+                  id={
+                    item.indicator.name === props.selectedIndicator.name
+                      ? 'selected-indicator'
+                      : 'unselected-indicator'
+                  }
+                  className="indicator-selector-dropdown-option"
+                  onClick={() => props.setSelectedIndicator(item.indicator)}
+                >
+                  {item.indicator.name}
+                </div>
+              );
+            })
+          : null}
+
+        {/* {dropDownOpen ? console.log(props) : null} */}
       </div>
-      {props.indicatorArray.map(item => {
-        console.log(item);
-        // <div
-        //   id={
-        //     item.name === props.selectedIndicator.name
-        //       ? 'selected-option'
-        //       : null
-        //   }
-        //   className="item-selector-dropdown-option"
-        //   onClick={() => props.setIndicator(item.name)}
-        // >
-        //   {' '}
-        //   {item.name}
-        // </div>;
-      })}
-      {/* {dropDownOpen ? console.log(props) : null} */}
     </div>
   );
 };
