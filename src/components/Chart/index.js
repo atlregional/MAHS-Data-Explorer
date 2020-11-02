@@ -22,14 +22,14 @@ const Chart = props => {
   const tractInfo = props.tractInfo;
 
   const [data, setData] = useState();
-  const [selectedIndicator, setSelectedIndicator] = useState();
+  const [selectedIndicator, setSelectedIndicator] = useState(
+    props.indicators[0]
+  );
   console.log('selectedIndicator: ', selectedIndicator);
 
   const indicatorArray = props.indicators;
-  const indicatorInfo = indicatorArray[0];
-  console.log('indicatorInfo: ', indicatorInfo)
-
-  useEffect(() => setSelectedIndicator(indicatorInfo), []);
+  const indicatorInfo = selectedIndicator;
+  console.log('indicatorInfo: ', indicatorInfo);
 
   const handleAggregation = () => {
     const array = [];
@@ -50,8 +50,6 @@ const Chart = props => {
     setData(array);
   };
 
-  useEffect(handleAggregation, [props.selection]);
-
   const CustomTooltip = ({ active, payload, label }) =>
     active ? (
       <div className="custom-tooltip">
@@ -59,6 +57,8 @@ const Chart = props => {
         <p className="label">{`${indicatorInfo.name}: ${payload[0].value}`}</p>
       </div>
     ) : null;
+
+  useEffect(handleAggregation, [props.selection, selectedIndicator]);
 
   return data ? (
     <>

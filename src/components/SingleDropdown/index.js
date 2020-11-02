@@ -3,6 +3,7 @@ import { Icon } from 'semantic-ui-react';
 import './style.css';
 
 const SingleDropdown = props => {
+  const allIndicators = props.indicatorArray;
   const [dropDownOpen, setDropdownOpen] = useState(false);
 
   console.log('props:', props);
