@@ -2,34 +2,23 @@ import React, { useState, useEffect } from 'react';
 import {
   ResponsiveContainer,
   ComposedChart,
-  // Line,
-  // Area,
   Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
-  // Scatter,
   Cell,
 } from 'recharts';
 import './style.css';
 import utils from '../../utils';
-import SingleDropdown from '../SingleDropdown';
 
 const Chart = props => {
-  let colormap = props.colormap;
+  const colormap = props.colormap;
   const tractInfo = props.tractInfo;
+  const indicatorInfo = props.selectedIndicator;
 
   const [data, setData] = useState();
-  const [selectedIndicator, setSelectedIndicator] = useState(
-    props.indicators[0]
-  );
-  console.log('selectedIndicator: ', selectedIndicator);
-
-  const indicatorArray = props.indicators;
-  const indicatorInfo = selectedIndicator;
-  console.log('indicatorInfo: ', indicatorInfo);
 
   const handleAggregation = () => {
     const array = [];
@@ -58,17 +47,10 @@ const Chart = props => {
       </div>
     ) : null;
 
-  useEffect(handleAggregation, [props.selection, selectedIndicator]);
+  useEffect(handleAggregation, [props.selection, props.selectedIndicator]);
 
   return data ? (
     <>
-      <SingleDropdown
-        indicatorInfo={indicatorInfo}
-        indicatorArray={indicatorArray}
-        selectedIndicator={selectedIndicator}
-        setSelectedIndicator={setSelectedIndicator}
-      />
-
       <ResponsiveContainer
         className="chart-responsive-container"
         width="92%"

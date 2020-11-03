@@ -59,6 +59,17 @@ body {
   top: 10vh;
 }
 
+#indicator-container {
+  z-index: 99999;
+  position: fixed;
+  height: 90vh;
+  top: 14vh;
+  left: 47%;
+  width: 15%;
+  text-align: center;
+  /* display: flex; */
+}
+
 #map-box {
   position: fixed;
   left: 10%;

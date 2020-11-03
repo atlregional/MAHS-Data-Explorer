@@ -3,16 +3,17 @@ import { Icon } from 'semantic-ui-react';
 import './style.css';
 
 const SingleDropdown = props => {
-  const allIndicators = props.indicatorArray;
+  // console.log('dropdown props:', props);
+  const indicators = props.indicators;
   const [dropDownOpen, setDropdownOpen] = useState(false);
 
-  console.log('props:', props);
   return (
-    <div className="indicator-container">
+    <div id="indicator-container">
       {' '}
       <div className="indicator-selector-dropdown-box">
         <Icon
-          name="caret square down outline big"
+          name="caret square down outline"
+          size="big"
           id="indicator-selector-dropdown"
           onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
         />
@@ -24,14 +25,19 @@ const SingleDropdown = props => {
           {props.selectedIndicator.name ? props.selectedIndicator.name : null}
         </div>
         {dropDownOpen
-          ? props.indicatorArray.map(item => {
-              console.log(item.indicator);
+          ? indicators.map(item => {
+              // console.log(item.indicator);
+              console.log(
+                item.indicator.name,
+                '||',
+                props.selectedIndicator.name
+              );
               return (
-                // console.log('item: ', item.indicator.name);
                 <div
                   key={item.indicator.name}
                   id={
-                    item.indicator.name === props.selectedIndicator.name
+                    item.indicator.name ===
+                    props.selectedIndicator.indicator.name
                       ? 'selected-indicator'
                       : 'unselected-indicator'
                   }
@@ -43,8 +49,6 @@ const SingleDropdown = props => {
               );
             })
           : null}
-
-        {/* {dropDownOpen ? console.log(props) : null} */}
       </div>
     </div>
   );
