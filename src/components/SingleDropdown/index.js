@@ -14,7 +14,7 @@ const SingleDropdown = props => {
         <Icon
           name="caret square down outline"
           size="big"
-          id="indicator-selector-dropdown"
+          id="indicator-selector-dropdown-icon"
           onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
         />
 
@@ -52,6 +52,6 @@ const SingleDropdown = props => {
       </div>
     </div>
   );
-};
+}; 
 
 export default SingleDropdown;
