@@ -11,17 +11,16 @@ const SingleDropdown = props => {
     <div id="indicator-container">
       {' '}
       <div className="indicator-selector-dropdown-box">
-        <Icon
-          name="caret square down outline"
-          size="big"
-          id="indicator-selector-dropdown-icon"
-          onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
-        />
-
         <div
           key={props.selectedIndicator.name}
           id="indicator-selector-dropdown-header"
         >
+          <Icon
+            name="caret square down outline"
+            size=""
+            id="indicator-selector-dropdown-icon"
+            onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
+          />
           {props.selectedIndicator.name ? props.selectedIndicator.name : null}
         </div>
         {dropDownOpen
@@ -52,6 +51,6 @@ const SingleDropdown = props => {
       </div>
     </div>
   );
-}; 
+};
 
 export default SingleDropdown;
