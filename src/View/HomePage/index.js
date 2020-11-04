@@ -6,11 +6,12 @@ import Table from '../../components/Table';
 import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
 import LayerSelector from '../../components/LayerSelector';
+import SingleDropdown from '../../components/SingleDropdown';
 import utils from '../../utils';
 import './style.css';
 
 const HomePage = props => {
-  // console.log(props);
+  // console.log('homescreen props: ', props);
   const mobile = window.screen.width < 800;
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
@@ -19,9 +20,10 @@ const HomePage = props => {
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
-  // console.log('selectedLayers: ', selectedLayers);
-
-  // use includes method to filter the stuff;
+  const [selectedIndicator, setSelectedIndicator] = useState(
+    props.config.indicators[0]
+  );
+  console.log('selectedIndicator: ', selectedIndicator);
 
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
@@ -62,7 +64,14 @@ const HomePage = props => {
           data={[...props.tractInfo]}
         />
       </div>
-      {/* <div id="dynamic-wrapper"> */}
+      {selectedIndicator ? (
+        <SingleDropdown
+          // indicatorInfo={props.config.indicatorInfo}
+          indicators={props.config.indicators}
+          selectedIndicator={selectedIndicator}
+          setSelectedIndicator={setSelectedIndicator}
+        />
+      ) : null}
       <div
         id={
           subareaOptions.length <= 5 || !mobile
@@ -117,6 +126,7 @@ const HomePage = props => {
             tractInfo={tractInfo}
             highlightedSubarea={highlightedSubarea}
             selectedSubareas={selectedSubareas}
+            selectedIndicator={selectedIndicator}
             colormap={style.colormap}
             selection={selection}
             setHighlightedSubarea={setHighlightedSubarea}
@@ -131,7 +141,7 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
-        { tractInfo ?
+        {tractInfo ? (
           <Table
             mobile={mobile}
             tractInfo={tractInfo}
@@ -139,8 +149,7 @@ const HomePage = props => {
             highlightedSubarea={highlightedSubarea}
             selectedSubareas={selectedSubareas}
           />
-          : null
-        } 
+        ) : null}
       </div>
       {/* </div> */}
       {/* </div> */}
@@ -151,16 +160,14 @@ const HomePage = props => {
           setMobileVizView={setMobileVizView}
         />
       ) : null}
-      { 
-        !mobile || mobileVizView === 'map' ?
-          <LayerSelector 
-            setLayers={setLayers} 
-            layers={layers} 
-            mobile={mobile}
-            numberOfSubareas={subareaOptions.length}
-          />
-        : null
-      }
+      {!mobile || mobileVizView === 'map' ? (
+        <LayerSelector
+          setLayers={setLayers}
+          layers={layers}
+          mobile={mobile}
+          numberOfSubareas={subareaOptions.length}
+        />
+      ) : null}
     </>
   );
 };

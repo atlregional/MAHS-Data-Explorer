@@ -8,11 +8,9 @@ const SubAreaSelector = props => {
   const count = subareas.length;
   const scaler = count < 6 ? 1.25 : windowWidth > 1100 ? 2.5 : 2;
 
-  const handleButtonSize = () => 
+  const handleButtonSize = () =>
     setButtonSize(
-      windowWidth > 800 ?
-        windowWidth * 0.1 / scaler
-      : windowWidth / 5 - 15
+      windowWidth > 800 ? (windowWidth * 0.1) / scaler : windowWidth / 5 - 15
     );
 
   useEffect(handleButtonSize, [subareas]);
@@ -48,7 +46,7 @@ const SubAreaSelector = props => {
             array.includes(subarea)
               ? array.splice(array.indexOf(subarea), 1)
               : array.push(subarea);
-            console.log(array);
+            // console.log(array);
             setSelectedSubareas(array);
           }}
           onMouseEnter={() => {

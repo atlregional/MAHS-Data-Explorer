@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import utils from '../../utils';
-import { Map as LeafletMap, TileLayer, GeoJSON, ZoomControl } from 'react-leaflet';
+import {
+  Map as LeafletMap,
+  TileLayer,
+  GeoJSON,
+  ZoomControl,
+} from 'react-leaflet';
 import polygonToLine from '@turf/polygon-to-line';
 // import RingLoader from "react-spinners/RingLoader";
 
@@ -54,7 +59,7 @@ const MapComp = props => {
     const color = subarea ? config.style.colormap[subarea - 1] : null;
     return {
       fillColor: color,
-      color: color
+      color: color,
       // fillOpacity: 0.7,
     };
   };
@@ -63,7 +68,7 @@ const MapComp = props => {
     Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
   useEffect(handleGeoJSONs, []);
 
-  console.log(props.highlightedSubarea);
+  // console.log(props.highlightedSubarea);
 
   // console.log(JSON.stringify(props.tractInfo));
   return (
@@ -87,15 +92,11 @@ const MapComp = props => {
     >
       {geoJSONs
         ? layerConfigs
-            .filter(config => 
-              config.visible && config.type === 'boundary')
+            .filter(config => config.visible && config.type === 'boundary')
             .map(config => {
-              const boundary = 
-                geoJSONs[config.name]
-                  .features
-                  .map(feature =>
-                    polygonToLine(feature)
-                  );
+              const boundary = geoJSONs[config.name].features.map(feature =>
+                polygonToLine(feature)
+              );
               return (
                 <GeoJSON
                   onAdd={e => {
@@ -125,21 +126,32 @@ const MapComp = props => {
             .map(config => (
               <GeoJSON
                 onAdd={e => e.target.bringToBack()}
-
                 key={`data-layer-${config.name}-${props.selection.geo}`}
                 style={feature => {
                   const geoID = feature.properties[tractIDField];
                   const tractInfo = props.tractInfo[geoID];
                   const subarea = tractInfo['Subarea'];
-                  const highlight = subarea === `Subarea ${props.highlightedSubarea}`;
+                  const highlight =
+                    subarea === `Subarea ${props.highlightedSubarea}`;
                   const style = tractStyle(tractInfo);
                   return {
                     ...style,
-                    color: props.highlightedSubarea && highlight ? 'black' : config.boundaryColor,
-                    weight: props.highlightedSubarea && highlight ? 3 : props.highlightedSubarea ? 0 : config.boundaryWidth,
-                    fillOpacity: props.highlightedSubarea && highlight ? 
-                      1 : props.highlightedSubarea ? .2 : 1
-                    
+                    color:
+                      props.highlightedSubarea && highlight
+                        ? 'black'
+                        : config.boundaryColor,
+                    weight:
+                      props.highlightedSubarea && highlight
+                        ? 3
+                        : props.highlightedSubarea
+                        ? 0
+                        : config.boundaryWidth,
+                    fillOpacity:
+                      props.highlightedSubarea && highlight
+                        ? 1
+                        : props.highlightedSubarea
+                        ? 0.2
+                        : 1,
                   };
                 }}
                 filter={feature => {
@@ -165,7 +177,7 @@ const MapComp = props => {
         url={tileLayerConfig[1].url}
         attribution={tileLayerConfig[1].attribution}
       />
-      <ZoomControl position='bottomleft'/>
+      <ZoomControl position="bottomleft" />
     </LeafletMap>
   );
 };

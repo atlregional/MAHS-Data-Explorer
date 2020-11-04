@@ -2,37 +2,23 @@ import React, { useState, useEffect } from 'react';
 import {
   ResponsiveContainer,
   ComposedChart,
-  // Line,
-  // Area,
   Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
-  // Scatter,
   Cell,
 } from 'recharts';
 import './style.css';
 import utils from '../../utils';
 
 const Chart = props => {
-  let colormap = props.colormap;
-  // console.log(colormap);
+  const colormap = props.colormap;
   const tractInfo = props.tractInfo;
-  // console.log(tractInfo);
+  const indicatorInfo = props.selectedIndicator;
 
   const [data, setData] = useState();
-
-  // console.log(JSON.stringify(tractInfo));
-
-
-  const indicatorArray = props.indicators;
-
-  const indicatorInfo = indicatorArray[0];
-
-  // const handleAggregate = () =>
-  //   tractInfo ?
 
   const handleAggregation = () => {
     const array = [];
@@ -52,10 +38,6 @@ const Chart = props => {
     array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
     setData(array);
   };
-  // : null;
-  // console.log(data);
-
-  useEffect(handleAggregation, [props.selection]);
 
   const CustomTooltip = ({ active, payload, label }) =>
     active ? (
@@ -65,55 +47,46 @@ const Chart = props => {
       </div>
     ) : null;
 
-  return (
+  useEffect(handleAggregation, [props.selection, props.selectedIndicator]);
+
+  return data ? (
     <>
-      {data ? (
-        <ResponsiveContainer
-          className="chart-responsive-container"
-          width="92%"
-          height="85%"
+      <ResponsiveContainer
+        className="chart-responsive-container"
+        width="92%"
+        height="85%"
+      >
+        <ComposedChart
+          className="bar-chart"
+          width={500}
+          height={500}
+          data={data}
         >
-          <ComposedChart
-            className="bar-chart"
-            width={500}
-            height={500}
-            data={data}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey={'Subarea'} />
-            <YAxis />
-            {/* <Tooltip content={<CustomTooltip />} /> */}
-            <Legend />
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey={'Subarea'} />
+          <YAxis />
+          <Tooltip content={<CustomTooltip />} />
+          <Legend />
 
-            <Bar dataKey={indicatorInfo.name}>
-              {data.map((barData, idx) => (
-                <Cell
-                  key={indicatorInfo.name + idx}
-                  fillOpacity={barData.Subarea === props.highlightedSubarea ? 1 : props.highlightedSubarea ? .5 : 1 }
-                  stroke={barData.Subarea === props.highlightedSubarea ? 'black' : null }
-                  strokeWidth={barData.Subarea === props.highlightedSubarea ? 3 : null }
-                  fill={colormap[barData.Subarea - 1]}
-                  onMouseEnter={() => 
-                    props.setHighlightedSubarea(barData.Subarea)
-                  }
-                  onMouseLeave={() => 
-                    props.setHighlightedSubarea()
-                  }
-                />
-              ))}
-            </Bar>
+          <Bar dataKey={indicatorInfo.name}>
+            {data.map((barData, idx) => (
+              <Cell
+                key={indicatorInfo.name + idx}
+                fill={colormap[barData.Subarea - 1]}
+              />
+            ))}
+          </Bar>
 
-            {/* <Line
+          {/* <Line
             type="monotone"
             dataKey={data['Example Indicator']}
             stroke="#ff7300"
           /> */}
-            {/* <Scatter dataKey="cnt" fill="red" /> */}
-          </ComposedChart>
-        </ResponsiveContainer>
-      ) : null}
+          {/* <Scatter dataKey="cnt" fill="red" /> */}
+        </ComposedChart>
+      </ResponsiveContainer>
     </>
-  );
+  ) : null;
 };
 
 export default Chart;
