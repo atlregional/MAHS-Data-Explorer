@@ -5,7 +5,23 @@
   z-index: 99999;
   background-color: white;
 } */
-#indicator-selector-dropdown-icon {
+
+/* #indicator-container {
+  z-index: 9999999;
+  position: fixed;
+  max-height: 20vh;
+  top: 8vh;
+  left: 80%;
+  width: 17%;
+  text-align: center;
+} */
+
+.indicator-dropdown-menu {
+  overflow: auto;
+  max-height: 20vh;
+}
+
+.indicator-selector-dropdown-icon {
   /* margin: 5px 15px; */
   /* justify-self: flex-start; */
   /* margin-top: 0.5rem; */
@@ -33,7 +49,7 @@
   border-bottom: 0.025rem #808080 solid;
 }
 
-#indicator-selector-dropdown-header {
+.indicator-selector-dropdown-header {
   font-weight: bold;
   font-size: 1.25rem;
   margin-bottom: 0.5rem;

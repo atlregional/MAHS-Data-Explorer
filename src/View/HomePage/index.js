@@ -6,7 +6,7 @@ import Table from '../../components/Table';
 import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
 import LayerSelector from '../../components/LayerSelector';
-import SingleDropdown from '../../components/SingleDropdown';
+import IndicatorDropdown from '../../components/IndicatorDropdown';
 import utils from '../../utils';
 import './style.css';
 
@@ -16,14 +16,16 @@ const HomePage = props => {
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
-  const [selection, setSelection] = useState({ ...props.config.selection });
+  const [selection, setSelection] = useState({ 
+    ...props.config.selection,
+    indicator: props.config.indicators[0] });
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
-  const [selectedIndicator, setSelectedIndicator] = useState(
-    props.config.indicators[0]
-  );
-  console.log('selectedIndicator: ', selectedIndicator);
+  // const [selectedIndicator, setSelectedIndicator] = useState(
+  //   props.config.indicators[0]
+  // );
+  // console.log('selectedIndicator: ', selectedIndicator);
 
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
@@ -63,15 +65,16 @@ const HomePage = props => {
           setSelection={setSelection}
           data={[...props.tractInfo]}
         />
-      </div>
-      {selectedIndicator ? (
-        <SingleDropdown
+      {selection.indicator ? (
+        <IndicatorDropdown
           // indicatorInfo={props.config.indicatorInfo}
-          indicators={props.config.indicators}
-          selectedIndicator={selectedIndicator}
-          setSelectedIndicator={setSelectedIndicator}
+          options={props.config.indicators}
+          selection={selection}
+          setSelection={setSelection}
         />
       ) : null}
+      </div>
+
       <div
         id={
           subareaOptions.length <= 5 || !mobile
@@ -125,8 +128,8 @@ const HomePage = props => {
             mobile={mobile}
             tractInfo={tractInfo}
             highlightedSubarea={highlightedSubarea}
-            selectedSubareas={selectedSubareas}
-            selectedIndicator={selectedIndicator}
+            // selectedSubareas={selectedSubareas}
+            // selectedIndicator={selection.indicator}
             colormap={style.colormap}
             selection={selection}
             setHighlightedSubarea={setHighlightedSubarea}
@@ -141,6 +144,16 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
+
+      {selection.indicator ? (
+        <IndicatorDropdown
+          multiple
+          // indicatorInfo={props.config.indicatorInfo}
+          options={props.config.indicators}
+          selection={selection}
+          setSelection={setSelection}
+        />
+        ) : null}
         {tractInfo ? (
           <Table
             mobile={mobile}

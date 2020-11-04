@@ -2,23 +2,37 @@ import React, { useState, useEffect } from 'react';
 import {
   ResponsiveContainer,
   ComposedChart,
+  // Line,
+  // Area,
   Bar,
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
+  // Tooltip,
   Legend,
+  // Scatter,
   Cell,
 } from 'recharts';
 import './style.css';
 import utils from '../../utils';
 
 const Chart = props => {
-  const colormap = props.colormap;
+  let colormap = props.colormap;
+  // console.log(colormap);
   const tractInfo = props.tractInfo;
-  const indicatorInfo = props.selectedIndicator;
+  // console.log(tractInfo);
 
   const [data, setData] = useState();
+
+  // console.log(JSON.stringify(tractInfo));
+
+
+  // const indicatorArray = props.indicators;
+
+  const indicatorInfo = props.selection.indicator;
+
+  // const handleAggregate = () =>
+  //   tractInfo ?
 
   const handleAggregation = () => {
     const array = [];
@@ -36,57 +50,71 @@ const Chart = props => {
     );
 
     array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
+    console.log(array);
     setData(array);
   };
+  // : null;
+  console.log(props.selection);
 
-  const CustomTooltip = ({ active, payload, label }) =>
-    active ? (
-      <div className="custom-tooltip">
-        <h5 className="tooltip-indicator">{`${payload[0].payload.name}`}</h5>
-        <p className="label">{`${indicatorInfo.name}: ${payload[0].value}`}</p>
-      </div>
-    ) : null;
+  useEffect(handleAggregation, [props.selection]);
 
-  useEffect(handleAggregation, [props.selection, props.selectedIndicator]);
+  // const CustomTooltip = ({ active, payload, label }) =>
+  //   active ? (
+  //     <div className="custom-tooltip">
+  //       <h5 className="tooltip-indicator">{`${payload[0].payload.name}`}</h5>
+  //       <p className="label">{`${indicatorInfo.name}: ${payload[0].value}`}</p>
+  //     </div>
+  //   ) : null;
 
-  return data ? (
+  return (
     <>
-      <ResponsiveContainer
-        className="chart-responsive-container"
-        width="92%"
-        height="85%"
-      >
-        <ComposedChart
-          className="bar-chart"
-          width={500}
-          height={500}
-          data={data}
+      {data ? (
+        <ResponsiveContainer
+          className="chart-responsive-container"
+          width="92%"
+          height="85%"
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={'Subarea'} />
-          <YAxis />
-          <Tooltip content={<CustomTooltip />} />
-          <Legend />
+          <ComposedChart
+            className="bar-chart"
+            width={500}
+            height={500}
+            data={data}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey={'Subarea'} />
+            <YAxis />
+            {/* <Tooltip content={<CustomTooltip />} /> */}
+            <Legend />
 
-          <Bar dataKey={indicatorInfo.name}>
-            {data.map((barData, idx) => (
-              <Cell
-                key={indicatorInfo.name + idx}
-                fill={colormap[barData.Subarea - 1]}
-              />
-            ))}
-          </Bar>
+            <Bar dataKey={indicatorInfo.name}>
+              {data.map((barData, idx) => (
+                <Cell
+                  key={indicatorInfo.name + idx}
+                  fillOpacity={barData.Subarea === props.highlightedSubarea ? 1 : props.highlightedSubarea ? .5 : 1 }
+                  stroke={barData.Subarea === props.highlightedSubarea ? 'black' : null }
+                  strokeWidth={barData.Subarea === props.highlightedSubarea ? 3 : null }
+                  fill={colormap[barData.Subarea - 1]}
+                  onMouseEnter={() => 
+                    props.setHighlightedSubarea(barData.Subarea)
+                  }
+                  onMouseLeave={() => 
+                    props.setHighlightedSubarea()
+                  }
+                />
+              ))}
+            </Bar>
 
-          {/* <Line
+            {/* <Line
             type="monotone"
             dataKey={data['Example Indicator']}
             stroke="#ff7300"
           /> */}
-          {/* <Scatter dataKey="cnt" fill="red" /> */}
-        </ComposedChart>
-      </ResponsiveContainer>
+            {/* <Scatter dataKey="cnt" fill="red" /> */}
+          </ComposedChart>
+        </ResponsiveContainer>
+      ) : null}
     </>
-  ) : null;
+  );
 };
 
 export default Chart;
