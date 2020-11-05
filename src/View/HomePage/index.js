@@ -65,15 +65,18 @@ const HomePage = props => {
           setSelection={setSelection}
           data={[...props.tractInfo]}
         />
-      {selection.indicator ? (
-        <IndicatorDropdown
+      {/* {selection.indicator ? ( */}
+
+
+      {/* ) : null} */}
+      </div>
+      <div id='chart-map-indicator-selector'>
+      <IndicatorDropdown
           // indicatorInfo={props.config.indicatorInfo}
           options={props.config.indicators}
           selection={selection}
           setSelection={setSelection}
-        />
-      ) : null}
-      </div>
+        />      </div>
 
       <div
         id={
@@ -144,7 +147,7 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
-
+{/* 
       {selection.indicator ? (
         <IndicatorDropdown
           multiple
@@ -153,7 +156,7 @@ const HomePage = props => {
           selection={selection}
           setSelection={setSelection}
         />
-        ) : null}
+        ) : null} */}
         {tractInfo ? (
           <Table
             mobile={mobile}
