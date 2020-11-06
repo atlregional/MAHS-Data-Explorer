@@ -7,6 +7,7 @@ import {
   ZoomControl,
 } from 'react-leaflet';
 import polygonToLine from '@turf/polygon-to-line';
+import './style.css';
 // import RingLoader from "react-spinners/RingLoader";
 
 const MapComp = props => {
@@ -73,6 +74,7 @@ const MapComp = props => {
   // console.log(JSON.stringify(props.tractInfo));
   return (
     // container for map
+    <>
     <LeafletMap
       key={`subarea-map-${props.numberOfSubareas}`}
       animate
@@ -173,12 +175,14 @@ const MapComp = props => {
             ))
         : null}
       <TileLayer
-        key={`tile-layer-${tileLayerConfig[1].name}`}
-        url={tileLayerConfig[1].url}
-        attribution={tileLayerConfig[1].attribution}
+        key={`tile-layer-${tileLayerConfig[0].name}`}
+        url={tileLayerConfig[0].url}
+        attribution={tileLayerConfig[0].attribution}
       />
       <ZoomControl position="bottomleft" />
     </LeafletMap>
+    <div id='tile-layer-selector'>Tile Layer Selector</div>
+    </>
   );
 };
 
