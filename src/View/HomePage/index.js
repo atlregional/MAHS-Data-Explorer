@@ -147,7 +147,7 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
-{/* 
+
       {selection.indicator ? (
         <IndicatorDropdown
           multiple
@@ -156,7 +156,7 @@ const HomePage = props => {
           selection={selection}
           setSelection={setSelection}
         />
-        ) : null} */}
+        ) : null}
         {tractInfo ? (
           <Table
             mobile={mobile}
