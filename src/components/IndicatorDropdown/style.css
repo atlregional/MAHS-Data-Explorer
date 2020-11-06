@@ -19,6 +19,7 @@
 .indicator-dropdown-menu {
   overflow: auto;
   max-height: 20vh;
+  text-align: left;
 }
 
 .indicator-selector-dropdown-icon {
@@ -53,19 +54,6 @@
   padding: .5em;
 }
 
-#selected-indicator {
-  font-weight: bold;
-  background-color: black;
-  color: white;
-
-  /* background-color: rgba(128, 128, 128, 0.468); */
-  /* padding: 0.25rem; */
-}
-
-#selected-indicator:hover {
-  opacity: .5;
-}
-
 .indicator-selector-dropdown-option:hover {
   background-color: rgba(0,0,0,.05)
 }
@@ -78,6 +66,15 @@
   border-radius: 5px;
   padding: .5em;
   /* background-color: #f0f0f0; */
+}
+
+#selected-indicator {
+  font-weight: bold;
+  /* background-color: black; */
+  /* color: white; */
+
+  /* background-color: rgba(128, 128, 128, 0.468); */
+  /* padding: 0.25rem; */
 }
 
 

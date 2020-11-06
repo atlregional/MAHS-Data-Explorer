@@ -30,6 +30,7 @@ const HomePage = props => {
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
   const indicators = props.config.indicators;
+  console.log(JSON.stringify(indicators));
 
   const handleTractInfo = () => {
     const data = [...props.tractInfo];
@@ -73,13 +74,13 @@ const HomePage = props => {
        
       </div>
       {
-        mobile && mobileVizView === 'chart' || 
-        mobile && mobileVizView === 'map' ||
+        (mobile && mobileVizView === 'chart') || 
+        (mobile && mobileVizView === 'map') ||
         !mobile ?
       <div id='chart-map-indicator-selector'>
         <IndicatorDropdown
           // indicatorInfo={props.config.indicatorInfo}
-          options={props.config.indicators}
+          options={indicators}
           selection={selection}
           setSelection={setSelection}
         />      
@@ -134,7 +135,7 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
       >
-        {tractInfo ? (
+        {tractInfo ? 
           <Chart
             indicators={indicators}
             mobile={mobile}
@@ -146,8 +147,19 @@ const HomePage = props => {
             selection={selection}
             setHighlightedSubarea={setHighlightedSubarea}
           />
-        ) : null}
+        : null}
       </div>
+      <div id='table-indicators-selector'>
+
+        <IndicatorDropdown
+          multiple
+          // indicatorInfo={props.config.indicatorInfo}
+          options={indicators}
+          selection={selection}
+          setSelection={setSelection}
+        />
+      </div>
+
       <div
         id={
           subareaOptions.length <= 5 || !mobile
@@ -157,24 +169,17 @@ const HomePage = props => {
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
 
-      {selection.indicator ? (
-        <IndicatorDropdown
-          multiple
-          // indicatorInfo={props.config.indicatorInfo}
-          options={props.config.indicators}
-          selection={selection}
-          setSelection={setSelection}
-        />
-        ) : null}
-        {tractInfo ? (
+
+        {tractInfo ?
           <Table
             mobile={mobile}
             tractInfo={tractInfo}
             selection={selection}
+            indicators={indicators}
             highlightedSubarea={highlightedSubarea}
             selectedSubareas={selectedSubareas}
           />
-        ) : null}
+         : null}
       </div>
       {/* </div> */}
       {/* </div> */}

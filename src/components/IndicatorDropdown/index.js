@@ -2,17 +2,12 @@ import React, { useState } from 'react';
 import { Icon, Checkbox } from 'semantic-ui-react';
 import './style.css';
 
-
-
 const IndicatorDropdown = props => {
+  const [dropDownOpen, setDropdownOpen] = useState(false);
 
   const multiple = props.multiple;
-  
   const multipleSelections = props.selection.indicators ? props.selection.indicators.map(indicator => indicator.name) : [];
-
-  console.log('dropdown props:', props);
   const options = props.options;
-  const [dropDownOpen, setDropdownOpen] = useState(false);
 
   const handleMultipleSelection = selection => {
     const indicatorsArray = [...multipleSelections]
@@ -27,13 +22,14 @@ const IndicatorDropdown = props => {
     })
   }
   
-console.log(props.selection.indicators)
+// console.log(props.selection.indicators)
   return (
-    // <div id="indicator-container">
-    //   {' '}
-      <div className="indicator-selector-dropdown-box">
+      <div 
+        className="indicator-selector-dropdown-box"
+        onMouseLeave={() => setDropdownOpen(false)}
+      >
+
         <div
-          // key={props.selection.indicator.name}
           className="indicator-selector-dropdown-header"
         >
            {!multiple ? props.selection.indicator.name : <em>Choose Indicators</em>}
@@ -43,31 +39,20 @@ console.log(props.selection.indicators)
             className="indicator-selector-dropdown-icon"
             onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
           />
-         
         </div>
         <div className='indicator-dropdown-menu'>
         { dropDownOpen
           ? options.map(item => {
               const multipleSelected = multiple && multipleSelections.includes(item.name) 
-              // console.log(
-              //   item.indicator.name,
-              //   '||',
-              //   props.selection.indicator.name
-              // );
-
+  
               return (
-                
-
                 <div
                   key={`${item.name.split(' ').join('-')}-${multipleSelections ? 'multiple' : 'single'}`}
                   id={!multiple ?
                     item.name ===
-                    props.selection.indicator
+                    props.selection.indicator.name
                       ? 'selected-indicator'
                       : 'unselected-indicator'
-                    
-                      
-                    
                     :null
                   }
                   className= {`indicator-selector-dropdown-option ${multipleSelected ? 'indicator-selector-dropdown-option-multiple-selected': ''}`}
@@ -84,19 +69,13 @@ console.log(props.selection.indicators)
                   <Checkbox checked= {multipleSelected}/> 
                   :null
                  }
-                  {item.indicator.name}
-                  
-                  
-                  
+                  {item.name}
                 </div>
               );
             })
           : null}
-
         </div>
-
       </div>
-    // </div>
   );
 };
 

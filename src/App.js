@@ -99,18 +99,18 @@ const App = () => {
 
   return (
     <div className="App">
-      {tractInfo && dataManifest && config ? (
+      {tractInfo && dataManifest && config ? 
         <HomePage
           tractInfo={tractInfo}
           manifest={dataManifest}
           config={config}
         />
-      ) : (
+      : 
         <div id="app-loader-spinner">
           <RingLoader css={{ margin: 'auto' }} size="100px" />
           <h1>Loading Data Explorer...</h1>
         </div>
-      )}
+      }
     </div>
   );
 };

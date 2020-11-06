@@ -3,6 +3,7 @@ import { StickyTable, Row, Cell } from 'react-sticky-table';
 import utils from '../../utils';
 import numeral from 'numeral';
 import './style.css';
+import { RefForward } from '@fluentui/react-component-ref';
 
 const Table = props => {
   // Bring in data and map to table with indicator name as row headers and subarea name as column headers
@@ -11,152 +12,12 @@ const Table = props => {
   const headerArray = ['indicator'];
   const [data, setData] = useState();
   const [header, setheader] = useState([]);
-  const indicatorInfo = [
-    {
-      name: 'Average Number of HHs by Tract, 2017',
-      type: 'average',
-      indicator: {
-        id: 'ID078',
-        name: 'Number of HHs 2017',
-      },
-      universe: {
-        id: 'ID078',
-        name: 'Number of HHs 2017',
-      },
-    },
-    {
-      name: 'Change in Percent Owner Households since 2010',
-      type: 'weighted average',
-      indicator: {
-        id: 'ID008',
-        name: 'Change in Percent Owner Households since 2010',
-      },
-      universe: {
-        id: 'ID091',
-        name: 'Total Occupied Housing Units 2010',
-      },
-    },
-    {
-      name: 'Averge Population in Poverty 2017',
-      type: 'average',
-      indicator: {
-        id: 'ID088',
-        name: 'Population in Poverty 2017',
-      },
-      universe: {
-        id: 'ID088',
-        name: 'Population in Poverty 2017',
-      },
-    },
-    {
-      name: 'Average Number of HHs by Tract, 2017',
-      type: 'average',
-      indicator: {
-        id: 'ID078',
-        name: 'Number of HHs 2017',
-      },
-      universe: {
-        id: 'ID078',
-        name: 'Number of HHs 2017',
-      },
-    },
-    {
-      name: 'Change in Percent Owner Households since 2010',
-      type: 'weighted average',
-      indicator: {
-        id: 'ID008',
-        name: 'Change in Percent Owner Households since 2010',
-      },
-      universe: {
-        id: 'ID091',
-        name: 'Total Occupied Housing Units 2010',
-      },
-    },
-    {
-      name: 'Averge Population in Poverty 2017',
-      type: 'average',
-      indicator: {
-        id: 'ID088',
-        name: 'Population in Poverty 2017',
-      },
-      universe: {
-        id: 'ID088',
-        name: 'Population in Poverty 2017',
-      },
-    },
-    {
-      name: 'Average Number of HHs by Tract, 2017',
-      type: 'average',
-      indicator: {
-        id: 'ID078',
-        name: 'Number of HHs 2017',
-      },
-      universe: {
-        id: 'ID078',
-        name: 'Number of HHs 2017',
-      },
-    },
-    {
-      name: 'Change in Percent Owner Households since 2010',
-      type: 'weighted average',
-      indicator: {
-        id: 'ID008',
-        name: 'Change in Percent Owner Households since 2010',
-      },
-      universe: {
-        id: 'ID091',
-        name: 'Total Occupied Housing Units 2010',
-      },
-    },
-    {
-      name: 'Averge Population in Poverty 2017',
-      type: 'average',
-      indicator: {
-        id: 'ID088',
-        name: 'Population in Poverty 2017',
-      },
-      universe: {
-        id: 'ID088',
-        name: 'Population in Poverty 2017',
-      },
-    },
-    {
-      name: 'Average Number of HHs by Tract, 2017',
-      type: 'average',
-      indicator: {
-        id: 'ID078',
-        name: 'Number of HHs 2017',
-      },
-      universe: {
-        id: 'ID078',
-        name: 'Number of HHs 2017',
-      },
-    },
-    {
-      name: 'Change in Percent Owner Households since 2010',
-      type: 'weighted average',
-      indicator: {
-        id: 'ID008',
-        name: 'Change in Percent Owner Households since 2010',
-      },
-      universe: {
-        id: 'ID091',
-        name: 'Total Occupied Housing Units 2010',
-      },
-    },
-    {
-      name: 'Averge Population in Poverty 2017',
-      type: 'average',
-      indicator: {
-        id: 'ID088',
-        name: 'Population in Poverty 2017',
-      },
-      universe: {
-        id: 'ID088',
-        name: 'Population in Poverty 2017',
-      },
-    },
-  ];
+  const indicatorInfo = props.indicators;
+  const selectedIndicators = 
+    props.selection.indicators ?
+    props.selection.indicators.map(indicator => indicator.name)
+    : [];
+  // console.log(indicatorInfo);
 
   const lineBreaker = string =>
     string.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g).map(line => (
@@ -192,42 +53,75 @@ const Table = props => {
     array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
     setData(array);
   };
-  // : null;
-  // console.log(data);
-  // console.log(header)
 
-  var rows = [];
-  // var cells;
+  const rows = [];
 
-  indicatorInfo.forEach((indicator, r) => {
-    const cells = [];
+  const handleCreateRows = () => {
 
-    header.forEach((item, c) =>
-      cells.push(
+    const headerCells = header.map((header, i) =>
+      // headerCells.push(
         <Cell
-          key={`${c}-${r}`}
+          key={`header-${i}`}
           className="table-cells"
           style={{
             backgroundColor:
-              item === `Subarea ${props.highlightedSubarea}`
+              header === `Subarea ${props.highlightedSubarea}`
                 ? 'lightgrey'
                 : null,
           }}
         >
-          {r === 0 && c === 0
-            ? '' // Could maybe put dropdown selector here
-            : r === 0
-            ? item
-            : c === 0
-            ? lineBreaker(data[r].indicator)
-            : numeral(data[r][item]).format('0,0')}
+          {
+            // r === 0 && 
+            i === 0 ? 
+              '' // Could maybe put dropdown selector here
+            // : r === 0 ? 
+              : header
+              // : c === 0 ? 
+              //     lineBreaker(indicator.name)
+              //   : numeral(data[r][item]).format('0,0')
+                }
         </Cell>
-      )
     );
-    // }
 
-    rows.push(<Row key={r}>{cells}</Row>);
-  });
+    rows.push(<Row key='header-row'>{headerCells}</Row>)
+      
+    indicatorInfo
+    .filter(indicator => selectedIndicators.includes(indicator.name))
+    .forEach((indicator, r) => {
+      const cells = [];
+
+      header.forEach((item, c) =>
+        cells.push(
+          <Cell
+            key={`${c}-${r}`}
+            className="table-cells"
+            style={{
+              backgroundColor:
+                item === `Subarea ${props.highlightedSubarea}`
+                  ? 'lightgrey'
+                  : null,
+            }}
+          >
+            {
+              // r === 0 && 
+              // c === 0 ? 
+              //   '' // Could maybe put dropdown selector here
+              // : r === 0 ? 
+              //     item
+              //   : 
+                c === 0 ? 
+                  lineBreaker(indicator.name)
+                : numeral(data[r][item]).format('0,0')
+            }
+          </Cell>
+        )
+      );
+      // }
+      rows.push(<Row key={r}>{cells}</Row>);
+    });
+  };
+
+  handleCreateRows();
 
   useEffect(handleAggregation, [props.selection]);
 
@@ -241,7 +135,10 @@ const Table = props => {
       }}
       id="table"
     >
-      <StickyTable stickyHeaderCount={1}>{rows}</StickyTable>
+      <StickyTable stickyHeaderCount={1}>
+        {/* {headerRow} */}
+        {rows}
+      </StickyTable>
     </div>
     // </div>
   );

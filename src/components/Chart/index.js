@@ -17,22 +17,11 @@ import './style.css';
 import utils from '../../utils';
 
 const Chart = props => {
-  let colormap = props.colormap;
-  // console.log(colormap);
-  const tractInfo = props.tractInfo;
-  // console.log(tractInfo);
-
   const [data, setData] = useState();
 
-  // console.log(JSON.stringify(tractInfo));
-
-
-  // const indicatorArray = props.indicators;
-
+  const colormap = props.colormap;
+  const tractInfo = props.tractInfo;
   const indicatorInfo = props.selection.indicator;
-
-  // const handleAggregate = () =>
-  //   tractInfo ?
 
   const handleAggregation = () => {
     const array = [];
@@ -53,10 +42,6 @@ const Chart = props => {
     console.log(array);
     setData(array);
   };
-  // : null;
-  console.log(props.selection);
-
-  useEffect(handleAggregation, [props.selection]);
 
   // const CustomTooltip = ({ active, payload, label }) =>
   //   active ? (
@@ -65,6 +50,11 @@ const Chart = props => {
   //       <p className="label">{`${indicatorInfo.name}: ${payload[0].value}`}</p>
   //     </div>
   //   ) : null;
+
+  // console.log(props.selection);
+
+  useEffect(handleAggregation, [props.selection]);
+
 
   return (
     <>
@@ -76,8 +66,8 @@ const Chart = props => {
         >
           <ComposedChart
             className="bar-chart"
-            width={500}
-            height={500}
+            // width={500}
+            // height={500}
             data={data}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -103,13 +93,6 @@ const Chart = props => {
                 />
               ))}
             </Bar>
-
-            {/* <Line
-            type="monotone"
-            dataKey={data['Example Indicator']}
-            stroke="#ff7300"
-          /> */}
-            {/* <Scatter dataKey="cnt" fill="red" /> */}
           </ComposedChart>
         </ResponsiveContainer>
       ) : null}
