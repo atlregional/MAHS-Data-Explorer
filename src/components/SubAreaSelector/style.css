@@ -5,15 +5,18 @@
   justify-content: space-around;
   height: 100%;
   width: 100%;
-  padding: 15px;
+  /* padding: 15px; */
 }
 
 .subarea-selector-button {
   cursor: pointer;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  /* margin: 0 auto; */
+  /* display: flex; */
+  /* flex-direction: column; */
   border-radius: 50%;
+  font-size: 1.5em;
+  /* line-height: 2em; */
+  padding: 0;
 }
 
 /* .subarea-selector-button:hover {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Dropdown, Menu } from 'semantic-ui-react';
 import './style.css';
 
-const Header = props => {
+const GeoSelector = props => {
   const topMenu = props.geoTypeOptions;
   const [subMenus, setSubMenus] = useState();
 
@@ -33,8 +33,8 @@ const Header = props => {
 
   return (
     <>
-      <Menu horizontal stackable>
-        <Dropdown fluid item text="Change Geography">
+      {/* <Menu horizontal stackable> */}
+        <Dropdown inline item text="Change Geography">
           <Dropdown.Menu>
             {subMenus
               ? topMenu.map((geoType, idx) => (
@@ -60,7 +60,7 @@ const Header = props => {
               : null}
           </Dropdown.Menu>
         </Dropdown>
-      </Menu>
+      {/* </Menu> */}
 
       {/* <div>
           {props.geoTypeOptions ?
@@ -117,4 +117,4 @@ const Header = props => {
     </>
   );
 };
-export default Header;
+export default GeoSelector;

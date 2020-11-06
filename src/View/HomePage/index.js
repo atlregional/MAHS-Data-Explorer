@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/Header';
+import GeoSelector from '../../components/GeoSelector';
 import SubAreaSelector from '../../components/SubAreaSelector';
 import Chart from '../../components/Chart';
 import Table from '../../components/Table';
@@ -58,25 +58,34 @@ const HomePage = props => {
   return (
     <>
       <div id="header">
-        <Header
-          geoTypeOptions={geoTypeOptions}
-          selection={selection}
-          // geoOptions={geoOptions}
-          setSelection={setSelection}
-          data={[...props.tractInfo]}
-        />
-      {/* {selection.indicator ? ( */}
-
-
-      {/* ) : null} */}
+        <div id='geo-label-header'>
+          { selection.geo} { selection.geoType !== 'City' ? selection.geoType : ''}
+        </div>
+        <div>
+          <GeoSelector
+            geoTypeOptions={geoTypeOptions}
+            selection={selection}
+            // geoOptions={geoOptions}
+            setSelection={setSelection}
+            data={[...props.tractInfo]}
+          /> 
+        </div>
+       
       </div>
+      {
+        mobile && mobileVizView === 'chart' || 
+        mobile && mobileVizView === 'map' ||
+        !mobile ?
       <div id='chart-map-indicator-selector'>
-      <IndicatorDropdown
+        <IndicatorDropdown
           // indicatorInfo={props.config.indicatorInfo}
           options={props.config.indicators}
           selection={selection}
           setSelection={setSelection}
-        />      </div>
+        />      
+      </div>
+      : null
+      }
 
       <div
         id={

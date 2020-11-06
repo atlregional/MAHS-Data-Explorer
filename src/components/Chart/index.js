@@ -72,7 +72,7 @@ const Chart = props => {
         <ResponsiveContainer
           className="chart-responsive-container"
           width="92%"
-          height="85%"
+          height="100%"
         >
           <ComposedChart
             className="bar-chart"
@@ -84,7 +84,7 @@ const Chart = props => {
             <XAxis dataKey={'Subarea'} />
             <YAxis />
             {/* <Tooltip content={<CustomTooltip />} /> */}
-            <Legend />
+            {/* <Legend /> */}
 
             <Bar dataKey={indicatorInfo.name}>
               {data.map((barData, idx) => (

@@ -8,17 +8,23 @@ body {
 
 #header {
   position: fixed;
-  display: grid;
+  /* display: grid; */
   z-index: 9999999;
-  grid-template-columns: 25%;
+  /* grid-template-columns: 100%; */
   top: 0;
   width: 100%;
   height: 10vh;
-  padding: 2em 0 2em calc(10% + 20px);
+  padding: 2em 0;
 }
 
 .hidden {
   visibility: hidden;
+}
+
+#geo-label-header {
+  font-size: 3em;
+  margin: 0 0 .3em 0;
+  width: 100%;
 }
 
 .geo-selector {
@@ -35,11 +41,11 @@ body {
 #chart-map-indicator-selector {
   position: fixed;
   width: 20%;
-  top: calc(10vh + 30px);
-  left: 40%;
+  top: 12vh;
+  right: 10%;
   z-index: 999999;
-  padding: 1em 2em 1em 1em;
-  border-radius: 10px 0 0 10px;
+  /* padding: 1em 2em 1em 1em; */
+  /* border-radius: 10px 0 0 10px; */
   /* border-bottom: ; */
   /* height: 50px; */
   background-color: white;
@@ -83,9 +89,9 @@ body {
 
 #chart-box {
   position: fixed;
-  height: 45vh;
+  height: 40vh;
   width: 40%;
-  top: 10vh;
+  top: 15vh;
   right: 0;
   padding: 1em;
   /* background-color: sandybrown; */
@@ -95,7 +101,7 @@ body {
   /* background-color: salmon; */
   padding: 2em;
   position: fixed;
-  height: 45vh;
+  height: 40vh;
   width: 40%;
   bottom: 0;
   right: 0;
@@ -173,8 +179,6 @@ body {
     top: 30vh;
     height: 60vh;
     width: 100%;
-  }
-  #map-box-reduced {
     padding: 1em;
   }
 }
