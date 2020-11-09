@@ -68,7 +68,8 @@
   /* background-color: #f0f0f0; */
 }
 
-#selected-indicator {
+#selected-indicator,
+.indicator-selector-dropdown-option-multiple-selected {
   font-weight: bold;
   /* background-color: black; */
   /* color: white; */

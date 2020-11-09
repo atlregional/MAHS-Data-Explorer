@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { StickyTable, Row, Cell } from 'react-sticky-table';
 import utils from '../../utils';
 import numeral from 'numeral';
+import ExportButton from '../ExportButton';
+
 import './style.css';
-import { RefForward } from '@fluentui/react-component-ref';
 
 const Table = props => {
   // Bring in data and map to table with indicator name as row headers and subarea name as column headers
@@ -17,7 +18,7 @@ const Table = props => {
     props.selection.indicators ?
     props.selection.indicators.map(indicator => indicator.name)
     : [];
-  // console.log(indicatorInfo);
+  // console.log(data);
 
   const lineBreaker = string =>
     string.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g).map(line => (
@@ -85,9 +86,9 @@ const Table = props => {
 
     rows.push(<Row key='header-row'>{headerCells}</Row>)
       
-    indicatorInfo
-    .filter(indicator => selectedIndicators.includes(indicator.name))
-    .forEach((indicator, r) => {
+    indicatorInfo.filter(indicator => 
+      selectedIndicators.includes(indicator.name)
+    ).forEach((indicator, r) => {
       const cells = [];
 
       header.forEach((item, c) =>
@@ -121,6 +122,13 @@ const Table = props => {
     });
   };
 
+  const dataForExport = inputDataArray => {
+    const outputDataArray = [];
+    // filter and reorder properties in input data to match rendered table 
+
+    return outputDataArray;
+  }
+
   handleCreateRows();
 
   useEffect(handleAggregation, [props.selection]);
@@ -135,6 +143,7 @@ const Table = props => {
       }}
       id="table"
     >
+      <ExportButton data={dataForExport(data)}/>
       <StickyTable stickyHeaderCount={1}>
         {/* {headerRow} */}
         {rows}
