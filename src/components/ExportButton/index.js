@@ -7,40 +7,40 @@ import { Icon } from 'semantic-ui-react';
 import moment from 'moment';
 import './style.css';
 
-
 const ExportButton = props => {
-  const csvTitle = props.csvTitle ? props.csvTitle : null;
-  const csvFilename = props.csvFilename ? props.csvFilename : `download-${moment().format()}`;
-  const csvHeaders = props.csvHeaders ? props.csvHeaders : null;
+  const csvTitle = props.csvTitle ? props.csvTitle : {};
+  const csvFilename = props.csvFilename
+    ? props.csvFilename
+    : `download-${moment().format()}`;
+  const csvHeaders = props.csvHeaders ? props.csvHeaders : {};
 
-  const data = props.data ? props.data : [];
+  const data = props.data ? props.data : [{}];
 
-  const csvOptions = 
-            { 
-              fieldSeparator: ',',
-              quoteStrings: '"',
-              decimalSeparator: '.',
-              filename: csvFilename, 
-              showTitle: csvTitle ? true : false,
-              showLabels: true,
-              title: csvTitle,
-              useTextFile: false,
-              useKeysAsHeaders: csvHeaders ? false : true,
-              // headers: csvHeaders
-            };
+  const csvOptions = {
+    fieldSeparator: ',',
+    quoteStrings: '"',
+    decimalSeparator: '.',
+    filename: csvFilename,
+    showTitle: csvTitle ? true : false,
+    showLabels: true,
+    title: csvTitle,
+    useTextFile: false,
+    useKeysAsHeaders: csvHeaders ? false : true,
+    // headers: csvHeaders
+  };
 
   const csvExporter = new ExportToCsv(csvOptions);
 
-
   return (
     <Icon
-      name='download'
-      onClick={data ? () =>
-        csvExporter.generateCsv(data) 
-        : console.log('No Data for CSV Button')}
-
+      name="download"
+      onClick={() =>
+        data.length < 0 ? 
+          csvExporter.generateCsv(data)
+          : console.log('No Data for CSV Button')
+      }
     />
-  )
+  );
 };
 
 export default ExportButton;

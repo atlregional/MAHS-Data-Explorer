@@ -16,9 +16,10 @@ const HomePage = props => {
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
-  const [selection, setSelection] = useState({ 
+  const [selection, setSelection] = useState({
     ...props.config.selection,
-    indicator: props.config.indicators[0] });
+    indicator: props.config.indicators[0],
+  });
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
@@ -30,7 +31,7 @@ const HomePage = props => {
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
   const indicators = props.config.indicators;
-  console.log(JSON.stringify(indicators));
+  // console.log(JSON.stringify(indicators));
 
   const handleTractInfo = () => {
     const data = [...props.tractInfo];
@@ -59,8 +60,9 @@ const HomePage = props => {
   return (
     <>
       <div id="header">
-        <div id='geo-label-header'>
-          { selection.geo} { selection.geoType !== 'City' ? selection.geoType : ''}
+        <div id="geo-label-header">
+          {selection.geo}{' '}
+          {selection.geoType !== 'City' ? selection.geoType : ''}
         </div>
         <div>
           <GeoSelector
@@ -69,24 +71,21 @@ const HomePage = props => {
             // geoOptions={geoOptions}
             setSelection={setSelection}
             data={[...props.tractInfo]}
-          /> 
+          />
         </div>
-       
       </div>
-      {
-        (mobile && mobileVizView === 'chart') || 
-        (mobile && mobileVizView === 'map') ||
-        !mobile ?
-      <div id='chart-map-indicator-selector'>
-        <IndicatorDropdown
-          // indicatorInfo={props.config.indicatorInfo}
-          options={indicators}
-          selection={selection}
-          setSelection={setSelection}
-        />      
-      </div>
-      : null
-      }
+      {(mobile && mobileVizView === 'chart') ||
+      (mobile && mobileVizView === 'map') ||
+      !mobile ? (
+        <div id="chart-map-indicator-selector">
+          <IndicatorDropdown
+            // indicatorInfo={props.config.indicatorInfo}
+            options={indicators}
+            selection={selection}
+            setSelection={setSelection}
+          />
+        </div>
+      ) : null}
 
       <div
         id={
@@ -135,7 +134,7 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
       >
-        {tractInfo ? 
+        {tractInfo ? (
           <Chart
             indicators={indicators}
             mobile={mobile}
@@ -147,10 +146,9 @@ const HomePage = props => {
             selection={selection}
             setHighlightedSubarea={setHighlightedSubarea}
           />
-        : null}
+        ) : null}
       </div>
-      <div id='table-indicators-selector'>
-
+      <div id="table-indicators-selector">
         <IndicatorDropdown
           multiple
           // indicatorInfo={props.config.indicatorInfo}
@@ -168,9 +166,7 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
-
-
-        {tractInfo ?
+        {tractInfo ? (
           <Table
             mobile={mobile}
             tractInfo={tractInfo}
@@ -179,7 +175,7 @@ const HomePage = props => {
             highlightedSubarea={highlightedSubarea}
             selectedSubareas={selectedSubareas}
           />
-         : null}
+        ) : null}
       </div>
       {/* </div> */}
       {/* </div> */}

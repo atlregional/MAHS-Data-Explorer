@@ -11,12 +11,11 @@ const Table = props => {
   const tractInfo = props.tractInfo;
   // console.log(tractInfo)
   const headerArray = ['indicator'];
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [header, setheader] = useState([]);
   const indicatorInfo = props.indicators;
-  const selectedIndicators = 
-    props.selection.indicators ?
-    props.selection.indicators.map(indicator => indicator.name)
+  const selectedIndicators = props.selection.indicators
+    ? props.selection.indicators.map(indicator => indicator.name)
     : [];
   // console.log(data);
 
@@ -58,76 +57,80 @@ const Table = props => {
   const rows = [];
 
   const handleCreateRows = () => {
-
-    const headerCells = header.map((header, i) =>
+    const headerCells = header.map((header, i) => (
       // headerCells.push(
-        <Cell
-          key={`header-${i}`}
-          className="table-cells"
-          style={{
-            backgroundColor:
-              header === `Subarea ${props.highlightedSubarea}`
-                ? 'lightgrey'
-                : null,
-          }}
-        >
-          {
-            // r === 0 && 
-            i === 0 ? 
-              '' // Could maybe put dropdown selector here
-            // : r === 0 ? 
-              : header
-              // : c === 0 ? 
-              //     lineBreaker(indicator.name)
-              //   : numeral(data[r][item]).format('0,0')
-                }
-        </Cell>
-    );
+      <Cell
+        key={`header-${i}`}
+        className="table-cells"
+        style={{
+          backgroundColor:
+            header === `Subarea ${props.highlightedSubarea}`
+              ? 'lightgrey'
+              : null,
+        }}
+      >
+        {
+          // r === 0 &&
+          i === 0
+            ? '' // Could maybe put dropdown selector here
+            : // : r === 0 ?
+              header
+          // : c === 0 ?
+          //     lineBreaker(indicator.name)
+          //   : numeral(data[r][item]).format('0,0')
+        }
+      </Cell>
+    ));
 
-    rows.push(<Row key='header-row'>{headerCells}</Row>)
-      
-    indicatorInfo.filter(indicator => 
-      selectedIndicators.includes(indicator.name)
-    ).forEach((indicator, r) => {
-      const cells = [];
+    rows.push(<Row key="header-row">{headerCells}</Row>);
 
-      header.forEach((item, c) =>
-        cells.push(
-          <Cell
-            key={`${c}-${r}`}
-            className="table-cells"
-            style={{
-              backgroundColor:
-                item === `Subarea ${props.highlightedSubarea}`
-                  ? 'lightgrey'
-                  : null,
-            }}
-          >
-            {
-              // r === 0 && 
-              // c === 0 ? 
-              //   '' // Could maybe put dropdown selector here
-              // : r === 0 ? 
-              //     item
-              //   : 
-                c === 0 ? 
-                  lineBreaker(indicator.name)
-                : numeral(data[r][item]).format('0,0')
-            }
-          </Cell>
-        )
-      );
-      // }
-      rows.push(<Row key={r}>{cells}</Row>);
-    });
+    indicatorInfo
+      .filter(indicator => selectedIndicators.includes(indicator.name))
+      .forEach((indicator, r) => {
+        const cells = [];
+
+        header.forEach((item, c) =>
+          cells.push(
+            <Cell
+              key={`${c}-${r}`}
+              className="table-cells"
+              style={{
+                backgroundColor:
+                  item === `Subarea ${props.highlightedSubarea}`
+                    ? 'lightgrey'
+                    : null,
+              }}
+            >
+              {
+                // r === 0 &&
+                // c === 0 ?
+                //   '' // Could maybe put dropdown selector here
+                // : r === 0 ?
+                //     item
+                //   :
+                c === 0
+                  ? lineBreaker(indicator.name)
+                  : numeral(data[r][item]).format('0,0')
+              }
+            </Cell>
+          )
+        );
+        // }
+        rows.push(<Row key={r}>{cells}</Row>);
+      });
   };
 
   const dataForExport = inputDataArray => {
+    // filter and reorder properties in input data to match rendered table
+    console.log('inputDataArray', inputDataArray);
     const outputDataArray = [];
-    // filter and reorder properties in input data to match rendered table 
+    // for (let i = 0; i < inputDataArray.length; i++) {
+    //   console.log(inputDataArray[i])
+    // }
 
     return outputDataArray;
-  }
+  };
+  // dataForExport();
 
   handleCreateRows();
 
@@ -143,7 +146,9 @@ const Table = props => {
       }}
       id="table"
     >
-      <ExportButton data={dataForExport(data)}/>
+      {/* add a csvFilename & csvTitle prop to the ExportButton */}
+      {/* filename should be  */}
+      <ExportButton data={dataForExport(data)} />
       <StickyTable stickyHeaderCount={1}>
         {/* {headerRow} */}
         {rows}
