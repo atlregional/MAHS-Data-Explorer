@@ -12,7 +12,7 @@ const Table = props => {
   // console.log(tractInfo)
   const headerArray = ['indicator'];
   const [data, setData] = useState([]);
-  const [header, setheader] = useState([]);
+  const [header, setHeader] = useState([]);
   const indicatorInfo = props.indicators;
   const selectedIndicators = props.selection.indicators
     ? props.selection.indicators.map(indicator => indicator.name)
@@ -48,7 +48,7 @@ const Table = props => {
         ? -1
         : 1
     );
-    setheader(headerArray);
+    setHeader(headerArray);
 
     array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
     setData(array);
@@ -124,9 +124,20 @@ const Table = props => {
     // filter and reorder properties in input data to match rendered table
     console.log('inputDataArray', inputDataArray);
     const outputDataArray = [];
-    // for (let i = 0; i < inputDataArray.length; i++) {
-    //   console.log(inputDataArray[i])
-    // }
+    const headerArray = [...header];
+    console.log(headerArray)
+    console.log(inputDataArray);
+
+    inputDataArray
+    .filter(inputData => 
+      selectedIndicators.includes(inputData.indicator)
+    )
+    .forEach(inputData => {
+      const dataObj = {};
+      headerArray.forEach(header => dataObj[header] = inputData[header]);
+      outputDataArray.push(dataObj);
+    });
+    // filter and reorder properties in input data to match rendered table 
 
     return outputDataArray;
   };

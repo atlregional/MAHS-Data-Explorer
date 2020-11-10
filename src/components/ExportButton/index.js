@@ -29,16 +29,16 @@ const ExportButton = props => {
     // headers: csvHeaders
   };
 
-  const csvExporter = new ExportToCsv(csvOptions);
+  const csvExporter = data ? new ExportToCsv(csvOptions) : null;
 
   return (
     <Icon
-      name="download"
+      name='download'
       onClick={() =>
-        data.length < 0 ? 
-          csvExporter.generateCsv(data)
-          : console.log('No Data for CSV Button')
-      }
+        data.length > 0 ? 
+          csvExporter.generateCsv(data) 
+        : console.log('No Data for CSV Button')}
+
     />
   );
 };
