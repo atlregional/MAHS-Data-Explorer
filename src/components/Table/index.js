@@ -11,8 +11,8 @@ const Table = props => {
   const tractInfo = props.tractInfo;
   // console.log(tractInfo)
   const headerArray = ['indicator'];
-  const [data, setData] = useState();
-  const [header, setheader] = useState([]);
+  const [data, setData] = useState([]);
+  const [header, setHeader] = useState([]);
   const indicatorInfo = props.indicators;
   const selectedIndicators = 
     props.selection.indicators ?
@@ -49,7 +49,7 @@ const Table = props => {
         ? -1
         : 1
     );
-    setheader(headerArray);
+    setHeader(headerArray);
 
     array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
     setData(array);
@@ -124,6 +124,19 @@ const Table = props => {
 
   const dataForExport = inputDataArray => {
     const outputDataArray = [];
+    const headerArray = [...header];
+    console.log(headerArray)
+    console.log(inputDataArray);
+
+    inputDataArray
+    .filter(inputData => 
+      selectedIndicators.includes(inputData.indicator)
+    )
+    .forEach(inputData => {
+      const dataObj = {};
+      headerArray.forEach(header => dataObj[header] = inputData[header]);
+      outputDataArray.push(dataObj);
+    });
     // filter and reorder properties in input data to match rendered table 
 
     return outputDataArray;
