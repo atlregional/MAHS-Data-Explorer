@@ -10,13 +10,18 @@ import polygonToLine from '@turf/polygon-to-line';
 import './style.css';
 // import RingLoader from "react-spinners/RingLoader";
 
+
+
 const MapComp = props => {
   // const mapRef = useRef();
   const [geoJSONs, setGeoJSONs] = useState();
 
-  const tileLayerConfig = props.config.tilelayers;
+  // const tileLayerConfig = props.config.tilelayers;
 
   const layerConfigs = props.layers;
+  
+  const tileLayer = props.config.tilelayers;
+  const [tile, setTile] = useState(1);
 
   const handleGeoJSONs = () => {
     const getGeoJSON = (key, url) =>
@@ -175,13 +180,30 @@ const MapComp = props => {
             ))
         : null}
       <TileLayer
-        key={`tile-layer-${tileLayerConfig[0].name}`}
-        url={tileLayerConfig[0].url}
-        attribution={tileLayerConfig[0].attribution}
+        key={`tile-layer-${tileLayer[tile].name}`}
+        url={tileLayer[tile].url}
+        attribution={tileLayer[tile].attribution}
       />
       <ZoomControl position="bottomleft" />
     </LeafletMap>
-    <div id='tile-layer-selector'>Tile Layer Selector</div>
+    <div id='tile-layer-selector'>Tile Layer Selector
+    { tileLayer.map(item =>
+              <img 
+                className='tile-layer-thumb'
+                draggable='false'
+                alt='tile layer'
+                style={{
+                  border: tileLayer[tile].name === item.name ? 'solid blue 3px' : null}}
+                onClick={() => {
+                  setTile(item);
+                  
+                }}
+                key={`${item._id}-thumb`} src={item.thumbUrl}
+              />
+            )}
+    
+    
+    </div>
     </>
   );
 };

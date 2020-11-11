@@ -10,3 +10,10 @@
   width: 17%;
   background-color: white;
 }
+
+
+.tile-layer-thumb {
+  height: 30px;
+  margin: 5px 5px 0 5px;
+  border-radius: 5px;
+}
