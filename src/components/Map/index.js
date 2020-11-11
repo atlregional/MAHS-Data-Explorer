@@ -186,7 +186,8 @@ const MapComp = props => {
       />
       <ZoomControl position="bottomleft" />
     </LeafletMap>
-    <div id='tile-layer-selector'>Tile Layer Selector
+    <div id='tile-layer-selector'>Tile Layer Selector 
+    <div>
     { tileLayer.map(item =>
               <img 
                 className='tile-layer-thumb'
@@ -202,7 +203,7 @@ const MapComp = props => {
               />
             )}
     
-    
+    </div>
     </div>
     </>
   );
