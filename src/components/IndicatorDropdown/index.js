@@ -13,8 +13,9 @@ const IndicatorDropdown = props => {
     const indicatorsArray = [...multipleSelections]
     
     indicatorsArray.includes(selection.name) ? 
-    indicatorsArray.splice(indicatorsArray.indexOf(selection.name),1)
-    : indicatorsArray.push(selection.name)
+      indicatorsArray.splice(indicatorsArray.indexOf(selection.name),1)
+    : indicatorsArray.push(selection.name);
+
     const optionsArray = [...options].filter(option => indicatorsArray.includes(option.name))
     props.setSelection({
       ...props.selection,
@@ -43,7 +44,7 @@ const IndicatorDropdown = props => {
         <div className='indicator-dropdown-menu'>
         { dropDownOpen
           ? options.map(item => {
-              const multipleSelected = multiple && multipleSelections.includes(item.name) 
+              const multipleSelected = multiple && multipleSelections.includes(item.name); 
   
               return (
                 <div
@@ -53,21 +54,25 @@ const IndicatorDropdown = props => {
                     props.selection.indicator.name
                       ? 'selected-indicator'
                       : 'unselected-indicator'
-                    :null
+                    : null
                   }
                   className= {`indicator-selector-dropdown-option ${multipleSelected ? 'indicator-selector-dropdown-option-multiple-selected': ''}`}
-                  onClick={ () => multiple ? handleMultipleSelection(item)
-                    
-                    
-                    :props.setSelection({
-                    ...props.selection,
-                    indicator : item
-                  })}
+                  onClick={ () => {
+                    multiple ? 
+                    handleMultipleSelection(item)
+                      
+                      
+                      :props.setSelection({
+                      ...props.selection,
+                      indicator : item
+                    });
+                    setDropdownOpen(!multiple ? false : true);
+                  }}
                 >
                   {
                   multiple ? 
-                  <Checkbox checked= {multipleSelected}/> 
-                  :null
+                    <Checkbox checked={multipleSelected}/> 
+                  : null
                  }
                   {item.name}
                 </div>
