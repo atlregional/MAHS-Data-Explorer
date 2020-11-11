@@ -195,7 +195,7 @@ const MapComp = props => {
                 style={{
                   border: tileLayer[tile].name === item.name ? 'solid blue 3px' : null}}
                 onClick={() => {
-                  setTile(item);
+                  setTile(tileLayer.indexOf(item));
                   
                 }}
                 key={`${item._id}-thumb`} src={item.thumbUrl}
