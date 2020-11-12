@@ -191,7 +191,8 @@ const MapComp = props => {
       <ZoomControl position="bottomleft" />
     </LeafletMap>
     {mobile ?
-       <>        
+       <>
+              
       <div
         id='tile-layer-icon'
         onClick={() => 
@@ -206,9 +207,29 @@ const MapComp = props => {
           'tile-layer-selector-closed'}
         className='tile-layer-selector'
       >
-        </div>
+        
+    
+    { tileLayer.map(item =>
+              <img 
+                className='tile-layer-thumb'
+                draggable='false'
+                alt='tile layer'
+                style={{
+                  border: tileLayer[tile].name === item.name ? 'solid blue 3px' : null}}
+                onClick={() => {
+                  setTile(tileLayer.indexOf(item));
+                  setOpenTileLayerSelector(false)
+                  
+                }}
+                key={`${item._id}-thumb`} src={item.thumbUrl}
+              />
+            )}
+    
+    
+    </div>
+        
         </>
-    :
+    : 
     <div id='tile-layer-selector'>Tile Layer Selector 
     <div>
     { tileLayer.map(item =>
@@ -220,7 +241,7 @@ const MapComp = props => {
                   border: tileLayer[tile].name === item.name ? 'solid blue 3px' : null}}
                 onClick={() => {
                   setTile(tileLayer.indexOf(item));
-                  setOpenTileLayerSelector(false)
+                  
                   
                 }}
                 key={`${item._id}-thumb`} src={item.thumbUrl}
