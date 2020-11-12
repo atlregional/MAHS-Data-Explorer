@@ -16,7 +16,8 @@ const Table = props => {
   const selectedIndicators = props.selection.indicators
     ? props.selection.indicators.map(indicator => indicator.name)
     : [];
-  // console.log(data);  // console.log(tractInfo)
+  console.log('selectedIndicators :', selectedIndicators);
+  // console.log(tractInfo)
 
   const lineBreaker = string =>
     string.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g).map(line => (
@@ -150,6 +151,10 @@ const Table = props => {
       }}
       id="table"
     >
+      {/* <div
+        className={selectedIndicators > 0 ? 'export-button' : 'hidden'}
+        key={selectedIndicators}
+      > */}
       <ExportButton
         data={dataForExport(data)}
         csvTitle={`TITLE:  ${selectedIndicators}`}
@@ -159,6 +164,7 @@ const Table = props => {
           .toUpperCase()}-${moment().format('M/DD/YYYY')}`}
         content={'Download Data'}
       />
+      {/* </div> */}
       <StickyTable stickyHeaderCount={1}>{rows}</StickyTable>
     </div>
   );

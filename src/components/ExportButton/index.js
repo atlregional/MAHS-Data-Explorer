@@ -13,13 +13,6 @@ const ExportButton = props => {
     ? props.csvFilename
     : `download-${moment().format()}`;
   const csvHeaders = props.csvHeaders ? props.csvHeaders : null;
-  
-  
-  // *******  TEST THE FILENAME PROP 
-  console.log('csvFilename: ', csvFilename);
-
-
-  
   const data = props.data ? props.data : [{}];
 
   const csvOptions = {
