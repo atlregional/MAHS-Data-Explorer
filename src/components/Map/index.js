@@ -7,6 +7,8 @@ import {
   ZoomControl,
 } from 'react-leaflet';
 import polygonToLine from '@turf/polygon-to-line';
+import { Icon } from 'semantic-ui-react';
+
 import './style.css';
 // import RingLoader from "react-spinners/RingLoader";
 
@@ -15,6 +17,7 @@ import './style.css';
 const MapComp = props => {
   // const mapRef = useRef();
   const [geoJSONs, setGeoJSONs] = useState();
+  const mobile = window.screen.width < 800;
 
   // const tileLayerConfig = props.config.tilelayers;
 
@@ -22,6 +25,7 @@ const MapComp = props => {
   
   const tileLayer = props.config.tilelayers;
   const [tile, setTile] = useState(1);
+  const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
 
   const handleGeoJSONs = () => {
     const getGeoJSON = (key, url) =>
@@ -186,6 +190,25 @@ const MapComp = props => {
       />
       <ZoomControl position="bottomleft" />
     </LeafletMap>
+    {mobile ?
+       <>        
+      <div
+        id='tile-layer-icon'
+        onClick={() => 
+          setOpenTileLayerSelector(openTileLayerSelector ? false : true)
+        }
+      >
+        <Icon name='map' size='big' />        
+      </div>
+      <div 
+        id={openTileLayerSelector ? 
+          'tile-layer-selector-open' : 
+          'tile-layer-selector-closed'}
+        className='tile-layer-selector'
+      >
+        </div>
+        </>
+    :
     <div id='tile-layer-selector'>Tile Layer Selector 
     <div>
     { tileLayer.map(item =>
@@ -197,6 +220,7 @@ const MapComp = props => {
                   border: tileLayer[tile].name === item.name ? 'solid blue 3px' : null}}
                 onClick={() => {
                   setTile(tileLayer.indexOf(item));
+                  setOpenTileLayerSelector(false)
                   
                 }}
                 key={`${item._id}-thumb`} src={item.thumbUrl}
@@ -205,6 +229,7 @@ const MapComp = props => {
     
     </div>
     </div>
+}
     </>
   );
 };
