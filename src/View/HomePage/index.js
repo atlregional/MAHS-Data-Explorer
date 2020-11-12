@@ -20,6 +20,7 @@ const HomePage = props => {
     ...props.config.selection,
     indicator: props.config.indicators[0],
   });
+  console.log('selection.geo :', selection.geo);
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
@@ -174,6 +175,7 @@ const HomePage = props => {
             indicators={indicators}
             highlightedSubarea={highlightedSubarea}
             selectedSubareas={selectedSubareas}
+            selectedGeo={selection.geo}
           />
         ) : null}
       </div>

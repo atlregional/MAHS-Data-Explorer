@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { StickyTable, Row, Cell } from 'react-sticky-table';
 import utils from '../../utils';
 import numeral from 'numeral';
+import moment from 'moment';
 import ExportButton from '../ExportButton';
 
 import './style.css';
 
 const Table = props => {
-  // Bring in data and map to table with indicator name as row headers and subarea name as column headers
   const tractInfo = props.tractInfo;
-  // console.log(tractInfo)
   const headerArray = ['indicator'];
   const [data, setData] = useState([]);
   const [header, setHeader] = useState([]);
@@ -17,7 +16,7 @@ const Table = props => {
   const selectedIndicators = props.selection.indicators
     ? props.selection.indicators.map(indicator => indicator.name)
     : [];
-  // console.log(data);
+  // console.log(data);  // console.log(tractInfo)
 
   const lineBreaker = string =>
     string.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g).map(line => (
@@ -122,33 +121,27 @@ const Table = props => {
 
   const dataForExport = inputDataArray => {
     // filter and reorder properties in input data to match rendered table
-    console.log('inputDataArray', inputDataArray);
     const outputDataArray = [];
     const headerArray = [...header];
-    console.log(headerArray)
-    console.log(inputDataArray);
+    // console.log(headerArray);
+    // console.log(inputDataArray);
 
     inputDataArray
-    .filter(inputData => 
-      selectedIndicators.includes(inputData.indicator)
-    )
-    .forEach(inputData => {
-      const dataObj = {};
-      headerArray.forEach(header => dataObj[header] = inputData[header]);
-      outputDataArray.push(dataObj);
-    });
-    // filter and reorder properties in input data to match rendered table 
+      .filter(inputData => selectedIndicators.includes(inputData.indicator))
+      .forEach(inputData => {
+        const dataObj = {};
+        headerArray.forEach(header => (dataObj[header] = inputData[header]));
+        outputDataArray.push(dataObj);
+      });
 
     return outputDataArray;
   };
-  // dataForExport();
 
   handleCreateRows();
 
   useEffect(handleAggregation, [props.selection]);
 
   return (
-    // <div>
     <div
       style={{
         width: '100%',
@@ -157,15 +150,17 @@ const Table = props => {
       }}
       id="table"
     >
-      {/* add a csvFilename & csvTitle prop to the ExportButton */}
-      {/* filename should be  */}
-      <ExportButton data={dataForExport(data)} />
-      <StickyTable stickyHeaderCount={1}>
-        {/* {headerRow} */}
-        {rows}
-      </StickyTable>
+      <ExportButton
+        data={dataForExport(data)}
+        csvTitle={`TITLE:  ${selectedIndicators}`}
+        csvFilename={`MAHS-DataCollection-${props.selectedGeo
+          // regEx replacing spaces with dash from user Geo Selection data set;
+          .replace(/ /g, '-')
+          .toUpperCase()}-${moment().format('M/DD/YYYY')}`}
+        content={'Download Data'}
+      />
+      <StickyTable stickyHeaderCount={1}>{rows}</StickyTable>
     </div>
-    // </div>
   );
 };
 

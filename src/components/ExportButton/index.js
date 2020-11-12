@@ -8,12 +8,18 @@ import moment from 'moment';
 import './style.css';
 
 const ExportButton = props => {
-  const csvTitle = props.csvTitle ? props.csvTitle : {};
+  const csvTitle = props.csvTitle ? props.csvTitle : null;
   const csvFilename = props.csvFilename
     ? props.csvFilename
     : `download-${moment().format()}`;
-  const csvHeaders = props.csvHeaders ? props.csvHeaders : {};
+  const csvHeaders = props.csvHeaders ? props.csvHeaders : null;
+  
+  
+  // *******  TEST THE FILENAME PROP 
+  console.log('csvFilename: ', csvFilename);
 
+
+  
   const data = props.data ? props.data : [{}];
 
   const csvOptions = {
@@ -33,12 +39,12 @@ const ExportButton = props => {
 
   return (
     <Icon
-      name='download'
+      name="download"
       onClick={() =>
-        data.length > 0 ? 
-          csvExporter.generateCsv(data) 
-        : console.log('No Data for CSV Button')}
-
+        data.length > 0
+          ? csvExporter.generateCsv(data)
+          : console.log('No Data for CSV Button')
+      }
     />
   );
 };
