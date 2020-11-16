@@ -12,8 +12,6 @@ import { Icon } from 'semantic-ui-react';
 import './style.css';
 // import RingLoader from "react-spinners/RingLoader";
 
-
-
 const MapComp = props => {
   // const mapRef = useRef();
   const [geoJSONs, setGeoJSONs] = useState();
@@ -22,7 +20,7 @@ const MapComp = props => {
   // const tileLayerConfig = props.config.tilelayers;
 
   const layerConfigs = props.layers;
-  
+
   const tileLayer = props.config.tilelayers;
   const [tile, setTile] = useState(1);
   const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
@@ -84,173 +82,181 @@ const MapComp = props => {
   return (
     // container for map
     <>
-    <LeafletMap
-      key={`subarea-map-${props.numberOfSubareas}`}
-      animate
-      boxZoom
-      trackResize
-      doubleClickZoom
-      scrollWheelZoom
-      dragging
-      center={[33.753, -84.386]}
-      zoom={10}
-      bounds={bounds ? bounds : null}
-      zoomDelta={0.3}
-      zoomSnap={0.3}
-      maxZoom={16}
-      minZoom={3}
-      zoomControl={false}
-    >
-      {geoJSONs
-        ? layerConfigs
-            .filter(config => config.visible && config.type === 'boundary')
-            .map(config => {
-              const boundary = geoJSONs[config.name].features.map(feature =>
-                polygonToLine(feature)
-              );
-              return (
+      <LeafletMap
+        key={`subarea-map-${props.numberOfSubareas}`}
+        animate
+        boxZoom
+        trackResize
+        doubleClickZoom
+        scrollWheelZoom
+        dragging
+        center={[33.753, -84.386]}
+        zoom={10}
+        bounds={bounds ? bounds : null}
+        zoomDelta={0.3}
+        zoomSnap={0.3}
+        maxZoom={16}
+        minZoom={3}
+        zoomControl={false}
+      >
+        {geoJSONs
+          ? layerConfigs
+              .filter(config => config.visible && config.type === 'boundary')
+              .map(config => {
+                const boundary = geoJSONs[config.name].features.map(feature =>
+                  polygonToLine(feature)
+                );
+                return (
+                  <GeoJSON
+                    onAdd={e => {
+                      e.target.bringToFront();
+                      const featureBounds = e.target.getBounds();
+                      handleBounds(featureBounds);
+                    }}
+                    key={`boundary-layer-${config.name}-${props.selection.geo}`}
+                    data={boundary}
+                    filter={feature =>
+                      props.selection.geo === '10 Counties'
+                        ? config.name === 'counties'
+                        : feature.properties[config.geoField] ===
+                          props.selection.geo
+                    }
+                    style={{
+                      color: config.boundaryColor,
+                      weight: config.boundaryWidth,
+                    }}
+                  />
+                );
+              })
+          : null}
+        {geoJSONs
+          ? layerConfigs
+              .filter(config => config.visible && config.type === 'data')
+              .map(config => (
                 <GeoJSON
-                  onAdd={e => {
-                    e.target.bringToFront();
-                    const featureBounds = e.target.getBounds();
-                    handleBounds(featureBounds);
+                  onAdd={e => e.target.bringToBack()}
+                  key={`data-layer-${config.name}-${props.selection.geo}`}
+                  style={feature => {
+                    const geoID = feature.properties[tractIDField];
+                    const tractInfo = props.tractInfo[geoID];
+                    const subarea = tractInfo['Subarea'];
+                    const highlight =
+                      subarea === `Subarea ${props.highlightedSubarea}`;
+                    const style = tractStyle(tractInfo);
+                    return {
+                      ...style,
+                      color:
+                        props.highlightedSubarea && highlight
+                          ? 'black'
+                          : config.boundaryColor,
+                      weight:
+                        props.highlightedSubarea && highlight
+                          ? 3
+                          : props.highlightedSubarea
+                          ? 0
+                          : config.boundaryWidth,
+                      fillOpacity:
+                        props.highlightedSubarea && highlight
+                          ? 1
+                          : props.highlightedSubarea
+                          ? 0.2
+                          : 1,
+                    };
                   }}
-                  key={`boundary-layer-${config.name}-${props.selection.geo}`}
-                  data={boundary}
-                  filter={feature =>
-                    props.selection.geo === '10 Counties'
-                      ? config.name === 'counties'
-                      : feature.properties[config.geoField] ===
-                        props.selection.geo
-                  }
-                  style={{
-                    color: config.boundaryColor,
-                    weight: config.boundaryWidth,
-                  }}
-                />
-              );
-            })
-        : null}
-      {geoJSONs
-        ? layerConfigs
-            .filter(config => config.visible && config.type === 'data')
-            .map(config => (
-              <GeoJSON
-                onAdd={e => e.target.bringToBack()}
-                key={`data-layer-${config.name}-${props.selection.geo}`}
-                style={feature => {
-                  const geoID = feature.properties[tractIDField];
-                  const tractInfo = props.tractInfo[geoID];
-                  const subarea = tractInfo['Subarea'];
-                  const highlight =
-                    subarea === `Subarea ${props.highlightedSubarea}`;
-                  const style = tractStyle(tractInfo);
-                  return {
-                    ...style,
-                    color:
-                      props.highlightedSubarea && highlight
-                        ? 'black'
-                        : config.boundaryColor,
-                    weight:
-                      props.highlightedSubarea && highlight
-                        ? 3
-                        : props.highlightedSubarea
-                        ? 0
-                        : config.boundaryWidth,
-                    fillOpacity:
-                      props.highlightedSubarea && highlight
-                        ? 1
-                        : props.highlightedSubarea
-                        ? 0.2
-                        : 1,
-                  };
-                }}
-                filter={feature => {
-                  const geoID = feature.properties[config.geoField].toString();
-                  const tractInfo = props.tractInfo[geoID];
+                  filter={feature => {
+                    const geoID = feature.properties[
+                      config.geoField
+                    ].toString();
+                    const tractInfo = props.tractInfo[geoID];
 
-                  return tractInfo
-                    ? props.selection.geo === '10 Counties'
-                      ? true
-                      : props.selection.geoType === 'County'
-                      ? feature.properties['COUNTY_NM'] === props.selection.geo
-                      : props.selection.geoType === 'City'
-                      ? tractInfo.Cities.includes(props.selection.geo)
-                      : true
-                    : false;
-                }}
-                data={geoJSONs[config.name]}
-              />
-            ))
-        : null}
-      <TileLayer
-        key={`tile-layer-${tileLayer[tile].name}`}
-        url={tileLayer[tile].url}
-        attribution={tileLayer[tile].attribution}
-      />
-      <ZoomControl position="bottomleft" />
-    </LeafletMap>
-    {mobile ?
-       <>
-              
-      <div
-        id='tile-layer-icon'
-        onClick={() => 
-          setOpenTileLayerSelector(openTileLayerSelector ? false : true)
-        }
-      >
-        <Icon name='map' size='big' />        
-      </div>
-      <div 
-        id={openTileLayerSelector ? 
-          'tile-layer-selector-open' : 
-          'tile-layer-selector-closed'}
-        className='tile-layer-selector'
-      >
-        
-    
-    { tileLayer.map(item =>
-              <img 
-                className='tile-layer-thumb'
-                draggable='false'
-                alt='tile layer'
+                    return tractInfo
+                      ? props.selection.geo === '10 Counties'
+                        ? true
+                        : props.selection.geoType === 'County'
+                        ? feature.properties['COUNTY_NM'] ===
+                          props.selection.geo
+                        : props.selection.geoType === 'City'
+                        ? tractInfo.Cities.includes(props.selection.geo)
+                        : true
+                      : false;
+                  }}
+                  data={geoJSONs[config.name]}
+                />
+              ))
+          : null}
+        <TileLayer
+          key={`tile-layer-${tileLayer[tile].name}`}
+          url={tileLayer[tile].url}
+          attribution={tileLayer[tile].attribution}
+        />
+        <ZoomControl position="bottomleft" />
+      </LeafletMap>
+      {mobile ? (
+        <>
+          <div
+            id="tile-layer-icon"
+            onClick={() =>
+              setOpenTileLayerSelector(openTileLayerSelector ? false : true)
+            }
+          >
+            <Icon name="map" size="big" />
+          </div>
+          <div
+            id={
+              openTileLayerSelector
+                ? 'tile-layer-selector-open'
+                : 'tile-layer-selector-closed'
+            }
+            className="tile-layer-selector"
+          >
+            {tileLayer.map(item => (
+              <img
+                className="tile-layer-thumb"
+                draggable="false"
+                alt="tile layer"
                 style={{
-                  border: tileLayer[tile].name === item.name ? 'solid blue 3px' : null}}
+                  border:
+                    tileLayer[tile].name === item.name
+                      ? 'solid blue 3px'
+                      : null,
+                }}
                 onClick={() => {
                   setTile(tileLayer.indexOf(item));
-                  setOpenTileLayerSelector(false)
-                  
+                  setOpenTileLayerSelector(false);
                 }}
-                key={`${item._id}-thumb`} src={item.thumbUrl}
+                key={`${item._id}-thumb`}
+                src={item.thumbUrl}
               />
-            )}
-    
-    
-    </div>
-        
+            ))}
+          </div>
         </>
-    : 
-    <div id='tile-layer-selector'>Tile Layer Selector 
-    <div>
-    { tileLayer.map(item =>
-              <img 
-                className='tile-layer-thumb'
-                draggable='false'
-                alt='tile layer'
+      ) : (
+        <div id="tile-layer-selector">
+          Tile Layer Selector
+          {tileLayer.map((item, idx) => (
+            // (console.log(item))
+            <div key={`tile-layer-map-div${idx}`}>
+              <img
+                key={idx}
+                className="tile-layer-thumb"
+                draggable="false"
+                alt="tile layer"
                 style={{
-                  border: tileLayer[tile].name === item.name ? 'solid blue 3px' : null}}
+                  border:
+                    tileLayer[tile].name === item.name
+                      ? 'solid blue 3px'
+                      : null,
+                }}
                 onClick={() => {
                   setTile(tileLayer.indexOf(item));
-                  
-                  
                 }}
-                key={`${item._id}-thumb`} src={item.thumbUrl}
+                key={`${item._id}-thumb`}
+                src={item.thumbUrl}
               />
-            )}
-    
-    </div>
-    </div>
-}
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };

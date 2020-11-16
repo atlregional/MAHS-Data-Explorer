@@ -179,7 +179,7 @@ const HomePage = props => {
           />
         ) : (
           <div id="subarea-not-selected-box">
-            <p>Please choose INDICATORS to populate data</p>
+            <p>Please CHOOSE INDICATORS to populate data</p>
           </div>
         )}
       </div>
