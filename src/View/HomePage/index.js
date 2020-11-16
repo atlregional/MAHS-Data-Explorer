@@ -167,7 +167,7 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
-        {tractInfo ? (
+        {tractInfo && selection.indicators.length > 0 ? (
           <Table
             mobile={mobile}
             tractInfo={tractInfo}
@@ -177,7 +177,11 @@ const HomePage = props => {
             selectedSubareas={selectedSubareas}
             selectedGeo={selection.geo}
           />
-        ) : null}
+        ) : (
+          <div id="subarea-not-selected-box">
+            <p>Please choose INDICATORS to populate data</p>
+          </div>
+        )}
       </div>
       {/* </div> */}
       {/* </div> */}
