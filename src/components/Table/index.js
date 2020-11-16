@@ -2,23 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { StickyTable, Row, Cell } from 'react-sticky-table';
 import utils from '../../utils';
 import numeral from 'numeral';
+import moment from 'moment';
 import ExportButton from '../ExportButton';
 
 import './style.css';
 
 const Table = props => {
-  // Bring in data and map to table with indicator name as row headers and subarea name as column headers
   const tractInfo = props.tractInfo;
-  // console.log(tractInfo)
   const headerArray = ['indicator'];
   const [data, setData] = useState([]);
   const [header, setHeader] = useState([]);
   const indicatorInfo = props.indicators;
-  const selectedIndicators = 
-    props.selection.indicators ?
-    props.selection.indicators.map(indicator => indicator.name)
+  const selectedIndicators = props.selection.indicators
+    ? props.selection.indicators.map(indicator => indicator.name)
     : [];
-  // console.log(data);
+  console.log('selectedIndicators :', selectedIndicators);
+  // console.log(tractInfo)
 
   const lineBreaker = string =>
     string.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g).map(line => (
@@ -58,96 +57,92 @@ const Table = props => {
   const rows = [];
 
   const handleCreateRows = () => {
-
-    const headerCells = header.map((header, i) =>
+    const headerCells = header.map((header, i) => (
       // headerCells.push(
-        <Cell
-          key={`header-${i}`}
-          className="table-cells"
-          style={{
-            backgroundColor:
-              header === `Subarea ${props.highlightedSubarea}`
-                ? 'lightgrey'
-                : null,
-          }}
-        >
-          {
-            // r === 0 && 
-            i === 0 ? 
-              '' // Could maybe put dropdown selector here
-            // : r === 0 ? 
-              : header
-              // : c === 0 ? 
-              //     lineBreaker(indicator.name)
-              //   : numeral(data[r][item]).format('0,0')
-                }
-        </Cell>
-    );
+      <Cell
+        key={`header-${i}`}
+        className="table-cells"
+        style={{
+          backgroundColor:
+            header === `Subarea ${props.highlightedSubarea}`
+              ? 'lightgrey'
+              : null,
+        }}
+      >
+        {
+          // r === 0 &&
+          i === 0
+            ? '' // Could maybe put dropdown selector here
+            : // : r === 0 ?
+              header
+          // : c === 0 ?
+          //     lineBreaker(indicator.name)
+          //   : numeral(data[r][item]).format('0,0')
+        }
+      </Cell>
+    ));
 
-    rows.push(<Row key='header-row'>{headerCells}</Row>)
-      
-    indicatorInfo.filter(indicator => 
-      selectedIndicators.includes(indicator.name)
-    ).forEach((indicator, r) => {
-      const cells = [];
+    rows.push(<Row key="header-row">{headerCells}</Row>);
 
-      header.forEach((item, c) =>
-        cells.push(
-          <Cell
-            key={`${c}-${r}`}
-            className="table-cells"
-            style={{
-              backgroundColor:
-                item === `Subarea ${props.highlightedSubarea}`
-                  ? 'lightgrey'
-                  : null,
-            }}
-          >
-            {
-              // r === 0 && 
-              // c === 0 ? 
-              //   '' // Could maybe put dropdown selector here
-              // : r === 0 ? 
-              //     item
-              //   : 
-                c === 0 ? 
-                  lineBreaker(indicator.name)
-                : numeral(data[r][item]).format('0,0')
-            }
-          </Cell>
-        )
-      );
-      // }
-      rows.push(<Row key={r}>{cells}</Row>);
-    });
+    indicatorInfo
+      .filter(indicator => selectedIndicators.includes(indicator.name))
+      .forEach((indicator, r) => {
+        const cells = [];
+
+        header.forEach((item, c) =>
+          cells.push(
+            <Cell
+              key={`${c}-${r}`}
+              className="table-cells"
+              style={{
+                backgroundColor:
+                  item === `Subarea ${props.highlightedSubarea}`
+                    ? 'lightgrey'
+                    : null,
+              }}
+            >
+              {
+                // r === 0 &&
+                // c === 0 ?
+                //   '' // Could maybe put dropdown selector here
+                // : r === 0 ?
+                //     item
+                //   :
+                c === 0
+                  ? lineBreaker(indicator.name)
+                  : numeral(data[r][item]).format('0,0')
+              }
+            </Cell>
+          )
+        );
+        // }
+        rows.push(<Row key={r}>{cells}</Row>);
+      });
   };
 
   const dataForExport = inputDataArray => {
+    // filter and reorder properties in input data to match rendered table
     const outputDataArray = [];
     const headerArray = [...header];
-    console.log(headerArray)
-    console.log(inputDataArray);
+    // console.log(headerArray);
+    // console.log(inputDataArray);
 
     inputDataArray
-    .filter(inputData => 
-      selectedIndicators.includes(inputData.indicator)
-    )
-    .forEach(inputData => {
-      const dataObj = {};
-      headerArray.forEach(header => dataObj[header] = inputData[header]);
-      outputDataArray.push(dataObj);
-    });
-    // filter and reorder properties in input data to match rendered table 
+      .filter(inputData => selectedIndicators.includes(inputData.indicator))
+      .forEach(inputData => {
+        const dataObj = {};
+        headerArray.forEach(header => (dataObj[header] = inputData[header]));
+        outputDataArray.push(dataObj);
+      });
 
     return outputDataArray;
-  }
+  };
 
   handleCreateRows();
 
   useEffect(handleAggregation, [props.selection]);
 
   return (
-    // <div>
     <div
       style={{
         width: '100%',
@@ -156,13 +151,25 @@ const Table = props => {
       }}
       id="table"
     >
-      <ExportButton data={dataForExport(data)}/>
-      <StickyTable stickyHeaderCount={1}>
-        {/* {headerRow} */}
-        {rows}
-      </StickyTable>
+      {/* <div
+        className={selectedIndicators > 0 ? 'export-button' : 'hidden'}
+        key={selectedIndicators}
+      > */}
+      <ExportButton
+        data={dataForExport(data)}
+        //
+        csvTitle={
+          `TITLE: MAHS SUBAREA SUMMARY ${props.selectedGeo} ` +
+          '\nSOURCE: MAHS DATA EXPLORER - https://metroatlhousing.org/dataexplorer'
+        }
+        csvFilename={`MAHS-Subarea-Summary-${props.selectedGeo
+          .split(' ')
+          .join('-')}-${moment().format('M/DD/YYYY')}`}
+        content={'Download Data'}
+      />
+      {/* </div> */}
+      <StickyTable stickyHeaderCount={1}>{rows}</StickyTable>
     </div>
-    // </div>
   );
 };
 

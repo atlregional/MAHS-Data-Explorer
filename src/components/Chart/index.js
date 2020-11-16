@@ -39,7 +39,7 @@ const Chart = props => {
     );
 
     array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
-    console.log(array);
+    // console.log(array);
     setData(array);
   };
 
@@ -54,7 +54,6 @@ const Chart = props => {
   // console.log(props.selection);
 
   useEffect(handleAggregation, [props.selection]);
-
 
   return (
     <>
@@ -80,16 +79,26 @@ const Chart = props => {
               {data.map((barData, idx) => (
                 <Cell
                   key={indicatorInfo.name + idx}
-                  fillOpacity={barData.Subarea === props.highlightedSubarea ? 1 : props.highlightedSubarea ? .5 : 1 }
-                  stroke={barData.Subarea === props.highlightedSubarea ? 'black' : null }
-                  strokeWidth={barData.Subarea === props.highlightedSubarea ? 3 : null }
+                  fillOpacity={
+                    barData.Subarea === props.highlightedSubarea
+                      ? 1
+                      : props.highlightedSubarea
+                      ? 0.5
+                      : 1
+                  }
+                  stroke={
+                    barData.Subarea === props.highlightedSubarea
+                      ? 'black'
+                      : null
+                  }
+                  strokeWidth={
+                    barData.Subarea === props.highlightedSubarea ? 3 : null
+                  }
                   fill={colormap[barData.Subarea - 1]}
-                  onMouseEnter={() => 
+                  onMouseEnter={() =>
                     props.setHighlightedSubarea(barData.Subarea)
                   }
-                  onMouseLeave={() => 
-                    props.setHighlightedSubarea()
-                  }
+                  onMouseLeave={() => props.setHighlightedSubarea()}
                 />
               ))}
             </Bar>

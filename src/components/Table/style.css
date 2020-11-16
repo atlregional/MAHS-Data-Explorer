@@ -1,14 +1,17 @@
 .sticky-table-table,
 .sticky-table {
-    /* height: 100%; */
-    /* overflow: auto; */
+  /* height: 100%; */
+  /* overflow: auto; */
+}
+.hidden {
+  visibility: hidden;
 }
 
 .indicator-column {
-  font-size: .9em;
-  line-height: .5em;
+  font-size: 0.9em;
+  line-height: 0.5em;
   width: 100%;
-  padding: 0 .5em 0 .5em;
+  padding: 0 0.5em 0 0.5em;
 }
 
 .table-cells {
