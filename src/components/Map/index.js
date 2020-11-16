@@ -7,16 +7,25 @@ import {
   ZoomControl,
 } from 'react-leaflet';
 import polygonToLine from '@turf/polygon-to-line';
+import { Icon } from 'semantic-ui-react';
+
 import './style.css';
 // import RingLoader from "react-spinners/RingLoader";
+
+
 
 const MapComp = props => {
   // const mapRef = useRef();
   const [geoJSONs, setGeoJSONs] = useState();
+  const mobile = window.screen.width < 800;
 
-  const tileLayerConfig = props.config.tilelayers;
+  // const tileLayerConfig = props.config.tilelayers;
 
   const layerConfigs = props.layers;
+  
+  const tileLayer = props.config.tilelayers;
+  const [tile, setTile] = useState(1);
+  const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
 
   const handleGeoJSONs = () => {
     const getGeoJSON = (key, url) =>
@@ -175,13 +184,73 @@ const MapComp = props => {
             ))
         : null}
       <TileLayer
-        key={`tile-layer-${tileLayerConfig[0].name}`}
-        url={tileLayerConfig[0].url}
-        attribution={tileLayerConfig[0].attribution}
+        key={`tile-layer-${tileLayer[tile].name}`}
+        url={tileLayer[tile].url}
+        attribution={tileLayer[tile].attribution}
       />
       <ZoomControl position="bottomleft" />
     </LeafletMap>
-    <div id='tile-layer-selector'>Tile Layer Selector</div>
+    {mobile ?
+       <>
+              
+      <div
+        id='tile-layer-icon'
+        onClick={() => 
+          setOpenTileLayerSelector(openTileLayerSelector ? false : true)
+        }
+      >
+        <Icon name='map' size='big' />        
+      </div>
+      <div 
+        id={openTileLayerSelector ? 
+          'tile-layer-selector-open' : 
+          'tile-layer-selector-closed'}
+        className='tile-layer-selector'
+      >
+        
+    
+    { tileLayer.map(item =>
+              <img 
+                className='tile-layer-thumb'
+                draggable='false'
+                alt='tile layer'
+                style={{
+                  border: tileLayer[tile].name === item.name ? 'solid blue 3px' : null}}
+                onClick={() => {
+                  setTile(tileLayer.indexOf(item));
+                  setOpenTileLayerSelector(false)
+                  
+                }}
+                key={`${item._id}-thumb`} src={item.thumbUrl}
+              />
+            )}
+    
+    
+    </div>
+        
+        </>
+    : 
+    <div id='tile-layer-selector'>Tile Layer Selector 
+    <div>
+    { tileLayer.map(item =>
+              <img 
+                className='tile-layer-thumb'
+                draggable='false'
+                alt='tile layer'
+                style={{
+                  border: tileLayer[tile].name === item.name ? 'solid blue 3px' : null}}
+                onClick={() => {
+                  setTile(tileLayer.indexOf(item));
+                  
+                  
+                }}
+                key={`${item._id}-thumb`} src={item.thumbUrl}
+              />
+            )}
+    
+    </div>
+    </div>
+}
     </>
   );
 };
