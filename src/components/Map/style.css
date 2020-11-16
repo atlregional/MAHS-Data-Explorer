@@ -1,8 +1,7 @@
-
 #tile-layer-selector {
   position: fixed;
   bottom: 40px;
-  height: 10vh;
+  height: 7.5vh;
   right: calc(40% + 20px);
   z-index: 99999999;
   /* font-size: 4em; */
@@ -12,11 +11,18 @@
   border-radius: 5px;
 }
 
-
 .tile-layer-thumb {
   height: 33px;
   margin: 5px 5px 0 5px;
   border-radius: 5px;
+}
+
+.tile-layer-selection-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
 }
 
 #tile-layer-selector-open {
