@@ -75,9 +75,8 @@ const HomePage = props => {
           />
         </div>
       </div>
-      {(mobile && mobileVizView === 'chart') ||
-      (mobile && mobileVizView === 'map') ||
-      !mobile ? (
+      {mobile && mobileVizView === 'chart' ||
+      !mobile ? 
         <div id="chart-map-indicator-selector">
           <IndicatorDropdown
             // indicatorInfo={props.config.indicatorInfo}
@@ -86,7 +85,7 @@ const HomePage = props => {
             setSelection={setSelection}
           />
         </div>
-      ) : null}
+       : null}
 
       <div
         id={
@@ -133,6 +132,7 @@ const HomePage = props => {
             ? 'chart-box'
             : 'chart-box-reduced'
         }
+        // use this condition to control when the class and css;
         className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
       >
         {tractInfo ? (
@@ -149,16 +149,17 @@ const HomePage = props => {
           />
         ) : null}
       </div>
-      <div id="table-indicators-selector">
-        <IndicatorDropdown
-          multiple
-          // indicatorInfo={props.config.indicatorInfo}
-          options={indicators}
-          selection={selection}
-          setSelection={setSelection}
-        />
-      </div>
-
+      {mobile && mobileVizView === 'table' || !mobile ? 
+        <div id="table-indicators-selector">
+          <IndicatorDropdown
+            multiple
+            // indicatorInfo={props.config.indicatorInfo}
+            options={indicators}
+            selection={selection}
+            setSelection={setSelection}
+          />
+        </div>
+       : null}
       <div
         id={
           subareaOptions.length <= 5 || !mobile

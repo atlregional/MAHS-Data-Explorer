@@ -41,8 +41,8 @@ const IndicatorDropdown = props => {
           <em>Choose Indicators</em>
         )}
         <Icon
-          name="caret square down outline"
-          size="big"
+          name="caret down"
+          // size=""
           className="indicator-selector-dropdown-icon"
         />
       </div>

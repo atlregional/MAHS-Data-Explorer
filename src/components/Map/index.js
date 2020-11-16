@@ -231,32 +231,27 @@ const MapComp = props => {
           </div>
         </>
       ) : (
-        <div id="tile-layer-selector">
-          Tile Layer Selector
-          <div className="tile-layer-selection-box">
-            {tileLayer.map((item, idx) => (
-              // (console.log(item))
-              <div key={`tile-layer-map-div${idx}`}>
-                <img
-                  key={idx}
-                  className="tile-layer-thumb"
-                  draggable="false"
-                  alt="tile layer"
-                  style={{
-                    border:
-                      tileLayer[tile].name === item.name
-                        ? 'solid blue 3px'
-                        : null,
-                  }}
-                  onClick={() => {
-                    setTile(tileLayer.indexOf(item));
-                  }}
-                  key={`${item._id}-thumb`}
-                  src={item.thumbUrl}
-                />
-              </div>
-            ))}
-          </div>
+        <div className="tile-layer-selection-box" id="tile-layer-selector">
+          {tileLayer.map((item, idx) => (
+            <div key={`tile-layer-map-div${idx}`}>
+              <img
+                className="tile-layer-thumb"
+                draggable="false"
+                alt={`Tile Layer Thumbnail Selector ${item.name}`}
+                style={{
+                  border:
+                    tileLayer[tile].name === item.name
+                      ? 'solid blue 3px'
+                      : null,
+                }}
+                onClick={() => {
+                  setTile(tileLayer.indexOf(item));
+                }}
+                key={`${idx}-thumb`}
+                src={item.thumbUrl}
+              />
+            </div>
+          ))}
         </div>
       )}
     </>
