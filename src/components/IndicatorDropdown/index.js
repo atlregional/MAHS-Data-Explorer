@@ -32,6 +32,7 @@ const IndicatorDropdown = props => {
     <div
       className="indicator-selector-dropdown-box"
       onMouseLeave={() => setDropdownOpen(false)}
+      onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
     >
       <div className="indicator-selector-dropdown-header">
         {!multiple ? (
@@ -43,7 +44,6 @@ const IndicatorDropdown = props => {
           name="caret square down outline"
           size="big"
           className="indicator-selector-dropdown-icon"
-          onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
         />
       </div>
       <div className="indicator-dropdown-menu">
