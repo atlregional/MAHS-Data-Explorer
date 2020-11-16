@@ -157,11 +157,14 @@ const Table = props => {
       > */}
       <ExportButton
         data={dataForExport(data)}
-        csvTitle={`TITLE:  ${selectedIndicators}`}
-        csvFilename={`MAHS-DataCollection-${props.selectedGeo
-          // regEx replacing spaces with dash from user Geo Selection data set;
-          .replace(/ /g, '-')
-          .toUpperCase()}-${moment().format('M/DD/YYYY')}`}
+        //
+        csvTitle={
+          `TITLE: MAHS SUBAREA SUMMARY ${props.selectedGeo} ` +
+          '\nSOURCE: MAHS DATA EXPLORER - https://metroatlhousing.org/dataexplorer'
+        }
+        csvFilename={`MAHS-Subarea-Summary-${props.selectedGeo
+          .split(' ')
+          .join('-')}-${moment().format('M/DD/YYYY')}`}
         content={'Download Data'}
       />
       {/* </div> */}
