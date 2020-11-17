@@ -1,22 +1,31 @@
-
 #tile-layer-selector {
   position: fixed;
   bottom: 40px;
-  height: 10vh;
+  height: 7.5vh;
   right: calc(40% + 20px);
   z-index: 99999999;
   /* font-size: 4em; */
-  color: #ffa500;
-  width: 150px;
-  background-color: white;
+  /* color: #ffa500; */
+  width: 250px;
+  /* background-color: white; */
   border-radius: 5px;
 }
 
-
 .tile-layer-thumb {
-  height: 33px;
-  margin: 5px 5px 0 5px;
+  display: block;
+  height: 65px;
+  margin: 5px 8px 0 8px;
   border-radius: 5px;
+  box-shadow: 6px 8px #888888;
+}
+
+.tile-layer-selection-box {
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
 }
 
 #tile-layer-selector-open {
@@ -45,4 +54,18 @@
   border-radius: 10px;
   box-shadow: 0 0 10px #000000;
   z-index: 99999999;
+}
+
+@media screen and (max-width: 800px) {
+  #tile-layer-selector-open {
+    z-index: 999999;
+    position: fixed;
+    top: 41%;
+    left: 75%;
+  }
+  #tile-layer-selector-closed {
+    position: fixed;
+    top: 20%;
+    right: -20%;
+  }
 }
