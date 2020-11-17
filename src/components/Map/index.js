@@ -209,7 +209,7 @@ const MapComp = props => {
             }
             className="tile-layer-selector"
           >
-            {tileLayer.map(item => (
+            {tileLayer.map((item, idx) => (
               <img
                 className="tile-layer-thumb"
                 draggable="false"
@@ -224,7 +224,7 @@ const MapComp = props => {
                   setTile(tileLayer.indexOf(item));
                   setOpenTileLayerSelector(false);
                 }}
-                key={`${item._id}-thumb`}
+                key={`${item.name}-thumb-${idx}`}
                 src={item.thumbUrl}
               />
             ))}

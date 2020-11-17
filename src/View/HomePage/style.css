@@ -219,4 +219,8 @@ body {
     width: 100%;
     padding: 1em;
   }
+  /* #map-box-reduced {
+    top: 34vh;
+    height: 56vh;
+  } */
 }
