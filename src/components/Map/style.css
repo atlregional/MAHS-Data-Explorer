@@ -55,3 +55,17 @@
   box-shadow: 0 0 10px #000000;
   z-index: 99999999;
 }
+
+@media screen and (max-width: 800px) {
+  #tile-layer-selector-open {
+    z-index: 999999;
+    position: fixed;
+    top: 41%;
+    left: 75%;
+  }
+  #tile-layer-selector-closed {
+    position: fixed;
+    top: 20%;
+    right: -20%;
+  }
+}
