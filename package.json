@@ -12,6 +12,7 @@
     "@turf/polygon-to-line": "^6.0.3",
     "axios": "^0.20.0",
     "export-to-csv": "^0.2.1",
+    "gradient-color": "^2.0.1",
     "leaflet": "^1.7.1",
     "moment": "^2.29.1",
     "numeral": "^2.0.6",

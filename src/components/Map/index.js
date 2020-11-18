@@ -13,17 +13,65 @@ import './style.css';
 // import RingLoader from "react-spinners/RingLoader";
 
 const MapComp = props => {
+
   // const mapRef = useRef();
   const [geoJSONs, setGeoJSONs] = useState();
+  // const [tractInfo, setTractInfo] = useState();
   const mobile = window.screen.width < 800;
 
   // const tileLayerConfig = props.config.tilelayers;
 
   const layerConfigs = props.layers;
 
+  const [data, setData] = useState();
+  const [stats, setStats] = useState();
+  
   const tileLayer = props.config.tilelayers;
   const [tile, setTile] = useState(1);
   const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
+
+  const handleTractData = () => {
+    const array = [];
+    const tractInfo = props.tractInfo;
+    const tractData = 
+      tractInfo ? 
+        Object.values(tractInfo).filter(tract =>
+          utils.filterBySelection(tract, props.selection)
+        ) 
+      : null;
+
+    const aggregatedData = 
+      tractData ? 
+        utils.aggregate(tractData, props.selection.indicator, 'GEOID') 
+      : {};
+
+    console.log(aggregatedData);
+
+    Object.entries(aggregatedData).forEach(([key, value]) =>
+      array.push({
+        name: key,
+        Subarea: parseInt(key.replace('Subarea ', '')),
+        [props.selection.indicator.name]: value,
+      })
+    );
+
+    const valueArray = array.map(item => parseFloat(item[props.selection.indicator.name]));
+    const maxValue = valueArray ? Math.max(...valueArray) : null;
+    const minValue = valueArray ? Math.min(...valueArray) : null;
+
+    console.log('max', maxValue);
+    console.log('min', minValue);
+
+    // array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
+    // console.log(array);
+    setData(aggregatedData);
+    setStats({max: maxValue, min: minValue, range: maxValue - minValue})
+
+  };
+
+  // const tractColor = value => {
+  //   const colorIndex = 
+  // }
 
   const handleGeoJSONs = () => {
     const getGeoJSON = (key, url) =>
@@ -58,16 +106,33 @@ const MapComp = props => {
     .geoField;
 
   const tractStyle = tractInfo => {
+    const viewMapData = props.viewMapData;
     const subarea = tractInfo
       ? parseInt(tractInfo.Subarea.replace('Subarea ', ''))
       : null;
     const config = props.config;
+    // console.log(data);
+    const value = data ? data[tractInfo.GEOID] : null;
+    // console.log(stats);
+    // console.log(value);
+    const disFromMin = value - stats.min;
+    const binningRatio = disFromMin/stats.range;
+    
+    // const colorIndex = 
+    // const colorIndex = 
+    // const colorIndex = 
     // const style = layerConfigs.find(item => item.name === 'tracts')
     // console.log(subarea);
-    const color = subarea ? config.style.colormap[subarea - 1] : null;
+    const color = 
+      viewMapData ?
+        props.colors[Math.floor(binningRatio * props.numBins)] 
+      : subarea ? 
+          config.style.colormap[subarea - 1] 
+        : null;
+
     return {
       fillColor: color,
-      color: color,
+      color: viewMapData ? 'black' : color,
       // fillOpacity: 0.7,
     };
   };
@@ -75,12 +140,10 @@ const MapComp = props => {
   const handleBounds = featureBounds =>
     Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
   useEffect(handleGeoJSONs, []);
+  useEffect(handleTractData, [geoJSONs, props.selection])
 
-  // console.log(props.highlightedSubarea);
-
-  // console.log(JSON.stringify(props.tractInfo));
+  console.log(geoJSONs);
   return (
-    // container for map
     <>
       <LeafletMap
         key={`subarea-map-${props.numberOfSubareas}`}
@@ -99,91 +162,115 @@ const MapComp = props => {
         minZoom={3}
         zoomControl={false}
       >
-        {geoJSONs
-          ? layerConfigs
-              .filter(config => config.visible && config.type === 'boundary')
-              .map(config => {
-                const boundary = geoJSONs[config.name].features.map(feature =>
-                  polygonToLine(feature)
-                );
-                return (
-                  <GeoJSON
-                    onAdd={e => {
-                      e.target.bringToFront();
-                      const featureBounds = e.target.getBounds();
-                      handleBounds(featureBounds);
-                    }}
-                    key={`boundary-layer-${config.name}-${props.selection.geo}`}
-                    data={boundary}
-                    filter={feature =>
-                      props.selection.geo === '10 Counties'
-                        ? config.name === 'counties'
-                        : feature.properties[config.geoField] ===
-                          props.selection.geo
-                    }
-                    style={{
-                      color: config.boundaryColor,
-                      weight: config.boundaryWidth,
-                    }}
-                  />
-                );
-              })
-          : null}
-        {geoJSONs
-          ? layerConfigs
+        {
+        geoJSONs ? 
+          layerConfigs
+            .filter(config => config.visible && config.type === 'boundary')
+            .map(config => {
+              const boundary = geoJSONs[config.name].features.map(feature =>
+                polygonToLine(feature)
+              );
+              return (
+                <GeoJSON
+                  onAdd={e => {
+                    e.target.bringToFront();
+                    const featureBounds = e.target.getBounds();
+                    handleBounds(featureBounds);
+                  }}
+                  key={`boundary-layer-${config.name}-${props.selection.geo}`}
+                  data={boundary}
+                  filter={feature =>
+                    props.selection.geo === '10 Counties'
+                      ? config.name === 'counties'
+                      : feature.properties[config.geoField] ===
+                        props.selection.geo
+                  }
+                  style={{
+                    color: config.boundaryColor,
+                    weight: config.boundaryWidth,
+                  }}
+                />
+              );
+            })
+          : null
+        }
+        {
+          geoJSONs ?  
+            layerConfigs
               .filter(config => config.visible && config.type === 'data')
               .map(config => (
-                <GeoJSON
-                  onAdd={e => e.target.bringToBack()}
-                  key={`data-layer-${config.name}-${props.selection.geo}`}
-                  style={feature => {
-                    const geoID = feature.properties[tractIDField];
-                    const tractInfo = props.tractInfo[geoID];
-                    const subarea = tractInfo['Subarea'];
-                    const highlight =
-                      subarea === `Subarea ${props.highlightedSubarea}`;
-                    const style = tractStyle(tractInfo);
-                    return {
-                      ...style,
-                      color:
-                        props.highlightedSubarea && highlight
-                          ? 'black'
-                          : config.boundaryColor,
-                      weight:
-                        props.highlightedSubarea && highlight
-                          ? 3
-                          : props.highlightedSubarea
-                          ? 0
-                          : config.boundaryWidth,
-                      fillOpacity:
-                        props.highlightedSubarea && highlight
-                          ? 1
-                          : props.highlightedSubarea
-                          ? 0.2
-                          : 1,
-                    };
-                  }}
-                  filter={feature => {
-                    const geoID = feature.properties[
-                      config.geoField
-                    ].toString();
-                    const tractInfo = props.tractInfo[geoID];
+                  <GeoJSON
+                    onAdd={e => e.target.bringToBack()}
+                    key={`data-layer-${config.name}-${props.selection.geo}-${props.viewMapData ? 'data' : 'nodata'}`}
+                    style={feature => {
+                      const geoID = feature.properties[tractIDField];
+                      const tractInfo = props.tractInfo[geoID];
+                      const subarea = tractInfo['Subarea'];
+                      // const data = tractInfo['Data'];
+                      // console.log(data);
+                      const highlight =
+                        subarea === `Subarea ${props.highlightedSubarea}`;
+                      const style = tractStyle(tractInfo);
+                      return {
+                        ...style,
+                        color:
+                          props.highlightedSubarea && highlight
+                            ? 'black'
+                            : config.boundaryColor,
+                        weight:
+                          props.highlightedSubarea && highlight
+                            ? 3
+                            : props.highlightedSubarea
+                            ? 0
+                            : config.boundaryWidth,
+                        fillOpacity:
+                          props.highlightedSubarea && highlight
+                            ? 1
+                            : props.highlightedSubarea
+                            ? 0.2
+                            : 1,
+                      };
+                    }}
+                    filter={feature => {
+                      const geoID = feature.properties[
+                        config.geoField
+                      ].toString();
+                      const tractInfo = props.tractInfo[geoID];
 
-                    return tractInfo
-                      ? props.selection.geo === '10 Counties'
-                        ? true
-                        : props.selection.geoType === 'County'
-                        ? feature.properties['COUNTY_NM'] ===
-                          props.selection.geo
-                        : props.selection.geoType === 'City'
-                        ? tractInfo.Cities.includes(props.selection.geo)
-                        : true
-                      : false;
-                  }}
+                      return tractInfo
+                        ? props.selection.geo === '10 Counties'
+                          ? true
+                          : props.selection.geoType === 'County'
+                          ? feature.properties['COUNTY_NM'] ===
+                            props.selection.geo
+                          : props.selection.geoType === 'City'
+                          ? tractInfo.Cities.includes(props.selection.geo)
+                          : true
+                        : false;
+                    }}
+                    data={geoJSONs[config.name]}
+                  />
+                ))
+          : null
+        }
+        {
+          geoJSONs ?  
+          layerConfigs
+            .filter(config => config.visible && config.type === 'transportation')
+            .map(config => (
+                <GeoJSON
+                  onAdd={e => e.target.bringToFront()}
+                  key={`data-layer-${config.name}-${props.selection.geo}`}
+                  style={feature => ({
+                    color: config.name === 'transit' ? `#${feature.properties.route_color}` : config.color,
+                    weight: config.weight
+                    })
+                  }
                   data={geoJSONs[config.name]}
                 />
               ))
-          : null}
+        : null
+        }
         <TileLayer
           key={`tile-layer-${tileLayer[tile].name}`}
           url={tileLayer[tile].url}

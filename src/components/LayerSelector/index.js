@@ -35,7 +35,7 @@ const LayerSelector = props => {
       >
         {view === true
           ? layers
-            .filter(layer => layer.type === 'boundary')
+            .filter(layer => layer.type === 'transportation')
             .map((layer, idx) => (
               <div key={layer.name + idx} className="layer-selection-row">
                 <div className="layer-selection-checkbox">

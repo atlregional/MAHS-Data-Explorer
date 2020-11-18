@@ -25,10 +25,10 @@ const Chart = props => {
 
   const handleAggregation = () => {
     const array = [];
-    const data = Object.values(tractInfo).filter(tract =>
+    const tractData = Object.values(tractInfo).filter(tract =>
       utils.filterBySelection(tract, props.selection)
     );
-    const aggregatedData = utils.aggregate(data, indicatorInfo, 'Subarea');
+    const aggregatedData = utils.aggregate(tractData, indicatorInfo, 'Subarea');
 
     Object.entries(aggregatedData).forEach(([key, value]) =>
       array.push({

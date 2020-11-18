@@ -7,6 +7,7 @@ import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
 import LayerSelector from '../../components/LayerSelector';
 import IndicatorDropdown from '../../components/IndicatorDropdown';
+import gradient from 'gradient-color';
 import utils from '../../utils';
 import './style.css';
 
@@ -23,6 +24,14 @@ const HomePage = props => {
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
+  const [viewMapData, setViewMapData] = useState(true);
+
+  const numBins = 100;
+  const colors = gradient([
+    '#F4F75B',
+    '#1AA2C3',
+    '#F5B53C'
+  ], numBins).reverse()
   // const [selectedIndicator, setSelectedIndicator] = useState(
   //   props.config.indicators[0]
   // );
@@ -114,6 +123,9 @@ const HomePage = props => {
         className={mobile && mobileVizView !== 'map' ? 'hidden' : null}
       >
         <MapComp
+          colors={colors}
+          numBins={numBins}
+          viewMapData={viewMapData}
           mobile={mobile}
           tractInfo={tractInfo}
           selection={selection}
