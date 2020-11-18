@@ -4,9 +4,11 @@ import './style.css';
 import 'semantic-ui-css/semantic.min.css';
 
 const LayerSelector = props => {
-  const [view, setView] = useState('closed');
+  const [view, setView] = useState(false);
   const layers = props.layers ? props.layers : [];
   console.log(props.mobile, view);
+
+  // if (props.mobile) setView(false);
 
   return (
     <>
@@ -19,7 +21,7 @@ const LayerSelector = props => {
       >
         <Icon
           name={'list alternate outline'}
-          onClick={() => setView(view === 'open' ? 'closed' : 'open')}
+          onClick={() => setView(view === true ? false : true)}
         />
       </div>
 
@@ -29,11 +31,12 @@ const LayerSelector = props => {
             ? 'layer-selector-box'
             : 'layer-selector-box-shifted'
         }
-        className={view === 'open' ? 'open' : 'closed'}
+        className={view === true ? 'open' : 'closed'}
       >
-        {console.log()}
-        {view === 'open'
-          ? layers.map((layer, idx) => (
+        {view === true
+          ? layers
+            .filter(layer => layer.type === 'boundary')
+            .map((layer, idx) => (
               <div key={layer.name + idx} className="layer-selection-row">
                 <div className="layer-selection-checkbox">
                   <Checkbox

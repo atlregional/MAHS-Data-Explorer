@@ -5,7 +5,7 @@ const VizViewSelector = (props) => {
   const buttonParamArr = [
     {
       text: 'Map',
-      value: 'map',
+      value: 'map'
     },
     {
       text: 'Chart',
