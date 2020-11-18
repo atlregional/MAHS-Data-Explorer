@@ -4,11 +4,9 @@ import './style.css';
 import 'semantic-ui-css/semantic.min.css';
 
 const LayerSelector = props => {
-  const [view, setView] = useState('open');
+  const [view, setView] = useState('closed');
   const layers = props.layers ? props.layers : [];
   console.log(props.mobile, view);
-
-  // if (props.mobile) setView('closed');
 
   return (
     <>
