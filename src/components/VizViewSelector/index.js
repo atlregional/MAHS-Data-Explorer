@@ -35,13 +35,12 @@ const VizViewSelector = props => {
           }
           style={{ width: `${100 / buttonParamArr.length}%` }}
         >
-          {item.text}
-
+          <span> {item.text} </span>
           <Icon
             className="viz-view-icon"
             name={item.icon}
             inverted={props.mobileVizView === item.value}
-            size="large"
+            size="big"
           />
         </div>
       ))}
@@ -50,20 +49,3 @@ const VizViewSelector = props => {
 };
 
 export default VizViewSelector;
-{
-  /* {item => {
-                  console.log('item.value', item.value);
-                  switch (item.value) {
-                    case 'map':
-                      return <Icon name="map" size="large" />;
-
-                    case '':
-                      return <Icon name="chart bar" size="large" />;
-
-                    case 'map':
-                      return <Icon name="table" size="large" />;
-                    default:
-                      break;
-                  }
-                }} */
-}
