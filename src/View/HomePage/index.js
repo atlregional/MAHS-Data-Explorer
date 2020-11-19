@@ -12,8 +12,9 @@ import utils from '../../utils';
 import './style.css';
 import { Checkbox } from 'semantic-ui-react';
 
+
 const HomePage = props => {
-  // console.log('homescreen props: ', props);
+  console.log('HomePage - props: ', props);
   const mobile = window.screen.width < 800;
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
@@ -32,7 +33,7 @@ const HomePage = props => {
   // const [selectedIndicator, setSelectedIndicator] = useState(
   //   props.config.indicators[0]
   // );
-  // console.log('selection.geo :', selection.geo);
+  console.log('HomePage - selection :', selection);
   // console.log('selectedIndicator: ', selectedIndicator);
 
   const style = props.config.style;
@@ -202,8 +203,8 @@ const HomePage = props => {
           </div>
         )}
       </div>
-      {/* </div> */}
-      {/* </div> */}
+
+      
 
       {mobile ? (
         <VizViewSelector
