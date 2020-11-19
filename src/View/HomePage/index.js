@@ -26,7 +26,6 @@ const HomePage = props => {
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
   const [viewMapData, setViewMapData] = useState(false);
-  console.log('viewMapData :', viewMapData);
 
   const numBins = 100;
   const colors = gradient(['#F4F75B', '#1AA2C3', '#F5B53C'], numBins).reverse();
