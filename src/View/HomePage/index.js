@@ -10,6 +10,7 @@ import IndicatorDropdown from '../../components/IndicatorDropdown';
 import gradient from 'gradient-color';
 import utils from '../../utils';
 import './style.css';
+import { Checkbox } from 'semantic-ui-react';
 
 const HomePage = props => {
   // console.log('homescreen props: ', props);
@@ -24,14 +25,11 @@ const HomePage = props => {
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
-  const [viewMapData, setViewMapData] = useState(true);
+  const [viewMapData, setViewMapData] = useState(false);
+  console.log('viewMapData :', viewMapData);
 
   const numBins = 100;
-  const colors = gradient([
-    '#F4F75B',
-    '#1AA2C3',
-    '#F5B53C'
-  ], numBins).reverse()
+  const colors = gradient(['#F4F75B', '#1AA2C3', '#F5B53C'], numBins).reverse();
   // const [selectedIndicator, setSelectedIndicator] = useState(
   //   props.config.indicators[0]
   // );
@@ -84,9 +82,18 @@ const HomePage = props => {
           />
         </div>
       </div>
-      {mobile && mobileVizView === 'chart' ||
-      !mobile ? 
+      {(mobile && mobileVizView === 'chart') || !mobile ? (
+        // single indicator
         <div id="chart-map-indicator-selector">
+          <div className="chart-map-toggle-box">
+            <p>SHOW DATA OVERLAY</p>
+            <Checkbox
+              toggle
+              onChange={() =>
+                setViewMapData(viewMapData === false ? true : false)
+              }
+            />
+          </div>
           <IndicatorDropdown
             // indicatorInfo={props.config.indicatorInfo}
             options={indicators}
@@ -94,7 +101,7 @@ const HomePage = props => {
             setSelection={setSelection}
           />
         </div>
-       : null}
+      ) : null}
 
       <div
         id={
@@ -161,7 +168,7 @@ const HomePage = props => {
           />
         ) : null}
       </div>
-      {mobile && mobileVizView === 'table' || !mobile ? 
+      {(mobile && mobileVizView === 'table') || !mobile ? (
         <div id="table-indicators-selector">
           <IndicatorDropdown
             multiple
@@ -171,7 +178,7 @@ const HomePage = props => {
             setSelection={setSelection}
           />
         </div>
-       : null}
+      ) : null}
       <div
         id={
           subareaOptions.length <= 5 || !mobile

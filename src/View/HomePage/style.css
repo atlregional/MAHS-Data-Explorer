@@ -47,6 +47,11 @@ body {
   right: 10%;
   z-index: 999999;
   background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
   /* padding: 1em 2em 1em 1em; */
   /* border-radius: 10px 0 0 10px; */
   /* border-bottom: ; */
@@ -184,7 +189,6 @@ body {
 
   #chart-map-indicator-selector,
   #table-indicators-selector {
-    position: fixed;
     width: 95%;
     top: 35vh;
     left: 2.5%;
