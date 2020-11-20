@@ -6,7 +6,8 @@
 .map-legend-title {
     margin: 0 auto;
     padding: 8px;
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .color-row {
@@ -18,13 +19,13 @@
     /* padding: 10px 0 10px 0; */
 }
 
-.values-row {
+/* removed from code block */
+/* .values-row {
     display: flex;
     justify-content: space-between;
     font-size: larger;
     font-weight: bold;
-    padding: 5px;
-}
+} */
 
 .color-scale-block {
     height: 100%;

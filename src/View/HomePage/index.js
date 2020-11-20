@@ -12,7 +12,6 @@ import utils from '../../utils';
 import './style.css';
 import { Checkbox } from 'semantic-ui-react';
 
-
 const HomePage = props => {
   console.log('HomePage - props: ', props);
   const mobile = window.screen.width < 800;
@@ -86,7 +85,7 @@ const HomePage = props => {
         // single indicator
         <div id="chart-map-indicator-selector">
           <div className="chart-map-toggle-box">
-            <p>SHOW DATA OVERLAY</p>
+            <p>Show Data on Map</p>
             <Checkbox
               toggle
               onChange={() =>
@@ -99,6 +98,7 @@ const HomePage = props => {
             options={indicators}
             selection={selection}
             setSelection={setSelection}
+            // style={{ width: '50%' }}
           />
         </div>
       ) : null}
@@ -203,8 +203,6 @@ const HomePage = props => {
           </div>
         )}
       </div>
-
-      
 
       {mobile ? (
         <VizViewSelector

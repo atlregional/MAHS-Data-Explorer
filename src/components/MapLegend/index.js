@@ -16,8 +16,7 @@ const MapLegend = props => {
     <>
       {viewMapData ? (
         <div id="legend">
-          <h4 className="map-legend-title">{props.selection.indicator.name}</h4>
-          <div className="values-row"></div>
+          <p className="map-legend-title">{props.selection.indicator.name}</p>
           {props.stats ? (
             <div className="color-row" style={{ backgroundColor: 'white' }}>
               <span className="min-value value-perimeter">{minVal}%</span>
