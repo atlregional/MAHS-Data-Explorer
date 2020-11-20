@@ -40,11 +40,13 @@ body {
 
 /* ********************************************************************************** */
 
-#chart-map-indicator-selector {
+#chart-map-selection-box {
   position: fixed;
   display: flex;
   flex-direction: row;
+  /* space evenly horizontally */
   justify-content: space-around;
+  /* space centered vertically */
   align-items: center;
   width: 35%;
   top: 12vh;
@@ -55,6 +57,7 @@ body {
 }
 
 .chart-map-toggle-box {
+  /* display flex to render inline */
   display: flex;
 }
 .chart-map-toggle-box p {

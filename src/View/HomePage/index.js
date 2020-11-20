@@ -83,7 +83,7 @@ const HomePage = props => {
       </div>
       {(mobile && mobileVizView === 'chart') || !mobile ? (
         // single indicator
-        <div id="chart-map-indicator-selector">
+        <div id="chart-map-selection-box">
           <div className="chart-map-toggle-box">
             <p>Show Data on Map</p>
             <Checkbox
