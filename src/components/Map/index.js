@@ -343,6 +343,7 @@ const MapComp = props => {
       {props.selection && stats ? (
         <div id="map-legend-box">
           <MapLegend
+            viewMapData={props.viewMapData}
             selection={props.selection}
             colors={props.colors}
             stats={stats}
