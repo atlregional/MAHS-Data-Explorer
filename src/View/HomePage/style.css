@@ -40,32 +40,33 @@ body {
 
 /* ********************************************************************************** */
 
-#chart-map-selection-box {
+#chart-map-indicator-selector {
   position: fixed;
-  display: flex;
-  flex-direction: row;
-  /* space evenly horizontally */
-  justify-content: space-around;
-  /* space centered vertically */
-  align-items: center;
-  width: 35%;
+  display: grid;
+  grid-template-columns: 25% 50%;
+
+  width: 40%;
   top: 12vh;
-  right: 3.5%;
+  right: 0;
   z-index: 999999;
-  background-color: white;
-
+  /* background-color: rgb(215, 214, 214); */
 }
 
-.chart-map-toggle-box {
-  /* display flex to render inline */
-  display: flex;
-}
-.chart-map-toggle-box p {
-  width: 150px;
-  margin-right: 10%;
+#chart-map-toggle-box {
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
+#chart-map-toggle-box > .toggle {
+  margin: 1em;
+}
 
+#map-data-toggle-label {
+  font-size: .8em;
+  padding: 1em;
+  text-align: right;
+  line-height: 1em;
+}
 
 #table-indicators-selector {
   position: fixed;
@@ -202,7 +203,7 @@ body {
     top: 35vh;
     left: 2.5%;
     z-index: 999999;
-    background-color: rgb(215, 214, 214);
+    /* background-color: rgb(215, 214, 214); */
   }
 
   #subarea-selector-enlarged {

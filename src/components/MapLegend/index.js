@@ -1,4 +1,5 @@
 import React from 'react';
+import numeral from 'numeral';
 import './style.css';
 
 const MapLegend = props => {
@@ -6,8 +7,12 @@ const MapLegend = props => {
 
   const viewMapData = props.viewMapData;
   const colorArr = props.colors;
-  const minVal = (props.stats.min * 100).toFixed(2);
-  const maxVal = (props.stats.max * 100).toFixed(2);
+  const inidicatorName = props.selection.indicator.name;
+  const indicatorType = props.selection.indicator.type;
+
+  console.log(indicatorType);
+  const minVal = numeral(props.stats.min).format(indicatorType === 'percent' ? '0.0%' : '0,0');
+  const maxVal = numeral(props.stats.max).format(indicatorType === 'percent' ? '0.0%' : '0,0');
   //   const colorScaleBlockWidth = document.getElementsById('map-legend-box')
   //     .offsetWidth;
 
@@ -16,10 +21,10 @@ const MapLegend = props => {
     <>
       {viewMapData ? (
         <div id="legend">
-          <p className="map-legend-title">{props.selection.indicator.name}</p>
+          <p className="map-legend-title">{inidicatorName}</p>
           {props.stats ? (
             <div className="color-row" style={{ backgroundColor: 'white' }}>
-              <span className="min-value value-perimeter">{minVal}%</span>
+              <span className="min-value value-perimeter">{minVal}</span>
               {colorArr.map(color => (
                 <div
                   key={`color-block-${color}`}
@@ -30,7 +35,7 @@ const MapLegend = props => {
                   }}
                 ></div>
               ))}{' '}
-              <span className="max-value value-perimeter">{maxVal}%</span>
+              <span className="max-value value-perimeter">{maxVal}</span>
             </div>
           ) : null}
         </div>

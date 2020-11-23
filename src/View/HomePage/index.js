@@ -32,7 +32,7 @@ const HomePage = props => {
   // const [selectedIndicator, setSelectedIndicator] = useState(
   //   props.config.indicators[0]
   // );
-  console.log('HomePage - selection :', selection);
+  // console.log('HomePage - selection :', selection);
   // console.log('selectedIndicator: ', selectedIndicator);
 
   const style = props.config.style;
@@ -81,27 +81,7 @@ const HomePage = props => {
           />
         </div>
       </div>
-      {(mobile && mobileVizView === 'chart') || !mobile ? (
-        // single indicator
-        <div id="chart-map-selection-box">
-          <div className="chart-map-toggle-box">
-            <p>Show Data on Map</p>
-            <Checkbox
-              toggle
-              onChange={() =>
-                setViewMapData(viewMapData === false ? true : false)
-              }
-            />
-          </div>
-          <IndicatorDropdown
-            // indicatorInfo={props.config.indicatorInfo}
-            options={indicators}
-            selection={selection}
-            setSelection={setSelection}
-            // style={{ width: '50%' }}
-          />
-        </div>
-      ) : null}
+
 
       <div
         id={
@@ -143,8 +123,27 @@ const HomePage = props => {
           numberOfSubareas={subareaOptions.length}
         />
       </div>
-      {/* ) : null} */}
-      {/* <div id="right-col-viz-view"> */}
+      {(mobile && mobileVizView === 'chart') || !mobile ? (
+        // single indicator
+        <div id="chart-map-indicator-selector">
+          <div id="chart-map-toggle-box">
+            <div id='map-data-toggle-label'>Show Data on Map</div>
+            <Checkbox
+              toggle
+              onChange={() =>
+                setViewMapData(viewMapData === false ? true : false)
+              }
+            />
+          </div>
+          <IndicatorDropdown
+            // indicatorInfo={props.config.indicatorInfo}
+            options={indicators}
+            selection={selection}
+            setSelection={setSelection}
+            // style={{ width: '50%' }}
+          />
+        </div>
+      ) : null} 
       <div
         id={
           subareaOptions.length <= 5 || !mobile

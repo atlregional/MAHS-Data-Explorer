@@ -14,7 +14,7 @@ import './style.css';
 // import RingLoader from "react-spinners/RingLoader";
 
 const MapComp = props => {
-  console.log('MapComp - props :', props);
+  // console.log('MapComp - props :', props);
   const [geoJSONs, setGeoJSONs] = useState();
   // const [tractInfo, setTractInfo] = useState();
   const mobile = window.screen.width < 800;
@@ -25,7 +25,7 @@ const MapComp = props => {
 
   const [data, setData] = useState();
   const [stats, setStats] = useState();
-  console.log('MapComp - stats :', stats);
+  // console.log('MapComp - stats :', stats);
 
   const tileLayer = props.config.tilelayers;
   const [tile, setTile] = useState(1);
