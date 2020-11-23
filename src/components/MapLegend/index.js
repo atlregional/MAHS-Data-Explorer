@@ -7,12 +7,13 @@ const MapLegend = props => {
 
   const viewMapData = props.viewMapData;
   const colorArr = props.colors;
-  const inidicatorName = props.selection.indicator.name;
+  // const inidicatorName = props.selection.indicator.name;
   const indicatorType = props.selection.indicator.type;
 
   console.log(indicatorType);
   const minVal = numeral(props.stats.min).format(indicatorType === 'percent' ? '0.0%' : '0,0');
   const maxVal = numeral(props.stats.max).format(indicatorType === 'percent' ? '0.0%' : '0,0');
+  const numBin = colorArr.length;
   //   const colorScaleBlockWidth = document.getElementsById('map-legend-box')
   //     .offsetWidth;
 
@@ -21,9 +22,9 @@ const MapLegend = props => {
     <>
       {viewMapData ? (
         <div id="legend">
-          <p className="map-legend-title">{inidicatorName}</p>
+          {/* <p className="map-legend-title">{inidicatorName}</p> */}
           {props.stats ? (
-            <div className="color-row" style={{ backgroundColor: 'white' }}>
+            <div className="color-row">
               <span className="min-value value-perimeter">{minVal}</span>
               {colorArr.map(color => (
                 <div
@@ -31,7 +32,7 @@ const MapLegend = props => {
                   className="color-scale-block"
                   style={{
                     backgroundColor: `${color}`,
-                    width: `2.5px`,
+                    width: `${100/numBin}%`,
                   }}
                 ></div>
               ))}{' '}
