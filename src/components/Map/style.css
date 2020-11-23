@@ -28,6 +28,16 @@
   height: 100%;
 }
 
+#map-legend-box {
+  position: fixed;
+  z-index: 999999;
+  height: 10vh;
+  right: 41.5%;
+  width: 250px;
+  top: 13vh;
+  /* margin-bottom: 15px; */
+}
+
 #tile-layer-selector-open {
   visibility: visible;
   width: 370px;

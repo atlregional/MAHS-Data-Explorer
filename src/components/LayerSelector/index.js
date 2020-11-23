@@ -6,9 +6,6 @@ import 'semantic-ui-css/semantic.min.css';
 const LayerSelector = props => {
   const [view, setView] = useState(false);
   const layers = props.layers ? props.layers : [];
-  console.log(props.mobile, view);
-
-  // if (props.mobile) setView(false);
 
   return (
     <>
@@ -35,32 +32,32 @@ const LayerSelector = props => {
       >
         {view === true
           ? layers
-            .filter(layer => layer.type === 'transportation')
-            .map((layer, idx) => (
-              <div key={layer.name + idx} className="layer-selection-row">
-                <div className="layer-selection-checkbox">
-                  <Checkbox
-                    checked={layer.visible}
-                    onChange={() => {
-                      const arr = [];
-                      layers.forEach(el => {
-                        // if element name is el.name
-                        el.name === layer.name
-                          ? arr.push({
-                              ...el,
-                              visible: el.visible ? false : true,
-                            })
-                          : arr.push({
-                              ...el,
-                            });
-                      });
-                      props.setLayers(arr);
-                    }}
-                  />
+              .filter(layer => layer.type === 'transportation')
+              .map((layer, idx) => (
+                <div key={layer.name + idx} className="layer-selection-row">
+                  <div className="layer-selection-checkbox">
+                    <Checkbox
+                      checked={layer.visible}
+                      onChange={() => {
+                        const arr = [];
+                        layers.forEach(el => {
+                          // if element name is el.name
+                          el.name === layer.name
+                            ? arr.push({
+                                ...el,
+                                visible: el.visible ? false : true,
+                              })
+                            : arr.push({
+                                ...el,
+                              });
+                        });
+                        props.setLayers(arr);
+                      }}
+                    />
+                  </div>
+                  <div>{layer.label}</div>
                 </div>
-                <div>{layer.label}</div>
-              </div>
-            ))
+              ))
           : null}
       </div>
     </>

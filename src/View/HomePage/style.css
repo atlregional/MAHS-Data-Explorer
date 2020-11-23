@@ -42,15 +42,30 @@ body {
 
 #chart-map-indicator-selector {
   position: fixed;
-  width: 20%;
+  display: grid;
+  grid-template-columns: 25% 50%;
+
+  width: 40%;
   top: 12vh;
-  right: 10%;
+  right: 0;
   z-index: 999999;
-  background-color: white;
-  /* padding: 1em 2em 1em 1em; */
-  /* border-radius: 10px 0 0 10px; */
-  /* border-bottom: ; */
-  /* height: 50px; */
+  /* background-color: rgb(215, 214, 214); */
+}
+
+#chart-map-toggle-box {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#chart-map-toggle-box > .toggle {
+  margin: 1em;
+}
+
+#map-data-toggle-label {
+  font-size: .8em;
+  padding: 1em;
+  text-align: right;
+  line-height: 1em;
 }
 
 #table-indicators-selector {
@@ -184,12 +199,11 @@ body {
 
   #chart-map-indicator-selector,
   #table-indicators-selector {
-    position: fixed;
     width: 95%;
     top: 35vh;
     left: 2.5%;
     z-index: 999999;
-    background-color: rgb(215, 214, 214);
+    /* background-color: rgb(215, 214, 214); */
   }
 
   #subarea-selector-enlarged {

@@ -10,9 +10,10 @@ import IndicatorDropdown from '../../components/IndicatorDropdown';
 import gradient from 'gradient-color';
 import utils from '../../utils';
 import './style.css';
+import { Checkbox } from 'semantic-ui-react';
 
 const HomePage = props => {
-  // console.log('homescreen props: ', props);
+  console.log('HomePage - props: ', props);
   const mobile = window.screen.width < 800;
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
@@ -24,18 +25,14 @@ const HomePage = props => {
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
-  const [viewMapData, setViewMapData] = useState(true);
+  const [viewMapData, setViewMapData] = useState(false);
 
   const numBins = 100;
-  const colors = gradient([
-    '#F4F75B',
-    '#1AA2C3',
-    '#F5B53C'
-  ], numBins).reverse()
+  const colors = gradient(['#F4F75B', '#1AA2C3', '#F5B53C'], numBins).reverse();
   // const [selectedIndicator, setSelectedIndicator] = useState(
   //   props.config.indicators[0]
   // );
-  // console.log('selection.geo :', selection.geo);
+  // console.log('HomePage - selection :', selection);
   // console.log('selectedIndicator: ', selectedIndicator);
 
   const style = props.config.style;
@@ -84,17 +81,7 @@ const HomePage = props => {
           />
         </div>
       </div>
-      {mobile && mobileVizView === 'chart' ||
-      !mobile ? 
-        <div id="chart-map-indicator-selector">
-          <IndicatorDropdown
-            // indicatorInfo={props.config.indicatorInfo}
-            options={indicators}
-            selection={selection}
-            setSelection={setSelection}
-          />
-        </div>
-       : null}
+
 
       <div
         id={
@@ -136,8 +123,27 @@ const HomePage = props => {
           numberOfSubareas={subareaOptions.length}
         />
       </div>
-      {/* ) : null} */}
-      {/* <div id="right-col-viz-view"> */}
+      {(mobile && mobileVizView === 'chart') || !mobile ? (
+        // single indicator
+        <div id="chart-map-indicator-selector">
+          <div id="chart-map-toggle-box">
+            <div id='map-data-toggle-label'>Show Data on Map</div>
+            <Checkbox
+              toggle
+              onChange={() =>
+                setViewMapData(viewMapData === false ? true : false)
+              }
+            />
+          </div>
+          <IndicatorDropdown
+            // indicatorInfo={props.config.indicatorInfo}
+            options={indicators}
+            selection={selection}
+            setSelection={setSelection}
+            // style={{ width: '50%' }}
+          />
+        </div>
+      ) : null} 
       <div
         id={
           subareaOptions.length <= 5 || !mobile
@@ -161,7 +167,7 @@ const HomePage = props => {
           />
         ) : null}
       </div>
-      {mobile && mobileVizView === 'table' || !mobile ? 
+      {(mobile && mobileVizView === 'table') || !mobile ? (
         <div id="table-indicators-selector">
           <IndicatorDropdown
             multiple
@@ -171,7 +177,7 @@ const HomePage = props => {
             setSelection={setSelection}
           />
         </div>
-       : null}
+      ) : null}
       <div
         id={
           subareaOptions.length <= 5 || !mobile
@@ -196,8 +202,6 @@ const HomePage = props => {
           </div>
         )}
       </div>
-      {/* </div> */}
-      {/* </div> */}
 
       {mobile ? (
         <VizViewSelector
