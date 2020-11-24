@@ -41,9 +41,9 @@ const MapLegend = props => {
                       className="color-scale-block"
                       style={{
                         backgroundColor: `${color}`,
-                        width: `10%`,
+                        width: `15%`,
                         height: `100%`,
-                        border: `1px black solid`,
+                        border: `2.5px black solid`,
                       }}
                     />
                   );
