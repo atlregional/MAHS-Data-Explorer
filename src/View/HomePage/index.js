@@ -30,7 +30,24 @@ const HomePage = props => {
 
   // color gradient displayed on the map;
   const numBins = 100;
-  const colors = gradient(['#F4F75B', '#1AA2C3', '#F5B53C'], numBins).reverse();
+  const colors = gradient(
+    [
+      '#cfdfd9',
+      '#cfe6d9',
+      '#d2edd7',
+      '#d8f3d3',
+      '#e2f8cd',
+      '#effcc7',
+      '#ffffc1',
+      '#f9e39d',
+      '#f4c57f',
+      '#efa667',
+      '#e98658',
+      '#e16451',
+      '#d43d51',
+    ],
+    numBins
+  );
 
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
