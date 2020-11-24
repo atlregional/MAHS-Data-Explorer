@@ -16,35 +16,45 @@ import './style.css';
 const MapComp = props => {
   // console.log('MapComp - props :', props);
   const [geoJSONs, setGeoJSONs] = useState();
+  // console.log('geoJSONs :', geoJSONs);
   // const [tractInfo, setTractInfo] = useState();
   const mobile = window.screen.width < 800;
 
-  // const tileLayerConfig = props.config.tilelayers;
+  const [hoverBin, setHoverBin] = useState();
+  // console.log('hoverBin :', hoverBin);
 
   const layerConfigs = props.layers;
-
+  // data is geoId obj with the value from the chart filter and corresponding color index
+  // {111111112 : {value: , colorIndex: }};
   const [data, setData] = useState();
+  // console.log('data: ', data);
+
+  // stats are the aggragated percentage values from the chart relative to the entire map
+  // {max: , min: , range: }
   const [stats, setStats] = useState();
   // console.log('MapComp - stats :', stats);
 
   const tileLayer = props.config.tilelayers;
   const [tile, setTile] = useState(1);
+
   const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
 
   const handleTractData = () => {
     const array = [];
     const tractInfo = props.tractInfo;
+    const dataObj = {};
     const tractData = tractInfo
       ? Object.values(tractInfo).filter(tract =>
           utils.filterBySelection(tract, props.selection)
         )
       : null;
 
+    // geoId : aggVal
     const aggregatedData = tractData
       ? utils.aggregate(tractData, props.selection.indicator, 'GEOID')
       : {};
 
-    console.log(aggregatedData);
+    // console.log(aggregatedData);
 
     Object.entries(aggregatedData).forEach(([key, value]) =>
       array.push({
@@ -60,18 +70,18 @@ const MapComp = props => {
     const maxValue = valueArray ? Math.max(...valueArray) : null;
     const minValue = valueArray ? Math.min(...valueArray) : null;
 
-    console.log('max', maxValue);
-    console.log('min', minValue);
+    Object.entries(aggregatedData).forEach(([key, value]) => {
+      const disFromMin = value - minValue;
+      const binningRatio = disFromMin / (maxValue - minValue);
+      const colorIndex = Math.floor(binningRatio * props.numBins);
 
-    // array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
-    // console.log(array);
-    setData(aggregatedData);
+      dataObj[key] = { value: value, colorIndex: colorIndex };
+    });
+    console.log('dataObj :', dataObj);
+
+    setData(dataObj);
     setStats({ max: maxValue, min: minValue, range: maxValue - minValue });
   };
-
-  // const tractColor = value => {
-  //   const colorIndex =
-  // }
 
   const handleGeoJSONs = () => {
     const getGeoJSON = (key, url) =>
@@ -111,20 +121,12 @@ const MapComp = props => {
       ? parseInt(tractInfo.Subarea.replace('Subarea ', ''))
       : null;
     const config = props.config;
-    // console.log(data);
-    const value = data ? data[tractInfo.GEOID] : null;
-    // console.log(stats);
-    // console.log(value);
-    const disFromMin = value - stats.min;
-    const binningRatio = disFromMin / stats.range;
 
-    // const colorIndex =
-    // const colorIndex =
-    // const colorIndex =
-    // const style = layerConfigs.find(item => item.name === 'tracts')
-    // console.log(subarea);
+    const colorIndex = data[tractInfo.GEOID]
+      ? data[tractInfo.GEOID].colorIndex
+      : null;
     const color = viewMapData
-      ? props.colors[Math.floor(binningRatio * props.numBins)]
+      ? props.colors[colorIndex]
       : subarea
       ? config.style.colormap[subarea - 1]
       : null;
@@ -141,7 +143,6 @@ const MapComp = props => {
   useEffect(handleGeoJSONs, []);
   useEffect(handleTractData, [geoJSONs, props.selection]);
 
-  // console.log(geoJSONs);
   return (
     <>
       <LeafletMap
@@ -229,6 +230,16 @@ const MapComp = props => {
                           : 1,
                     };
                   }}
+                  onmouseover={
+                    e =>
+                      setHoverBin(
+                        data[e.layer.feature.properties[tractIDField]]
+                          ? data[e.layer.feature.properties[tractIDField]]
+                              .colorIndex
+                          : null
+                      )
+                    // console.log(data[e.layer.feature.properties[tractIDField]])
+                  }
                   filter={feature => {
                     const geoID = feature.properties[
                       config.geoField
@@ -343,6 +354,8 @@ const MapComp = props => {
       {props.selection && stats ? (
         <div id="map-legend-box">
           <MapLegend
+            // colorScaleHoverIdx={props.colorScaleHoverIdx}
+            hoverBin={hoverBin}
             viewMapData={props.viewMapData}
             selection={props.selection}
             colors={props.colors}

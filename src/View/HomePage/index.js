@@ -13,8 +13,9 @@ import './style.css';
 import { Checkbox } from 'semantic-ui-react';
 
 const HomePage = props => {
-  console.log('HomePage - props: ', props);
+  // console.log('HomePage - props: ', props);
   const mobile = window.screen.width < 800;
+
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
@@ -27,13 +28,9 @@ const HomePage = props => {
   const [layers, setLayers] = useState(props.config.layers);
   const [viewMapData, setViewMapData] = useState(false);
 
+  // color gradient displayed on the map;
   const numBins = 100;
   const colors = gradient(['#F4F75B', '#1AA2C3', '#F5B53C'], numBins).reverse();
-  // const [selectedIndicator, setSelectedIndicator] = useState(
-  //   props.config.indicators[0]
-  // );
-  // console.log('HomePage - selection :', selection);
-  // console.log('selectedIndicator: ', selectedIndicator);
 
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
@@ -82,7 +79,6 @@ const HomePage = props => {
         </div>
       </div>
 
-
       <div
         id={
           subareaOptions.length <= 5 || !mobile
@@ -111,7 +107,6 @@ const HomePage = props => {
       >
         <MapComp
           colors={colors}
-          numBins={numBins}
           viewMapData={viewMapData}
           mobile={mobile}
           tractInfo={tractInfo}
@@ -121,13 +116,14 @@ const HomePage = props => {
           subareaOptions={subareaOptions}
           highlightedSubarea={highlightedSubarea}
           numberOfSubareas={subareaOptions.length}
+          numBins={numBins}
         />
       </div>
       {(mobile && mobileVizView === 'chart') || !mobile ? (
         // single indicator
         <div id="chart-map-indicator-selector">
           <div id="chart-map-toggle-box">
-            <div id='map-data-toggle-label'>Show Data on Map</div>
+            <div id="map-data-toggle-label">Show Data on Map</div>
             <Checkbox
               toggle
               onChange={() =>
@@ -143,7 +139,7 @@ const HomePage = props => {
             // style={{ width: '50%' }}
           />
         </div>
-      ) : null} 
+      ) : null}
       <div
         id={
           subareaOptions.length <= 5 || !mobile

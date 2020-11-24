@@ -12,7 +12,7 @@ const App = () => {
   // console.log(queryObj);
 
   const [tractInfo, setTractInfo] = useState();
-  const [dataManifest, setDataManifest] = useState();
+  // const [dataManifest, setDataManifest] = useState();
   const [config, setConfig] = useState();
 
   const indicators = {
@@ -66,10 +66,10 @@ const App = () => {
       .then(res => setTractInfo(res.data))
       .catch(err => console.log(err));
 
-    utils
-      .getData('https://mahs-api-server.herokuapp.com/api/datainfo')
-      .then(res => setDataManifest(res.data))
-      .catch(err => console.log(err));
+    // utils
+    //   .getData('https://mahs-api-server.herokuapp.com/api/datainfo')
+    //   .then(res => setDataManifest(res.data))
+    //   .catch(err => console.log(err));
 
     utils
       .getData('https://mahs-api-server.herokuapp.com/api/config')
@@ -96,21 +96,23 @@ const App = () => {
   useEffect(handleStart, []);
 
   // console.log(tractInfo);
+  console.log('tractInfo :', tractInfo);
+  console.log('config :', config);
 
   return (
     <div className="App">
-      {tractInfo && dataManifest && config ? 
+      {tractInfo && config ? (
         <HomePage
           tractInfo={tractInfo}
-          manifest={dataManifest}
+          // manifest={dataManifest}
           config={config}
         />
-      : 
+      ) : (
         <div id="app-loader-spinner">
           <RingLoader css={{ margin: 'auto' }} size="100px" />
           <h1>Loading Data Explorer...</h1>
         </div>
-      }
+      )}
     </div>
   );
 };
