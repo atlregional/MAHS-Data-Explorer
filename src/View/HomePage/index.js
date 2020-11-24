@@ -30,6 +30,7 @@ const HomePage = props => {
 
   // color gradient displayed on the map;
   const numBins = 100;
+  // DIVERGENT COLOR SCALE;
   const colors = gradient(
     [
       '#cfdfd9',
