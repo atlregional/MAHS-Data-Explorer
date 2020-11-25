@@ -27,10 +27,30 @@ const HomePage = props => {
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
   const [viewMapData, setViewMapData] = useState(false);
+  const [clickedSubarea, setClickedSubarea] = useState();
+
 
   // color gradient displayed on the map;
   const numBins = 100;
-  const colors = gradient(['#F4F75B', '#1AA2C3', '#F5B53C'], numBins).reverse();
+  // DIVERGENT COLOR SCALE;
+  const colors = gradient(
+    [
+      '#cfdfd9',
+      '#cfe6d9',
+      '#d2edd7',
+      '#d8f3d3',
+      '#e2f8cd',
+      '#effcc7',
+      '#ffffc1',
+      '#f9e39d',
+      '#f4c57f',
+      '#efa667',
+      '#e98658',
+      '#e16451',
+      '#d43d51',
+    ],
+    numBins
+  );
 
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
@@ -95,6 +115,8 @@ const HomePage = props => {
           setHighlightedSubarea={setHighlightedSubarea}
           selectedSubareas={selectedSubareas}
           setSelectedSubareas={setSelectedSubareas}
+          clickedSubarea={clickedSubarea}
+          setClickedSubarea={setClickedSubarea}
         />
       </div>
       {/* <div id="viz-box"> */}
@@ -155,8 +177,8 @@ const HomePage = props => {
             mobile={mobile}
             tractInfo={tractInfo}
             highlightedSubarea={highlightedSubarea}
-            // selectedSubareas={selectedSubareas}
-            // selectedIndicator={selection.indicator}
+            clickedSubarea={clickedSubarea}
+            setClickedSubarea={setClickedSubarea}
             colormap={style.colormap}
             selection={selection}
             setHighlightedSubarea={setHighlightedSubarea}
