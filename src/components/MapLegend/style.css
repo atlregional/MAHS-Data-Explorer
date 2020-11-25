@@ -29,7 +29,10 @@
 } */
 
 .color-scale-block {
+    display: flex;
     height: 100%;
+
+    /* border: 1px black; */
 }
 
 .value-perimeter{
