@@ -218,7 +218,7 @@ const MapComp = props => {
                           : config.boundaryColor,
                       weight:
                         props.highlightedSubarea && highlight
-                          ? 3
+                          ? 1
                           : props.highlightedSubarea
                           ? 0
                           : config.boundaryWidth,

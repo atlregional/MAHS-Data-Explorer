@@ -27,6 +27,8 @@ const HomePage = props => {
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
   const [viewMapData, setViewMapData] = useState(false);
+  const [clickedSubarea, setClickedSubarea] = useState();
+
 
   // color gradient displayed on the map;
   const numBins = 100;
@@ -113,6 +115,8 @@ const HomePage = props => {
           setHighlightedSubarea={setHighlightedSubarea}
           selectedSubareas={selectedSubareas}
           setSelectedSubareas={setSelectedSubareas}
+          clickedSubarea={clickedSubarea}
+          setClickedSubarea={setClickedSubarea}
         />
       </div>
       {/* <div id="viz-box"> */}
@@ -173,8 +177,8 @@ const HomePage = props => {
             mobile={mobile}
             tractInfo={tractInfo}
             highlightedSubarea={highlightedSubarea}
-            // selectedSubareas={selectedSubareas}
-            // selectedIndicator={selection.indicator}
+            clickedSubarea={clickedSubarea}
+            setClickedSubarea={setClickedSubarea}
             colormap={style.colormap}
             selection={selection}
             setHighlightedSubarea={setHighlightedSubarea}

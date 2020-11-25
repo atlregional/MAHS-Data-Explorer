@@ -83,7 +83,7 @@ const Chart = props => {
                     barData.Subarea === props.highlightedSubarea
                       ? 1
                       : props.highlightedSubarea
-                      ? 0.5
+                      ? props.clickedSubarea ? .3 : .6 
                       : 1
                   }
                   stroke={
@@ -96,9 +96,13 @@ const Chart = props => {
                   }
                   fill={colormap[barData.Subarea - 1]}
                   onMouseEnter={() =>
-                    props.setHighlightedSubarea(barData.Subarea)
+                    props.setHighlightedSubarea(props.clickedSubarea ? props.clickedSubarea :barData.Subarea)
                   }
-                  onMouseLeave={() => props.setHighlightedSubarea()}
+                  onMouseLeave={() => props.setHighlightedSubarea(props.clickedSubarea)}
+                  onClick={() => {
+                    props.setClickedSubarea(props.clickedSubarea ? barData.Subarea === props.clickedSubarea ? null : props.clickedSubarea : barData.Subarea);
+                    // console.log("subarea: ", subarea);
+                  }}
                 />
               ))}
             </Bar>
