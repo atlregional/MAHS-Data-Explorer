@@ -230,6 +230,8 @@ const MapComp = props => {
                           : 1,
                     };
                   }}
+                  // onm
+                  onmouseout={() => setHoverBin()}
                   onmouseover={
                     e =>
                       setHoverBin(

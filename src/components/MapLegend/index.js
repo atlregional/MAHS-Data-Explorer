@@ -32,35 +32,17 @@ const MapLegend = props => {
           {props.stats ? (
             <div className="color-row">
               <span className="min-value value-perimeter">{minVal}</span>
-              {colorArr.map((color, idx) => {
-                console.log(hoveredColorIdx === idx);
-                if (hoveredColorIdx === idx) {
-                  return (
-                    <div
-                      key={`color-block-${color}`}
-                      className="color-scale-block"
-                      style={{
-                        backgroundColor: `${color}`,
-                        width: `15%`,
-                        height: `100%`,
-                        border: `2.5px black solid`,
-                      }}
-                    />
-                  );
-                } else {
-                  return (
-                    <div
-                      key={`color-block-${color}`}
-                      className="color-scale-block"
-                      style={{
-                        backgroundColor: `${color}`,
-                        width: `${200 / numBin}%`,
-                        border: `1px transparent`,
-                      }}
-                    />
-                  );
-                }
-              })}{' '}
+              {colorArr.map((color, idx) => 
+                <div
+                  key={`color-block-${idx}`}
+                  className="color-scale-block"
+                  style={{
+                    backgroundColor: color,
+                    width: `${hoveredColorIdx !== idx ? (100 / numBin) : 10}%`,
+                    border: `${hoveredColorIdx !== idx ? '1px transparent' : '2px solid black'}`,
+                  }}
+                />
+              )}
               <span className="max-value value-perimeter">{maxVal}</span>
             </div>
           ) : null}
