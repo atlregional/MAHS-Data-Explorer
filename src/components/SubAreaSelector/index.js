@@ -15,9 +15,6 @@ const SubAreaSelector = props => {
 
   useEffect(handleButtonSize, [subareas]);
 
-  // const selectedSubareas = props.selectedSubareas;
-  // const setSelectedSubareas = array => props.setSelectedSubareas(array);
-
   // Add these to mouseenter event and set state to null on mouseleave
   const highlightedSubarea = props.highlightedSubarea;
   const setHighlightedSubarea = number => props.setHighlightedSubarea(number);
@@ -46,25 +43,14 @@ const SubAreaSelector = props => {
             borderWidth: '3px',
             borderStyle: 'solid'
           }}
-          // onClick={() => {
-          //   const array = [...selectedSubareas];
-          //   array.includes(subarea)
-          //     ? array.splice(array.indexOf(subarea), 1)
-          //     : array.push(subarea);
-          //   // console.log(array);
-          //   setSelectedSubareas(array);
-          // }}
           onMouseEnter={() => {
             setHighlightedSubarea(props.clickedSubarea ? props.clickedSubarea : subarea);
-            // console.log("subarea: ", subarea);
           }}
           onMouseLeave={() => {
             setHighlightedSubarea(props.clickedSubarea);
-            // console.log(subarea);
           }}
           onClick={() => {
             props.setClickedSubarea(props.clickedSubarea ? subarea === props.clickedSubarea ? null : props.clickedSubarea : subarea);
-            // console.log("subarea: ", subarea);
           }}
         >
           {subarea}

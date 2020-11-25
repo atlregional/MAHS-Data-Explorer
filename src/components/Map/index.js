@@ -5,6 +5,7 @@ import {
   TileLayer,
   GeoJSON,
   ZoomControl,
+  Tooltip
 } from 'react-leaflet';
 import MapLegend from '../MapLegend';
 import polygonToLine from '@turf/polygon-to-line';
@@ -16,6 +17,7 @@ import './style.css';
 const MapComp = props => {
   // console.log('MapComp - props :', props);
   const [geoJSONs, setGeoJSONs] = useState();
+  const [hoverFeature, setHoverFeature] = useState({});
   // console.log('geoJSONs :', geoJSONs);
   // const [tractInfo, setTractInfo] = useState();
   const mobile = window.screen.width < 800;
@@ -138,6 +140,8 @@ const MapComp = props => {
     };
   };
 
+const CustomTooltip = () => hoverFeature.properties ? <div>{hoverFeature.properties[tractIDField]}</div> : <h3>No Data</h3>;
+
   const handleBounds = featureBounds =>
     Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
   useEffect(handleGeoJSONs, []);
@@ -233,13 +237,15 @@ const MapComp = props => {
                   // onm
                   onmouseout={() => setHoverBin()}
                   onmouseover={
-                    e =>
+                    e => {
                       setHoverBin(
                         data[e.layer.feature.properties[tractIDField]]
                           ? data[e.layer.feature.properties[tractIDField]]
                               .colorIndex
                           : null
-                      )
+                      );
+                      setHoverFeature(e.layer.feature);
+                    }
                     // console.log(data[e.layer.feature.properties[tractIDField]])
                   }
                   filter={feature => {
@@ -260,7 +266,12 @@ const MapComp = props => {
                       : false;
                   }}
                   data={geoJSONs[config.name]}
-                />
+                >
+                  <Tooltip>
+                    <CustomTooltip />
+                  </Tooltip>
+                </GeoJSON>
+
               ))
           : null}
         {geoJSONs

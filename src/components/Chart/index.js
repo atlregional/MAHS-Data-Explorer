@@ -8,8 +8,8 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  // Tooltip,
-  Legend,
+  Tooltip,
+  // Legend,
   // Scatter,
   Cell,
 } from 'recharts';
@@ -43,13 +43,13 @@ const Chart = props => {
     setData(array);
   };
 
-  // const CustomTooltip = ({ active, payload, label }) =>
-  //   active ? (
-  //     <div className="custom-tooltip">
-  //       <h5 className="tooltip-indicator">{`${payload[0].payload.name}`}</h5>
-  //       <p className="label">{`${indicatorInfo.name}: ${payload[0].value}`}</p>
-  //     </div>
-  //   ) : null;
+  const CustomTooltip = ({ active, payload, label }) =>
+    active ? (
+      <div className="custom-tooltip">
+        <h5 className="tooltip-indicator">{`${payload[0].payload.name}`}</h5>
+        <p className="label">{`${indicatorInfo.name}: ${payload[0].value}`}</p>
+      </div>
+    ) : null;
 
   // console.log(props.selection);
 
@@ -72,7 +72,7 @@ const Chart = props => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey={'Subarea'} />
             <YAxis />
-            {/* <Tooltip content={<CustomTooltip />} /> */}
+            <Tooltip content={<CustomTooltip />} />
             {/* <Legend /> */}
 
             <Bar dataKey={indicatorInfo.name}>
