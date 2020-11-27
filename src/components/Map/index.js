@@ -5,12 +5,12 @@ import {
   TileLayer,
   GeoJSON,
   ZoomControl,
-  Tooltip
+  Tooltip,
 } from 'react-leaflet';
 import MapLegend from '../MapLegend';
 import polygonToLine from '@turf/polygon-to-line';
 import { Icon } from 'semantic-ui-react';
-
+import numeral from 'numeral';
 import './style.css';
 // import RingLoader from "react-spinners/RingLoader";
 
@@ -18,7 +18,7 @@ const MapComp = props => {
   // console.log('MapComp - props :', props);
   const [geoJSONs, setGeoJSONs] = useState();
   const [hoverFeature, setHoverFeature] = useState({});
-  // console.log('geoJSONs :', geoJSONs);
+  // console.log('hoverFeature :', hoverFeature);
   // const [tractInfo, setTractInfo] = useState();
   const mobile = window.screen.width < 800;
 
@@ -40,6 +40,9 @@ const MapComp = props => {
   const [tile, setTile] = useState(1);
 
   const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
+
+  // type of indicator, ie. percentage....
+  const indicatorType = props.selection.indicator.type;
 
   const handleTractData = () => {
     const array = [];
@@ -79,7 +82,7 @@ const MapComp = props => {
 
       dataObj[key] = { value: value, colorIndex: colorIndex };
     });
-    console.log('dataObj :', dataObj);
+    // console.log('dataObj :', dataObj);
 
     setData(dataObj);
     setStats({ max: maxValue, min: minValue, range: maxValue - minValue });
@@ -140,7 +143,26 @@ const MapComp = props => {
     };
   };
 
-const CustomTooltip = () => hoverFeature.properties ? <div>{hoverFeature.properties[tractIDField]}</div> : <h3>No Data</h3>;
+  // console.log('props.selection:', props.selection);
+
+  const CustomTooltip = () =>
+    hoverFeature.properties ? (
+      <div>
+        {hoverFeature.properties.GEOID10}
+        <br />
+        {hoverFeature.properties.COUNTY_NM}
+        <br />
+        {props.selection.indicator.name + ' : '}
+        {data
+          ? numeral(data[hoverFeature.properties.GEOID10].value).format(
+              indicatorType === 'percent' ? '0.0%' : '0,0'
+            )
+          : null}
+      </div>
+    ) : (
+      <h3>No Data</h3>
+    );
+  // console.log('hoverFeature :', hoverFeature);
 
   const handleBounds = featureBounds =>
     Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
@@ -271,7 +293,6 @@ const CustomTooltip = () => hoverFeature.properties ? <div>{hoverFeature.propert
                     <CustomTooltip />
                   </Tooltip>
                 </GeoJSON>
-
               ))
           : null}
         {geoJSONs
