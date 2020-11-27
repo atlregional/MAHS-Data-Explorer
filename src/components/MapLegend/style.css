@@ -1,7 +1,6 @@
 #legend {
     background-color: #bec2ccb6;
     padding: 1em;
-    /* display: flex; */
 }
 
 .map-legend-title {
@@ -16,30 +15,16 @@
     flex-direction: row;
     height: 40px;
     background-color: transparent;
-    /* align-items: center;
-    justify-content: center; */
 }
-
-/* removed from code block */
-/* .values-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: larger;
-    font-weight: bold;
-} */
 
 .color-scale-block {
     display: flex;
     height: 100%;
-    /* background-color: #8ed8e5; */
-
-    /* border: 1px black; */
 }
 
 .value-perimeter{
     height: 100%;
     margin: 0 auto;
     padding: 10px 5px 0 5px;
-    /* color: white; */
     background-color: transparent;
   }
