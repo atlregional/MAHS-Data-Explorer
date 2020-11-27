@@ -15,12 +15,12 @@ import './style.css';
 // import RingLoader from "react-spinners/RingLoader";
 
 const MapComp = props => {
+  const mobile = window.screen.width < 800;
   // console.log('MapComp - props :', props);
   const [geoJSONs, setGeoJSONs] = useState();
   const [hoverFeature, setHoverFeature] = useState({});
   // console.log('hoverFeature :', hoverFeature);
   // const [tractInfo, setTractInfo] = useState();
-  const mobile = window.screen.width < 800;
 
   const [hoverBin, setHoverBin] = useState();
   // console.log('hoverBin :', hoverBin);
@@ -143,17 +143,19 @@ const MapComp = props => {
     };
   };
 
-  // console.log('props.selection:', props.selection);
+  console.log('hoverFeature', hoverFeature);
 
   const CustomTooltip = () =>
-    hoverFeature.properties ? (
+    data && hoverFeature.properties ? (
       <div>
-        {hoverFeature.properties.GEOID10}
+        {props.tractInfo[hoverFeature.properties.GEOID10].Subarea}
+        <br />
+        {hoverFeature.properties.NAMELSAD10}
         <br />
         {hoverFeature.properties.COUNTY_NM}
         <br />
         {props.selection.indicator.name + ' : '}
-        {data
+        {data[hoverFeature.properties.GEOID10]
           ? numeral(data[hoverFeature.properties.GEOID10].value).format(
               indicatorType === 'percent' ? '0.0%' : '0,0'
             )
