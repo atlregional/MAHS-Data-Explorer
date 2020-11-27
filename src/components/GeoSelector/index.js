@@ -43,13 +43,15 @@ const GeoSelector = props => {
                       {subMenus[geoType].map((geo, idx) => (
                         <Dropdown.Item
                           key={geo + idx}
-                          onClick={() =>
+                          onClick={() => {
                             props.setSelection({
                               ...props.selection,
                               geoType: geoType,
                               geo: geo,
-                            })
-                          }
+                            });
+                            props.setClickedSubarea();
+                            props.setHighlightedSubarea();
+                          }}
                         >
                           {geo}
                         </Dropdown.Item>

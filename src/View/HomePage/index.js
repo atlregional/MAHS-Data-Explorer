@@ -92,6 +92,8 @@ const HomePage = props => {
           <GeoSelector
             geoTypeOptions={geoTypeOptions}
             selection={selection}
+            setClickedSubarea={setClickedSubarea}
+            setHighlightedSubarea={setHighlightedSubarea}
             // geoOptions={geoOptions}
             setSelection={setSelection}
             data={[...props.tractInfo]}
