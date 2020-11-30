@@ -29,7 +29,6 @@ const HomePage = props => {
   const [viewMapData, setViewMapData] = useState(false);
   const [clickedSubarea, setClickedSubarea] = useState();
 
-
   // color gradient displayed on the map;
   const numBins = 100;
   // DIVERGENT COLOR SCALE;
@@ -94,13 +93,11 @@ const HomePage = props => {
             selection={selection}
             setClickedSubarea={setClickedSubarea}
             setHighlightedSubarea={setHighlightedSubarea}
-            // geoOptions={geoOptions}
             setSelection={setSelection}
             data={[...props.tractInfo]}
           />
         </div>
       </div>
-
       <div
         id={
           subareaOptions.length <= 5 || !mobile
@@ -121,8 +118,6 @@ const HomePage = props => {
           setClickedSubarea={setClickedSubarea}
         />
       </div>
-      {/* <div id="viz-box"> */}
-      {/* {!mobile || mobileVizView === 'map' ? ( */}
       <div
         id={
           subareaOptions.length <= 5 || !mobile ? 'map-box' : 'map-box-reduced'
@@ -144,7 +139,6 @@ const HomePage = props => {
         />
       </div>
       {(mobile && mobileVizView === 'chart') || !mobile ? (
-        // single indicator
         <div id="chart-map-indicator-selector">
           <div id="chart-map-toggle-box">
             <div id="map-data-toggle-label">Show Data on Map</div>
@@ -156,11 +150,9 @@ const HomePage = props => {
             />
           </div>
           <IndicatorDropdown
-            // indicatorInfo={props.config.indicatorInfo}
             options={indicators}
             selection={selection}
             setSelection={setSelection}
-            // style={{ width: '50%' }}
           />
         </div>
       ) : null}
@@ -170,7 +162,6 @@ const HomePage = props => {
             ? 'chart-box'
             : 'chart-box-reduced'
         }
-        // use this condition to control when the class and css;
         className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
       >
         {tractInfo ? (
@@ -191,7 +182,6 @@ const HomePage = props => {
         <div id="table-indicators-selector">
           <IndicatorDropdown
             multiple
-            // indicatorInfo={props.config.indicatorInfo}
             options={indicators}
             selection={selection}
             setSelection={setSelection}
@@ -218,7 +208,7 @@ const HomePage = props => {
           />
         ) : (
           <div id="subarea-not-selected-box">
-            <p>Please CHOOSE INDICATORS to populate data</p>
+            <p>Select INDICATOR(S) to display on table...</p>
           </div>
         )}
       </div>
