@@ -7,6 +7,8 @@ import MapComp from '../../components/Map';
 import VizViewSelector from '../../components/VizViewSelector';
 import LayerSelector from '../../components/LayerSelector';
 import IndicatorDropdown from '../../components/IndicatorDropdown';
+import Footer from '../../components/Footer';
+import ARCHeader from '../../components/ARCHeader';
 import gradient from 'gradient-color';
 import utils from '../../utils';
 import './style.css';
@@ -83,6 +85,12 @@ const HomePage = props => {
 
   return (
     <>
+      {!mobile ? (
+        <div id="ARC-Header">
+          {' '}
+          <ARCHeader />
+        </div>
+      ) : null}
       <div id="header">
         <div id="geo-label-header">
           {selection.geo}{' '}
@@ -227,6 +235,11 @@ const HomePage = props => {
           mobile={mobile}
           numberOfSubareas={subareaOptions.length}
         />
+      ) : null}
+      {!mobile ? (
+        <div id="footer-box">
+          <Footer />
+        </div>
       ) : null}
     </>
   );
