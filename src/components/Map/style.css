@@ -82,4 +82,9 @@
     top: 20%;
     right: -20%;
   }
+
+#map-loading-spinner {
+  top: 65vh;
+  left: 20vw;
+}
 }
