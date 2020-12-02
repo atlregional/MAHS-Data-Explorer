@@ -22,6 +22,7 @@ body {
 }
 
 #geo-label-header {
+  margin-top: .5em;
   font-size: 1.5em;
   width: 100%;
 }

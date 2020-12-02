@@ -11,6 +11,7 @@
 #map-loading-spinner {
   position: fixed;
   /* margin: 0 auto; */
+  z-index: 99999;
   top: 40vh;
   left: 27.5%;
 }
