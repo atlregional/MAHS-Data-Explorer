@@ -338,7 +338,7 @@ const MapComp = props => {
       </LeafletMap>
       {!geoJSONs ? (
         <div id="map-loading-spinner">
-          <PulseLoader
+          <RingLoader
             css={{
               margin: 'auto',
               zIndex: '9999999',
