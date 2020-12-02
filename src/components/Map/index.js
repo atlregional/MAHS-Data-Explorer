@@ -7,17 +7,20 @@ import {
   ZoomControl,
   Tooltip,
 } from 'react-leaflet';
+// import RingLoader from 'react-spinners/RingLoader';
 import MapLegend from '../MapLegend';
 import polygonToLine from '@turf/polygon-to-line';
 import { Icon } from 'semantic-ui-react';
 import numeral from 'numeral';
 import './style.css';
-// import RingLoader from "react-spinners/RingLoader";
+import RingLoader from 'react-spinners/RingLoader';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 const MapComp = props => {
   const mobile = window.screen.width < 800;
   // console.log('MapComp - props :', props);
   const [geoJSONs, setGeoJSONs] = useState();
+  console.log('geoJSONs :', geoJSONs);
   const [hoverFeature, setHoverFeature] = useState({});
   // console.log('hoverFeature :', hoverFeature);
   // const [tractInfo, setTractInfo] = useState();
@@ -29,7 +32,7 @@ const MapComp = props => {
   // data is geoId obj with the value from the chart filter and corresponding color index
   // {111111112 : {value: , colorIndex: }};
   const [data, setData] = useState();
-  // console.log('data: ', data);
+  console.log('data: ', data);
 
   // stats are the aggragated percentage values from the chart relative to the entire map
   // {max: , min: , range: }
@@ -40,6 +43,8 @@ const MapComp = props => {
   const [tile, setTile] = useState(1);
 
   const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
+
+  const [mapSpinner, setMapSpinner] = useState(true);
 
   // type of indicator, ie. percentage....
   const indicatorType = props.selection.indicator.type;
@@ -170,6 +175,13 @@ const MapComp = props => {
     Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
   useEffect(handleGeoJSONs, []);
   useEffect(handleTractData, [geoJSONs, props.selection]);
+
+  // ****** TRIED TO IMPLEMENT THE LOADER SEVERAL OTHER WAYS
+  // BUT COULDN'T GET THEM TO WORK CONDITIONALLY,
+  // SO I IMPLEMENTED A TIMEOUT AND THE 3SEC IS WORKING PRETTY DARN WELL;
+  // setTimeout(() => {
+  //   setMapSpinner(false);
+  // }, 10000);
 
   return (
     <>
@@ -324,6 +336,18 @@ const MapComp = props => {
         />
         <ZoomControl position="bottomleft" />
       </LeafletMap>
+      {!geoJSONs ? (
+        <div id="map-loading-spinner">
+          <RingLoader
+            css={{
+              margin: 'auto',
+              zIndex: '9999999',
+            }}
+            color={'#bebebebc'}
+            size="75px"
+          />
+        </div>
+      ) : null}
       {mobile ? (
         <>
           <div
@@ -404,3 +428,6 @@ const MapComp = props => {
 };
 
 export default MapComp;
+// {(
+//   <renderThing />
+// )
