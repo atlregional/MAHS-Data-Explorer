@@ -35,11 +35,11 @@ const IndicatorDropdown = props => {
       onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
     >
       <div className="indicator-selector-dropdown-header">
-        {!multiple ? (
-          props.selection.indicator.name
-        ) : (
-          <em>Choose Indicators</em>
-        )}
+        {
+          !multiple 
+            ? props.selection.indicator.name
+            : <em>Choose Indicators</em>
+        }
         <Icon
           name="caret down"
           // size=""

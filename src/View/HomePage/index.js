@@ -158,6 +158,7 @@ const HomePage = props => {
               }
             />
           </div>
+          {/* <h3>{selection.indicator.name}</h3> */}
           <IndicatorDropdown
             options={indicators}
             selection={selection}
@@ -167,7 +168,8 @@ const HomePage = props => {
       ) : null}
       <div
         id={
-          subareaOptions.length <= 5 || !mobile
+          subareaOptions.length <= 5 || 
+          !mobile
             ? 'chart-box'
             : 'chart-box-reduced'
         }

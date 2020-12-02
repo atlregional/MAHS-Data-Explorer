@@ -9,11 +9,18 @@
 }
 
 #map-loading-spinner {
-  position: fixed;
+  height: 80vh;
+  line-height: 80vh;
+  width: 100%;
+  /* padding-top: 35vh;
+  z-index: 9999999, */
+
+  /* position: fixed; */
+  /* line */
   /* margin: 0 auto; */
-  z-index: 99999;
+  /* z-index: 99999;
   top: 40vh;
-  left: 27.5%;
+  left: 27.5%; */
 }
 
 .tile-layer-thumb {

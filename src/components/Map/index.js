@@ -12,15 +12,15 @@ import MapLegend from '../MapLegend';
 import polygonToLine from '@turf/polygon-to-line';
 import { Icon } from 'semantic-ui-react';
 import numeral from 'numeral';
-import './style.css';
 import RingLoader from 'react-spinners/RingLoader';
-import PulseLoader from 'react-spinners/PulseLoader';
+import './style.css';
+
 
 const MapComp = props => {
   const mobile = window.screen.width < 800;
   // console.log('MapComp - props :', props);
   const [geoJSONs, setGeoJSONs] = useState();
-  console.log('geoJSONs :', geoJSONs);
+  // console.log('geoJSONs :', geoJSONs);
   const [hoverFeature, setHoverFeature] = useState({});
   // console.log('hoverFeature :', hoverFeature);
   // const [tractInfo, setTractInfo] = useState();
@@ -44,9 +44,6 @@ const MapComp = props => {
 
   const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
 
-  const [mapSpinner, setMapSpinner] = useState(true);
-
-  // type of indicator, ie. percentage....
   const indicatorType = props.selection.indicator.type;
 
   const handleTractData = () => {
@@ -148,7 +145,7 @@ const MapComp = props => {
     };
   };
 
-  console.log('hoverFeature', hoverFeature);
+  // console.log('hoverFeature', hoverFeature);
 
   const CustomTooltip = () =>
     data && hoverFeature.properties ? (
@@ -175,13 +172,6 @@ const MapComp = props => {
     Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
   useEffect(handleGeoJSONs, []);
   useEffect(handleTractData, [geoJSONs, props.selection]);
-
-  // ****** TRIED TO IMPLEMENT THE LOADER SEVERAL OTHER WAYS
-  // BUT COULDN'T GET THEM TO WORK CONDITIONALLY,
-  // SO I IMPLEMENTED A TIMEOUT AND THE 3SEC IS WORKING PRETTY DARN WELL;
-  // setTimeout(() => {
-  //   setMapSpinner(false);
-  // }, 10000);
 
   return (
     <>
@@ -231,7 +221,8 @@ const MapComp = props => {
                   />
                 );
               })
-          : null}
+          : null
+        }
         {geoJSONs
           ? layerConfigs
               .filter(config => config.visible && config.type === 'data')
@@ -307,8 +298,21 @@ const MapComp = props => {
                     <CustomTooltip />
                   </Tooltip>
                 </GeoJSON>
-              ))
-          : null}
+              )
+          )
+          : (
+            <div id="map-loading-spinner">
+              <RingLoader
+                css={{
+                  margin: '35vh auto',
+                  zIndex: '9999999',
+                }}
+                color='#4B7B90'
+                size='75px'
+              />
+            </div>
+          )
+        }
         {geoJSONs
           ? layerConfigs
               .filter(
@@ -328,7 +332,8 @@ const MapComp = props => {
                   data={geoJSONs[config.name]}
                 />
               ))
-          : null}
+          : null
+        }
         <TileLayer
           key={`tile-layer-${tileLayer[tile].name}`}
           url={tileLayer[tile].url}
@@ -336,8 +341,9 @@ const MapComp = props => {
         />
         <ZoomControl position="bottomleft" />
       </LeafletMap>
-      {!geoJSONs ? (
-        <div id="map-loading-spinner">
+      {/* {!geoJSONs ? (
+        (
+          <div id="map-loading-spinner">
           <RingLoader
             css={{
               margin: 'auto',
@@ -346,8 +352,8 @@ const MapComp = props => {
             color={'#bebebebc'}
             size="75px"
           />
-        </div>
-      ) : null}
+        </div>)
+      ) : null} */}
       {mobile ? (
         <>
           <div
