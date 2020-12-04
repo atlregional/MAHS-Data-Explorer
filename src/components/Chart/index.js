@@ -43,6 +43,8 @@ const Chart = props => {
     setData(array);
   };
 
+  console.log('Chart data', data)
+
   const CustomTooltip = ({ active, payload, label }) =>
     active ? (
       <div className="custom-tooltip">

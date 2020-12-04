@@ -145,20 +145,39 @@ const MapComp = props => {
     };
   };
 
-  // console.log('hoverFeature', hoverFeature);
+  console.log('data', data);
+  console.log('geoJSONs',geoJSONs);
 
-  const CustomTooltip = () =>
-    data && hoverFeature.properties ? (
+  const CustomTooltip = () => {
+    const thisFeature = hoverFeature.properties;
+    const tractInfo = thisFeature ? props.tractInfo[thisFeature.GEOID10] : null;
+    const subarea = tractInfo ? tractInfo.Subarea : null;
+    const subareaNumber = subarea ? parseInt(subarea.replace('Subarea ', '')) : null;
+    const selectionInfo = props.selection;
+
+    return data && thisFeature ? (
       <div>
-        {props.tractInfo[hoverFeature.properties.GEOID10].Subarea}
+        {/* {subarea}
+        <br /> */}
+        {thisFeature.NAMELSAD10} in {thisFeature.COUNTY_NM} County
         <br />
-        {hoverFeature.properties.NAMELSAD10}
+        {selectionInfo.indicator.name + ' : '}
+        {data[thisFeature.GEOID10]
+          ? numeral(data[thisFeature.GEOID10].value).format(
+              indicatorType === 'percent' ? '0.0%' : '0,0'
+            )
+          : null}
         <br />
-        {hoverFeature.properties.COUNTY_NM}
+        Compare to <span style={{color: props.config.style.colormap[subareaNumber - 1]}}><strong>{subarea}</strong></span> at 
+        {/* {subaraeData['All']
+          ? numeral(data['All'].value).format(
+              indicatorType === 'percent' ? '0.0%' : '0,0'
+            )
+          : null} */}
         <br />
-        {props.selection.indicator.name + ' : '}
-        {data[hoverFeature.properties.GEOID10]
-          ? numeral(data[hoverFeature.properties.GEOID10].value).format(
+        Compare to {selectionInfo.geo} {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : '' } at 
+        {data['All']
+          ? numeral(data['All'].value).format(
               indicatorType === 'percent' ? '0.0%' : '0,0'
             )
           : null}
@@ -166,6 +185,7 @@ const MapComp = props => {
     ) : (
       <h3>No Data</h3>
     );
+  }
   // console.log('hoverFeature :', hoverFeature);
 
   const handleBounds = featureBounds =>
