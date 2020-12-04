@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   ResponsiveContainer,
   ComposedChart,
-  // Line,
+  Line,
   // Area,
   Bar,
   XAxis,
@@ -17,7 +17,7 @@ import './style.css';
 import utils from '../../utils';
 
 const Chart = props => {
-  const [data, setData] = useState();
+  // const [data, setData] = useState();
 
   const colormap = props.colormap;
   const tractInfo = props.tractInfo;
@@ -30,20 +30,25 @@ const Chart = props => {
     );
     const aggregatedData = utils.aggregate(tractData, indicatorInfo, 'Subarea');
 
-    Object.entries(aggregatedData).forEach(([key, value]) =>
+    Object.entries(aggregatedData)
+    .filter(([key,]) => key !== 'All')
+    .forEach(([key, value]) =>
       array.push({
         name: key,
         Subarea: parseInt(key.replace('Subarea ', '')),
         [indicatorInfo.name]: value,
+        [props.selection.geo]: aggregatedData['All']
+
       })
     );
 
     array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
     // console.log(array);
-    setData(array);
+    // setData(array);
+    props.setSubareaData(array);
   };
 
-  console.log('Chart data', data)
+  console.log('Chart data', props.subareaData)
 
   const CustomTooltip = ({ active, payload, label }) =>
     active ? (
@@ -59,7 +64,7 @@ const Chart = props => {
 
   return (
     <>
-      {data ? (
+      {props.subareaData ? (
         <ResponsiveContainer
           className="chart-responsive-container"
           width="92%"
@@ -69,7 +74,7 @@ const Chart = props => {
             className="bar-chart"
             // width={500}
             // height={500}
-            data={data}
+            data={props.subareaData}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey={'Subarea'} />
@@ -78,7 +83,7 @@ const Chart = props => {
             {/* <Legend /> */}
 
             <Bar dataKey={indicatorInfo.name}>
-              {data.map((barData, idx) => (
+              {props.subareaData.map((barData, idx) => (
                 <Cell
                   key={indicatorInfo.name + idx}
                   fillOpacity={
@@ -108,6 +113,8 @@ const Chart = props => {
                 />
               ))}
             </Bar>
+            <Line dataKey={props.selection.geo} />
+              
           </ComposedChart>
         </ResponsiveContainer>
       ) : null}

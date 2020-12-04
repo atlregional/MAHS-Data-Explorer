@@ -31,6 +31,7 @@ const HomePage = props => {
   const [viewMapData, setViewMapData] = useState(false);
   console.log('viewMapData :', viewMapData);
   const [clickedSubarea, setClickedSubarea] = useState();
+  const [subareaData, setSubareaData] = useState();
 
   // color gradient displayed on the map;
   const numBins = 100;
@@ -134,6 +135,7 @@ const HomePage = props => {
         className={mobile && mobileVizView !== 'map' ? 'hidden' : null}
       >
         <MapComp
+          subareaData={subareaData}
           colors={colors}
           viewMapData={viewMapData}
           mobile={mobile}
@@ -177,6 +179,8 @@ const HomePage = props => {
       >
         {tractInfo ? (
           <Chart
+            setSubareaData={setSubareaData}
+            subareaData={subareaData}
             indicators={indicators}
             mobile={mobile}
             tractInfo={tractInfo}

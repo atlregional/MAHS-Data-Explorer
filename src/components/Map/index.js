@@ -154,6 +154,10 @@ const MapComp = props => {
     const subarea = tractInfo ? tractInfo.Subarea : null;
     const subareaNumber = subarea ? parseInt(subarea.replace('Subarea ', '')) : null;
     const selectionInfo = props.selection;
+    console.log('subarea data in map:', props.subareaData);
+    const subareaValue = props.subareaData && subarea
+      ? props.subareaData.filter(item => item.name === subarea)[0][selectionInfo.indicator.name] 
+      : null;
 
     return data && thisFeature ? (
       <div>
@@ -169,11 +173,11 @@ const MapComp = props => {
           : null}
         <br />
         Compare to <span style={{color: props.config.style.colormap[subareaNumber - 1]}}><strong>{subarea}</strong></span> at 
-        {/* {subaraeData['All']
-          ? numeral(data['All'].value).format(
+        {subareaValue
+          ? numeral(subareaValue).format(
               indicatorType === 'percent' ? '0.0%' : '0,0'
             )
-          : null} */}
+          : null}
         <br />
         Compare to {selectionInfo.geo} {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : '' } at 
         {data['All']
