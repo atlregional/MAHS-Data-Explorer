@@ -80,9 +80,9 @@ const MapComp = props => {
     Object.entries(aggregatedData).forEach(([key, value]) => {
       const disFromMin = value - minValue;
       const binningRatio = disFromMin / (maxValue - minValue);
-      const colorIndex = Math.floor(binningRatio * props.numBins);
+      const colorIndex = Math.floor(binningRatio * props.numBins) - 1 ;
 
-      dataObj[key] = { value: value, colorIndex: colorIndex };
+      dataObj[key] = { value: value, colorIndex: colorIndex < 0 ? 0 : colorIndex };
     });
     // console.log('dataObj :', dataObj);
 
@@ -145,8 +145,8 @@ const MapComp = props => {
     };
   };
 
-  console.log('data', data);
-  console.log('geoJSONs',geoJSONs);
+  // console.log('data', data);
+  // console.log('geoJSONs',geoJSONs);
 
   const CustomTooltip = () => {
     const thisFeature = hoverFeature.properties;
@@ -156,7 +156,9 @@ const MapComp = props => {
     const selectionInfo = props.selection;
     console.log('subarea data in map:', props.subareaData);
     const subareaValue = props.subareaData && subarea
+      ? props.subareaData.filter(item => item.name === subarea)[0]
       ? props.subareaData.filter(item => item.name === subarea)[0][selectionInfo.indicator.name] 
+      : null
       : null;
 
     return data && thisFeature ? (
