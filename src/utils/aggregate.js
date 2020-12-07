@@ -1,5 +1,7 @@
 export default (data, indicatorInfo, aggregator) => {
-  // console.log(data)
+  console.log('data :', data);
+  console.log('aggregator :', aggregator);
+  console.log('indicatorInfo :', indicatorInfo);
 
   const aggregatorField = aggregator;
   // type options are subarea, city, or tractID
@@ -23,7 +25,7 @@ export default (data, indicatorInfo, aggregator) => {
   });
 
   data.forEach(tract => {
-    // console.log(JSON.stringify(tract))
+    // the individual subarea for each tract that the data is aggregated by;
     const aggregatorId = tract[aggregatorField];
 
     denominatorValues[aggregatorId]
@@ -57,6 +59,7 @@ export default (data, indicatorInfo, aggregator) => {
   const calcAggregation = () => {
     const type = indicatorInfo.type;
     const arr = Object.entries(numeratorValues);
+    console.log('arr :', arr);
     // const arr2 = Object.values(denominatorValues);
     // const numSum = arr.reduce((a, b) => a + b, 0);
     // const denSum = arr2.reduce((a, b) => a + b, 0);
@@ -65,6 +68,7 @@ export default (data, indicatorInfo, aggregator) => {
     // console.log(arr);
 
     const aggregatedDataObj = {};
+    console.log('aggregatedDataObj :', aggregatedDataObj);
 
     type === 'average'
       ? arr.map(
@@ -85,6 +89,10 @@ export default (data, indicatorInfo, aggregator) => {
       ? arr.map(
           ([subarea, numerator]) => (aggregatedDataObj[subarea] = numerator)
         )
+      : type === 'all'
+      ? arr.map(
+          ([subarea, numerator]) => (aggregatedDataObj[subarea] = numerator)
+        )
       : console.log('No known calculation type define');
 
     return aggregatedDataObj;
@@ -92,10 +100,10 @@ export default (data, indicatorInfo, aggregator) => {
 
   calcAggregation();
 
-  // console.log(calcAggregation())
+  console.log(calcAggregation());
   return calcAggregation();
   // objects like so...
   // {
   //    "Subarea 1" : aggregated value,
-  //   "Subarea 2 :  aggregated value
+  //   "Subarea 2" :  aggregated value
 };

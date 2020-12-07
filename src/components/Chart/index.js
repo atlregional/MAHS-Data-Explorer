@@ -21,6 +21,7 @@ const Chart = props => {
 
   const colormap = props.colormap;
   const tractInfo = props.tractInfo;
+  console.log('tractInfo: ', tractInfo);
   const indicatorInfo = props.selection.indicator;
 
   const handleAggregation = () => {
@@ -83,7 +84,9 @@ const Chart = props => {
                     barData.Subarea === props.highlightedSubarea
                       ? 1
                       : props.highlightedSubarea
-                      ? props.clickedSubarea ? .3 : .6 
+                      ? props.clickedSubarea
+                        ? 0.3
+                        : 0.6
                       : 1
                   }
                   stroke={
@@ -96,11 +99,23 @@ const Chart = props => {
                   }
                   fill={colormap[barData.Subarea - 1]}
                   onMouseEnter={() =>
-                    props.setHighlightedSubarea(props.clickedSubarea ? props.clickedSubarea :barData.Subarea)
+                    props.setHighlightedSubarea(
+                      props.clickedSubarea
+                        ? props.clickedSubarea
+                        : barData.Subarea
+                    )
                   }
-                  onMouseLeave={() => props.setHighlightedSubarea(props.clickedSubarea)}
+                  onMouseLeave={() =>
+                    props.setHighlightedSubarea(props.clickedSubarea)
+                  }
                   onClick={() => {
-                    props.setClickedSubarea(props.clickedSubarea ? barData.Subarea === props.clickedSubarea ? null : props.clickedSubarea : barData.Subarea);
+                    props.setClickedSubarea(
+                      props.clickedSubarea
+                        ? barData.Subarea === props.clickedSubarea
+                          ? null
+                          : props.clickedSubarea
+                        : barData.Subarea
+                    );
                     // console.log("subarea: ", subarea);
                   }}
                 />

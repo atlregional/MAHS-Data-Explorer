@@ -15,7 +15,6 @@ import numeral from 'numeral';
 import RingLoader from 'react-spinners/RingLoader';
 import './style.css';
 
-
 const MapComp = props => {
   const mobile = window.screen.width < 800;
   // console.log('MapComp - props :', props);
@@ -32,7 +31,7 @@ const MapComp = props => {
   // data is geoId obj with the value from the chart filter and corresponding color index
   // {111111112 : {value: , colorIndex: }};
   const [data, setData] = useState();
-  console.log('data: ', data);
+  // console.log('data: ', data);
 
   // stats are the aggragated percentage values from the chart relative to the entire map
   // {max: , min: , range: }
@@ -221,98 +220,92 @@ const MapComp = props => {
                   />
                 );
               })
-          : null
-        }
-        {geoJSONs
-          ? layerConfigs
-              .filter(config => config.visible && config.type === 'data')
-              .map(config => (
-                <GeoJSON
-                  onAdd={e => e.target.bringToBack()}
-                  key={`data-layer-${config.name}-${props.selection.geo}-${
-                    props.viewMapData ? 'data' : 'nodata'
-                  }`}
-                  style={feature => {
-                    const geoID = feature.properties[tractIDField];
-                    const tractInfo = props.tractInfo[geoID];
-                    const subarea = tractInfo['Subarea'];
-                    // const data = tractInfo['Data'];
-                    // console.log(data);
-                    const highlight =
-                      subarea === `Subarea ${props.highlightedSubarea}`;
-                    const style = tractStyle(tractInfo);
-                    return {
-                      ...style,
-                      color:
-                        props.highlightedSubarea && highlight
-                          ? 'black'
-                          : config.boundaryColor,
-                      weight:
-                        props.highlightedSubarea && highlight
-                          ? 1
-                          : props.highlightedSubarea
-                          ? 0
-                          : config.boundaryWidth,
-                      fillOpacity:
-                        props.highlightedSubarea && highlight
-                          ? 1
-                          : props.highlightedSubarea
-                          ? 0.2
-                          : 1,
-                    };
-                  }}
-                  // onm
-                  onmouseout={() => setHoverBin()}
-                  onmouseover={
-                    e => {
-                      setHoverBin(
-                        data[e.layer.feature.properties[tractIDField]]
-                          ? data[e.layer.feature.properties[tractIDField]]
-                              .colorIndex
-                          : null
-                      );
-                      setHoverFeature(e.layer.feature);
-                    }
-                    // console.log(data[e.layer.feature.properties[tractIDField]])
-                  }
-                  filter={feature => {
-                    const geoID = feature.properties[
-                      config.geoField
-                    ].toString();
-                    const tractInfo = props.tractInfo[geoID];
-
-                    return tractInfo
-                      ? props.selection.geo === '10 Counties'
-                        ? true
-                        : props.selection.geoType === 'County'
-                        ? feature.properties['COUNTY_NM'] ===
-                          props.selection.geo
-                        : props.selection.geoType === 'City'
-                        ? tractInfo.Cities.includes(props.selection.geo)
-                        : true
-                      : false;
-                  }}
-                  data={geoJSONs[config.name]}
-                >
-                  <Tooltip>
-                    <CustomTooltip />
-                  </Tooltip>
-                </GeoJSON>
-              )
-          )
-          : (
-            <div id="map-loading-spinner">
-              <RingLoader
-                css={{
-                  margin: '35vh auto',
-                  zIndex: '9999999',
+          : null}
+        {geoJSONs ? (
+          layerConfigs
+            .filter(config => config.visible && config.type === 'data')
+            .map(config => (
+              <GeoJSON
+                onAdd={e => e.target.bringToBack()}
+                key={`data-layer-${config.name}-${props.selection.geo}-${
+                  props.viewMapData ? 'data' : 'nodata'
+                }`}
+                style={feature => {
+                  const geoID = feature.properties[tractIDField];
+                  const tractInfo = props.tractInfo[geoID];
+                  const subarea = tractInfo['Subarea'];
+                  // const data = tractInfo['Data'];
+                  // console.log(data);
+                  const highlight =
+                    subarea === `Subarea ${props.highlightedSubarea}`;
+                  const style = tractStyle(tractInfo);
+                  return {
+                    ...style,
+                    color:
+                      props.highlightedSubarea && highlight
+                        ? 'black'
+                        : config.boundaryColor,
+                    weight:
+                      props.highlightedSubarea && highlight
+                        ? 1
+                        : props.highlightedSubarea
+                        ? 0
+                        : config.boundaryWidth,
+                    fillOpacity:
+                      props.highlightedSubarea && highlight
+                        ? 1
+                        : props.highlightedSubarea
+                        ? 0.2
+                        : 1,
+                  };
                 }}
-                color='#4B7B90'
-                size='75px'
-              />
-            </div>
-          )
-        }
+                // onm
+                onmouseout={() => setHoverBin()}
+                onmouseover={
+                  e => {
+                    setHoverBin(
+                      data[e.layer.feature.properties[tractIDField]]
+                        ? data[e.layer.feature.properties[tractIDField]]
+                            .colorIndex
+                        : null
+                    );
+                    setHoverFeature(e.layer.feature);
+                  }
+                  // console.log(data[e.layer.feature.properties[tractIDField]])
+                }
+                filter={feature => {
+                  const geoID = feature.properties[config.geoField].toString();
+                  const tractInfo = props.tractInfo[geoID];
+
+                  return tractInfo
+                    ? props.selection.geo === '10 Counties'
+                      ? true
+                      : props.selection.geoType === 'County'
+                      ? feature.properties['COUNTY_NM'] === props.selection.geo
+                      : props.selection.geoType === 'City'
+                      ? tractInfo.Cities.includes(props.selection.geo)
+                      : true
+                    : false;
+                }}
+                data={geoJSONs[config.name]}
+              >
+                <Tooltip>
+                  <CustomTooltip />
+                </Tooltip>
+              </GeoJSON>
+            ))
+        ) : (
+          <div id="map-loading-spinner">
+            <RingLoader
+              css={{
+                margin: '35vh auto',
+                zIndex: '9999999',
+              }}
+              color="#4B7B90"
+              size="75px"
+            />
+          </div>
+        )}
         {geoJSONs
           ? layerConfigs
               .filter(
@@ -332,8 +325,7 @@ const MapComp = props => {
                   data={geoJSONs[config.name]}
                 />
               ))
-          : null
-        }
+          : null}
         <TileLayer
           key={`tile-layer-${tileLayer[tile].name}`}
           url={tileLayer[tile].url}
