@@ -29,7 +29,6 @@ const HomePage = props => {
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
   const [viewMapData, setViewMapData] = useState(false);
-  console.log('viewMapData :', viewMapData);
   const [clickedSubarea, setClickedSubarea] = useState();
   const [subareaData, setSubareaData] = useState();
 
@@ -170,8 +169,7 @@ const HomePage = props => {
       ) : null}
       <div
         id={
-          subareaOptions.length <= 5 || 
-          !mobile
+          subareaOptions.length <= 5 || !mobile
             ? 'chart-box'
             : 'chart-box-reduced'
         }

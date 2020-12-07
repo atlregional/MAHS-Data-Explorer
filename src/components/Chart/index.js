@@ -17,11 +17,8 @@ import './style.css';
 import utils from '../../utils';
 
 const Chart = props => {
-  // const [data, setData] = useState();
-
   const colormap = props.colormap;
   const tractInfo = props.tractInfo;
-  console.log('tractInfo: ', tractInfo);
   const indicatorInfo = props.selection.indicator;
 
   const handleAggregation = () => {
@@ -32,16 +29,15 @@ const Chart = props => {
     const aggregatedData = utils.aggregate(tractData, indicatorInfo, 'Subarea');
 
     Object.entries(aggregatedData)
-    .filter(([key,]) => key !== 'All')
-    .forEach(([key, value]) =>
-      array.push({
-        name: key,
-        Subarea: parseInt(key.replace('Subarea ', '')),
-        [indicatorInfo.name]: value,
-        [props.selection.geo]: aggregatedData['All']
-
-      })
-    );
+      .filter(([key]) => key !== 'All')
+      .forEach(([key, value]) =>
+        array.push({
+          name: key,
+          Subarea: parseInt(key.replace('Subarea ', '')),
+          [indicatorInfo.name]: value,
+          [props.selection.geo]: aggregatedData['All'],
+        })
+      );
 
     array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
     // console.log(array);
@@ -49,7 +45,7 @@ const Chart = props => {
     props.setSubareaData(array);
   };
 
-  console.log('Chart data', props.subareaData)
+  // console.log('Chart data', props.subareaData);
 
   const CustomTooltip = ({ active, payload, label }) =>
     active ? (
@@ -71,17 +67,11 @@ const Chart = props => {
           width="92%"
           height="100%"
         >
-          <ComposedChart
-            className="bar-chart"
-            // width={500}
-            // height={500}
-            data={props.subareaData}
-          >
+          <ComposedChart className="bar-chart" data={props.subareaData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey={'Subarea'} />
             <YAxis />
             <Tooltip content={<CustomTooltip />} />
-            {/* <Legend /> */}
 
             <Bar dataKey={indicatorInfo.name}>
               {props.subareaData.map((barData, idx) => (
@@ -128,8 +118,13 @@ const Chart = props => {
                 />
               ))}
             </Bar>
-            <Line dataKey={props.selection.geo} />
-              
+            <Line
+              dataKey={props.selection.geo}
+              strokeDasharray="1 4"
+              stroke={'black'}
+              strokeWidth={4}
+              dot={false}
+            />
           </ComposedChart>
         </ResponsiveContainer>
       ) : null}
