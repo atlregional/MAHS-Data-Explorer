@@ -22,7 +22,18 @@ export default (data, indicatorInfo, aggregator) => {
     numberOfTracts[aggregatorId]
       ? (numberOfTracts[aggregatorId] = numberOfTracts[aggregatorId] + 1)
       : (numberOfTracts[aggregatorId] = 1);
+
+    
+    numberOfTracts['All']
+      ? (numberOfTracts['All'] = numberOfTracts['All'] + 1)
+      : (numberOfTracts['All'] = 1);
+
   });
+
+  // numberOfTracts['All'] = Object.values(numberOfTracts).reduce(sumArray);
+
+  // console.log('Number of Tracts', numberOfTracts);
+
 
   data.forEach(tract => {
     // the individual subarea for each tract that the data is aggregated by;
@@ -32,7 +43,13 @@ export default (data, indicatorInfo, aggregator) => {
       ? (denominatorValues[aggregatorId] =
           denominatorValues[aggregatorId] + tract.Data[denominatorId])
       : (denominatorValues[aggregatorId] = tract.Data[denominatorId]);
+
+    denominatorValues['All'] 
+      ? (denominatorValues['All'] =
+        denominatorValues['All'] + tract.Data[denominatorId])
+    : (denominatorValues['All'] = tract.Data[denominatorId]);
   });
+
 
   data.forEach(tract => {
     const aggregatorId = tract[aggregatorField];
@@ -44,6 +61,13 @@ export default (data, indicatorInfo, aggregator) => {
       indicatorInfo.type === 'weighted average'
         ? tract.Data[denominatorId] / denominatorValues[aggregatorId]
         : 1;
+    
+    const allWeightingFactor = 
+      indicatorInfo.type === 'weighted average' 
+        ? tract.Data[denominatorId] / denominatorValues['All']
+        : 1;
+
+
 
     numeratorValues[aggregatorId]
       ? (numeratorValues[aggregatorId] =
@@ -51,43 +75,53 @@ export default (data, indicatorInfo, aggregator) => {
           tract.Data[numeratorId] * weightingFactor)
       : (numeratorValues[aggregatorId] =
           tract.Data[numeratorId] * weightingFactor);
+
+    numeratorValues['All']
+    ? (numeratorValues['All'] =
+        numeratorValues['All'] +
+        tract.Data[numeratorId] * allWeightingFactor)
+    : (numeratorValues['All'] =
+        tract.Data[numeratorId] * allWeightingFactor);
+
+    
   });
   // console.log(numeratorValues)
 
   // console.log(denominatorValues)
+  // numeratorValues['All'] = Object.values(numeratorValues).reduce(sumArray);
+
 
   const calcAggregation = () => {
     const type = indicatorInfo.type;
-    const arr = Object.entries(numeratorValues);
-    console.log('arr :', arr);
-    // const arr2 = Object.values(denominatorValues);
-    // const numSum = arr.reduce((a, b) => a + b, 0);
-    // const denSum = arr2.reduce((a, b) => a + b, 0);
+    const numeratorArray = Object.entries(numeratorValues);
+    // const numeratorArray2 = Object.values(denominatorValues);
+    // const numSum = numeratorArray.reduce((a, b) => a + b, 0);
+    // const denSum = numeratorArray2.reduce((a, b) => a + b, 0);
     // const weight = numSum / denSum;
 
-    // console.log(arr);
+    // console.log(numeratorArray);
 
     const aggregatedDataObj = {};
     console.log('aggregatedDataObj :', aggregatedDataObj);
 
     type === 'average'
-      ? arr.map(
-          ([subarea, numerator]) =>
-            (aggregatedDataObj[subarea] = numerator / numberOfTracts[subarea])
+      ? numeratorArray.map(
+          ([aggregator, numerator]) =>
+            (aggregatedDataObj[aggregator] = numerator / numberOfTracts[aggregator])
         )
       : type === 'sum'
-      ? arr.map(
-          ([subarea, numerator]) => (aggregatedDataObj[subarea] = numerator)
+      ? numeratorArray.map(
+          ([aggregator, numerator]) => (aggregatedDataObj[aggregator] = numerator)
         )
       : type === 'percent'
-      ? arr.map(
-          ([subarea, numerator]) =>
-            (aggregatedDataObj[subarea] =
-              numerator / denominatorValues[subarea])
+      ? numeratorArray.map(
+          ([aggregator, numerator]) =>
+            (aggregatedDataObj[aggregator] =
+              numerator / denominatorValues[aggregator])
         )
       : type === 'weighted average'
-      ? arr.map(
-          ([subarea, numerator]) => (aggregatedDataObj[subarea] = numerator)
+      ? numeratorArray.map(
+          ([aggregator, numerator]) => (aggregatedDataObj[aggregator] = numerator)
         )
       : type === 'all'
       ? arr.map(
@@ -98,7 +132,11 @@ export default (data, indicatorInfo, aggregator) => {
     return aggregatedDataObj;
   };
 
-  calcAggregation();
+  
+
+  // calcAggregation();
+
+  console.log(calcAggregation())
 
   console.log(calcAggregation());
   return calcAggregation();
