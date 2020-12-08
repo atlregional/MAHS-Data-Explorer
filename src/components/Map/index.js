@@ -79,9 +79,12 @@ const MapComp = props => {
     Object.entries(aggregatedData).forEach(([key, value]) => {
       const disFromMin = value - minValue;
       const binningRatio = disFromMin / (maxValue - minValue);
-      const colorIndex = Math.floor(binningRatio * props.numBins) - 1 ;
+      const colorIndex = Math.floor(binningRatio * props.numBins) - 1;
 
-      dataObj[key] = { value: value, colorIndex: colorIndex < 0 ? 0 : colorIndex };
+      dataObj[key] = {
+        value: value,
+        colorIndex: colorIndex < 0 ? 0 : colorIndex,
+      };
     });
     // console.log('dataObj :', dataObj);
 
@@ -151,14 +154,19 @@ const MapComp = props => {
     const thisFeature = hoverFeature.properties;
     const tractInfo = thisFeature ? props.tractInfo[thisFeature.GEOID10] : null;
     const subarea = tractInfo ? tractInfo.Subarea : null;
-    const subareaNumber = subarea ? parseInt(subarea.replace('Subarea ', '')) : null;
-    const selectionInfo = props.selection;
-    console.log('subarea data in map:', props.subareaData);
-    const subareaValue = props.subareaData && subarea
-      ? props.subareaData.filter(item => item.name === subarea)[0]
-      ? props.subareaData.filter(item => item.name === subarea)[0][selectionInfo.indicator.name] 
-      : null
+    const subareaNumber = subarea
+      ? parseInt(subarea.replace('Subarea ', ''))
       : null;
+    const selectionInfo = props.selection;
+    // console.log('subarea data in map:', props.subareaData);
+    const subareaValue =
+      props.subareaData && subarea
+        ? props.subareaData.filter(item => item.name === subarea)[0]
+          ? props.subareaData.filter(item => item.name === subarea)[0][
+              selectionInfo.indicator.name
+            ]
+          : null
+        : null;
 
     return data && thisFeature ? (
       <div>
@@ -173,14 +181,19 @@ const MapComp = props => {
             )
           : null}
         <br />
-        Compare to <span style={{color: props.config.style.colormap[subareaNumber - 1]}}><strong>{subarea}</strong></span> at 
+        Compare to{' '}
+        <span style={{ color: props.config.style.colormap[subareaNumber - 1] }}>
+          <strong>{subarea}</strong>
+        </span>{' '}
+        at
         {subareaValue
           ? numeral(subareaValue).format(
               indicatorType === 'percent' ? '0.0%' : '0,0'
             )
           : null}
         <br />
-        Compare to {selectionInfo.geo} {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : '' } at 
+        Compare to {selectionInfo.geo}{' '}
+        {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : ''} at
         {data['All']
           ? numeral(data['All'].value).format(
               indicatorType === 'percent' ? '0.0%' : '0,0'
@@ -190,7 +203,7 @@ const MapComp = props => {
     ) : (
       <h3>No Data</h3>
     );
-  }
+  };
   // console.log('hoverFeature :', hoverFeature);
 
   const handleBounds = featureBounds =>

@@ -14,19 +14,25 @@ import {
   Cell,
 } from 'recharts';
 import './style.css';
+import numeral from 'numeral';
 import utils from '../../utils';
 
 const Chart = props => {
   const colormap = props.colormap;
   const tractInfo = props.tractInfo;
-  const indicatorInfo = props.selection.indicator;
+  const selectedIndicator = props.selection.indicator;
+  const indicatorType = props.selection.indicator.type;
 
   const handleAggregation = () => {
     const array = [];
     const tractData = Object.values(tractInfo).filter(tract =>
       utils.filterBySelection(tract, props.selection)
     );
-    const aggregatedData = utils.aggregate(tractData, indicatorInfo, 'Subarea');
+    const aggregatedData = utils.aggregate(
+      tractData,
+      selectedIndicator,
+      'Subarea'
+    );
 
     Object.entries(aggregatedData)
       .filter(([key]) => key !== 'All')
@@ -34,7 +40,7 @@ const Chart = props => {
         array.push({
           name: key,
           Subarea: parseInt(key.replace('Subarea ', '')),
-          [indicatorInfo.name]: value,
+          [selectedIndicator.name]: value,
           [props.selection.geo]: aggregatedData['All'],
         })
       );
@@ -46,15 +52,34 @@ const Chart = props => {
   };
 
   // console.log('Chart data', props.subareaData);
-
-  const CustomTooltip = ({ active, payload, label }) =>
-    active ? (
-      <div className="custom-tooltip">
-        <h5 className="tooltip-indicator">{`${payload[0].payload.name}`}</h5>
-        <p className="label">{`${indicatorInfo.name}: ${payload[0].value}`}</p>
+  // ****** CSS NOT WORKING IN THE TOOLTIP;
+  const CustomTooltip = ({ active, payload, label }) => {
+    return active ? (
+      <div
+        className="custom-tooltip"
+        style={{ display: 'block', float: 'left' }}
+      >
+        <h6
+          className="tooltip-indicator"
+          style={{ width: '100%' }}
+        >{`${payload[0].payload.name}`}</h6>
+        {/* <h6>{``}</h6> */}
+        <p className="label">{`${selectedIndicator.name} : ${numeral(
+          payload[0].value
+        ).format(
+          indicatorType === 'percent'
+            ? '0.0%'
+            : indicatorType === 'average'
+            ? '0.0%'
+            : indicatorType === 'weighted average'
+            ? '0.0%'
+            : indicatorType === 'all'
+            ? '0.0'
+            : '0,0'
+        )}`}</p>
       </div>
     ) : null;
-
+  };
   // console.log(props.selection);
 
   useEffect(handleAggregation, [props.selection]);
@@ -73,10 +98,10 @@ const Chart = props => {
             <YAxis />
             <Tooltip content={<CustomTooltip />} />
 
-            <Bar dataKey={indicatorInfo.name}>
+            <Bar dataKey={selectedIndicator.name}>
               {props.subareaData.map((barData, idx) => (
                 <Cell
-                  key={indicatorInfo.name + idx}
+                  key={selectedIndicator.name + idx}
                   fillOpacity={
                     barData.Subarea === props.highlightedSubarea
                       ? 1
