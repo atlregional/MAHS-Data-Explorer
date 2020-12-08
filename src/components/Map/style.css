@@ -116,6 +116,15 @@
   font-size: larger;
 }
 
+#data-source {
+  padding-top: 10px;
+}
+
+.data-credits {
+  width: 100%;
+  font-weight: 600;
+}
+
 
 @media screen and (max-width: 800px) {
   #tile-layer-selector-open {

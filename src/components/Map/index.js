@@ -229,6 +229,8 @@ const MapComp = props => {
               : null}
           </span>
         </text>
+          <span id='data-source' className="data-credits">Data Source : {} </span>
+          <span className="data-credits">Universe : {} </span>
       </div>
     ) : (
       <h3>No Data</h3>
