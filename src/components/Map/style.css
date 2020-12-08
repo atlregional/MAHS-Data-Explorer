@@ -68,6 +68,55 @@
   z-index: 99999999;
 }
 
+/* CUSTOM TOOLTIP CSS */
+
+.map-custom-tooltip {
+  display: grid;
+  grid-template-rows: auto;
+  text-align: start;
+}
+
+.tooltip-header {
+  font-weight: 800;
+  font-size: larger;
+}
+
+.tooltip-county-thin {
+  font-weight: 300;
+}
+
+.tooltip-county-thic {
+  font-weight: 500;
+  font-size: larger;
+}
+
+.tooltip-key-indicator {
+  font-weight: 600;
+  font-size: x-large;
+  padding-top: 10px;
+}
+
+.tooltip-key-indicator-value {
+  font-weight: 900;
+  font-size: x-large;
+}
+
+.tooltip-subarea {
+  font-weight: 500;
+  font-size: larger;
+}
+
+.tooltip-compare-metrics {
+  padding-top: 10px;
+  font-size: larger;
+}
+
+.tooltip-percent-comparison {
+  font-weight: 600;
+  font-size: larger;
+}
+
+
 @media screen and (max-width: 800px) {
   #tile-layer-selector-open {
     z-index: 999999;

@@ -169,36 +169,66 @@ const MapComp = props => {
         : null;
 
     return data && thisFeature ? (
-      <div>
+      <div className="map-custom-tooltip">
         {/* {subarea}
         <br /> */}
-        {thisFeature.NAMELSAD10} in {thisFeature.COUNTY_NM} County
-        <br />
-        {selectionInfo.indicator.name + ' : '}
-        {data[thisFeature.GEOID10]
-          ? numeral(data[thisFeature.GEOID10].value).format(
-              indicatorType === 'percent' ? '0.0%' : '0,0'
-            )
-          : null}
-        <br />
-        Compare to{' '}
-        <span style={{ color: props.config.style.colormap[subareaNumber - 1] }}>
-          <strong>{subarea}</strong>
-        </span>{' '}
-        at
-        {subareaValue
-          ? numeral(subareaValue).format(
-              indicatorType === 'percent' ? '0.0%' : '0,0'
-            )
-          : null}
-        <br />
-        Compare to {selectionInfo.geo}{' '}
-        {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : ''} at
-        {data['All']
-          ? numeral(data['All'].value).format(
-              indicatorType === 'percent' ? '0.0%' : '0,0'
-            )
-          : null}
+        <span className="tooltip-header">{thisFeature.NAMELSAD10} </span>{' '}
+        <text>
+          in{' '}
+          <span className="tooltip-county-thin">
+            {thisFeature.COUNTY_NM ? `${thisFeature.COUNTY_NM} County` : null}
+          </span>
+        </text>
+        <span className="tooltip-key-indicator">
+          {selectionInfo.indicator.name}
+          <br />
+          <span className="tooltip-key-indicator-value">
+            {data[thisFeature.GEOID10]
+              ? numeral(data[thisFeature.GEOID10].value).format(
+                  indicatorType === 'percent' ? '0.0%' : '0,0'
+                )
+              : null}
+          </span>
+          <br />
+        </span>
+        <text className="tooltip-compare-metrics">
+          Compare to{' '}
+          <span
+            style={{ color: props.config.style.colormap[subareaNumber - 1] }}
+          >
+            <span className="tooltip-subarea">
+              <strong>{subarea}</strong>{' '}
+            </span>
+          </span>
+          in{' '}
+          <span className="tooltip-county-thic">
+            {thisFeature.COUNTY_NM ? `${thisFeature.COUNTY_NM} County` : null}
+          </span>{' '}
+          at{' '}
+          <stong>
+            <span className="tooltip-percent-comparison">
+              {subareaValue
+                ? numeral(subareaValue).format(
+                    indicatorType === 'percent' ? ' 0.0%' : '0,0'
+                  )
+                : null}
+            </span>
+          </stong>
+          <br />
+          Compare to
+          <span className="tooltip-percent-comparison">
+            {selectionInfo.geo}{' '}
+            {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : ' '}
+          </span>{' '}
+          at{' '}
+          <span className="tooltip-percent-comparison">
+            {data['All']
+              ? numeral(data['All'].value).format(
+                  indicatorType === 'percent' ? ' 0.0%' : '0,0'
+                )
+              : null}
+          </span>
+        </text>
       </div>
     ) : (
       <h3>No Data</h3>

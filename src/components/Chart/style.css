@@ -5,23 +5,11 @@
 
 .custom-tooltip {
     padding: 10px;
-    /* display: flex;
-    justify-items: start;
-    flex-wrap: wrap;
-    flex-direction: column; 
-    display: block;
-    float: left;*/
+    display: grid;
+    grid-template-rows: auto;
+    text-align: start;
     background-color: rgb(255, 255, 255);
     /* border: .5px solid black; */
     box-shadow: grey 2px;
     color: black;
 } 
-
-/* .custom-tooltip p {
-    justify-content: start;
-} */
-
-/* .recharts-curve {
-    display: block;
-    float: left;
-} */
