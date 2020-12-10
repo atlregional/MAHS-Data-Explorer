@@ -54,21 +54,24 @@ const Chart = props => {
   // console.log('Chart data', props.subareaData);
   // ****** CSS NOT WORKINNG IN HTE
   const CustomTooltip = ({ active, payload, label }) => {
-    // console.log(props);
+    console.log(props);
     const geoType = props.selection.geoType;
     const geo = props.selection.geo;
+
+    // const subarea = payload[0].payload.name;
+    // const indicatorValue = payload[0].value;
     // console.log(props.tractInfo);
     return active ? (
-      <div className="custom-tooltip">
+      <div className="chart-custom-tooltip">
         <span
-          className="tooltip-subarea"
-          // style={{
-          //   color: props.colormap[label - 1],
-          //   fontSize: 'large',
-          // }}
+          className="chart-tooltip-subarea"
+          style={{
+            color: props.colormap[label - 1],
+            fontSize: 'large',
+          }}
         >{`${payload[0].payload.name}`}</span>
         <br />
-        <span className="tooltip-geography-selection">
+        <span className="chart-tooltip-geography-selection">
           {geo
             ? geoType === 'Region'
               ? `in the ${geo} Region`
@@ -79,7 +82,7 @@ const Chart = props => {
               : null
             : null}
         </span>
-        <p className="label tooltip-indicator">{`${
+        <span className="label chart-tooltip-indicator">{`${
           selectedIndicator.name
         } : ${numeral(payload[0].value).format(
           indicatorType === 'percent'
@@ -91,11 +94,10 @@ const Chart = props => {
             : indicatorType === 'all'
             ? '0.0'
             : '0,0'
-        )}`}</p>
+        )}`}</span>
       </div>
     ) : null;
   };
-  // console.log(props.selection);
 
   useEffect(handleAggregation, [props.selection]);
 

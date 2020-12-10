@@ -2,8 +2,8 @@
 .bar-chart {
     margin-top: 3%;
 } 
-/* 
-.custom-tooltip {
+
+.chart-custom-tooltip {
     padding: 10px;
     display: grid;
     grid-template-rows: auto;
@@ -11,13 +11,13 @@
     background-color: rgb(255, 255, 255);
     box-shadow: grey 2px;
     color: black;
-} */
+}
 
-.tooltip-subarea {
+.chart-tooltip-subarea {
     font-size: xx-large;
     font-weight: 800;
 }
 
-.tooltip-geography-selection {
+.chart-tooltip-geography-selection {
     font-size: small;
 }
