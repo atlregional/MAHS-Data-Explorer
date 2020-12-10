@@ -170,8 +170,6 @@ const MapComp = props => {
 
     return data && thisFeature ? (
       <div className="map-custom-tooltip">
-        {/* {subarea}
-        <br /> */}
         <span className="tooltip-header">{thisFeature.NAMELSAD10} </span>{' '}
         <text>
           in{' '}
@@ -205,7 +203,7 @@ const MapComp = props => {
             {thisFeature.COUNTY_NM ? `${thisFeature.COUNTY_NM} County` : null}
           </span>{' '}
           at{' '}
-          <stong>
+          <strong>
             <span className="tooltip-percent-comparison">
               {subareaValue
                 ? numeral(subareaValue).format(
@@ -213,7 +211,7 @@ const MapComp = props => {
                   )
                 : null}
             </span>
-          </stong>
+          </strong>
           <br />
           Compare to
           <span className="tooltip-percent-comparison">
@@ -229,8 +227,10 @@ const MapComp = props => {
               : null}
           </span>
         </text>
-          <span id='data-source' className="data-credits">Data Source : {} </span>
-          <span className="data-credits">Universe : {} </span>
+        <span id="data-source" className="data-credits">
+          Data Source : {}{' '}
+        </span>
+        <span className="data-credits">Universe : {} </span>
       </div>
     ) : (
       <h3>No Data</h3>

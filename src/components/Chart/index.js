@@ -52,21 +52,36 @@ const Chart = props => {
   };
 
   // console.log('Chart data', props.subareaData);
-  // ****** CSS NOT WORKING IN THE TOOLTIP;
+  // ****** CSS NOT WORKINNG IN HTE
   const CustomTooltip = ({ active, payload, label }) => {
+    // console.log(props);
+    const geoType = props.selection.geoType;
+    const geo = props.selection.geo;
+    // console.log(props.tractInfo);
     return active ? (
-      <div
-        className="custom-tooltip"
-        style={{ display: 'block', float: 'left' }}
-      >
-        <h6
-          className="tooltip-indicator"
-          style={{ width: '100%' }}
-        >{`${payload[0].payload.name}`}</h6>
-        {/* <h6>{``}</h6> */}
-        <p className="label">{`${selectedIndicator.name} : ${numeral(
-          payload[0].value
-        ).format(
+      <div className="custom-tooltip">
+        <span
+          className="tooltip-subarea"
+          // style={{
+          //   color: props.colormap[label - 1],
+          //   fontSize: 'large',
+          // }}
+        >{`${payload[0].payload.name}`}</span>
+        <br />
+        <span className="tooltip-geography-selection">
+          {geo
+            ? geoType === 'Region'
+              ? `in the ${geo} Region`
+              : geoType === 'City'
+              ? `in the City of ${geo}`
+              : geoType === 'County'
+              ? `in ${geo} County`
+              : null
+            : null}
+        </span>
+        <p className="label tooltip-indicator">{`${
+          selectedIndicator.name
+        } : ${numeral(payload[0].value).format(
           indicatorType === 'percent'
             ? '0.0%'
             : indicatorType === 'average'
@@ -140,6 +155,7 @@ const Chart = props => {
                     );
                     // console.log("subarea: ", subarea);
                   }}
+                  // onMouseOver={e => console.log(e)}
                 />
               ))}
             </Bar>
