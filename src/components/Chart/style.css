@@ -4,20 +4,34 @@
 } 
 
 .chart-custom-tooltip {
-    padding: 10px;
     display: grid;
     grid-template-rows: auto;
     text-align: start;
+    padding: 10px;
     background-color: rgb(255, 255, 255);
     box-shadow: grey 2px;
     color: black;
 }
 
 .chart-tooltip-subarea {
-    font-size: xx-large;
+    font-size: 2em;
     font-weight: 800;
+    margin-bottom: -15px;
+    padding: 0;
 }
 
 .chart-tooltip-geography-selection {
-    font-size: small;
+    font-size: .85em;
 }
+
+.tooltip-geo {
+    font-size: 1.25em;
+    font-weight: 700;
+}
+
+.chart-tooltip-indicator {
+    font-size: 1.75em;
+    font-weight: 600;
+    line-height: 1.25em;
+}
+

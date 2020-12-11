@@ -18,8 +18,12 @@ import numeral from 'numeral';
 import utils from '../../utils';
 
 const Chart = props => {
+  console.log(props);
+  const data = props.data;
+  console.log('data :', data);
   const colormap = props.colormap;
   const tractInfo = props.tractInfo;
+
   const selectedIndicator = props.selection.indicator;
   const indicatorType = props.selection.indicator.type;
 
@@ -54,47 +58,78 @@ const Chart = props => {
   // console.log('Chart data', props.subareaData);
   // ****** CSS NOT WORKINNG IN HTE
   const CustomTooltip = ({ active, payload, label }) => {
-    console.log(props);
+    console.log('chart tooltip props :', props);
     const geoType = props.selection.geoType;
     const geo = props.selection.geo;
+    // const data =
 
-    // const subarea = payload[0].payload.name;
-    // const indicatorValue = payload[0].value;
-    // console.log(props.tractInfo);
     return active ? (
       <div className="chart-custom-tooltip">
-        <span
+        <div
           className="chart-tooltip-subarea"
           style={{
             color: props.colormap[label - 1],
-            fontSize: 'large',
           }}
-        >{`${payload[0].payload.name}`}</span>
+        >
+          {`${payload[0].payload.name}`}
+        </div>
         <br />
-        <span className="chart-tooltip-geography-selection">
-          {geo
-            ? geoType === 'Region'
-              ? `in the ${geo} Region`
-              : geoType === 'City'
-              ? `in the City of ${geo}`
-              : geoType === 'County'
-              ? `in ${geo} County`
-              : null
-            : null}
+        <div className="chart-tooltip-geography-selection">
+          {geo ? (
+            geoType === 'Region' ? (
+              <div>
+                in the <span className="tooltip-geo">{geo}</span> Region
+              </div>
+            ) : geoType === 'City' ? (
+              <div>
+                in the City of
+                <span className="tooltip-geo">{geo}</span>
+              </div>
+            ) : geoType === 'County' ? (
+              <div>
+                in
+                <span className="tooltip-geo"> {geo} </span>
+                County
+              </div>
+            ) : null
+          ) : null}
+        </div>
+        <br />
+        <div className="chart-tooltip-indicator">
+          {selectedIndicator.name}
+          <br />
+          {numeral(payload[0].value).format(
+            indicatorType === 'percent'
+              ? '0.0%'
+              : indicatorType === 'average'
+              ? '0.0%'
+              : indicatorType === 'weighted average'
+              ? '0.0%'
+              : indicatorType === 'all'
+              ? '0.0'
+              : '0,0'
+          )}
+        </div>
+        <br />
+        <div className="chart-tooltip-percent-comparison">
+          Compare to {geo} at{' '}
+          {
+            <span className="chart-tooltip-percent-comparison">
+              {data['All']
+                ? numeral(data['All'].value).format(
+                    indicatorType === 'percent' ? ' 0.0%' : '0,0'
+                  )
+                : null}
+            </span>
+          }
+        </div>
+        <br />
+        <span id="data-source" className="data-credits">
+          Data Source : {}{' '}
         </span>
-        <span className="label chart-tooltip-indicator">{`${
-          selectedIndicator.name
-        } : ${numeral(payload[0].value).format(
-          indicatorType === 'percent'
-            ? '0.0%'
-            : indicatorType === 'average'
-            ? '0.0%'
-            : indicatorType === 'weighted average'
-            ? '0.0%'
-            : indicatorType === 'all'
-            ? '0.0'
-            : '0,0'
-        )}`}</span>
+        <span className="data-credits">
+          Universe : {props.selection.indicator.universe.name}
+        </span>
       </div>
     ) : null;
   };

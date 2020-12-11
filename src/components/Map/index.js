@@ -16,33 +16,24 @@ import RingLoader from 'react-spinners/RingLoader';
 import './style.css';
 
 const MapComp = props => {
-  const mobile = window.screen.width < 800;
   // console.log('MapComp - props :', props);
-  const [geoJSONs, setGeoJSONs] = useState();
   // console.log('geoJSONs :', geoJSONs);
-  const [hoverFeature, setHoverFeature] = useState({});
-  // console.log('hoverFeature :', hoverFeature);
-  // const [tractInfo, setTractInfo] = useState();
-
-  const [hoverBin, setHoverBin] = useState();
   // console.log('hoverBin :', hoverBin);
-
-  const layerConfigs = props.layers;
-  // data is geoId obj with the value from the chart filter and corresponding color index
-  // {111111112 : {value: , colorIndex: }};
-  const [data, setData] = useState();
-  // console.log('data: ', data);
-
-  // stats are the aggragated percentage values from the chart relative to the entire map
-  // {max: , min: , range: }
-  const [stats, setStats] = useState();
   // console.log('MapComp - stats :', stats);
 
-  const tileLayer = props.config.tilelayers;
-  const [tile, setTile] = useState(1);
+  const mobile = window.screen.width < 800;
 
+  const [tile, setTile] = useState(1);
+  const [stats, setStats] = useState();
+  const [geoJSONs, setGeoJSONs] = useState();
+  const [hoverBin, setHoverBin] = useState();
+  const [hoverFeature, setHoverFeature] = useState({});
   const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
 
+  const data = props.data;
+  const setData = props.setData;
+  const layerConfigs = props.layers;
+  const tileLayer = props.config.tilelayers;
   const indicatorType = props.selection.indicator.type;
 
   const handleTractData = () => {
@@ -132,7 +123,8 @@ const MapComp = props => {
     const config = props.config;
 
     const colorIndex = data[tractInfo.GEOID]
-      ? data[tractInfo.GEOID].colorIndex
+      ? // 
+        data[tractInfo.GEOID].colorIndex
       : null;
     const color = viewMapData
       ? props.colors[colorIndex]
@@ -168,28 +160,30 @@ const MapComp = props => {
           : null
         : null;
 
+    // 
     return data && thisFeature ? (
       <div className="map-custom-tooltip">
         <span className="tooltip-header">{thisFeature.NAMELSAD10} </span>{' '}
-        <text>
+        <div>
           in{' '}
           <span className="tooltip-county-thin">
             {thisFeature.COUNTY_NM ? `${thisFeature.COUNTY_NM} County` : null}
           </span>
-        </text>
+        </div>
         <span className="tooltip-key-indicator">
           {selectionInfo.indicator.name}
           <br />
           <span className="tooltip-key-indicator-value">
             {data[thisFeature.GEOID10]
-              ? numeral(data[thisFeature.GEOID10].value).format(
+              ? // 
+                numeral(data[thisFeature.GEOID10].value).format(
                   indicatorType === 'percent' ? '0.0%' : '0,0'
                 )
               : null}
           </span>
           <br />
         </span>
-        <text className="tooltip-compare-metrics">
+        <div className="tooltip-compare-metrics">
           Compare to{' '}
           <span
             style={{ color: props.config.style.colormap[subareaNumber - 1] }}
@@ -198,11 +192,7 @@ const MapComp = props => {
               <strong>{subarea}</strong>{' '}
             </span>
           </span>
-          in{' '}
-          <span className="tooltip-county-thic">
-            {thisFeature.COUNTY_NM ? `${thisFeature.COUNTY_NM} County` : null}
-          </span>{' '}
-          at{' '}
+          in <span className="tooltip-county-thic">{selectionInfo.geo}</span> at{' '}
           <strong>
             <span className="tooltip-percent-comparison">
               {subareaValue
@@ -215,22 +205,26 @@ const MapComp = props => {
           <br />
           Compare to
           <span className="tooltip-percent-comparison">
+            {' '}
             {selectionInfo.geo}{' '}
             {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : ' '}
           </span>{' '}
           at{' '}
           <span className="tooltip-percent-comparison">
             {data['All']
-              ? numeral(data['All'].value).format(
+              ? // 
+                numeral(data['All'].value).format(
                   indicatorType === 'percent' ? ' 0.0%' : '0,0'
                 )
               : null}
           </span>
-        </text>
+        </div>
         <span id="data-source" className="data-credits">
           Data Source : {}{' '}
         </span>
-        <span className="data-credits">Universe : {} </span>
+        <span className="data-credits">
+          Universe : {selectionInfo.indicator.universe.name}
+        </span>
       </div>
     ) : (
       <h3>No Data</h3>
