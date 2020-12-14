@@ -20,37 +20,49 @@ const SubAreaSelector = props => {
   const setHighlightedSubarea = number => props.setHighlightedSubarea(number);
   const colormap = props.colormap;
 
-
   return subareas ? (
-    <div id="subarea-selector-container"
-    // onClick={() => {
-    //   setClickedSubarea();
-    //   // console.log("subarea: ", subarea);
-    // }}
-    >
+    <div id="subarea-selector-container">
       {subareas.map(subarea => (
         <div
           key={`subarea-selector-button-${subarea}-${highlightedSubarea}`}
           className="subarea-selector-button"
           style={{
             height: `${buttonSize}px`,
-            width: `${buttonSize}px`,
+            width: `${buttonSize * 1.5}px`,
             margin: 'auto',
-            lineHeight: `${buttonSize}px`,
+            lineHeight: `${buttonSize - buttonSize * 0.05}px`,
             backgroundColor: `${colormap[subarea - 1]}`,
-            opacity: highlightedSubarea === subarea ? '1' : highlightedSubarea ? props.clickedSubarea ? '.3' : '.6' : '1',
-            borderColor: highlightedSubarea === subarea ? 'black' : `${colormap[subarea - 1]}`,
+            opacity:
+              highlightedSubarea === subarea
+                ? '1'
+                : highlightedSubarea
+                ? props.clickedSubarea
+                  ? '.3'
+                  : '.6'
+                : '1',
+            borderColor:
+              highlightedSubarea === subarea
+                ? 'black'
+                : `${colormap[subarea - 1]}`,
             borderWidth: '3px',
-            borderStyle: 'solid'
+            borderStyle: 'solid',
           }}
           onMouseEnter={() => {
-            setHighlightedSubarea(props.clickedSubarea ? props.clickedSubarea : subarea);
+            setHighlightedSubarea(
+              props.clickedSubarea ? props.clickedSubarea : subarea
+            );
           }}
           onMouseLeave={() => {
             setHighlightedSubarea(props.clickedSubarea);
           }}
           onClick={() => {
-            props.setClickedSubarea(props.clickedSubarea ? subarea === props.clickedSubarea ? null : props.clickedSubarea : subarea);
+            props.setClickedSubarea(
+              props.clickedSubarea
+                ? subarea === props.clickedSubarea
+                  ? null
+                  : props.clickedSubarea
+                : subarea
+            );
           }}
         >
           {subarea}

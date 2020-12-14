@@ -115,9 +115,9 @@ body {
 
 #map-box {
   position: fixed;
-  left: 10%;
+  left: 7.5%;
   top: 10vh;
-  width: 50%;
+  width: 53.5%;
   height: 82.5vh;
   padding: 1em;
 }
@@ -125,10 +125,10 @@ body {
 #chart-box {
   position: fixed;
   height: 35vh;
-  width: 40%;
+  width: 42.5%;
   top: 15vh;
-  right: 0;
-  padding: 1em;
+  right: -2%;
+  /* padding: 1em; */
   /* background-color: sandybrown; */
 }
 
