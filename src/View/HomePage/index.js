@@ -89,27 +89,32 @@ const HomePage = props => {
   return (
     <>
       {!mobile ? (
-        <div id="ARC-Header">
+        <div id="ARC-Header" className="arc-header-div">
           {' '}
-          <ARCHeader />
+          <div className="arc-header-box">
+            <ARCHeader />
+          </div>
+          <div className="geo-selector-box">
+            <div id="geo-label-header">
+              {selection.geo}{' '}
+              {selection.geoType !== 'City' ? selection.geoType : ''}
+            </div>
+            <div>
+              <GeoSelector
+                geoTypeOptions={geoTypeOptions}
+                selection={selection}
+                setClickedSubarea={setClickedSubarea}
+                setHighlightedSubarea={setHighlightedSubarea}
+                setSelection={setSelection}
+                data={[...props.tractInfo]}
+              />
+            </div>
+          </div>
         </div>
       ) : null}
-      <div id="header">
-        <div id="geo-label-header">
-          {selection.geo}{' '}
-          {selection.geoType !== 'City' ? selection.geoType : ''}
-        </div>
-        <div>
-          <GeoSelector
-            geoTypeOptions={geoTypeOptions}
-            selection={selection}
-            setClickedSubarea={setClickedSubarea}
-            setHighlightedSubarea={setHighlightedSubarea}
-            setSelection={setSelection}
-            data={[...props.tractInfo]}
-          />
-        </div>
-      </div>
+      {/* <div id="header">
+        
+      </div> */}
       <div
         id={
           subareaOptions.length <= 5 || !mobile
@@ -151,27 +156,11 @@ const HomePage = props => {
           numBins={numBins}
           data={data}
           setData={setData}
+          setViewMapData={setViewMapData}
+          viewMapData={viewMapData}
         />
       </div>
-      {(mobile && mobileVizView === 'chart') || !mobile ? (
-        <div id="chart-map-indicator-selector">
-          <div id="chart-map-toggle-box">
-            <div id="map-data-toggle-label">Show Data on Map</div>
-            <Checkbox
-              toggle
-              onChange={() =>
-                setViewMapData(viewMapData === false ? true : false)
-              }
-            />
-          </div>
-          {/* <h3>{selection.indicator.name}</h3> */}
-          <IndicatorDropdown
-            options={indicators}
-            selection={selection}
-            setSelection={setSelection}
-          />
-        </div>
-      ) : null}
+
       <div
         id={
           subareaOptions.length <= 5 || !mobile
@@ -180,6 +169,18 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
       >
+        <div className="chart-indicator-selector-box">
+          {(mobile && mobileVizView === 'chart') || !mobile ? (
+            <div id="chart-map-indicator-selector">
+              {/* <h3>{selection.indicator.name}</h3> */}
+              <IndicatorDropdown
+                options={indicators}
+                selection={selection}
+                setSelection={setSelection}
+              />
+            </div>
+          ) : null}
+        </div>
         {tractInfo ? (
           <Chart
             setSubareaData={setSubareaData}

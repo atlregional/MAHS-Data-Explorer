@@ -1,42 +1,20 @@
-/* ****** MOVED THE ID CONTAINER TO THE HOMEPAGE COMPONENT; */
-/* #indicator-container {
-  display: flex;
-  justify-content: flex-end;
-  z-index: 99999;
-  background-color: white;
-} */
-
-/* #indicator-container {
-  z-index: 9999999;
-  position: fixed;
-  max-height: 20vh;
-  top: 8vh;
-  left: 80%;
-  width: 17%;
-  text-align: center;
-} */
+.indicator-header {
+  /* font-weight: 700; */
+  font-size: 1.5em;
+}
 
 .indicator-dropdown-menu {
   overflow: auto;
   max-height: 20vh;
   text-align: left;
+  color: #ffffff;
+  background-color: rgb(146, 146, 146);
 }
 
 .indicator-selector-dropdown-icon {
   display: inline-block;
   border-radius: 5px;
   color: rgb(75, 89, 104, 0.95);
-}
-
-.indicator-selector-dropdown-box {
-  border: solid thin rgb(119, 148, 123, 0.2);
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  background-color: white;
-  border-radius: 5px;
 }
 
 .indicator-selector-dropdown-option {
@@ -59,8 +37,4 @@
 #selected-indicator,
 .indicator-selector-dropdown-option-multiple-selected {
   font-weight: bold;
-  /* background-color: black; */
-  /* color: white; */ 
-  /* background-color: rgba(128, 128, 128, 0.468); */
-  /* padding: 0.25rem; */
 }

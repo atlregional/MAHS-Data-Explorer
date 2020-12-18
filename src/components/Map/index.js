@@ -12,6 +12,7 @@ import MapLegend from '../MapLegend';
 import polygonToLine from '@turf/polygon-to-line';
 import { Icon } from 'semantic-ui-react';
 import numeral from 'numeral';
+import { Checkbox } from 'semantic-ui-react';
 import RingLoader from 'react-spinners/RingLoader';
 import './style.css';
 
@@ -35,6 +36,8 @@ const MapComp = props => {
   const layerConfigs = props.layers;
   const tileLayer = props.config.tilelayers;
   const indicatorType = props.selection.indicator.type;
+  const setViewMapData = props.setViewMapData;
+  const viewMapData = props.viewMapData;
 
   const handleTractData = () => {
     const array = [];
@@ -123,7 +126,7 @@ const MapComp = props => {
     const config = props.config;
 
     const colorIndex = data[tractInfo.GEOID]
-      ? // 
+      ? //
         data[tractInfo.GEOID].colorIndex
       : null;
     const color = viewMapData
@@ -160,7 +163,7 @@ const MapComp = props => {
           : null
         : null;
 
-    // 
+    //
     return data && thisFeature ? (
       <div className="map-custom-tooltip">
         <span className="tooltip-header">{thisFeature.NAMELSAD10} </span>{' '}
@@ -175,7 +178,7 @@ const MapComp = props => {
           <br />
           <span className="tooltip-key-indicator-value">
             {data[thisFeature.GEOID10]
-              ? // 
+              ? //
                 numeral(data[thisFeature.GEOID10].value).format(
                   indicatorType === 'percent' ? '0.0%' : '0,0'
                 )
@@ -212,7 +215,7 @@ const MapComp = props => {
           at{' '}
           <span className="tooltip-percent-comparison">
             {data['All']
-              ? // 
+              ? //
                 numeral(data['All'].value).format(
                   indicatorType === 'percent' ? ' 0.0%' : '0,0'
                 )
@@ -486,6 +489,13 @@ const MapComp = props => {
           />
         </div>
       ) : null}
+      <div id="chart-map-toggle-box">
+        <div id="map-data-toggle-label">Show Data on Map</div>
+        <Checkbox
+          toggle
+          onChange={() => setViewMapData(viewMapData === false ? true : false)}
+        />
+      </div>
     </>
   );
 };

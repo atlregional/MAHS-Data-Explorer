@@ -9,16 +9,28 @@ body {
 #ARC-Header {
   position: fixed;
   top: 0;
-  height: 5vh;
+  height: 8vh;
   width: 100vw;
 }
 
-#header {
+.tool-header {
   position: fixed;
-  z-index: 9999999;
-  top: 5vh;
-  width: 100%;
-  height: 5vh;
+  left: 10%;
+  top: 2vh;
+}
+
+.arc-header-div {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+  height: 100%;
+  background-color: #4B7B90;
+}
+
+.geo-selector-box {
+  position: fixed;
+  top: 1vh;
+  left: 28%;
 }
 
 #geo-label-header {
@@ -36,6 +48,11 @@ body {
   padding: 0.3em;
   margin: 1em 0 0 0;
   border-radius: 10px;
+  z-index: 9999999999;
+}
+
+.ui.inline.dropdown .menu {
+  z-index: 99999999999;
 }
 
 .geo-option {
@@ -46,17 +63,20 @@ body {
 
 #chart-map-indicator-selector {
   position: fixed;
-  display: grid;
-  grid-template-columns: 25% 50%;
-
-  width: 40%;
-  top: 12vh;
+  top: 10vh;
   right: 0;
   z-index: 999999;
+  display: flex;
+  justify-content: center;
+  width: 40%;
   /* background-color: rgb(215, 214, 214); */
 }
 
 #chart-map-toggle-box {
+  position: fixed;
+  z-index: 999999999999;
+  right: 40vw;
+  top: 20vh;
   display: grid;
   grid-template-columns: 50% 50%;
 }
@@ -109,8 +129,8 @@ body {
   position: fixed;
   height: 80vh;
   left: 0;
-  width: 10%;
-  top: 10vh;
+  width: 8%;
+  top: 11vh;
 }
 
 #map-box {

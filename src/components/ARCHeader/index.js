@@ -3,9 +3,9 @@ import './style.css';
 
 const ARCHeader = () => {
   return (
-    <div className="arc-header-div">
-      <h2>MAHS Data Explorer</h2>
-    </div>
+    <>
+      <h2 className="tool-header">MAHS Data Explorer : </h2>
+    </>
   );
 };
 export default ARCHeader;
