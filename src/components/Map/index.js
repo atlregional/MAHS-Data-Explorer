@@ -17,11 +17,6 @@ import RingLoader from 'react-spinners/RingLoader';
 import './style.css';
 
 const MapComp = props => {
-  // console.log('MapComp - props :', props);
-  // console.log('geoJSONs :', geoJSONs);
-  // console.log('hoverBin :', hoverBin);
-  // console.log('MapComp - stats :', stats);
-
   const mobile = window.screen.width < 800;
 
   const [tile, setTile] = useState(1);

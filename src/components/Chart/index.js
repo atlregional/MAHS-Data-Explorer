@@ -18,9 +18,9 @@ import numeral from 'numeral';
 import utils from '../../utils';
 
 const Chart = props => {
-  console.log(props);
+  // console.log(props);
   const data = props.data;
-  console.log('data :', data);
+  // console.log('data :', data);
   const colormap = props.colormap;
   const tractInfo = props.tractInfo;
 
@@ -58,7 +58,7 @@ const Chart = props => {
   // console.log('Chart data', props.subareaData);
   // ****** CSS NOT WORKINNG IN HTE
   const CustomTooltip = ({ active, payload, label }) => {
-    console.log('chart tooltip props :', props);
+    // console.log('chart tooltip props :', props);
     const geoType = props.selection.geoType;
     const geo = props.selection.geo;
     // const data =

@@ -20,7 +20,7 @@ const HomePage = props => {
 
   const [mobileVizView, setMobileVizView] = useState('chart');
   const [tractInfo, setTractInfo] = useState();
-  console.log('tractInfo :', tractInfo);
+  // console.log('tractInfo :', tractInfo);
   const [subareaOptions, setSubareaOptions] = useState([]);
   const [selection, setSelection] = useState({
     ...props.config.selection,
@@ -33,7 +33,7 @@ const HomePage = props => {
   const [clickedSubarea, setClickedSubarea] = useState();
   const [subareaData, setSubareaData] = useState();
   const [data, setData] = useState();
-  console.log('data: ', data);
+  // console.log('data: ', data);
 
   // color gradient displayed on the map;
   const numBins = 100;
