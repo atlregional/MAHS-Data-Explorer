@@ -162,9 +162,9 @@ const MapComp = props => {
     return data && thisFeature ? (
       <div className="map-custom-tooltip">
         <span className="tooltip-header">{thisFeature.NAMELSAD10} </span>{' '}
-        <div>
+        <div className="tooltip-county-thin">
           in{' '}
-          <span className="tooltip-county-thin">
+          <span className="tooltip-county-thic">
             {thisFeature.COUNTY_NM ? `${thisFeature.COUNTY_NM} County` : null}
           </span>
         </div>
@@ -246,10 +246,10 @@ const MapComp = props => {
         scrollWheelZoom
         dragging
         center={[33.753, -84.386]}
-        zoom={10}
+        zoom={8}
         bounds={bounds ? bounds : null}
-        zoomDelta={0.3}
-        zoomSnap={0.3}
+        zoomDelta={0.85}
+        zoomSnap={0.85}
         maxZoom={16}
         minZoom={3}
         zoomControl={false}

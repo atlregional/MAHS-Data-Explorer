@@ -85,17 +85,17 @@
 }
 
 .tooltip-county-thin {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .tooltip-county-thic {
-  font-weight: 500;
+  font-weight: 600;
   font-size: larger;
 }
 
 .tooltip-key-indicator {
-  font-weight: 600;
-  font-size: x-large;
+  font-weight: 650;
+  font-size: medium;
   padding-top: 10px;
 }
 

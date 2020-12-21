@@ -7,8 +7,8 @@
 
   border-radius: 10px;
   position: fixed;
-  top: calc(10vh + 30px);
-  left: calc(10% + 45px);
+  top: calc(11vh + 30px);
+  left: calc(8% + 40px);
   padding: 1em 0 1em 0;
 }
 
@@ -32,7 +32,7 @@
   position: fixed;
   padding: 0;
   border-radius: 5px;
-  left: calc(10% + 24px);
+  left: calc(8% + 15px);
   top: calc(10vh + 20px);
 
   z-index: 9999;
