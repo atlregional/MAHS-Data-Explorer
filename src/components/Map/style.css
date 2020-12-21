@@ -33,10 +33,13 @@
 
 #map-legend-box {
   position: fixed;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color:#f8f8f8f8;
   z-index: 999999;
-  height: 10vh;
+  height: 7vh;
   right: 41.5%;
-  width: 250px;
   top: 13vh;
 }
 
@@ -68,8 +71,8 @@
   z-index: 99999999;
 }
 
+/* ******************************** */
 /* CUSTOM TOOLTIP CSS */
-
 .map-custom-tooltip {
   display: grid;
   grid-template-rows: auto;
@@ -123,6 +126,22 @@
 .data-credits {
   width: 100%;
   font-weight: 600;
+}
+
+
+/* ************************************* */
+/* Data Toggle  */
+#chart-map-toggle-box {
+  /* position: fixed; */
+  z-index: 999999999999;
+  /* right: 40vw; */
+  /* top: 20vh; */
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#chart-map-toggle-box > .toggle {
+  margin: 1em;
 }
 
 

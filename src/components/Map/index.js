@@ -474,6 +474,15 @@ const MapComp = props => {
       )}
       {props.selection && stats ? (
         <div id="map-legend-box">
+          <div id="chart-map-toggle-box">
+            <div id="map-data-toggle-label">Show Data on Map</div>
+            <Checkbox
+              toggle
+              onChange={() =>
+                setViewMapData(viewMapData === false ? true : false)
+              }
+            />
+          </div>
           <MapLegend
             // colorScaleHoverIdx={props.colorScaleHoverIdx}
             hoverBin={hoverBin}
@@ -484,13 +493,6 @@ const MapComp = props => {
           />
         </div>
       ) : null}
-      <div id="chart-map-toggle-box">
-        <div id="map-data-toggle-label">Show Data on Map</div>
-        <Checkbox
-          toggle
-          onChange={() => setViewMapData(viewMapData === false ? true : false)}
-        />
-      </div>
     </>
   );
 };

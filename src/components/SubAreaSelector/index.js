@@ -37,6 +37,7 @@ const SubAreaSelector = props => {
                   style={{
                     color: `${colormap[subarea - 1]}`,
                     backgroundColor: '#FEFEFE',
+                    marginBottom: '5px',
                   }}
                 >
                   {' '}
@@ -45,14 +46,10 @@ const SubAreaSelector = props => {
               }
               content={
                 <>
-                  <div className="popover-description">
+                  <div style={{ margin: '10px 0 5px 0' }}>
                     {submarkets[subarea].description}
                   </div>
-                  <a
-                    className="popover-link"
-                    href={`${submarkets[subarea].link}`}
-                    target="blank"
-                  >
+                  <a href={`${submarkets[subarea].link}`} target="blank">
                     More Info
                   </a>
                 </>

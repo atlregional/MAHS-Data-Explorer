@@ -1,6 +1,7 @@
 #legend {
-    background-color: #bec2ccb6;
+    /* background-color: #bec2ccb6; */
     padding: 1em;
+    width: 250px;
 }
 
 .map-legend-title {

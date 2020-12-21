@@ -72,19 +72,6 @@ body {
   /* background-color: rgb(215, 214, 214); */
 }
 
-#chart-map-toggle-box {
-  position: fixed;
-  z-index: 999999999999;
-  right: 40vw;
-  top: 20vh;
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-#chart-map-toggle-box > .toggle {
-  margin: 1em;
-}
-
 #map-data-toggle-label {
   font-size: .8em;
   padding: 1em;

@@ -99,15 +99,7 @@ const Chart = props => {
           {selectedIndicator.name}
           <br />
           {numeral(payload[0].value).format(
-            indicatorType === 'percent'
-              ? '0.0%'
-              : indicatorType === 'average'
-              ? '0.0%'
-              : indicatorType === 'weighted average'
-              ? '0.0%'
-              : indicatorType === 'all'
-              ? '0.0'
-              : '0,0'
+            indicatorType === 'percent' ? '0.0%' : '0,0'
           )}
         </div>
         <br />

@@ -5,35 +5,19 @@
   justify-content: space-around;
   height: 100%;
   width: 100%;
-  /* padding: 15px; */
 }
 
 .subarea-selector-button {
   cursor: pointer;
-  /* margin: 0 auto; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* border-radius: 50%; */
   font-size: 1.5em;
-  /* line-height: 2em; */
   padding: 0;
 }
 
-/* .subarea-selector-button:hover {
-  border: solid black 3px;
-} */
-
-.subarea-selector-tooltip-box {
-  z-index: 9999999;
-  height: 120px;
-  width: 120px;
+div.ui.right.center.transition.visible {
+  z-index: 999999999999999;
 }
-
 @media screen and (max-width: 800px) {
   #subarea-selector-container {
     flex-direction: row;
   }
-  /* .subarea-selector-button {
-    margin: 2px;
-  } */
 }
