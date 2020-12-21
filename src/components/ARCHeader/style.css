@@ -1,0 +1,48 @@
+#ARC-Header {
+    z-index: 999999999999;
+    position: fixed;
+    top: 0;
+    height: 8vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 10vw 50vw 40vw;
+    color: whitesmoke;
+}
+
+.tool-header {
+    position: fixed;
+    padding-left: 10%;
+    /* left: 10%; */
+    /* color: whitesmoke; */
+    top: 2vh;
+}
+
+.arc-header-div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: #4B7B90;
+}
+
+.geo-selector-box {
+    position: fixed;
+    top: 1vh;
+    left: 28%;
+    padding-left: 7%;
+}
+
+#geo-label-header {
+    margin-top: .5em;
+    font-size: 1.5em;
+    width: 100%;
+}
+
+.ARC-logo-div {
+    width: 100;
+    text-align: center;
+}
+
+.ARC-logo {
+    height: 50px;
+    width: 400px;
+}

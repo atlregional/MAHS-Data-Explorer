@@ -89,32 +89,16 @@ const HomePage = props => {
   return (
     <>
       {!mobile ? (
-        <div id="ARC-Header" className="arc-header-div">
-          {' '}
-          <div className="arc-header-box">
-            <ARCHeader />
-          </div>
-          <div className="geo-selector-box">
-            <div id="geo-label-header">
-              {selection.geo}{' '}
-              {selection.geoType !== 'City' ? selection.geoType : ''}
-            </div>
-            <div>
-              <GeoSelector
-                geoTypeOptions={geoTypeOptions}
-                selection={selection}
-                setClickedSubarea={setClickedSubarea}
-                setHighlightedSubarea={setHighlightedSubarea}
-                setSelection={setSelection}
-                data={[...props.tractInfo]}
-              />
-            </div>
-          </div>
-        </div>
+        <ARCHeader
+          selection={selection}
+          geoTypeOptions={geoTypeOptions}
+          setClickedSubarea={setClickedSubarea}
+          setHighlightedSubarea={setHighlightedSubarea}
+          setSelection={setSelection}
+          data={[...props.tractInfo]}
+        />
       ) : null}
-      {/* <div id="header">
-        
-      </div> */}
+
       <div
         id={
           subareaOptions.length <= 5 || !mobile

@@ -6,39 +6,6 @@ body {
   overflow: hidden;
 }
 
-#ARC-Header {
-  position: fixed;
-  top: 0;
-  height: 8vh;
-  width: 100vw;
-}
-
-.tool-header {
-  position: fixed;
-  left: 10%;
-  top: 2vh;
-}
-
-.arc-header-div {
-  display: flex;
-  align-items: center;
-  /* justify-content: space-around; */
-  height: 100%;
-  background-color: #4B7B90;
-}
-
-.geo-selector-box {
-  position: fixed;
-  top: 1vh;
-  left: 28%;
-}
-
-#geo-label-header {
-  margin-top: .5em;
-  font-size: 1.5em;
-  width: 100%;
-}
-
 .hidden {
   visibility: hidden;
 }
