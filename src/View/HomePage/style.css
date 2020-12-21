@@ -93,25 +93,6 @@ body {
 }
 /* ********************************************************************************** */
 
-/* #dynamic-wrapper {
-  position: fixed;
-  width: 100%;
-  top: 10vh;
-  height: 90vh;
-  display: grid;
-  grid-template-columns: 10% 90%;
-} */
-
-/* #viz-box {
-  display: grid;
-  grid-template-columns: 65% 35%;
-}
-
-#right-col-viz-view {
-  display: grid;
-  grid-template-rows: 50% 50%;
-} */
-
 #subarea-selector {
   position: fixed;
   height: 80vh;
@@ -135,12 +116,9 @@ body {
   width: 42.5%;
   top: 15vh;
   right: -2%;
-  /* padding: 1em; */
-  /* background-color: sandybrown; */
 }
 
 #table-box {
-  /* background-color: salmon; */
   padding: 2em;
   position: fixed;
   height: 35vh;
@@ -191,14 +169,6 @@ body {
 .ui.checkbox input:checked ~ label:after {
   color: rgb(75, 89, 104, 0.95);
 }
-
-/* .layer-selection-header i.icon {
-  font-size: 28px;
-  padding: 0;
-  background-color: #ffffff;
-  border: solid thin rgb(119, 148, 123, 0.2);
-  color: rgb(75, 89, 104, 0.95);
-} */
 
 @media screen and (max-width: 800px) {
   h1 {
