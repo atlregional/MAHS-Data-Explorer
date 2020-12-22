@@ -136,10 +136,7 @@ const Chart = props => {
           width="92%"
           height="100%"
         >
-          <ComposedChart
-            className="bar-chart"
-            data={props.subareaData}
-          >
+          <ComposedChart className="bar-chart" data={props.subareaData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey={'Subarea'} />
             <YAxis />
@@ -189,8 +186,12 @@ const Chart = props => {
                 />
               ))}
             </Bar>
-            <Line dataKey={props.selection.geo} />
-              
+            <Line
+              dataKey={props.selection.geo}
+              stroke="#000000"
+              strokeDasharray="4 4"
+              dot={false}
+            />
           </ComposedChart>
         </ResponsiveContainer>
       ) : null}
