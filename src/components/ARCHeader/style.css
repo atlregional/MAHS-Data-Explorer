@@ -1,3 +1,4 @@
+
 #ARC-Header {
     z-index: 999999999999;
     position: fixed;
@@ -7,6 +8,7 @@
     display: grid;
     grid-template-columns: 10vw 50vw 40vw;
     color: whitesmoke;
+    /* background-image: url('../../../public/header-background.png'); */
 }
 
 .tool-header {

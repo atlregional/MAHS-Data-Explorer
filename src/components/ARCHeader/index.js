@@ -1,11 +1,16 @@
 import React from 'react';
 import GeoSelector from '../GeoSelector';
+import headerBackground from '../../header-background.png';
 import './style.css';
 
 const ARCHeader = props => {
   const selection = props.selection;
   return (
-    <div id="ARC-Header" className="arc-header-div">
+    <div
+      id="ARC-Header"
+      className="arc-header-div"
+      style={{ backgroundImage: `url(${headerBackground})` }}
+    >
       {' '}
       <div className="back-to-main-site-button">back to main site</div>
       <div className="arc-header-box">
