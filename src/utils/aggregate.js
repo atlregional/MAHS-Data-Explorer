@@ -20,17 +20,9 @@ export default (data, indicatorInfo, aggregator) => {
       ? (numberOfTracts[aggregatorId] = numberOfTracts[aggregatorId] + 1)
       : (numberOfTracts[aggregatorId] = 1);
 
-<<<<<<< HEAD
     numberOfTracts['All']
       ? (numberOfTracts['All'] = numberOfTracts['All'] + 1)
       : (numberOfTracts['All'] = 1);
-=======
-    
-    numberOfTracts['All']
-      ? (numberOfTracts['All'] = numberOfTracts['All'] + 1)
-      : (numberOfTracts['All'] = 1);
-
->>>>>>> aad749f3eef879ed4e9cf537f399cff0659f6c64
   });
 
   // numberOfTracts['All'] = Object.values(numberOfTracts).reduce(sumArray);
@@ -47,17 +39,10 @@ export default (data, indicatorInfo, aggregator) => {
           denominatorValues[aggregatorId] + tract.Data[denominatorId])
       : (denominatorValues[aggregatorId] = tract.Data[denominatorId]);
 
-<<<<<<< HEAD
     denominatorValues['All']
       ? (denominatorValues['All'] =
           denominatorValues['All'] + tract.Data[denominatorId])
       : (denominatorValues['All'] = tract.Data[denominatorId]);
-=======
-    denominatorValues['All'] 
-      ? (denominatorValues['All'] =
-        denominatorValues['All'] + tract.Data[denominatorId])
-    : (denominatorValues['All'] = tract.Data[denominatorId]);
->>>>>>> aad749f3eef879ed4e9cf537f399cff0659f6c64
   });
 
 
@@ -71,13 +56,6 @@ export default (data, indicatorInfo, aggregator) => {
       indicatorInfo.type === 'weighted average'
         ? tract.Data[denominatorId] / denominatorValues[aggregatorId]
         : 1;
-    
-    const allWeightingFactor = 
-      indicatorInfo.type === 'weighted average' 
-        ? tract.Data[denominatorId] / denominatorValues['All']
-        : 1;
-
-
 
     const allWeightingFactor =
       indicatorInfo.type === 'weighted average'
@@ -92,28 +70,14 @@ export default (data, indicatorInfo, aggregator) => {
           tract.Data[numeratorId] * weightingFactor);
 
     numeratorValues['All']
-<<<<<<< HEAD
       ? (numeratorValues['All'] =
           numeratorValues['All'] + tract.Data[numeratorId] * allWeightingFactor)
       : (numeratorValues['All'] = tract.Data[numeratorId] * allWeightingFactor);
-=======
-    ? (numeratorValues['All'] =
-        numeratorValues['All'] +
-        tract.Data[numeratorId] * allWeightingFactor)
-    : (numeratorValues['All'] =
-        tract.Data[numeratorId] * allWeightingFactor);
-
-    
->>>>>>> aad749f3eef879ed4e9cf537f399cff0659f6c64
   });
   // console.log(numeratorValues)
 
   // console.log(denominatorValues)
   // numeratorValues['All'] = Object.values(numeratorValues).reduce(sumArray);
-<<<<<<< HEAD
-
-  const calcAggregation = () => {
-=======
 
 
   const calcAggregation = () => {
@@ -126,30 +90,16 @@ export default (data, indicatorInfo, aggregator) => {
 
     // console.log(numeratorArray);
 
->>>>>>> aad749f3eef879ed4e9cf537f399cff0659f6c64
     const aggregatedDataObj = {};
-
-    const type = indicatorInfo.type;
-    const numeratorArray = Object.entries(numeratorValues);
 
     type === 'average'
       ? numeratorArray.map(
           ([aggregator, numerator]) =>
-<<<<<<< HEAD
-            (aggregatedDataObj[aggregator] =
-              numerator / numberOfTracts[aggregator])
-        )
-      : type === 'sum'
-      ? numeratorArray.map(
-          ([aggregator, numerator]) =>
-            (aggregatedDataObj[aggregator] = numerator)
-=======
             (aggregatedDataObj[aggregator] = numerator / numberOfTracts[aggregator])
         )
       : type === 'sum'
       ? numeratorArray.map(
           ([aggregator, numerator]) => (aggregatedDataObj[aggregator] = numerator)
->>>>>>> aad749f3eef879ed4e9cf537f399cff0659f6c64
         )
       : type === 'percent'
       ? numeratorArray.map(
@@ -159,27 +109,18 @@ export default (data, indicatorInfo, aggregator) => {
         )
       : type === 'weighted average'
       ? numeratorArray.map(
-<<<<<<< HEAD
-          ([aggregator, numerator]) =>
-            (aggregatedDataObj[aggregator] = numerator)
-=======
           ([aggregator, numerator]) => (aggregatedDataObj[aggregator] = numerator)
->>>>>>> aad749f3eef879ed4e9cf537f399cff0659f6c64
         )
       : console.log('No known calculation type define');
 
     return aggregatedDataObj;
   };
 
-<<<<<<< HEAD
-  // console.log(calcAggregation());
-=======
   
 
   // calcAggregation();
 
   console.log(calcAggregation())
->>>>>>> aad749f3eef879ed4e9cf537f399cff0659f6c64
 
   return calcAggregation();
 };

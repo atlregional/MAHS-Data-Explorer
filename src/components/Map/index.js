@@ -68,18 +68,12 @@ const MapComp = props => {
     Object.entries(aggregatedData).forEach(([key, value]) => {
       const disFromMin = value - minValue;
       const binningRatio = disFromMin / (maxValue - minValue);
-<<<<<<< HEAD
       const colorIndex = Math.floor(binningRatio * props.numBins) - 1;
 
       dataObj[key] = {
         value: value,
         colorIndex: colorIndex < 0 ? 0 : colorIndex,
       };
-=======
-      const colorIndex = Math.floor(binningRatio * props.numBins) - 1 ;
-
-      dataObj[key] = { value: value, colorIndex: colorIndex < 0 ? 0 : colorIndex };
->>>>>>> aad749f3eef879ed4e9cf537f399cff0659f6c64
     });
     // console.log('dataObj :', dataObj);
 

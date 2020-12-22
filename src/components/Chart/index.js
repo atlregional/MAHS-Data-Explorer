@@ -138,8 +138,6 @@ const Chart = props => {
         >
           <ComposedChart
             className="bar-chart"
-            // width={500}
-            // height={500}
             data={props.subareaData}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -147,7 +145,7 @@ const Chart = props => {
             <YAxis />
             <Tooltip content={<CustomTooltip />} />
 
-            <Bar dataKey={indicatorInfo.name}>
+            <Bar dataKey={selectedIndicator.name}>
               {props.subareaData.map((barData, idx) => (
                 <Cell
                   key={selectedIndicator.name + idx}
@@ -187,9 +185,7 @@ const Chart = props => {
                           : props.clickedSubarea
                         : barData.Subarea
                     );
-                    // console.log("subarea: ", subarea);
                   }}
-                  // onMouseOver={e => console.log(e)}
                 />
               ))}
             </Bar>
