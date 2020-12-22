@@ -136,13 +136,18 @@ const Chart = props => {
           width="92%"
           height="100%"
         >
-          <ComposedChart className="bar-chart" data={props.subareaData}>
+          <ComposedChart
+            className="bar-chart"
+            // width={500}
+            // height={500}
+            data={props.subareaData}
+          >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey={'Subarea'} />
             <YAxis />
             <Tooltip content={<CustomTooltip />} />
 
-            <Bar dataKey={selectedIndicator.name}>
+            <Bar dataKey={indicatorInfo.name}>
               {props.subareaData.map((barData, idx) => (
                 <Cell
                   key={selectedIndicator.name + idx}
@@ -188,13 +193,8 @@ const Chart = props => {
                 />
               ))}
             </Bar>
-            <Line
-              dataKey={props.selection.geo}
-              strokeDasharray="1 4"
-              stroke={'black'}
-              strokeWidth={4}
-              dot={false}
-            />
+            <Line dataKey={props.selection.geo} />
+              
           </ComposedChart>
         </ResponsiveContainer>
       ) : null}
