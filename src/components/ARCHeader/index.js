@@ -14,7 +14,7 @@ const ARCHeader = props => {
       {' '}
       <div className="back-to-main-site-button">back to main site</div>
       <div className="arc-header-box">
-        <h2 className="tool-header">MAHS Data Explorer : </h2>
+        {/* <h2 className="tool-header">MAHS Data Explorer : </h2> */}
         <div className="geo-selector-box">
           <div id="geo-label-header">
             {selection.geo}{' '}
