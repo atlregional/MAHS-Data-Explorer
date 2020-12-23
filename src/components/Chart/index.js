@@ -103,8 +103,9 @@ const Chart = props => {
           )}
         </div>
         <br />
-        <div className="chart-tooltip-percent-comparison">
-          Compare to {geo} at{' '}
+        <div className="chart-tooltip-comparison">
+          Compare to{' '}
+          <span className="chart-tooltip-percent-comparison">{geo}</span> at{' '}
           {
             <span className="chart-tooltip-percent-comparison">
               {data['All']
@@ -116,10 +117,10 @@ const Chart = props => {
           }
         </div>
         <br />
-        <span id="data-source" className="data-credits">
+        <span id="data-source" className="chart-data-credits">
           Data Source : {}{' '}
         </span>
-        <span className="data-credits">
+        <span className="chart-data-credits">
           Universe : {props.selection.indicator.universe.name}
         </span>
       </div>

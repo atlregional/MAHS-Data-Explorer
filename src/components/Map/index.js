@@ -352,7 +352,13 @@ const MapComp = props => {
                 }}
                 data={geoJSONs[config.name]}
               >
-                <Tooltip>
+                <Tooltip
+                  style={{
+                    border: 'solid #808080 1px',
+                    // opacity: '0.5',
+                    borderRadius: '5px',
+                  }}
+                >
                   <CustomTooltip />
                 </Tooltip>
               </GeoJSON>
