@@ -8,8 +8,8 @@ const SubAreaSelector = props => {
   const [buttonSize, setButtonSize] = useState(75);
   const windowWidth = window.innerWidth;
   const subareas = props.subareaOptions;
-  const count = subareas.length;
-  const scaler = count < 6 ? 1.25 : windowWidth > 1100 ? 2.5 : 2;
+  const numberOfSubareas = subareas.length;
+  const scaler = numberOfSubareas < 6 ? 1.25 : windowWidth > 1100 ? 2.5 : 2;
   const highlightedSubarea = props.highlightedSubarea;
   const colormap = props.colormap;
 
@@ -17,7 +17,7 @@ const SubAreaSelector = props => {
 
   const handleButtonSize = () =>
     setButtonSize(
-      windowWidth > 800 ? (windowWidth * 0.1) / scaler : windowWidth / 5 - 15
+      windowWidth > 800 ? (windowWidth * 0.1) / scaler : windowWidth / 6.5 - 15
     );
   useEffect(handleButtonSize, [subareas]);
 

@@ -160,7 +160,9 @@
   }
 
 #map-loading-spinner {
-  top: 65vh;
-  left: 20vw;
+  position: fixed;
+  z-index: 999999999999;
+  top: 18vh;
+  left: 0vw;
 }
 }

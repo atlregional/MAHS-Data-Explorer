@@ -1,6 +1,7 @@
 import React from 'react';
 import GeoSelector from '../GeoSelector';
 import headerBackground from '../../header-background.png';
+// import mobileHouseLogo from '../../home-icon.svg';
 import './style.css';
 
 const ARCHeader = props => {
@@ -12,7 +13,7 @@ const ARCHeader = props => {
       style={{ backgroundImage: `url(${headerBackground})` }}
     >
       {' '}
-      <div className="back-to-main-site-button">back to main site</div>
+      <button className="back-to-main-site-button">Main Site</button>
       <div className="arc-header-box">
         {/* <h2 className="tool-header">MAHS Data Explorer : </h2> */}
         <div className="geo-selector-box">
@@ -20,7 +21,7 @@ const ARCHeader = props => {
             {selection.geo}{' '}
             {selection.geoType !== 'City' ? selection.geoType : ''}
           </div>
-          <div>
+          <div className="dropdown-box">
             <GeoSelector
               geoTypeOptions={props.geoTypeOptions}
               selection={selection}
@@ -33,11 +34,16 @@ const ARCHeader = props => {
         </div>
       </div>
       <div className="ARC-logo-div">
-        <img
-          className="ARC-logo"
-          src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/logo.svg"
-          alt="Atlanta Regional Commission logo"
-        />
+        {
+          !props.mobile ? (
+            <img
+              className="ARC-logo"
+              src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/logo.svg"
+              alt="Atlanta Regional Commission logo"
+            />
+          ) : null
+          // <img className="ARC-logo" src={mobileHouseLogo} />
+        }
       </div>
     </div>
   );

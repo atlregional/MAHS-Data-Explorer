@@ -18,6 +18,13 @@ div.ui.right.center.transition.visible {
 }
 @media screen and (max-width: 800px) {
   #subarea-selector-container {
+    height: 10vh;
     flex-direction: row;
+    align-content: center;
+  }
+  .subarea-selector-button {
+    padding: 0;
+    margin: .5px !important;
+    margin-top: 2px !important;
   }
 }

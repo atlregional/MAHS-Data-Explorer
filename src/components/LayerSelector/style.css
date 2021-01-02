@@ -95,7 +95,6 @@
     width: 50%;
     top: calc(30vh + 40px);
     left: 40px;
-    /* opacity: .8; */
   }
 
   #layer-selection-header {
@@ -105,15 +104,14 @@
 
   #layer-selection-header-shifted {
     position: fixed;
-    top: calc(40vh + 20px);
-    left: 20px;
+    top: calc(77vh + 20px);
+    left: 65px;
   }
 
   #layer-selector-box-shifted {
     position: fixed;
     width: 50%;
-    top: calc(40vh + 40px);
-    left: 40px;
-    /* opacity: .8; */
+    top: calc(65vh + 40px);
+    left: 85px;
   }
 }

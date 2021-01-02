@@ -18,7 +18,7 @@ const HomePage = props => {
   // console.log('HomePage - props: ', props);
   const mobile = window.screen.width < 800;
 
-  const [mobileVizView, setMobileVizView] = useState('chart');
+  const [mobileVizView, setMobileVizView] = useState('map');
   const [tractInfo, setTractInfo] = useState();
   // console.log('tractInfo :', tractInfo);
   const [subareaOptions, setSubareaOptions] = useState([]);
@@ -88,7 +88,7 @@ const HomePage = props => {
 
   return (
     <>
-      {!mobile ? (
+      {
         <ARCHeader
           selection={selection}
           geoTypeOptions={geoTypeOptions}
@@ -96,8 +96,9 @@ const HomePage = props => {
           setHighlightedSubarea={setHighlightedSubarea}
           setSelection={setSelection}
           data={[...props.tractInfo]}
+          mobile={mobile}
         />
-      ) : null}
+      }
 
       <div
         id={
@@ -117,6 +118,19 @@ const HomePage = props => {
           setSelectedSubareas={setSelectedSubareas}
           clickedSubarea={clickedSubarea}
           setClickedSubarea={setClickedSubarea}
+        />
+      </div>
+      <div
+        className={
+          mobile && mobileVizView === 'map'
+            ? 'mobile-map-indicator-selector'
+            : 'hidden'
+        }
+      >
+        <IndicatorDropdown
+          options={indicators}
+          selection={selection}
+          setSelection={setSelection}
         />
       </div>
       <div
@@ -156,7 +170,6 @@ const HomePage = props => {
         <div className="chart-indicator-selector-box">
           {(mobile && mobileVizView === 'chart') || !mobile ? (
             <div id="chart-map-indicator-selector">
-              {/* <h3>{selection.indicator.name}</h3> */}
               <IndicatorDropdown
                 options={indicators}
                 selection={selection}
