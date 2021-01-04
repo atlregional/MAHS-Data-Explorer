@@ -11,8 +11,8 @@ import Footer from '../../components/Footer';
 import ARCHeader from '../../components/ARCHeader';
 import gradient from 'gradient-color';
 import utils from '../../utils';
+import headerBackground from '../../header-background.png';
 import './style.css';
-import { Checkbox } from 'semantic-ui-react';
 
 const HomePage = props => {
   // console.log('HomePage - props: ', props);
@@ -107,18 +107,20 @@ const HomePage = props => {
             : 'subarea-selector-enlarged'
         }
       >
-        <SubAreaSelector
-          colormap={style.colormap}
-          subareaOptions={subareaOptions}
-          selection={selection}
-          setSelection={setSelection}
-          highlightedSubarea={highlightedSubarea}
-          setHighlightedSubarea={setHighlightedSubarea}
-          selectedSubareas={selectedSubareas}
-          setSelectedSubareas={setSelectedSubareas}
-          clickedSubarea={clickedSubarea}
-          setClickedSubarea={setClickedSubarea}
-        />
+        <div className={mobile && mobileVizView === 'table' ? 'hidden' : null}>
+          <SubAreaSelector
+            colormap={style.colormap}
+            subareaOptions={subareaOptions}
+            selection={selection}
+            setSelection={setSelection}
+            highlightedSubarea={highlightedSubarea}
+            setHighlightedSubarea={setHighlightedSubarea}
+            selectedSubareas={selectedSubareas}
+            setSelectedSubareas={setSelectedSubareas}
+            clickedSubarea={clickedSubarea}
+            setClickedSubarea={setClickedSubarea}
+          />
+        </div>
       </div>
       <div
         className={
@@ -213,6 +215,17 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
+        {mobile && mobileVizView === 'table' ? (
+          <div
+            className="arc-table-logo"
+            style={{ backgroundImage: `url${headerBackground}` }}
+          >
+            <img
+              src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/logo.svg"
+              alt="Atlanta Regional Commission logo"
+            />
+          </div>
+        ) : null}
         {tractInfo && selection.indicators.length > 0 ? (
           <Table
             mobile={mobile}

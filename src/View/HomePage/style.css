@@ -215,4 +215,20 @@ body {
     top: 32.5vh;
     left: 0%;
   }
+
+  .arc-table-logo {
+    position: fixed;
+    z-index: 9999999999;
+    top: 10vh;
+    height: 10vh;
+    width: 90vw;
+    background-color: #4B7B90;
+  }
+
+  .arc-table-logo img {
+    margin-top: 2%;
+    height: 75%;
+    width: 75%;
+    color: black;
+  }
 }
