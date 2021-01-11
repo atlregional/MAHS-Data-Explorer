@@ -40,7 +40,13 @@ const ARCHeader = props => {
               src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/logo.svg"
               alt="Atlanta Regional Commission logo"
             />
-          ) : null
+          ) : (
+            <img
+              className="ARC-mobile-logo"
+              src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/icon-home.svg"
+              alt="ARC mobile logo"
+            />
+          )
           // <img className="ARC-logo" src={mobileHouseLogo} />
         }
       </div>
