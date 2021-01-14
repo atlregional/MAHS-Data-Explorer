@@ -223,6 +223,7 @@ body {
     height: 10vh;
     width: 90vw;
     background-color: #4B7B90;
+    border-radius: 2px;
   }
 
   .arc-table-logo img {
@@ -230,5 +231,9 @@ body {
     height: 75%;
     width: 75%;
     color: black;
+  }
+
+  .indicator-header {
+    font-size: 1em;
   }
 }
