@@ -6,27 +6,6 @@ body {
   overflow: hidden;
 }
 
-#ARC-Header {
-  position: fixed;
-  top: 0;
-  height: 5vh;
-  width: 100vw;
-}
-
-#header {
-  position: fixed;
-  z-index: 9999999;
-  top: 5vh;
-  width: 100%;
-  height: 5vh;
-}
-
-#geo-label-header {
-  margin-top: .5em;
-  font-size: 1.5em;
-  width: 100%;
-}
-
 .hidden {
   visibility: hidden;
 }
@@ -36,6 +15,11 @@ body {
   padding: 0.3em;
   margin: 1em 0 0 0;
   border-radius: 10px;
+  z-index: 9999999999;
+}
+
+.ui.inline.dropdown .menu {
+  z-index: 99999999999;
 }
 
 .geo-option {
@@ -46,23 +30,13 @@ body {
 
 #chart-map-indicator-selector {
   position: fixed;
-  display: grid;
-  grid-template-columns: 25% 50%;
-
-  width: 40%;
-  top: 12vh;
+  top: 10vh;
   right: 0;
   z-index: 999999;
+  display: flex;
+  justify-content: center;
+  width: 40%;
   /* background-color: rgb(215, 214, 214); */
-}
-
-#chart-map-toggle-box {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-#chart-map-toggle-box > .toggle {
-  margin: 1em;
 }
 
 #map-data-toggle-label {
@@ -86,38 +60,19 @@ body {
 }
 /* ********************************************************************************** */
 
-/* #dynamic-wrapper {
-  position: fixed;
-  width: 100%;
-  top: 10vh;
-  height: 90vh;
-  display: grid;
-  grid-template-columns: 10% 90%;
-} */
-
-/* #viz-box {
-  display: grid;
-  grid-template-columns: 65% 35%;
-}
-
-#right-col-viz-view {
-  display: grid;
-  grid-template-rows: 50% 50%;
-} */
-
 #subarea-selector {
   position: fixed;
   height: 80vh;
   left: 0;
-  width: 10%;
-  top: 10vh;
+  width: 8%;
+  top: 11vh;
 }
 
 #map-box {
   position: fixed;
-  left: 10%;
+  left: 7.5%;
   top: 10vh;
-  width: 50%;
+  width: 53.5%;
   height: 82.5vh;
   padding: 1em;
 }
@@ -125,15 +80,12 @@ body {
 #chart-box {
   position: fixed;
   height: 35vh;
-  width: 40%;
+  width: 42.5%;
   top: 15vh;
-  right: 0;
-  padding: 1em;
-  /* background-color: sandybrown; */
+  right: -2%;
 }
 
 #table-box {
-  /* background-color: salmon; */
   padding: 2em;
   position: fixed;
   height: 35vh;
@@ -185,14 +137,6 @@ body {
   color: rgb(75, 89, 104, 0.95);
 }
 
-/* .layer-selection-header i.icon {
-  font-size: 28px;
-  padding: 0;
-  background-color: #ffffff;
-  border: solid thin rgb(119, 148, 123, 0.2);
-  color: rgb(75, 89, 104, 0.95);
-} */
-
 @media screen and (max-width: 800px) {
   h1 {
     font-size: 2em;
@@ -210,10 +154,18 @@ body {
     height: 10vh;
   }
 
+  .mobile-map-indicator-selector {
+    width: 100%;
+    position: fixed;
+    top: 24vh;
+    left: 0vw;
+    z-index: 999999;
+  }
+
   #chart-map-indicator-selector,
   #table-indicators-selector {
     width: 95%;
-    top: 35vh;
+    top: 24vh;
     left: 2.5%;
     z-index: 999999;
     /* background-color: rgb(215, 214, 214); */
@@ -221,7 +173,7 @@ body {
 
   #subarea-selector-enlarged {
     width: 100%;
-    height: 24vh;
+    height: 16vh;
     top: 10.5vh;
     position: fixed;
     margin: 2.5px;
@@ -241,13 +193,47 @@ body {
   #table-box-reduced {
     position: fixed;
     left: 0;
-    top: 40vh;
-    height: 50vh;
+    top: 30vh;
+    height: 60vh;
     width: 100%;
     padding: 1em;
   }
-  /* #map-box-reduced {
-    top: 34vh;
-    height: 56vh;
-  } */
+
+  #map-box-reduced {
+    height: 60vh;
+    top: 30vh
+  }
+
+  #chart-map-toggle-box {
+    position: fixed;
+    left: 52vw;
+    top: 32.5vh;
+  }
+
+  #legend {
+    position: fixed;
+    top: 32.5vh;
+    left: 0%;
+  }
+
+  .arc-table-logo {
+    position: fixed;
+    z-index: 9999999999;
+    top: 10vh;
+    height: 10vh;
+    width: 90vw;
+    background-color: #4B7B90;
+    border-radius: 2px;
+  }
+
+  .arc-table-logo img {
+    margin-top: 2%;
+    height: 75%;
+    width: 75%;
+    color: black;
+  }
+
+  .indicator-header {
+    font-size: 1em;
+  }
 }

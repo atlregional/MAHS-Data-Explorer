@@ -1,12 +1,60 @@
 
 .bar-chart {
-    /* margin-right: 10%; */
     margin-top: 3%;
 } 
 
-.custom-tooltip {
-    padding: 20px 20px 5px 20px;
-    /* border-radius: 25%; */
-    background-color: rgba(95, 94, 94, 0.833);
-    color: white;
+.chart-custom-tooltip {
+    display: grid;
+    grid-template-rows: auto;
+    text-align: start;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: grey 2px;
+    color: black;
+    font-size: 10px;
+    border: solid rgba(128, 128, 128, 0.2) 1px;
+    border-radius: 5px;
+}
+
+.chart-tooltip-subarea {
+    font-size: 2em;
+    font-weight: 800;
+    margin-bottom: -12px;
+    padding: 0;
+}
+
+.chart-tooltip-geography-selection {
+    font-size: medium;
+}
+
+.tooltip-geo {
+    font-size: large;
+    font-weight: 700;
+}
+
+.chart-tooltip-indicator {
+    font-size: medium;
+    font-weight: 650;
+    line-height: 1em;
+}
+
+.chart-tooltip-indicator-value {
+    padding-top: 5px;
+    font-size: large;
+}
+
+.chart-tooltip-comparison {
+    font-weight: 400;
+    font-size: medium;
+}
+
+.chart-tooltip-percent-comparison {
+/* padding-top: 10px; */
+  font-size: large;
+  font-weight: 650;
+}
+
+.chart-data-credits {
+    font-size: medium;
+    font-weight: 600;
 }

@@ -1,14 +1,13 @@
 export default (data, indicatorInfo, aggregator) => {
-  // console.log(data)
+  // console.log('data :', data);
+  // console.log('aggregator :', aggregator);
+  // console.log('indicatorInfo :', indicatorInfo);
 
   const aggregatorField = aggregator;
   // type options are subarea, city, or tractID
-
   // type options are *'percent'*, 'average', 'weighted average', 'sum'
   const numeratorId = indicatorInfo.indicator.id;
   const denominatorId = indicatorInfo.universe.id;
-  // const aggregatedDataObj = {};
-  // const aggregatedDataInfo = {};
   const numeratorValues = {};
   const denominatorValues = {};
   const numberOfTracts = {};
@@ -21,11 +20,9 @@ export default (data, indicatorInfo, aggregator) => {
       ? (numberOfTracts[aggregatorId] = numberOfTracts[aggregatorId] + 1)
       : (numberOfTracts[aggregatorId] = 1);
 
-    
     numberOfTracts['All']
       ? (numberOfTracts['All'] = numberOfTracts['All'] + 1)
       : (numberOfTracts['All'] = 1);
-
   });
 
   // numberOfTracts['All'] = Object.values(numberOfTracts).reduce(sumArray);
@@ -34,7 +31,7 @@ export default (data, indicatorInfo, aggregator) => {
 
 
   data.forEach(tract => {
-    // console.log(JSON.stringify(tract))
+    // tract => the individual subarea for each tract that the data is aggregated by;
     const aggregatorId = tract[aggregatorField];
 
     denominatorValues[aggregatorId]
@@ -42,10 +39,10 @@ export default (data, indicatorInfo, aggregator) => {
           denominatorValues[aggregatorId] + tract.Data[denominatorId])
       : (denominatorValues[aggregatorId] = tract.Data[denominatorId]);
 
-    denominatorValues['All'] 
+    denominatorValues['All']
       ? (denominatorValues['All'] =
-        denominatorValues['All'] + tract.Data[denominatorId])
-    : (denominatorValues['All'] = tract.Data[denominatorId]);
+          denominatorValues['All'] + tract.Data[denominatorId])
+      : (denominatorValues['All'] = tract.Data[denominatorId]);
   });
 
 
@@ -59,13 +56,11 @@ export default (data, indicatorInfo, aggregator) => {
       indicatorInfo.type === 'weighted average'
         ? tract.Data[denominatorId] / denominatorValues[aggregatorId]
         : 1;
-    
-    const allWeightingFactor = 
-      indicatorInfo.type === 'weighted average' 
+
+    const allWeightingFactor =
+      indicatorInfo.type === 'weighted average'
         ? tract.Data[denominatorId] / denominatorValues['All']
         : 1;
-
-
 
     numeratorValues[aggregatorId]
       ? (numeratorValues[aggregatorId] =
@@ -75,13 +70,9 @@ export default (data, indicatorInfo, aggregator) => {
           tract.Data[numeratorId] * weightingFactor);
 
     numeratorValues['All']
-    ? (numeratorValues['All'] =
-        numeratorValues['All'] +
-        tract.Data[numeratorId] * allWeightingFactor)
-    : (numeratorValues['All'] =
-        tract.Data[numeratorId] * allWeightingFactor);
-
-    
+      ? (numeratorValues['All'] =
+          numeratorValues['All'] + tract.Data[numeratorId] * allWeightingFactor)
+      : (numeratorValues['All'] = tract.Data[numeratorId] * allWeightingFactor);
   });
   // console.log(numeratorValues)
 
@@ -131,10 +122,5 @@ export default (data, indicatorInfo, aggregator) => {
 
   console.log(calcAggregation())
 
-  // console.log(calcAggregation())
   return calcAggregation();
-  // objects like so...
-  // {
-  //    "Subarea 1" : aggregated value,
-  //   "Subarea 2 :  aggregated value
 };

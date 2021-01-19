@@ -11,15 +11,16 @@ import Footer from '../../components/Footer';
 import ARCHeader from '../../components/ARCHeader';
 import gradient from 'gradient-color';
 import utils from '../../utils';
+import headerBackground from '../../header-background.png';
 import './style.css';
-import { Checkbox } from 'semantic-ui-react';
 
 const HomePage = props => {
   // console.log('HomePage - props: ', props);
   const mobile = window.screen.width < 800;
 
-  const [mobileVizView, setMobileVizView] = useState('chart');
+  const [mobileVizView, setMobileVizView] = useState('map');
   const [tractInfo, setTractInfo] = useState();
+  // console.log('tractInfo :', tractInfo);
   const [subareaOptions, setSubareaOptions] = useState([]);
   const [selection, setSelection] = useState({
     ...props.config.selection,
@@ -29,9 +30,10 @@ const HomePage = props => {
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
   const [viewMapData, setViewMapData] = useState(false);
-  console.log('viewMapData :', viewMapData);
   const [clickedSubarea, setClickedSubarea] = useState();
   const [subareaData, setSubareaData] = useState();
+  const [data, setData] = useState();
+  // console.log('data: ', data);
 
   // color gradient displayed on the map;
   const numBins = 100;
@@ -86,28 +88,18 @@ const HomePage = props => {
 
   return (
     <>
-      {!mobile ? (
-        <div id="ARC-Header">
-          {' '}
-          <ARCHeader />
-        </div>
-      ) : null}
-      <div id="header">
-        <div id="geo-label-header">
-          {selection.geo}{' '}
-          {selection.geoType !== 'City' ? selection.geoType : ''}
-        </div>
-        <div>
-          <GeoSelector
-            geoTypeOptions={geoTypeOptions}
-            selection={selection}
-            setClickedSubarea={setClickedSubarea}
-            setHighlightedSubarea={setHighlightedSubarea}
-            setSelection={setSelection}
-            data={[...props.tractInfo]}
-          />
-        </div>
-      </div>
+      {
+        <ARCHeader
+          selection={selection}
+          geoTypeOptions={geoTypeOptions}
+          setClickedSubarea={setClickedSubarea}
+          setHighlightedSubarea={setHighlightedSubarea}
+          setSelection={setSelection}
+          data={[...props.tractInfo]}
+          mobile={mobile}
+        />
+      }
+
       <div
         id={
           subareaOptions.length <= 5 || !mobile
@@ -115,17 +107,32 @@ const HomePage = props => {
             : 'subarea-selector-enlarged'
         }
       >
-        <SubAreaSelector
-          colormap={style.colormap}
-          subareaOptions={subareaOptions}
+        <div className={mobile && mobileVizView === 'table' ? 'hidden' : null}>
+          <SubAreaSelector
+            colormap={style.colormap}
+            subareaOptions={subareaOptions}
+            selection={selection}
+            setSelection={setSelection}
+            highlightedSubarea={highlightedSubarea}
+            setHighlightedSubarea={setHighlightedSubarea}
+            selectedSubareas={selectedSubareas}
+            setSelectedSubareas={setSelectedSubareas}
+            clickedSubarea={clickedSubarea}
+            setClickedSubarea={setClickedSubarea}
+          />
+        </div>
+      </div>
+      <div
+        className={
+          mobile && mobileVizView === 'map'
+            ? 'mobile-map-indicator-selector'
+            : 'hidden'
+        }
+      >
+        <IndicatorDropdown
+          options={indicators}
           selection={selection}
           setSelection={setSelection}
-          highlightedSubarea={highlightedSubarea}
-          setHighlightedSubarea={setHighlightedSubarea}
-          selectedSubareas={selectedSubareas}
-          setSelectedSubareas={setSelectedSubareas}
-          clickedSubarea={clickedSubarea}
-          setClickedSubarea={setClickedSubarea}
         />
       </div>
       <div
@@ -147,41 +154,38 @@ const HomePage = props => {
           highlightedSubarea={highlightedSubarea}
           numberOfSubareas={subareaOptions.length}
           numBins={numBins}
+          data={data}
+          setData={setData}
+          setViewMapData={setViewMapData}
+          viewMapData={viewMapData}
         />
       </div>
-      {(mobile && mobileVizView === 'chart') || !mobile ? (
-        <div id="chart-map-indicator-selector">
-          <div id="chart-map-toggle-box">
-            <div id="map-data-toggle-label">Show Data on Map</div>
-            <Checkbox
-              toggle
-              onChange={() =>
-                setViewMapData(viewMapData === false ? true : false)
-              }
-            />
-          </div>
-          {/* <h3>{selection.indicator.name}</h3> */}
-          <IndicatorDropdown
-            options={indicators}
-            selection={selection}
-            setSelection={setSelection}
-          />
-        </div>
-      ) : null}
+
       <div
         id={
-          subareaOptions.length <= 5 || 
-          !mobile
+          subareaOptions.length <= 5 || !mobile
             ? 'chart-box'
             : 'chart-box-reduced'
         }
         className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}
       >
+        <div className="chart-indicator-selector-box">
+          {(mobile && mobileVizView === 'chart') || !mobile ? (
+            <div id="chart-map-indicator-selector">
+              <IndicatorDropdown
+                options={indicators}
+                selection={selection}
+                setSelection={setSelection}
+              />
+            </div>
+          ) : null}
+        </div>
         {tractInfo ? (
           <Chart
             setSubareaData={setSubareaData}
             subareaData={subareaData}
             indicators={indicators}
+            data={data}
             mobile={mobile}
             tractInfo={tractInfo}
             highlightedSubarea={highlightedSubarea}
@@ -211,6 +215,17 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
+        {mobile && mobileVizView === 'table' ? (
+          <div
+            className="arc-table-logo"
+            style={{ backgroundImage: `url${headerBackground}` }}
+          >
+            <img
+              src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/logo.svg"
+              alt="Atlanta Regional Commission logo"
+            />
+          </div>
+        ) : null}
         {tractInfo && selection.indicators.length > 0 ? (
           <Table
             mobile={mobile}

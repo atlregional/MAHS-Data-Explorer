@@ -57,6 +57,20 @@ const App = () => {
           name: 'Population in Poverty 2017',
         },
       },
+      // ***** FINISH ADDING AN ALL CONDITION FOR ALL OF HOUSING;
+      // {
+      //   name: 'All Housing Indicators',
+      //   type: 'all',
+      //   category: 'Housing',
+      //   indicator: {
+      //     id: 'ID093',
+      //     name: 'Total Renter Occupied Housing Units 2017',
+      //   },
+      //   universe: {
+      //     id: 'ID094',
+      //     name: 'Total Occupied Housing Units 2017',
+      //   },
+      // },
     ],
   };
 

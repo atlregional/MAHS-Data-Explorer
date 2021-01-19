@@ -7,8 +7,8 @@
 
   border-radius: 10px;
   position: fixed;
-  top: calc(10vh + 30px);
-  left: calc(10% + 45px);
+  top: calc(11vh + 30px);
+  left: calc(8% + 40px);
   padding: 1em 0 1em 0;
 }
 
@@ -32,7 +32,7 @@
   position: fixed;
   padding: 0;
   border-radius: 5px;
-  left: calc(10% + 24px);
+  left: calc(8% + 15px);
   top: calc(10vh + 20px);
 
   z-index: 9999;
@@ -95,7 +95,6 @@
     width: 50%;
     top: calc(30vh + 40px);
     left: 40px;
-    /* opacity: .8; */
   }
 
   #layer-selection-header {
@@ -105,15 +104,14 @@
 
   #layer-selection-header-shifted {
     position: fixed;
-    top: calc(40vh + 20px);
-    left: 20px;
+    top: calc(77vh + 20px);
+    left: 65px;
   }
 
   #layer-selector-box-shifted {
     position: fixed;
     width: 50%;
-    top: calc(40vh + 40px);
-    left: 40px;
-    /* opacity: .8; */
+    top: calc(65vh + 40px);
+    left: 85px;
   }
 }

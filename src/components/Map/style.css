@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 40px;
   height: 15vh;
-  right: calc(40% + 20px);
+  right: calc(40% + 5px);
   z-index: 99999999;
   width: 250px;
   border-radius: 5px;
@@ -12,15 +12,6 @@
   height: 80vh;
   line-height: 80vh;
   width: 100%;
-  /* padding-top: 35vh;
-  z-index: 9999999, */
-
-  /* position: fixed; */
-  /* line */
-  /* margin: 0 auto; */
-  /* z-index: 99999;
-  top: 40vh;
-  left: 27.5%; */
 }
 
 .tile-layer-thumb {
@@ -42,12 +33,14 @@
 
 #map-legend-box {
   position: fixed;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color:#f8f8f8f8;
   z-index: 999999;
-  height: 10vh;
-  right: 41.5%;
-  width: 250px;
+  height: 7vh;
+  right: 41%;
   top: 13vh;
-  /* margin-bottom: 15px; */
 }
 
 #tile-layer-selector-open {
@@ -78,6 +71,81 @@
   z-index: 99999999;
 }
 
+/* ******************************** */
+/* CUSTOM TOOLTIP CSS */
+.map-custom-tooltip {
+  display: grid;
+  grid-template-rows: auto;
+  text-align: start;
+  /* border: solid black 1px; */
+  margin: 0;
+  /* padding: 0; */
+  border-radius: 5px;
+}
+
+.tooltip-header {
+  font-weight: 800;
+  font-size: larger;
+}
+
+.tooltip-county-thin {
+  font-weight: 400;
+}
+
+.tooltip-county-thic {
+  font-weight: 600;
+  font-size: larger;
+}
+
+.tooltip-key-indicator {
+  font-weight: 650;
+  font-size: medium;
+  padding-top: 10px;
+}
+
+.tooltip-key-indicator-value {
+  font-weight: 900;
+  font-size: x-large;
+}
+
+.tooltip-subarea {
+  font-weight: 500;
+  font-size: larger;
+}
+
+.tooltip-compare-metrics {
+  padding-top: 10px;
+  font-size: larger;
+}
+
+.tooltip-percent-comparison {
+  font-weight: 600;
+  font-size: larger;
+}
+
+#data-source {
+  padding-top: 10px;
+}
+
+.data-credits {
+  width: 100%;
+  font-weight: 600;
+}
+
+
+/* ************************************* */
+/* Data Toggle  */
+#chart-map-toggle-box {
+  z-index: 999999999999;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#chart-map-toggle-box > .toggle {
+  margin: 1em;
+}
+
+
 @media screen and (max-width: 800px) {
   #tile-layer-selector-open {
     z-index: 999999;
@@ -92,7 +160,9 @@
   }
 
 #map-loading-spinner {
-  top: 65vh;
-  left: 20vw;
+  position: fixed;
+  z-index: 999999999999;
+  top: 18vh;
+  left: 0vw;
 }
 }

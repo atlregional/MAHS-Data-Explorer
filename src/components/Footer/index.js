@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <div className="footer-parent-div">
       <img
-        src="https://atlantaregional.org/wp-content/uploads/arc-logo-webinar.png"
+        src="https://neighborhoodnexus.org/wp-content/uploads/2016/04/neighborhood-nexus-logo.png"
         alt="ARC-logo"
-    
+        // style={{ margin: '1em 0' }}
       />
     </div>
   );
