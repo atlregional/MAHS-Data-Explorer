@@ -20,6 +20,7 @@ div.ui.right.center.transition.visible {
   #subarea-selector-container {
     height: 10vh;
     flex-direction: row;
+    justify-content: space-evenly;
     align-content: center;
   }
   .subarea-selector-button {

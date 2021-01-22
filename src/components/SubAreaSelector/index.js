@@ -18,8 +18,9 @@ const SubAreaSelector = props => {
 
   const handleButtonSize = () =>
     setButtonSize(
-      windowWidth > 800 ? (windowWidth * 0.1) / scaler : windowWidth / 2 - 15
+      windowWidth > 800 ? (windowWidth * 0.1) / scaler : windowWidth / 6.5 - 15
     );
+  console.log('window width: ', windowWidth / 2 - 15);
 
   useEffect(handleButtonSize, [subareas]);
 
@@ -27,7 +28,7 @@ const SubAreaSelector = props => {
     <div id="subarea-selector-container">
       {subareas.map(
         subarea => (
-          console.log(submarkets[subarea].link),
+          // console.log(submarkets[subarea].link),
           (
             <Popup
               hoverable
