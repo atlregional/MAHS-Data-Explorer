@@ -7,7 +7,6 @@ import {
   ZoomControl,
   Tooltip,
 } from 'react-leaflet';
-// import RingLoader from 'react-spinners/RingLoader';
 import MapLegend from '../MapLegend';
 import polygonToLine from '@turf/polygon-to-line';
 import { Icon } from 'semantic-ui-react';
@@ -44,7 +43,6 @@ const MapComp = props => {
         )
       : null;
 
-    // geoId : aggVal
     const aggregatedData = tractData
       ? utils.aggregate(tractData, props.selection.indicator, 'GEOID')
       : {};
@@ -94,8 +92,6 @@ const MapComp = props => {
 
     let returnedGeoJSONs = [];
 
-    // console.log(returnedGeoJSONs);
-
     layerConfigs.forEach(config =>
       returnedGeoJSONs.push(getGeoJSON(config.name, config.url))
     );
@@ -121,8 +117,7 @@ const MapComp = props => {
     const config = props.config;
 
     const colorIndex = data[tractInfo.GEOID]
-      ? //
-        data[tractInfo.GEOID].colorIndex
+      ? data[tractInfo.GEOID].colorIndex
       : null;
     const color = viewMapData
       ? props.colors[colorIndex]
@@ -133,12 +128,8 @@ const MapComp = props => {
     return {
       fillColor: color,
       color: viewMapData ? 'black' : color,
-      // fillOpacity: 0.7,
     };
   };
-
-  // console.log('data', data);
-  // console.log('geoJSONs',geoJSONs);
 
   const CustomTooltip = () => {
     const thisFeature = hoverFeature.properties;
@@ -148,7 +139,6 @@ const MapComp = props => {
       ? parseInt(subarea.replace('Subarea ', ''))
       : null;
     const selectionInfo = props.selection;
-    // console.log('subarea data in map:', props.subareaData);
     const subareaValue =
       props.subareaData && subarea
         ? props.subareaData.filter(item => item.name === subarea)[0]
@@ -158,7 +148,6 @@ const MapComp = props => {
           : null
         : null;
 
-    //
     return data && thisFeature ? (
       <div className="map-custom-tooltip">
         <span className="tooltip-header">{thisFeature.NAMELSAD10} </span>{' '}
@@ -173,8 +162,7 @@ const MapComp = props => {
           <br />
           <span className="tooltip-key-indicator-value">
             {data[thisFeature.GEOID10]
-              ? //
-                numeral(data[thisFeature.GEOID10].value).format(
+              ? numeral(data[thisFeature.GEOID10].value).format(
                   indicatorType === 'percent' ? '0.0%' : '0,0'
                 )
               : null}
@@ -210,8 +198,7 @@ const MapComp = props => {
           at{' '}
           <span className="tooltip-percent-comparison">
             {data['All']
-              ? //
-                numeral(data['All'].value).format(
+              ? numeral(data['All'].value).format(
                   indicatorType === 'percent' ? ' 0.0%' : '0,0'
                 )
               : null}
@@ -228,7 +215,6 @@ const MapComp = props => {
       <h3>No Data</h3>
     );
   };
-  // console.log('hoverFeature :', hoverFeature);
 
   const handleBounds = featureBounds =>
     Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
@@ -297,8 +283,6 @@ const MapComp = props => {
                   const geoID = feature.properties[tractIDField];
                   const tractInfo = props.tractInfo[geoID];
                   const subarea = tractInfo['Subarea'];
-                  // const data = tractInfo['Data'];
-                  // console.log(data);
                   const highlight =
                     subarea === `Subarea ${props.highlightedSubarea}`;
                   const style = tractStyle(tractInfo);
@@ -323,18 +307,15 @@ const MapComp = props => {
                   };
                 }}
                 onmouseout={() => setHoverBin()}
-                onmouseover={
-                  e => {
-                    setHoverBin(
-                      data[e.layer.feature.properties[tractIDField]]
-                        ? data[e.layer.feature.properties[tractIDField]]
-                            .colorIndex
-                        : null
-                    );
-                    setHoverFeature(e.layer.feature);
-                  }
-                  // console.log(data[e.layer.feature.properties[tractIDField]])
-                }
+                onmouseover={e => {
+                  setHoverBin(
+                    data[e.layer.feature.properties[tractIDField]]
+                      ? data[e.layer.feature.properties[tractIDField]]
+                          .colorIndex
+                      : null
+                  );
+                  setHoverFeature(e.layer.feature);
+                }}
                 filter={feature => {
                   const geoID = feature.properties[config.geoField].toString();
                   const tractInfo = props.tractInfo[geoID];
@@ -481,7 +462,6 @@ const MapComp = props => {
             />
           </div>
           <MapLegend
-            // colorScaleHoverIdx={props.colorScaleHoverIdx}
             hoverBin={hoverBin}
             viewMapData={props.viewMapData}
             selection={props.selection}

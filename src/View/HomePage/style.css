@@ -217,14 +217,14 @@ body {
 
   #chart-map-toggle-box-open {
     position: fixed;
-    left: 58vw;
+    left: 65vw;
     top: 32vh;
   
   }
 
   #chart-map-toggle-box-closed {
     position: fixed;
-    left: 58vw;
+    left: 65vw;
     top: 26vh;
   }
 
