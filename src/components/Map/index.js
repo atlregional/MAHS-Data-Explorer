@@ -322,7 +322,6 @@ const MapComp = props => {
                         : 1,
                   };
                 }}
-                // onm
                 onmouseout={() => setHoverBin()}
                 onmouseover={
                   e => {
@@ -355,7 +354,6 @@ const MapComp = props => {
                 <Tooltip
                   style={{
                     border: 'solid #808080 1px',
-                    // opacity: '0.5',
                     borderRadius: '5px',
                   }}
                 >
@@ -402,19 +400,6 @@ const MapComp = props => {
         />
         <ZoomControl position="bottomleft" />
       </LeafletMap>
-      {/* {!geoJSONs ? (
-        (
-          <div id="map-loading-spinner">
-          <RingLoader
-            css={{
-              margin: 'auto',
-              zIndex: '9999999',
-            }}
-            color={'#bebebebc'}
-            size="75px"
-          />
-        </div>)
-      ) : null} */}
       {mobile ? (
         <>
           <div
@@ -480,7 +465,13 @@ const MapComp = props => {
       )}
       {props.selection && stats ? (
         <div id="map-legend-box">
-          <div id="chart-map-toggle-box">
+          <div
+            id={
+              viewMapData
+                ? 'chart-map-toggle-box-open'
+                : 'chart-map-toggle-box-closed'
+            }
+          >
             <div id="map-data-toggle-label">Show Data on Map</div>
             <Checkbox
               toggle
@@ -504,6 +495,3 @@ const MapComp = props => {
 };
 
 export default MapComp;
-// {(
-//   <renderThing />
-// )

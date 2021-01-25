@@ -20,7 +20,6 @@ const HomePage = props => {
 
   const [mobileVizView, setMobileVizView] = useState('map');
   const [tractInfo, setTractInfo] = useState();
-  // console.log('tractInfo :', tractInfo);
   const [subareaOptions, setSubareaOptions] = useState([]);
   const [selection, setSelection] = useState({
     ...props.config.selection,
@@ -129,15 +128,21 @@ const HomePage = props => {
             : 'hidden'
         }
       >
-        <IndicatorDropdown
-          options={indicators}
-          selection={selection}
-          setSelection={setSelection}
-        />
+        {mobile && viewMapData ? (
+          <IndicatorDropdown
+            options={indicators}
+            selection={selection}
+            setSelection={setSelection}
+          />
+        ) : null}
       </div>
       <div
         id={
-          subareaOptions.length <= 5 || !mobile ? 'map-box' : 'map-box-reduced'
+          subareaOptions.length <= 5 || !mobile
+            ? 'map-box'
+            : mobile && viewMapData
+            ? 'map-box-reduced'
+            : 'map-box-reduced-big'
         }
         className={mobile && mobileVizView !== 'map' ? 'hidden' : null}
       >

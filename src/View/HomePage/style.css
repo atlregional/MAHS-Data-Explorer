@@ -41,6 +41,8 @@ body {
 
 #map-data-toggle-label {
   font-size: .8em;
+  align-self: center;
+  white-space: nowrap;
   padding: 1em;
   text-align: right;
   line-height: 1em;
@@ -200,14 +202,30 @@ body {
   }
 
   #map-box-reduced {
+    position: fixed;
     height: 60vh;
     top: 30vh
   }
 
-  #chart-map-toggle-box {
+  #map-box-reduced-big {
     position: fixed;
-    left: 52vw;
-    top: 32.5vh;
+    height: 64vh;
+    width: 96vw;
+    left: 2%;
+    top: 25vh;
+  }
+
+  #chart-map-toggle-box-open {
+    position: fixed;
+    left: 58vw;
+    top: 32vh;
+  
+  }
+
+  #chart-map-toggle-box-closed {
+    position: fixed;
+    left: 58vw;
+    top: 26vh;
   }
 
   #legend {
