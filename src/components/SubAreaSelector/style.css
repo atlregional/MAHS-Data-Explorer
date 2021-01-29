@@ -1,21 +1,31 @@
 #subarea-selector-container {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-wrap: nowrap;
+  /* align-content: space-between; */
+  align-content: center;
   height: 100%;
   width: 100%;
+  padding-left: .3em;
 }
 
 .subarea-selector-button {
   cursor: pointer;
   font-size: 30px;
-  padding: 0;
+  /* padding-top: 15%; */
+  height: 100%;
+  width: 100%;
+  margin: .1em;
+  text-align: center;
+  vertical-align: middle;
+  /* vertri-content: center; */
+  /* flex-grow: 1; */
 }
 
 div.ui.right.center.transition.visible {
   z-index: 999999999999999;
 }
+
 @media screen and (max-width: 800px) {
   #subarea-selector-container {
     height: 10vh;

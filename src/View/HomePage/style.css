@@ -66,6 +66,11 @@ body {
   top: 11vh;
 }
 
+#subarea-selector > div {
+  height: 100%;
+  width: 100%;
+}
+
 #map-box {
   position: fixed;
   left: 7.5%;

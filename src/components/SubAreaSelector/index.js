@@ -62,10 +62,10 @@ const SubAreaSelector = props => {
                   key={`subarea-selector-button-${subarea}-${highlightedSubarea}`}
                   className="subarea-selector-button"
                   style={{
-                    height: `${buttonSize}px`,
-                    width: `${buttonSize * 1.5}px`,
-                    margin: buttonMargin,
-                    lineHeight: `${buttonSize - buttonSize * 0.05}px`,
+                    // height: `${buttonSize}px`,
+                    // width: `${buttonSize * 1.5}px`,
+                    // margin: buttonMargin,
+                    // lineHeight: `${buttonSize - buttonSize * 0.05}px`,
                     backgroundColor: `${colormap[subarea - 1]}`,
                     opacity:
                       highlightedSubarea === subarea

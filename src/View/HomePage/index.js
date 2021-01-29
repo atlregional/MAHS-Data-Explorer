@@ -106,7 +106,7 @@ const HomePage = props => {
             : 'subarea-selector-enlarged'
         }
       >
-        <div className={mobile && mobileVizView === 'table' ? 'hidden' : null}>
+        {/* <div className={mobile && mobileVizView === 'table' ? 'hidden' : null}> */}
           <SubAreaSelector
             colormap={style.colormap}
             subareaOptions={subareaOptions}
@@ -119,7 +119,7 @@ const HomePage = props => {
             clickedSubarea={clickedSubarea}
             setClickedSubarea={setClickedSubarea}
           />
-        </div>
+        {/* </div> */}
       </div>
       <div
         className={
