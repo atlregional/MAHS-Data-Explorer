@@ -3,14 +3,11 @@ import {
   ResponsiveContainer,
   ComposedChart,
   Line,
-  // Area,
   Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  // Legend,
-  // Scatter,
   Cell,
 } from 'recharts';
 import './style.css';
@@ -56,13 +53,9 @@ const Chart = props => {
   };
 
   // console.log('Chart data', props.subareaData);
-  // ****** CSS NOT WORKINNG IN HTE
   const CustomTooltip = ({ active, payload, label }) => {
-    // console.log('chart tooltip props :', props);
     const geoType = props.selection.geoType;
     const geo = props.selection.geo;
-    // const data =
-
     return active ? (
       <div className="chart-custom-tooltip">
         <div

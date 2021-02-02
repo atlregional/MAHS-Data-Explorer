@@ -58,3 +58,9 @@
     font-size: medium;
     font-weight: 600;
 }
+
+.recharts-xAxis .recharts-cartesian-axis-ticks {
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+}

@@ -58,7 +58,6 @@ const Table = props => {
 
   const handleCreateRows = () => {
     const headerCells = header.map((header, i) => (
-      // headerCells.push(
       <Cell
         key={`header-${i}`}
         className="table-cells"
@@ -69,16 +68,7 @@ const Table = props => {
               : null,
         }}
       >
-        {
-          // r === 0 &&
-          i === 0
-            ? '' // Could maybe put dropdown selector here
-            : // : r === 0 ?
-              header
-          // : c === 0 ?
-          //     lineBreaker(indicator.name)
-          //   : numeral(data[r][item]).format('0,0')
-        }
+        {i === 0 ? '' : header}
       </Cell>
     ));
 
@@ -102,12 +92,6 @@ const Table = props => {
               }}
             >
               {
-                // r === 0 &&
-                // c === 0 ?
-                //   '' // Could maybe put dropdown selector here
-                // : r === 0 ?
-                //     item
-                //   :
                 c === 0
                   ? lineBreaker(indicator.name)
                   : numeral(data[r][item]).format('0,0')
@@ -115,13 +99,11 @@ const Table = props => {
             </Cell>
           )
         );
-        // }
         rows.push(<Row key={r}>{cells}</Row>);
       });
   };
 
   const dataForExport = inputDataArray => {
-    // filter and reorder properties in input data to match rendered table
     const outputDataArray = [];
     const headerArray = [...header];
     // console.log(headerArray);
@@ -151,10 +133,6 @@ const Table = props => {
       }}
       id="table"
     >
-      {/* <div
-        className={selectedIndicators > 0 ? 'export-button' : 'hidden'}
-        key={selectedIndicators}
-      > */}
       <ExportButton
         data={dataForExport(data)}
         //
@@ -167,7 +145,6 @@ const Table = props => {
           .join('-')}-${moment().format('M/DD/YYYY')}`}
         content={'Download Data'}
       />
-      {/* </div> */}
       <StickyTable stickyHeaderCount={1}>{rows}</StickyTable>
     </div>
   );
