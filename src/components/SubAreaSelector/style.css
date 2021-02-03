@@ -10,16 +10,17 @@
 }
 
 .subarea-selector-button {
+  display: flex;
   cursor: pointer;
   font-size: 30px;
   /* padding-top: 15%; */
   height: 100%;
   width: 100%;
   margin: .1em;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
   vertical-align: middle;
-  /* vertri-content: center; */
-  /* flex-grow: 1; */
 }
 
 div.ui.right.center.transition.visible {
