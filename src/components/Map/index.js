@@ -205,10 +205,10 @@ const MapComp = props => {
           </span>
         </div>
         <span id="data-source" className="data-credits">
-          Data Source : {}{' '}
+          Data Source : {selectionInfo.indicator.source}
         </span>
         <span className="data-credits">
-          Universe : {selectionInfo.indicator.universe.name}
+          Universe : {selectionInfo.indicator.universe}
         </span>
       </div>
     ) : (

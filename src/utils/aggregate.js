@@ -6,8 +6,8 @@ export default (data, indicatorInfo, aggregator) => {
   const aggregatorField = aggregator;
   // type options are subarea, city, or tractID
   // type options are *'percent'*, 'average', 'weighted average', 'sum'
-  const numeratorId = indicatorInfo.indicator.id;
-  const denominatorId = indicatorInfo.universe.id;
+  const numeratorID = indicatorInfo.numeratorID;
+  const denominatorID = indicatorInfo.denominatorID;
   const numeratorValues = {};
   const denominatorValues = {};
   const numberOfTracts = {};
@@ -36,13 +36,13 @@ export default (data, indicatorInfo, aggregator) => {
 
     denominatorValues[aggregatorId]
       ? (denominatorValues[aggregatorId] =
-          denominatorValues[aggregatorId] + tract.Data[denominatorId])
-      : (denominatorValues[aggregatorId] = tract.Data[denominatorId]);
+          denominatorValues[aggregatorId] + tract.Data[denominatorID])
+      : (denominatorValues[aggregatorId] = tract.Data[denominatorID]);
 
     denominatorValues['All']
       ? (denominatorValues['All'] =
-          denominatorValues['All'] + tract.Data[denominatorId])
-      : (denominatorValues['All'] = tract.Data[denominatorId]);
+          denominatorValues['All'] + tract.Data[denominatorID])
+      : (denominatorValues['All'] = tract.Data[denominatorID]);
   });
 
 
@@ -50,29 +50,29 @@ export default (data, indicatorInfo, aggregator) => {
     const aggregatorId = tract[aggregatorField];
 
     // console.log(JSON.stringify(denominatorValues[aggregatorId]));
-    // console.log(tract.Data[denominatorId])
+    // console.log(tract.Data[denominatorID])
 
     const weightingFactor =
       indicatorInfo.type === 'weighted average'
-        ? tract.Data[denominatorId] / denominatorValues[aggregatorId]
+        ? tract.Data[denominatorID] / denominatorValues[aggregatorId]
         : 1;
 
     const allWeightingFactor =
       indicatorInfo.type === 'weighted average'
-        ? tract.Data[denominatorId] / denominatorValues['All']
+        ? tract.Data[denominatorID] / denominatorValues['All']
         : 1;
 
     numeratorValues[aggregatorId]
       ? (numeratorValues[aggregatorId] =
           numeratorValues[aggregatorId] +
-          tract.Data[numeratorId] * weightingFactor)
+          tract.Data[numeratorID] * weightingFactor)
       : (numeratorValues[aggregatorId] =
-          tract.Data[numeratorId] * weightingFactor);
+          tract.Data[numeratorID] * weightingFactor);
 
     numeratorValues['All']
       ? (numeratorValues['All'] =
-          numeratorValues['All'] + tract.Data[numeratorId] * allWeightingFactor)
-      : (numeratorValues['All'] = tract.Data[numeratorId] * allWeightingFactor);
+          numeratorValues['All'] + tract.Data[numeratorID] * allWeightingFactor)
+      : (numeratorValues['All'] = tract.Data[numeratorID] * allWeightingFactor);
   });
   // console.log(numeratorValues)
 
