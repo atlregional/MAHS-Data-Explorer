@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import GeoSelector from '../../components/GeoSelector';
+// import GeoSelector from '../../components/GeoSelector';
 import SubAreaSelector from '../../components/SubAreaSelector';
 import Chart from '../../components/Chart';
 import Table from '../../components/Table';
@@ -24,6 +24,7 @@ const HomePage = props => {
   const [selection, setSelection] = useState({
     ...props.config.selection,
     indicator: props.config.indicators[0],
+    indicators: props.config.indicators
   });
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
@@ -162,7 +163,6 @@ const HomePage = props => {
           data={data}
           setData={setData}
           setViewMapData={setViewMapData}
-          viewMapData={viewMapData}
         />
       </div>
 
@@ -185,23 +185,27 @@ const HomePage = props => {
             </div>
           ) : null}
         </div>
-        {tractInfo ? (
-          <Chart
-            setSubareaData={setSubareaData}
-            subareaData={subareaData}
-            indicators={indicators}
-            data={data}
-            mobile={mobile}
-            tractInfo={tractInfo}
-            highlightedSubarea={highlightedSubarea}
-            clickedSubarea={clickedSubarea}
-            setClickedSubarea={setClickedSubarea}
-            colormap={style.colormap}
-            selection={selection}
-            setHighlightedSubarea={setHighlightedSubarea}
-          />
-        ) : null}
-      </div>
+        {/* <div id='chart-wrapper'> */}
+          {
+            tractInfo
+              ? <Chart
+                  setSubareaData={setSubareaData}
+                  subareaData={subareaData}
+                  indicators={indicators}
+                  data={data}
+                  mobile={mobile}
+                  tractInfo={tractInfo}
+                  highlightedSubarea={highlightedSubarea}
+                  clickedSubarea={clickedSubarea}
+                  setClickedSubarea={setClickedSubarea}
+                  colormap={style.colormap}
+                  selection={selection}
+                  setHighlightedSubarea={setHighlightedSubarea}
+                />
+              : null
+          }        
+        </div>
+      {/* </div> */}
       {(mobile && mobileVizView === 'table') || !mobile ? (
         <div id="table-indicators-selector">
           <IndicatorDropdown

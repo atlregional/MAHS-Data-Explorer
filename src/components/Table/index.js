@@ -16,15 +16,15 @@ const Table = props => {
   const selectedIndicators = props.selection.indicators
     ? props.selection.indicators.map(indicator => indicator.name)
     : [];
-  console.log('selectedIndicators :', selectedIndicators);
+  // console.log('selectedIndicators :', selectedIndicators);
   // console.log(tractInfo)
 
-  const lineBreaker = string =>
-    string.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g).map(line => (
-      <p key={line} className="indicator-column">
-        {line}
-      </p>
-    ));
+  // const lineBreaker = string =>
+  //   string.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g).map(line => (
+  //     <p key={line} className="indicator-column">
+  //       {line}
+  //     </p>
+  //   ));
 
   const handleAggregation = () => {
     const array = [];
@@ -60,15 +60,29 @@ const Table = props => {
     const headerCells = header.map((header, i) => (
       <Cell
         key={`header-${i}`}
-        className="table-cells"
+        className={`table-cells ${i !== 0 ? 'header-cell' : ''}`}
         style={{
           backgroundColor:
             header === `Subarea ${props.highlightedSubarea}`
               ? 'lightgrey'
               : null,
+          padding: '1em'
         }}
       >
-        {i === 0 ? '' : header}
+        {i === 0 
+          ? <ExportButton
+              data={dataForExport(data)}
+              //
+              csvTitle={
+                `TITLE: MAHS Submarket Summary ${props.selectedGeo} ` +
+                '\nSOURCE: MAHS DATA EXPLORER - https://metroatlhousing.org/dataexplorer'
+              }
+              csvFilename={`MAHS-Submarket-Summary-${props.selectedGeo
+                .split(' ')
+                .join('-')}-${moment().format('M/DD/YYYY')}`}
+              content={'Download Data'}
+            /> 
+          : header.replace('Subarea','Submarket')}
       </Cell>
     ));
 
@@ -83,7 +97,7 @@ const Table = props => {
           cells.push(
             <Cell
               key={`${c}-${r}`}
-              className="table-cells"
+              className='table-cell'
               style={{
                 backgroundColor:
                   item === `Subarea ${props.highlightedSubarea}`
@@ -93,7 +107,7 @@ const Table = props => {
             >
               {
                 c === 0
-                  ? lineBreaker(indicator.name)
+                  ? <div className='indicator-column'>{indicator.name}</div>
                   : numeral(data[r][item]).format('0,0')
               }
             </Cell>
@@ -113,7 +127,7 @@ const Table = props => {
       .filter(inputData => selectedIndicators.includes(inputData.indicator))
       .forEach(inputData => {
         const dataObj = {};
-        headerArray.forEach(header => (dataObj[header] = inputData[header]));
+        headerArray.forEach(header => (dataObj[header.replace('Subarea','Submarket')] = inputData[header]));
         outputDataArray.push(dataObj);
       });
 
@@ -133,18 +147,6 @@ const Table = props => {
       }}
       id="table"
     >
-      <ExportButton
-        data={dataForExport(data)}
-        //
-        csvTitle={
-          `TITLE: MAHS SUBAREA SUMMARY ${props.selectedGeo} ` +
-          '\nSOURCE: MAHS DATA EXPLORER - https://metroatlhousing.org/dataexplorer'
-        }
-        csvFilename={`MAHS-Subarea-Summary-${props.selectedGeo
-          .split(' ')
-          .join('-')}-${moment().format('M/DD/YYYY')}`}
-        content={'Download Data'}
-      />
       <StickyTable stickyHeaderCount={1}>{rows}</StickyTable>
     </div>
   );

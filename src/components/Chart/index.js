@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -15,12 +15,9 @@ import numeral from 'numeral';
 import utils from '../../utils';
 
 const Chart = props => {
-  // console.log(props);
   const data = props.data;
-  // console.log('data :', data);
   const colormap = props.colormap;
   const tractInfo = props.tractInfo;
-
   const selectedIndicator = props.selection.indicator;
   const indicatorType = props.selection.indicator.type;
 
@@ -52,80 +49,79 @@ const Chart = props => {
     props.setSubareaData(array);
   };
 
-  // console.log('Chart data', props.subareaData);
   const CustomTooltip = ({ active, payload, label }) => {
     const geoType = props.selection.geoType;
     const geo = props.selection.geo;
-    return active ? (
-      <div className="chart-custom-tooltip">
-        <div
-          className="chart-tooltip-subarea"
-          style={{
-            color: props.colormap[label - 1],
-          }}
-        >
-          {`${payload[0].payload.name}`}
+    return active
+      ? <div className="chart-custom-tooltip">
+          <div
+            className="chart-tooltip-subarea"
+            style={{
+              color: props.colormap[label - 1],
+            }}
+          >
+            {`${payload[0].payload.name.replace('Subarea','Submarket')}`}
+          </div>
+          <div className="chart-tooltip-geography-selection">
+            {geo ? (
+              geoType === 'Region' ? (
+                <div>
+                  in the <span className="tooltip-geo">{geo} Region </span>
+                </div>
+              ) : geoType === 'City' ? (
+                <div>
+                  in 
+                  <span className="tooltip-geo"> {geo}</span>
+                </div>
+              ) : geoType === 'County' ? (
+                <div>
+                  in
+                  <span className="tooltip-geo"> {geo} County</span>
+                  
+                </div>
+              ) : null
+            ) : null}
+          </div>
+          <div className="chart-tooltip-indicator">
+            {selectedIndicator.name}
+          </div>
+          <div id='chart-tooltip-indicator-value'>
+            {numeral(payload[0].value).format(
+              indicatorType === 'percent' ? '0.0%' : '0,0'
+            )}
+          </div>
+          
+          <div className="chart-tooltip-comparison">
+            <div id='tooltip-compare-header'>
+              Compare to...
+            </div>
+            <div>
+              All of <span className='tooltip-geo'>{geo}{geoType !== 'City' ? ` ${geoType}` : ''}</span> at
+              {' '}<span className="chart-tooltip-percent-comparison">
+                {data['All']
+                  ? numeral(data['All'].value).format(
+                      indicatorType === 'percent' ? ' 0.0%' : '0,0'
+                    )
+                  : null}
+              </span>
+            </div>
+          </div>
+          <div id='tooltip-footer'>
+            <div>
+              Data Source : <span>{selectedIndicator.source}</span>
+            </div>
+            <div>
+              Universe : <span>{selectedIndicator.universe}</span>
+            </div>
+          </div>
         </div>
-        <br />
-        <div className="chart-tooltip-geography-selection">
-          {geo ? (
-            geoType === 'Region' ? (
-              <div>
-                in the <span className="tooltip-geo">{geo}</span> Region
-              </div>
-            ) : geoType === 'City' ? (
-              <div>
-                in the City of
-                <span className="tooltip-geo">{geo}</span>
-              </div>
-            ) : geoType === 'County' ? (
-              <div>
-                in
-                <span className="tooltip-geo"> {geo} </span>
-                County
-              </div>
-            ) : null
-          ) : null}
-        </div>
-        <br />
-        <div className="chart-tooltip-indicator">
-          {selectedIndicator.name}
-          <br />
-          {numeral(payload[0].value).format(
-            indicatorType === 'percent' ? '0.0%' : '0,0'
-          )}
-        </div>
-        <br />
-        <div className="chart-tooltip-comparison">
-          Compare to{' '}
-          <span className="chart-tooltip-percent-comparison">{geo}</span> at{' '}
-          {
-            <span className="chart-tooltip-percent-comparison">
-              {data['All']
-                ? numeral(data['All'].value).format(
-                    indicatorType === 'percent' ? ' 0.0%' : '0,0'
-                  )
-                : null}
-            </span>
-          }
-        </div>
-        <br />
-        <span id="data-source" className="chart-data-credits">
-          Data Source : {}{' '}
-        </span>
-        <span className="chart-data-credits">
-          Universe : {props.selection.indicator.universe.name}
-        </span>
-      </div>
-    ) : null;
+      : null;
   };
 
   useEffect(handleAggregation, [props.selection]);
 
-  return (
-    <>
-      {props.subareaData ? (
-        <ResponsiveContainer
+  return props.subareaData 
+   ? <ResponsiveContainer
           className="chart-responsive-container"
           width="92%"
           height="100%"
@@ -188,9 +184,7 @@ const Chart = props => {
             />
           </ComposedChart>
         </ResponsiveContainer>
-      ) : null}
-    </>
-  );
+   : null;
 };
 
 export default Chart;

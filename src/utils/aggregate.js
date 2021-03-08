@@ -81,7 +81,7 @@ export default (data, indicatorInfo, aggregator) => {
 
 
   const calcAggregation = () => {
-    const type = indicatorInfo.type;
+    const type = indicatorInfo.type.toLowerCase();
     const numeratorArray = Object.entries(numeratorValues);
     // const numeratorArray2 = Object.values(denominatorValues);
     // const numSum = numeratorArray.reduce((a, b) => a + b, 0);
