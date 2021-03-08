@@ -1,14 +1,17 @@
 .indicator-header {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 750;
 }
 
 .indicator-dropdown-menu {
+  padding: 0.5em;
   overflow: auto;
   max-height: 20vh;
   text-align: left;
-  color: #ffffff;
-  background-color: rgb(146, 146, 146);
+  background-color: #ffffff;
+  border: 1px solid rgba(34,36,38,.15);
+  box-shadow: 0 2px 3px 0 rgb(34 36 38 / 15%);
+  border-radius: 5px;
 }
 
 .indicator-selector-dropdown-icon {
@@ -18,8 +21,14 @@
 }
 
 .indicator-selector-dropdown-option {
+  /* border-bottom: 0.025rem #808080 solid; */
+  padding: 0.5em 0 .5em 1.5em;
+}
+
+.indicator-selector-dropdown-category {
   border-bottom: 0.025rem #808080 solid;
   padding: 0.5em;
+  font-weight: 900;
 }
 
 .indicator-selector-dropdown-option:hover {

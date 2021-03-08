@@ -1,66 +1,83 @@
 
 .bar-chart {
-    margin-top: 3%;
+    margin-top: 3vh;
 } 
 
 .chart-custom-tooltip {
-    display: grid;
-    grid-template-rows: auto;
-    text-align: start;
-    padding: 10px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: grey 2px;
-    color: black;
-    font-size: 10px;
-    border: solid rgba(128, 128, 128, 0.2) 1px;
-    border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  text-align: start;
+  margin: 0;
+  padding: 1em;
+  white-space: normal;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: grey 2px;
+  border: solid rgba(128, 128, 128, 0.2) 1px;
+  border-radius: 5px;
 }
 
 .chart-tooltip-subarea {
-    font-size: 2em;
     font-weight: 800;
-    margin-bottom: -12px;
-    padding: 0;
+    font-size: 1.5em;;
 }
 
 .chart-tooltip-geography-selection {
-    font-size: medium;
+    font-size: .8em;
 }
 
 .tooltip-geo {
-    font-size: large;
+    /* font-size: large; */
     font-weight: 700;
 }
 
 .chart-tooltip-indicator {
-    font-size: medium;
-    font-weight: 650;
-    line-height: 1em;
+  font-weight: 650;
+  margin: 1em 0 .3em 0;
+  line-height: 1em;
+  font-size: 1em;
 }
 
-.chart-tooltip-indicator-value {
-    padding-top: 5px;
-    font-size: large;
+#chart-tooltip-indicator-value {
+  font-weight: 200;
+  font-size: 2em;
+  /* margin: 0 0 .3em 0; */
 }
 
 .chart-tooltip-comparison {
-    font-weight: 400;
-    font-size: medium;
+  margin: .5em 0 0 0;
+  line-height: 1.5em;
+}
+
+#tooltip-compare-header {
+  font-size: .8em;
+  font-weight: 700;
+  /* margin: 1em 0 0 0; */
 }
 
 .chart-tooltip-percent-comparison {
 /* padding-top: 10px; */
-  font-size: large;
-  font-weight: 650;
+  font-weight: 200;
+  font-size: 1.4em;
 }
 
-.chart-data-credits {
-    font-size: medium;
-    font-weight: 600;
+#tooltip-footer {
+  margin: 1em 0 0 0;
+}
+
+#tooltip-footer > div {
+  font-size: .8em;
+  font-weight: 400;
+  
+  /* max-width: 250px; */
+}
+#tooltip-footer > div > span {
+  font-weight: 400;
+  font-size: 1em;
 }
 
 .recharts-xAxis .recharts-cartesian-axis-ticks {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 600;
-    color: black;
+    /* color: black; */
 }

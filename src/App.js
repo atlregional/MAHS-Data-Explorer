@@ -15,39 +15,38 @@ const App = () => {
   // const [dataManifest, setDataManifest] = useState();
   const [config, setConfig] = useState();
 
-  const indicators = {
-    indicators: [
-      {
-        name: 'Percent Renters, 2017',
-        type: 'percent',
-        category: 'Housing',
-        numeratorID: 'ID093',
-        denominatorID: 'ID094',
-        universe: 'Total Occupied Housing Units, 2017',
-        source: 'American Community Survey, 5-year estimates, 2013-17'
-      },
+  const indicators = require('./data/indicator-list.json');
+  // [
+  //     {
+  //       name: 'Percent Renters, 2017',
+  //       type: 'percent',
+  //       category: 'Housing',
+  //       numeratorID: 'ID093',
+  //       denominatorID: 'ID094',
+  //       universe: 'Total Occupied Housing Units, 2017',
+  //       source: 'American Community Survey, 5-year estimates, 2013-17'
+  //     },
 
-      {
-        name: 'Change in Percent Owner Households, 2010 to 2017',
-        type: 'weighted average',
-        category: 'Housing',
-        numeratorID: 'ID008',
-        denominatorID: 'ID091',
-        universe: 'Total Occupied Housing Units, 2010 & 2017',
-        source: 'American Community Survey, 5-year estimates, 2006-10 & 2013-17'
-      },
-      {
-        name: 'Averge Population in Poverty 2017',
-        type: 'average',
-        category: 'Economic',
-        numeratorID: 'ID088',
-        denominatorID: 'ID088',
-        universe: 'Total Population for which Poverty Status was Determined, 2017',
-        source: 'American Community Survey, 5-year estimates, 2013-17'
+  //     {
+  //       name: 'Change in Percent Owner Households, 2010 to 2017',
+  //       type: 'weighted average',
+  //       category: 'Housing',
+  //       numeratorID: 'ID008',
+  //       denominatorID: 'ID091',
+  //       universe: 'Total Occupied Housing Units, 2010 & 2017',
+  //       source: 'American Community Survey, 5-year estimates, 2006-10 & 2013-17'
+  //     },
+  //     {
+  //       name: 'Averge Population in Poverty 2017',
+  //       type: 'average',
+  //       category: 'Economic',
+  //       numeratorID: 'ID088',
+  //       denominatorID: 'ID088',
+  //       universe: 'Total Population for which Poverty Status was Determined, 2017',
+  //       source: 'American Community Survey, 5-year estimates, 2013-17'
 
-      }
-    ]
-  };
+  //     }
+  //   ];
 
   const handleStart = () => {
     utils
@@ -72,11 +71,11 @@ const App = () => {
                 geo: queryObj.geo,
               },
               // Remove after adding to DB
-              ...indicators,
+              indicators: [...indicators],
             })
           : setConfig({
               ...res.data[0],
-              ...indicators,
+              indicators: [...indicators],
             })
       )
       .catch(err => console.log(err));

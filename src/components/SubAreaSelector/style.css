@@ -7,6 +7,42 @@
   height: 100%;
   width: 100%;
   padding: .3em;
+  /* z-index: 99999999999; */
+  /* overflow: visible; */
+
+}
+
+.subarea-popup {
+  position: fixed;
+  left: calc(8% + 20px);
+  top: 13vh;
+  background-color: white;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
+  text-align: left;
+  /* position: relative;
+  float: right;
+  left: 100%;
+  bottom: 50px; */
+  z-index: 99999999;
+  width: 250px;
+  padding: 1em;
+  border-radius: 5px;
+  /* height: 200px; */
+  /* position: absolute;
+  right: 100%; */
+}
+
+#subarea-info-header {
+  font-size: 1.5em;
+}
+
+#subarea-info-content > div {
+  line-height: 1.2em;
+  margin: 1em auto;
+}
+
+#subarea-info-content > a {
+  float: right;
 }
 
 .subarea-selector-button {
@@ -21,6 +57,8 @@
   align-items: center;
   /* text-align: center; */
   vertical-align: middle;
+  z-index: 99999999;
+
 }
 
 div.ui.right.center.transition.visible {

@@ -1,68 +1,54 @@
-import React, { useEffect, useState } from "react";
-import { Popup } from "semantic-ui-react";
+import React, { useState} from "react";
+// import { Popup } from "semantic-ui-react";
 import { submarkets } from "../../utils/submarkets";
 import "./style.css";
 
 const SubAreaSelector = (props) => {
-	const [buttonSize, setButtonSize] = useState(75);
-	const windowWidth = window.innerWidth;
 	const subareas = props.subareaOptions;
-	const numberOfSubareas = subareas.length;
-	const scaler = numberOfSubareas < 6 ? 1.25 : windowWidth > 1100 ? 2.5 : 2;
 	const highlightedSubarea = props.highlightedSubarea;
 	const colormap = props.colormap;
-	const buttonMargin = windowWidth > 800 ? "3.75px" : "1px";
-
 	const setHighlightedSubarea = (number) => props.setHighlightedSubarea(number);
+  // const [ popup, setPopup ] = useState();
 
-	const handleButtonSize = () =>
-		setButtonSize(
-			windowWidth > 800 ? (windowWidth * 0.1) / scaler : windowWidth / 6.5 - 15
-		);
-	console.log("window width: ", windowWidth / 2 - 15);
-
-	useEffect(handleButtonSize, [subareas]);
 
 	return subareas ? (
 		<div id="subarea-selector-container">
-			{subareas.map((subarea) => (
-				// console.log(submarkets[subarea].link),
-				<Popup
-					hoverable
-					position="right center"
-					key={submarkets[subarea].name}
-					header={
-						<div
-							className="popover-header"
-							style={{
-								color: `${colormap[subarea - 1]}`,
-								backgroundColor: "#FEFEFE",
-								marginBottom: "5px",
-							}}
-						>
-							{" "}
-							{submarkets[subarea].name}
-						</div>
-					}
-					content={
-						<>
-							<div style={{ margin: "10px 0 5px 0" }}>
-								{submarkets[subarea].description}
-							</div>
-							<a href={`${submarkets[subarea].link}`} target="blank">
-								More Info
-							</a>
-						</>
-					}
-					trigger={
-						<div
+
+      {subareas.map((subarea) => (
+				// <Popup
+				// 	hoverable
+				// 	position="right center"
+				// 	header={
+				// 		<div
+        //       key={`popup-info-for-subarea-header-${submarkets[subarea].name}`}
+        //       className="popover-header"
+				// 			style={{
+				// 				color: `${colormap[subarea - 1]}`,
+				// 				backgroundColor: "#FEFEFE",
+				// 				marginBottom: "5px",
+				// 			}}
+				// 		>
+				// 			{" "}
+				// 			{submarkets[subarea].name}
+				// 		</div>
+				// 	}
+				// 	content={
+				// 		<div               
+        //       key={`popup-info-for-subarea-content-${submarkets[subarea].name}`}
+        //     >
+				// 			<div style={{ margin: "10px 0 5px 0" }}>
+				// 				{submarkets[subarea].description}
+				// 			</div>
+				// 			<a href={`${submarkets[subarea].link}`} target="blank">
+				// 				More Info
+				// 			</a>
+				// 		</div>
+				// 	}
+				// 	trigger={
+            <div
 							key={`subarea-selector-button-${subarea}-${highlightedSubarea}`}
 							className="subarea-selector-button"
 							style={{
-								// height: `${buttonSize}px`,
-								// width: `${buttonSize * 1.5}px`,
-								// margin: buttonMargin,
-								// lineHeight: `${buttonSize - buttonSize * 0.05}px`,
 								backgroundColor: `${colormap[subarea - 1]}`,
 								opacity:
 									highlightedSubarea === subarea
@@ -79,10 +65,12 @@ const SubAreaSelector = (props) => {
 								borderWidth: "3px",
 								borderStyle: "solid",
 							}}
-							onMouseEnter={() => {
+							onMouseEnter={e => {
 								setHighlightedSubarea(
 									props.clickedSubarea ? props.clickedSubarea : subarea
 								);
+                // console.log(e);
+                // setPopup({top: e.pageY})
 							}}
 							onMouseLeave={() => {
 								setHighlightedSubarea(props.clickedSubarea);
@@ -99,9 +87,40 @@ const SubAreaSelector = (props) => {
 						>
 							{subarea}
 						</div>
-					}
-				/>
-			))}
+			))}      
+      {
+        props.clickedSubarea || highlightedSubarea || highlightedSubarea
+          ? <div 
+              className='subarea-popup'
+              // style={{
+              //   top: popup.top
+              // }}
+            >
+            	<div
+                id='subarea-info-header'
+                style={{
+                  color: `${props.clickedSubarea 
+                    ? colormap[props.clickedSubarea - 1]
+                    : colormap[highlightedSubarea - 1]}`,
+                  backgroundColor: "#FEFEFE",
+                  marginBottom: "5px",
+                }}
+              >
+                {" "}
+                {submarkets[props.clickedSubarea || highlightedSubarea].name}
+              </div>
+
+              <div id='subarea-info-content'>
+                <div>
+                  {submarkets[props.clickedSubarea || highlightedSubarea].description}
+                </div>
+                <a href={`${submarkets[props.clickedSubarea || highlightedSubarea].link}`} target="blank">
+                  More Info
+                </a>
+              </div>
+            </div>
+          : null
+      }  
 		</div>
 	) : null;
 };

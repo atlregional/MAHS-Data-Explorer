@@ -3,7 +3,7 @@
   bottom: 40px;
   height: 15vh;
   right: calc(40% + 5px);
-  z-index: 99999999;
+  z-index: 9999999;
   width: 250px;
   border-radius: 5px;
 }
@@ -12,6 +12,25 @@
   height: 80vh;
   line-height: 80vh;
   width: 100%;
+}
+
+#map-data-toggle-wrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 140px;
+  height: 100%;
+  align-items: center;
+  padding: .5em;
+}
+
+#map-data-toggle-label {
+  margin: 0 .5em 0 0;
+  /* text-align: l; */
+  padding: 0;
+  /* height: 60px; */
+  width: 80px;
+  white-space: normal;
+  /* float: left; */
 }
 
 .tile-layer-thumb {
@@ -34,28 +53,17 @@
 #map-legend-box {
   position: fixed;
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: row;
+  padding: .5em;
+  /* flex-wrap: nowrap; */
   align-items: center;
   background-color:#f8f8f8f8;
   z-index: 999999;
-  height: 7vh;
-  right: 41%;
+  height: 60px;
+  right: 41vw;
   top: 13vh;
-}
-
-#tile-layer-selector-open {
-  visibility: visible;
-  width: 370px;
-  animation: tilelayer-opening 1s;
-  padding: 5px;
-}
-
-#tile-layer-selector-closed {
-  /* visibility: visible; */
-  width: 0%;
-  animation: tilelayer-closing 1s;
-  /* overflow: hidden; */
-  padding: 5px 0 5px 0;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
 }
 
 #tile-layer-icon {
@@ -71,98 +79,37 @@
   z-index: 99999999;
 }
 
-/* ******************************** */
-/* CUSTOM TOOLTIP CSS */
-.map-custom-tooltip {
-  display: grid;
-  grid-template-rows: auto;
-  text-align: start;
-  /* border: solid black 1px; */
-  margin: 0;
-  /* padding: 0; */
-  border-radius: 5px;
-}
 
-.tooltip-header {
-  font-weight: 800;
-  font-size: larger;
-}
-
-.tooltip-county-thin {
-  font-weight: 400;
-}
-
-.tooltip-county-thic {
-  font-weight: 600;
-  font-size: larger;
-}
-
-.tooltip-key-indicator {
-  font-weight: 650;
-  font-size: medium;
-  padding-top: 10px;
-}
-
-.tooltip-key-indicator-value {
-  font-weight: 900;
-  font-size: x-large;
-}
-
-.tooltip-subarea {
-  font-weight: 500;
-  font-size: larger;
-}
-
-.tooltip-compare-metrics {
-  padding-top: 10px;
-  font-size: larger;
-}
-
-.tooltip-percent-comparison {
-  font-weight: 600;
-  font-size: larger;
-}
-
-#data-source {
-  padding-top: 10px;
-}
-
-.data-credits {
-  width: 100%;
-  font-weight: 600;
-}
 
 
 /* ************************************* */
 /* Data Toggle  */
-#chart-map-toggle-box {
+/* #chart-map-toggle-box {
   z-index: 999999999999;
   display: grid;
   grid-template-columns: 50% 50%;
-}
-
-#chart-map-toggle-box > .toggle {
-  margin: 1em;
-}
+} */
 
 
 @media screen and (max-width: 800px) {
+
   #tile-layer-selector-open {
     z-index: 999999;
     position: fixed;
-    top: 41%;
+    bottom: 25vh;
     left: 75%;
   }
+
   #tile-layer-selector-closed {
     position: fixed;
     top: 20%;
     right: -20%;
   }
 
-#map-loading-spinner {
-  position: fixed;
-  z-index: 999999999999;
-  top: 18vh;
-  left: 0vw;
-}
+  #map-loading-spinner {
+    position: fixed;
+    z-index: 999999999999;
+    top: 18vh;
+    left: 0vw;
+  }
 }

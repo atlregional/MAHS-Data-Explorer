@@ -24,10 +24,8 @@ const MapLegend = props => {
   //   useEffect(hoveredColorIdx, [hoveredColorIdx]);
 
   //   console.log(colorScaleBlockWidth);
-  return (
-    <>
-      {viewMapData ? (
-        <div id="legend">
+  return viewMapData 
+    ? <div id="legend">
           {/* <p className="map-legend-title">{inidicatorName}</p> */}
           {props.stats ? (
             <div className="color-row">
@@ -51,9 +49,7 @@ const MapLegend = props => {
             </div>
           ) : null}
         </div>
-      ) : null}
-    </>
-  );
+      : null;
 };
 
 export default MapLegend;

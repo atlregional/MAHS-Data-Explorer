@@ -10,9 +10,10 @@ import {
 import MapLegend from '../MapLegend';
 import polygonToLine from '@turf/polygon-to-line';
 import { Icon } from 'semantic-ui-react';
-import numeral from 'numeral';
+// import numeral from 'numeral';
 import { Checkbox } from 'semantic-ui-react';
 import RingLoader from 'react-spinners/RingLoader';
+import MapTooltip from '../MapTooltip';
 import './style.css';
 
 const MapComp = props => {
@@ -92,16 +93,17 @@ const MapComp = props => {
 
     let returnedGeoJSONs = [];
 
-    layerConfigs.forEach(config =>
+    layerConfigs.filter(config => !config.disabled).forEach(config =>
       returnedGeoJSONs.push(getGeoJSON(config.name, config.url))
     );
 
     Promise.all(returnedGeoJSONs).then(geoJSONS => {
-      // console.log('returnedGeoJSONs: ', returnedGeoJSONs);
+      console.log('returnedGeoJSONs: ', returnedGeoJSONs);
       const geoJSONsObj = {};
       [...geoJSONS].forEach(([key, value]) => (geoJSONsObj[key] = value));
       setGeoJSONs(geoJSONsObj);
-    });
+    })
+    .catch(err => console.log(err));
   };
 
   const [bounds, setBounds] = useState();
@@ -131,90 +133,46 @@ const MapComp = props => {
     };
   };
 
-  const CustomTooltip = () => {
-    const thisFeature = hoverFeature.properties;
-    const tractInfo = thisFeature ? props.tractInfo[thisFeature.GEOID10] : null;
-    const subarea = tractInfo ? tractInfo.Subarea : null;
-    const subareaNumber = subarea
-      ? parseInt(subarea.replace('Subarea ', ''))
-      : null;
-    const selectionInfo = props.selection;
-    const subareaValue =
-      props.subareaData && subarea
-        ? props.subareaData.filter(item => item.name === subarea)[0]
-          ? props.subareaData.filter(item => item.name === subarea)[0][
-              selectionInfo.indicator.name
-            ]
-          : null
-        : null;
-
-    return data && thisFeature ? (
-      <div className="map-custom-tooltip">
-        <span className="tooltip-header">{thisFeature.NAMELSAD10} </span>{' '}
-        <div className="tooltip-county-thin">
-          in{' '}
-          <span className="tooltip-county-thic">
-            {thisFeature.COUNTY_NM ? `${thisFeature.COUNTY_NM} County` : null}
-          </span>
-        </div>
-        <span className="tooltip-key-indicator">
-          {selectionInfo.indicator.name}
-          <br />
-          <span className="tooltip-key-indicator-value">
-            {data[thisFeature.GEOID10]
-              ? numeral(data[thisFeature.GEOID10].value).format(
-                  indicatorType === 'percent' ? '0.0%' : '0,0'
-                )
-              : null}
-          </span>
-          <br />
-        </span>
-        <div className="tooltip-compare-metrics">
-          Compare to{' '}
-          <span
-            style={{ color: props.config.style.colormap[subareaNumber - 1] }}
-          >
-            <span className="tooltip-subarea">
-              <strong>{subarea}</strong>{' '}
-            </span>
-          </span>
-          in <span className="tooltip-county-thic">{selectionInfo.geo}</span> at{' '}
-          <strong>
-            <span className="tooltip-percent-comparison">
-              {subareaValue
-                ? numeral(subareaValue).format(
-                    indicatorType === 'percent' ? ' 0.0%' : '0,0'
-                  )
-                : null}
-            </span>
-          </strong>
-          <br />
-          Compare to
-          <span className="tooltip-percent-comparison">
-            {' '}
-            {selectionInfo.geo}{' '}
-            {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : ' '}
-          </span>{' '}
-          at{' '}
-          <span className="tooltip-percent-comparison">
-            {data['All']
-              ? numeral(data['All'].value).format(
-                  indicatorType === 'percent' ? ' 0.0%' : '0,0'
-                )
-              : null}
-          </span>
-        </div>
-        <span id="data-source" className="data-credits">
-          Data Source : {selectionInfo.indicator.source}
-        </span>
-        <span className="data-credits">
-          Universe : {selectionInfo.indicator.universe}
-        </span>
-      </div>
-    ) : (
-      <h3>No Data</h3>
-    );
+  const geoJSONStyle = (feature, config) => {
+    const geoID = feature.properties[tractIDField];
+    const tractInfo = props.tractInfo[geoID];
+    const subarea = tractInfo['Subarea'];
+    const highlight =
+      subarea === `Subarea ${props.highlightedSubarea}`;
+    const style = tractStyle(tractInfo);
+    return {
+      ...style,
+      color:
+        props.highlightedSubarea && highlight
+          ? 'black'
+          : config.boundaryColor,
+      weight:
+        props.highlightedSubarea && highlight
+          ? 1
+          : props.highlightedSubarea
+          ? 0
+          : config.boundaryWidth,
+      fillOpacity:
+        props.highlightedSubarea && highlight
+          ? 1
+          : props.highlightedSubarea
+          ? 0.2
+          : 1,
+    };
   };
+
+  const regionCounties = [
+    'Fulton',
+    'DeKalb',
+    'Cobb',
+    'Gwinnett',
+    'Clayton',
+    'Douglas',
+    'Henry',
+    'Cherokee',
+    'Fayette',
+    'Rockdale'
+  ]
 
   const handleBounds = featureBounds =>
     Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
@@ -234,8 +192,8 @@ const MapComp = props => {
         center={[33.753, -84.386]}
         zoom={8}
         bounds={bounds ? bounds : null}
-        zoomDelta={0.85}
-        zoomSnap={0.85}
+        zoomDelta={0.3}
+        zoomSnap={0.3}
         maxZoom={16}
         minZoom={3}
         zoomControl={false}
@@ -257,8 +215,8 @@ const MapComp = props => {
                     key={`boundary-layer-${config.name}-${props.selection.geo}`}
                     data={boundary}
                     filter={feature =>
-                      props.selection.geo === '10 Counties'
-                        ? config.name === 'counties'
+                      props.selection.geo === '10-County'
+                        ? regionCounties.includes(feature.properties[config.geoField])
                         : feature.properties[config.geoField] ===
                           props.selection.geo
                     }
@@ -279,49 +237,23 @@ const MapComp = props => {
                 key={`data-layer-${config.name}-${props.selection.geo}-${
                   props.viewMapData ? 'data' : 'nodata'
                 }`}
-                style={feature => {
-                  const geoID = feature.properties[tractIDField];
-                  const tractInfo = props.tractInfo[geoID];
-                  const subarea = tractInfo['Subarea'];
-                  const highlight =
-                    subarea === `Subarea ${props.highlightedSubarea}`;
-                  const style = tractStyle(tractInfo);
-                  return {
-                    ...style,
-                    color:
-                      props.highlightedSubarea && highlight
-                        ? 'black'
-                        : config.boundaryColor,
-                    weight:
-                      props.highlightedSubarea && highlight
-                        ? 1
-                        : props.highlightedSubarea
-                        ? 0
-                        : config.boundaryWidth,
-                    fillOpacity:
-                      props.highlightedSubarea && highlight
-                        ? 1
-                        : props.highlightedSubarea
-                        ? 0.2
-                        : 1,
-                  };
-                }}
+                style={feature => geoJSONStyle(feature, config)}
                 onmouseout={() => setHoverBin()}
                 onmouseover={e => {
                   setHoverBin(
-                    data[e.layer.feature.properties[tractIDField]]
-                      ? data[e.layer.feature.properties[tractIDField]]
+                    data[e.propagatedFrom.feature.properties[tractIDField]]
+                      ? data[e.propagatedFrom.feature.properties[tractIDField]]
                           .colorIndex
                       : null
                   );
-                  setHoverFeature(e.layer.feature);
+                  setHoverFeature(e.propagatedFrom.feature);
                 }}
                 filter={feature => {
                   const geoID = feature.properties[config.geoField].toString();
                   const tractInfo = props.tractInfo[geoID];
 
                   return tractInfo
-                    ? props.selection.geo === '10 Counties'
+                    ? props.selection.geo === '10-County'
                       ? true
                       : props.selection.geoType === 'County'
                       ? feature.properties['COUNTY_NM'] === props.selection.geo
@@ -338,7 +270,12 @@ const MapComp = props => {
                     borderRadius: '5px',
                   }}
                 >
-                  <CustomTooltip />
+                  <MapTooltip 
+                    {...props} 
+                    data={data} 
+                    hoverFeature={hoverFeature}
+                    indicatorType={indicatorType}
+                  />
                 </Tooltip>
               </GeoJSON>
             ))
@@ -446,21 +383,23 @@ const MapComp = props => {
       )}
       {props.selection && stats ? (
         <div id="map-legend-box">
-          <div
-            id={
-              viewMapData
-                ? 'chart-map-toggle-box-open'
-                : 'chart-map-toggle-box-closed'
-            }
-          >
-            <div id="map-data-toggle-label">Show Data on Map</div>
+          {/* <div
+            id='map-data-toggle-wrapper'
+          > */}
+            <div id="map-data-toggle-label">
+              Show Data on Map
+            </div>
             <Checkbox
               toggle
               onChange={() =>
-                setViewMapData(viewMapData === false ? true : false)
+                setViewMapData(
+                  viewMapData === false 
+                    ? true 
+                    : false
+                )
               }
             />
-          </div>
+          {/* </div> */}
           <MapLegend
             hoverBin={hoverBin}
             viewMapData={props.viewMapData}

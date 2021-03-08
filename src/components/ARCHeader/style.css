@@ -26,11 +26,11 @@
 }
 
 .geo-selector-box {
-    position: fixed;
-    top: 1vh;
-    left: 17%;
-    padding-left: 7%;
-    font-weight: 300;
+    /* position: fixed; */
+    /* top: 1vh; */
+    /* left: 17%;
+    padding-left: 7%; */
+    /* font-weight: 500; */
 }
 
 #geo-label-header {
@@ -61,7 +61,7 @@
         display: flex;
         grid-template-columns: 30vw 70vw;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
     }
     .ARC-logo-div {
         position: fixed;

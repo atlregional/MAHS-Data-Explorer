@@ -1,0 +1,87 @@
+/* ******************************** */
+/* CUSTOM TOOLTIP CSS */
+
+#map-custom-tooltip {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  text-align: start;
+  margin: 0;
+  padding: .3em;
+  white-space: normal;
+}
+
+#tooltip-header {
+  font-weight: 800;
+  font-size: 1.2em;;
+  
+  /* font-size: larger; */
+}
+
+.tooltip-thic {
+  font-weight: 700;
+}
+
+#tooltip-subheader {
+  font-weight: 400;
+  font-size: .8em;;
+}
+
+#tooltip-key-indicator {
+  font-weight: 650;
+  margin: 1em 0 0 0;
+  font-size: 1em;
+  line-height: 1em;
+  /* width: 50%; */
+  /* font-size: medium;
+  padding-top: 10px; */
+}
+
+#tooltip-key-indicator-value {
+  font-weight: 200;
+  font-size: 2em;
+  /* font-size: x-large; */
+}
+
+#tooltip-subarea {
+  font-weight: 500;
+  font-size: 1.2em;
+  /* font-size: larger; */
+}
+
+#tooltip-compare-metrics {
+  margin: .3em 0 0 0;
+  line-height: 1.5em;
+  /* padding: .5em;
+  border: dashed 1px gray; */
+  /* background-color: lightgray; */
+  /* border-radius: 5px; */
+  /* padding-top: 10px; */
+  /* font-size: larger; */
+}
+
+#tooltip-compare-header {
+  font-size: .8em;
+  margin: 0;
+}
+
+.tooltip-percent-comparison {
+  font-weight: 200;
+  font-size: 1.3em;
+  /* font-size: larger; */
+}
+
+#tooltip-footer {
+  margin: 1em 0 0 0;
+}
+
+#tooltip-footer > div {
+  font-size: .8em;
+  font-weight: 700;
+  
+  /* max-width: 250px; */
+}
+#tooltip-footer > div > span {
+  font-weight: 400;
+  font-size: 1em;
+}
