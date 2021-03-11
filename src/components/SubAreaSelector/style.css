@@ -49,6 +49,8 @@
   display: flex;
   cursor: pointer;
   font-size: 30px;
+  border-radius: 5px;
+
   /* padding-top: 15%; */
   height: 100%;
   width: 100%;
@@ -69,12 +71,13 @@ div.ui.right.center.transition.visible {
   #subarea-selector-container {
     height: 10vh;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-content: center;
+    margin-left: -.1em;
   }
   .subarea-selector-button {
     padding: 0;
-    margin: .5px !important;
-    margin-top: 2px !important;
+    /* margin: .1em !important; */
+    /* margin-top: 2px !important; */
   }
 }

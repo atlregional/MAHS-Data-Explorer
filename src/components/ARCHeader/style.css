@@ -3,7 +3,7 @@
     z-index: 999999999999;
     position: fixed;
     top: 0;
-    height: 8vh;
+    height: 10vh;
     width: 100vw;
     display: grid;
     grid-template-columns: 10vw 50vw 40vw;
@@ -25,13 +25,6 @@
     background-color: #4B7B90;
 }
 
-.geo-selector-box {
-    /* position: fixed; */
-    /* top: 1vh; */
-    /* left: 17%;
-    padding-left: 7%; */
-    /* font-weight: 500; */
-}
 
 #geo-label-header {
     /* margin-top: .5em; */
@@ -59,14 +52,17 @@
 
     #ARC-Header {
         display: flex;
-        grid-template-columns: 30vw 70vw;
+        flex-direction: row;
+        width: 100%;
+        /* grid-template-columns: 30vw 70vw; */
         align-items: center;
-        justify-content: flex-start;
+        justify-content: space-between;
     }
     .ARC-logo-div {
-        position: fixed;
+        /* position: fixed;
         right: 5vw;
-        top: 1.5vh;
+        top: 1.5vh; */
+        margin-right: 10px;
         width: 10vw;
         height: 5.5vh;
         background-color: white;
@@ -80,29 +76,37 @@
         color: white;
     }
 
+    /* .arc-header-box {
+      display: flex;
+      flex-direction: row;
+    } */
+
     .back-to-main-site-button {
-        margin-left: 7px;
+        margin-left: 10px;
         border-radius: 5px;
-        width: auto;
+        width: 80px;
         box-shadow: .5px .5px #989898 ;
     }
 
     #geo-label-header { 
-        width: 140%;
-        font-size: 1.5em;
+        /* margin: auto; */
+        /* width: 100%; */
+        font-size: 2em;
         text-align: center;
     }
 
     .geo-selector-box {
-        position: fixed;
-        width: 150px;
-        top: 1vh;
-        left: 26vw;
-        padding-left: 0;
+        position: relative;
+        /* position: fixed; */
+        width: 100%;
+        /* top: 1vh; */
+        text-align: center;
+        /* left: 26vw; */
+        /* padding-left: 0; */
     }
 
     .ui.inline.dropdown {
-        width: 140%;
+        /* width: 140%; */
         text-align: center;
     }
  

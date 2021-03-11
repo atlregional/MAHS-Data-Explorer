@@ -12,11 +12,12 @@
   },
   {
     "name": "Percent Change in Average HH Income",
-    "type": "Percent Change",
+    "type": "Percent",
+    "changeType" : "Change in Count",
     "numeratorID": "ID093",
     "denominatorID": "ID094",
-    "numeratorID2": "",
-    "denominatorID2": "",
+    "numeratorID2": "ID069",
+    "denominatorID2": "ID068",
     "source": "ACS",
     "category": "Economic",
     "universe": "Total Households"
@@ -34,7 +35,7 @@
   },
   {
     "name": "Percent Change in Poverty Rate (2010-2019)",
-    "type": "Percent Change",
+    "type": "Percent",
     "numeratorID": "ID093",
     "denominatorID": "ID094",
     "numeratorID2": "",
@@ -56,7 +57,7 @@
   },
   {
     "name": "Total Jobs",
-    "type": "Count",
+    "type": "Sum",
     "numeratorID": "ID093",
     "denominatorID": "ID094",
     "numeratorID2": "",
@@ -78,7 +79,7 @@
   },
   {
     "name": "Percent Change in Population (2010-2019)",
-    "type": "Percent Change",
+    "type": "Percent",
     "numeratorID": "ID093",
     "denominatorID": "ID094",
     "numeratorID2": "",

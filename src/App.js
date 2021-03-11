@@ -12,10 +12,10 @@ const App = () => {
   // console.log(queryObj);
 
   const [tractInfo, setTractInfo] = useState();
-  // const [dataManifest, setDataManifest] = useState();
+  const [indicators, setIndicators] = useState();
   const [config, setConfig] = useState();
 
-  const indicators = require('./data/indicator-list.json');
+  // const indicators = require('./data/indicator-list.json');
   // [
   //     {
   //       name: 'Percent Renters, 2017',
@@ -51,13 +51,19 @@ const App = () => {
   const handleStart = () => {
     utils
       .getData('https://mahs-api-server.herokuapp.com/api/tractinfo')
-      .then(res => setTractInfo(res.data))
+      .then(res => {
+        console.log(res.data);
+        setTractInfo(res.data)
+      })
       .catch(err => console.log(err));
 
-    // utils
-    //   .getData('https://mahs-api-server.herokuapp.com/api/datainfo')
-    //   .then(res => setDataManifest(res.data))
-    //   .catch(err => console.log(err));
+    utils
+      .getData('https://mahs-api-server.herokuapp.com/api/datainfo')
+      .then(res => {
+        console.log(res.data);
+        setIndicators(res.data)
+      })
+      .catch(err => console.log(err));
 
     utils
       .getData('https://mahs-api-server.herokuapp.com/api/config')
@@ -71,11 +77,11 @@ const App = () => {
                 geo: queryObj.geo,
               },
               // Remove after adding to DB
-              indicators: [...indicators],
+              // indicators: [...indicators],
             })
           : setConfig({
               ...res.data[0],
-              indicators: [...indicators],
+              // indicators: [...indicators],
             })
       )
       .catch(err => console.log(err));
@@ -89,18 +95,17 @@ const App = () => {
 
   return (
     <div className="App">
-      {tractInfo && config ? (
-        <HomePage
+      {tractInfo && config && indicators 
+      ?  <HomePage
           tractInfo={tractInfo}
-          // manifest={dataManifest}
+          indicators={indicators}
           config={config}
         />
-      ) : (
-        <div id="app-loader-spinner">
+      : <div id="app-loader-spinner">
           <RingLoader css={{ margin: 'auto' }} size="100px" />
           <h1>Loading Data Explorer...</h1>
         </div>
-      )}
+      }
     </div>
   );
 };

@@ -2,9 +2,11 @@
 .sticky-table {
   /* height: 100%; */
   /* overflow: auto; */
+  align-items: center;
   max-width: 100%;
   white-space: pre-wrap;
   word-wrap: normal;
+  /* vertical-align: middle; */
 }
 .hidden {
   visibility: hidden;
@@ -25,5 +27,9 @@
 }
 
 .table-cells {
-  vertical-align: middle;
+  /* padding: 0; */
+  white-space: normal;
+
+  /* height: 100%;
+  vertical-align: middle; */
 }

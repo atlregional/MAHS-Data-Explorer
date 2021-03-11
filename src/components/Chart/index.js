@@ -87,7 +87,7 @@ const Chart = props => {
           </div>
           <div id='chart-tooltip-indicator-value'>
             {numeral(payload[0].value).format(
-              indicatorType === 'percent' ? '0.0%' : '0,0'
+              indicatorType === 'Percent' ? '0.0%' : '0,0'
             )}
           </div>
           
@@ -100,7 +100,7 @@ const Chart = props => {
               {' '}<span className="chart-tooltip-percent-comparison">
                 {data['All']
                   ? numeral(data['All'].value).format(
-                      indicatorType === 'percent' ? ' 0.0%' : '0,0'
+                      indicatorType === 'Percent' ? '0.0%' : '0,0'
                     )
                   : null}
               </span>
@@ -123,13 +123,21 @@ const Chart = props => {
   return props.subareaData 
    ? <ResponsiveContainer
           className="chart-responsive-container"
-          width="92%"
+          width="90%"
           height="100%"
         >
           <ComposedChart className="bar-chart" data={props.subareaData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey={'Subarea'} />
-            <YAxis />
+            <YAxis
+              // tickSize={} 
+              tickFormatter={tick => 
+                numeral(tick).format(indicatorType === 'Percent'
+                  ? '0.0%'
+                  : '0,0'
+                )
+              }
+            />
             <Tooltip content={<CustomTooltip />} />
 
             <Bar dataKey={selectedIndicator.name}>

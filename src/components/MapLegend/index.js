@@ -14,10 +14,10 @@ const MapLegend = props => {
 
   //   console.log(indicatorType);
   const minVal = numeral(props.stats.min).format(
-    indicatorType === 'percent' ? '0.0%' : '0,0'
+    indicatorType === 'Percent' ? '0.0%' : '0,0'
   );
   const maxVal = numeral(props.stats.max).format(
-    indicatorType === 'percent' ? '0.0%' : '0,0'
+    indicatorType === 'Percent' ? '0.0%' : '0,0'
   );
   const numBin = colorArr.length;
 
