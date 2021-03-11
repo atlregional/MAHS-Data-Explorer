@@ -16,15 +16,6 @@ const Table = props => {
   const selectedIndicators = props.selection.indicators
     ? props.selection.indicators.map(indicator => indicator.name)
     : [];
-  // console.log('selectedIndicators :', selectedIndicators);
-  // console.log(tractInfo)
-
-  // const lineBreaker = string =>
-  //   string.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,3}\b/g).map(line => (
-  //     <p key={line} className="indicator-column">
-  //       {line}
-  //     </p>
-  //   ));
 
   const handleAggregation = () => {
     const array = [];
@@ -108,7 +99,7 @@ const Table = props => {
               {
                 c === 0
                   ? <div className='indicator-column'>{indicator.name}</div>
-                  : numeral(data[r][item]).format('0,0')
+                  : numeral(data[r][item]).format(indicator.type === 'Percent' ? '0.0%' : '0,0')
               }
             </Cell>
           )
@@ -120,8 +111,6 @@ const Table = props => {
   const dataForExport = inputDataArray => {
     const outputDataArray = [];
     const headerArray = [...header];
-    // console.log(headerArray);
-    // console.log(inputDataArray);
 
     inputDataArray
       .filter(inputData => selectedIndicators.includes(inputData.indicator))

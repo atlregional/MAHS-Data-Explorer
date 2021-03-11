@@ -36,7 +36,7 @@ const MapTooltip = props => {
       <div id="tooltip-key-indicator-value">
         {data[featureInfo.GEOID10]
           ? numeral(data[featureInfo.GEOID10].value).format(
-              props.indicatorType === 'percent' ? '0.0%' : '0,0'
+              props.indicatorType === 'Percent' ? '0.0%' : '0,0'
             )
           : null}
       </div>
@@ -54,7 +54,7 @@ const MapTooltip = props => {
           <span className="tooltip-percent-comparison">
             {data['All']
               ? numeral(data['All'].value).format(
-                  props.indicatorType === 'percent' ? ' 0.0%' : '0,0'
+                  props.indicatorType === 'Percent' ? ' 0.0%' : '0,0'
                 )
               : null}
           </span>
@@ -81,7 +81,7 @@ const MapTooltip = props => {
             <span className="tooltip-percent-comparison">
               {subareaValue
                 ? numeral(subareaValue).format(
-                    props.indicatorType === 'percent' ? ' 0.0%' : '0,0'
+                    props.indicatorType === 'Percent' ? ' 0.0%' : '0,0'
                   )
                 : null}
             </span>

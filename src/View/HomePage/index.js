@@ -23,8 +23,8 @@ const HomePage = props => {
   const [subareaOptions, setSubareaOptions] = useState([]);
   const [selection, setSelection] = useState({
     ...props.config.selection,
-    indicator: props.config.indicators[0],
-    indicators: props.config.indicators
+    indicator: props.indicators[0],
+    indicators: props.indicators
   });
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
@@ -59,7 +59,7 @@ const HomePage = props => {
 
   const style = props.config.style;
   const geoTypeOptions = ['Region', 'City', 'County'];
-  const indicators = props.config.indicators;
+  const indicators = props.indicators;
   // console.log(JSON.stringify(indicators));
 
   const handleTractInfo = () => {
@@ -101,11 +101,7 @@ const HomePage = props => {
       }
 
       <div
-        id={
-          subareaOptions.length <= 5 || !mobile
-            ? 'subarea-selector'
-            : 'subarea-selector-enlarged'
-        }
+        id={!mobile ? 'subarea-selector' : 'subarea-selector-mobile'}
       >
         {/* <div className={mobile && mobileVizView === 'table' ? 'hidden' : null}> */}
           <SubAreaSelector
@@ -206,6 +202,8 @@ const HomePage = props => {
           }        
         </div>
       {/* </div> */}
+      {/* <div id='table-shadow-box'> */}
+
       {(mobile && mobileVizView === 'table') || !mobile ? (
         <div id="table-indicators-selector">
           <IndicatorDropdown
@@ -224,7 +222,7 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
-        {mobile && mobileVizView === 'table' ? (
+        {/* {mobile && mobileVizView === 'table' ? (
           <div
             className="arc-table-logo"
             style={{ backgroundImage: `url${headerBackground}` }}
@@ -234,7 +232,7 @@ const HomePage = props => {
               alt="Atlanta Regional Commission logo"
             />
           </div>
-        ) : null}
+        ) : null} */}
         {tractInfo && selection.indicators.length > 0 ? (
           <Table
             mobile={mobile}
@@ -251,6 +249,8 @@ const HomePage = props => {
           </div>
         )}
       </div>
+      {/* </div> */}
+
 
       {mobile ? (
         <VizViewSelector

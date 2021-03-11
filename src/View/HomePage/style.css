@@ -27,22 +27,24 @@ body {
 }
 
 /* ********************************************************************************** */
-
+.chart-indicator-selector-box {
+  z-index: 99999999;
+}
 #chart-map-indicator-selector {
-  position: fixed;
+  /* position: fixed;
   top: 11vh;
-  right: 5%;
+  right: 5%; */
   z-index: 999999;
   display: flex;
   justify-content: center;
-  width: 30%;
+  width: 100%;
   /* background-color: rgb(215, 214, 214); */
 }
 
 #table-indicators-selector {
   position: fixed;
   width: 30%;
-  top: 55vh;
+  top: 53vh;
   right: 5%;
   z-index: 999999;
   background-color: white;
@@ -75,21 +77,33 @@ body {
 
 #chart-box {
   position: fixed;
-  height: 35vh;
-  width: 42.5%;
-  top: 15vh;
-  right: -2%;
+  height: 34vh;
+  width: 40%;
+  top: 14vh;
+  right: 0;
   display: grid;
-  grid-template-rows: 5% 95%;
+  grid-template-rows: 10% 90%;
+  /* text-align: center; */
 }
 
 #table-box {
   padding: 2em;
   position: fixed;
-  height: 35vh;
+  height: 38vh;
   width: 40%;
   bottom: 7.5vh;
   right: 0;
+}
+
+#table-shadow-box {
+  position: fixed;
+  top: 55vh;
+  right: 1vw;
+  height: 36vh;
+  width: 38vw;
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.397) ;
+  /* height: 100%; */
 }
 
 /* ***** */
@@ -171,9 +185,9 @@ body {
     /* background-color: rgb(215, 214, 214); */
   }
 
-  #subarea-selector-enlarged {
+  #subarea-selector-mobile {
     width: 100%;
-    height: 16vh;
+    height: 20vh;
     top: 10.5vh;
     position: fixed;
     margin: 2.5px;
@@ -217,8 +231,9 @@ body {
 
   #map-legend-box {
     position: fixed;
-    /* width: 100%; */
-    right: 4vw;
+    
+    max-width: 80%;
+    right: calc(1vw + 10px);
     /* left: 54vw; */
     top: 31vh;
   
@@ -230,11 +245,11 @@ body {
     top: 33vh;
   } */
 
-  #legend {
+  /* #maplegend {
     position: fixed;
     top: 32.5vh;
     left: 0%;
-  }
+  } */
 
   .arc-table-logo {
     position: fixed;
