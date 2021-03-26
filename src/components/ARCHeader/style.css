@@ -48,6 +48,32 @@
     width: 80%;
 }
 
+.back-to-site {
+  --wp-admin-theme-color: #007cba;
+  --wp-admin-theme-color-darker-10: #006ba1;
+  --wp-admin-theme-color-darker-20: #005a87;
+  font-family: "Roboto",sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  /* box-sizing: inherit; */
+  color: #4B7A90;
+  transition: color .25s ease-out,background-color .25s ease;
+  /* position: absolute;
+  left: 0;
+  top: 50%; */
+  transform: translateX(10%);
+  font-size: 1em;
+  text-decoration: none;
+  background: #fff;
+  /* margin-left:  */
+  /* display: inline-block; */
+  border-radius: 5px;
+  padding: 4px 13px 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 @media only screen and (max-width: 800px) {
 
     #ARC-Header {

@@ -12,8 +12,9 @@ const ARCHeader = props => {
       className="arc-header-div"
       style={{ backgroundImage: `url(${headerBackground})` }}
     >
-      {' '}
-      <button className="back-to-main-site-button">Main Site</button>
+      <a class="back-to-site" href="https://metroatlhousing.org">
+        ← Back<span> to Main Site</span>
+      </a>
       <div className="arc-header-box">
         <div className="geo-selector-box">
           <div id="geo-label-header">

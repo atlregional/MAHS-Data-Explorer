@@ -11,7 +11,7 @@ import Footer from '../../components/Footer';
 import ARCHeader from '../../components/ARCHeader';
 import gradient from 'gradient-color';
 import utils from '../../utils';
-import headerBackground from '../../header-background.png';
+// import headerBackground from '../../header-background.png';
 import './style.css';
 
 const HomePage = props => {
