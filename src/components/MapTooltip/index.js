@@ -36,7 +36,11 @@ const MapTooltip = props => {
       <div id="tooltip-key-indicator-value">
         {data[featureInfo.GEOID10]
           ? numeral(data[featureInfo.GEOID10].value).format(
-              props.indicatorType === 'Percent' ? '0.0%' : '0,0'
+              props.indicatorType === 'Percent' 
+                ? '0.0%'
+                : props.indicatorType === 'Ratio'
+                  ? '0.0'
+                  : '0,0'
             )
           : null}
       </div>
@@ -48,13 +52,17 @@ const MapTooltip = props => {
           All of 
           <span className="tooltip-thic">  
             {' '}{selectionInfo.geo}{' '}
-            {selectionInfo.geoType === 'County' ? selectionInfo.geoType : ' '}
+            {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : ' '}
           </span>{' '}
           at{' '}
           <span className="tooltip-percent-comparison">
             {data['All']
               ? numeral(data['All'].value).format(
-                  props.indicatorType === 'Percent' ? ' 0.0%' : '0,0'
+                  props.indicatorType === 'Percent' 
+                  ? '0.0%'
+                  : props.indicatorType === 'Ratio'
+                    ? '0.0'
+                    : '0,0'
                 )
               : null}
           </span>
@@ -71,17 +79,22 @@ const MapTooltip = props => {
               {' '}{subarea.replace('Subarea','Submarket')}{' '}
             </span>
           </span>
-            in 
+            within the 
           <span className="tooltip-thic">
             {' '}
-            {selectionInfo.geo}{' '}
-            {selectionInfo.geoType === 'County' ? selectionInfo.geoType : ' '}
+            {selectionInfo.geoType}
+            {/* {selectionInfo.geo}{' '} */}
+            {/* {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : ' '} */}
           </span> at{' '}
           <strong>
             <span className="tooltip-percent-comparison">
               {subareaValue
                 ? numeral(subareaValue).format(
-                    props.indicatorType === 'Percent' ? ' 0.0%' : '0,0'
+                    props.indicatorType === 'Percent' 
+                    ? '0.0%'
+                    : props.indicatorType === 'Ratio'
+                      ? '0.0'
+                      : '0,0'
                   )
                 : null}
             </span>

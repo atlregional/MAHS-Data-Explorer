@@ -11,7 +11,8 @@ const ARCHeader = props => {
       id="ARC-Header"
       className="arc-header-div"
       style={{ backgroundImage: `url(${headerBackground})` }}
-    >
+    > 
+    
       <a class="back-to-site" href="https://metroatlhousing.org">
         ← Back<span> to Main Site</span>
       </a>
