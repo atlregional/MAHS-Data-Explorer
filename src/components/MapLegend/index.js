@@ -11,14 +11,13 @@ const MapLegend = props => {
   const colorArr = props.colors;
   // const inidicatorName = props.selection.indicator.name;
   const indicatorType = props.selection.indicator.type;
+  const formatter = props.selection.indicator.formatter.replace(/"/g, '');
+
+  // console.log(formatter.replace(/"/g, ''));
 
   //   console.log(indicatorType);
-  const minVal = numeral(props.stats.min).format(
-    indicatorType === 'Percent' ? '0.0%' : '0,0'
-  );
-  const maxVal = numeral(props.stats.max).format(
-    indicatorType === 'Percent' ? '0.0%' : '0,0'
-  );
+  const minVal = numeral(props.stats.min).format(formatter);
+  const maxVal = numeral(props.stats.max).format(formatter);
   const numBin = colorArr.length;
 
   //   useEffect(hoveredColorIdx, [hoveredColorIdx]);

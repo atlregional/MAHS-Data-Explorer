@@ -30,7 +30,7 @@ const MapComp = props => {
   const setData = props.setData;
   const layerConfigs = props.layers;
   const tileLayer = props.config.tilelayers;
-  const indicatorType = props.selection.indicator.type;
+  const indicatorFormatter = props.selection.indicator.formatter;
   const setViewMapData = props.setViewMapData;
   const viewMapData = props.viewMapData;
 
@@ -51,18 +51,24 @@ const MapComp = props => {
     // console.log(aggregatedData);
 
     Object.entries(aggregatedData).forEach(([key, value]) =>
-      array.push({
-        name: key,
-        Subarea: parseInt(key.replace('Subarea ', '')),
-        [props.selection.indicator.name]: value,
-      })
+      key !== 'All'
+      ? array.push({
+          name: key,
+          Subarea: parseInt(key.replace('Subarea ', '')),
+          [props.selection.indicator.name]: value,
+        })
+      : null
     );
 
     const valueArray = array.map(item =>
       parseFloat(item[props.selection.indicator.name])
-    );
+    ).filter(item => !isNaN(item));
+
+    console.log(valueArray);
     const maxValue = valueArray ? Math.max(...valueArray) : null;
     const minValue = valueArray ? Math.min(...valueArray) : null;
+
+
 
     Object.entries(aggregatedData).forEach(([key, value]) => {
       const disFromMin = value - minValue;
@@ -274,7 +280,7 @@ const MapComp = props => {
                     {...props} 
                     data={data} 
                     hoverFeature={hoverFeature}
-                    indicatorType={indicatorType}
+                    indicatorFormatter={indicatorFormatter}
                   />
                 </Tooltip>
               </GeoJSON>

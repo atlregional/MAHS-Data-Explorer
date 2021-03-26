@@ -7,6 +7,7 @@ const MapTooltip = props => {
   const tractInfo = featureInfo ? props.tractInfo[featureInfo.GEOID10] : null;
   const subarea = tractInfo ? tractInfo.Subarea : null;
   const data = props.data;
+  const indicatorFormatter = props.indicatorFormatter.replace(/"/g, '') 
   const subareaNumber = subarea
     ? parseInt(subarea.replace('Subarea ', ''))
     : null;
@@ -35,13 +36,7 @@ const MapTooltip = props => {
       </div>
       <div id="tooltip-key-indicator-value">
         {data[featureInfo.GEOID10]
-          ? numeral(data[featureInfo.GEOID10].value).format(
-              props.indicatorType === 'Percent' 
-                ? '0.0%'
-                : props.indicatorType === 'Ratio'
-                  ? '0.0'
-                  : '0,0'
-            )
+          ? numeral(data[featureInfo.GEOID10].value).format(indicatorFormatter)
           : null}
       </div>
       <div id="tooltip-compare-metrics">
@@ -57,13 +52,7 @@ const MapTooltip = props => {
           at{' '}
           <span className="tooltip-percent-comparison">
             {data['All']
-              ? numeral(data['All'].value).format(
-                  props.indicatorType === 'Percent' 
-                  ? '0.0%'
-                  : props.indicatorType === 'Ratio'
-                    ? '0.0'
-                    : '0,0'
-                )
+              ? numeral(data['All'].value).format(indicatorFormatter)
               : null}
           </span>
         </div>
@@ -89,13 +78,7 @@ const MapTooltip = props => {
           <strong>
             <span className="tooltip-percent-comparison">
               {subareaValue
-                ? numeral(subareaValue).format(
-                    props.indicatorType === 'Percent' 
-                    ? '0.0%'
-                    : props.indicatorType === 'Ratio'
-                      ? '0.0'
-                      : '0,0'
-                  )
+                ? numeral(subareaValue).format(indicatorFormatter)
                 : null}
             </span>
           </strong>       

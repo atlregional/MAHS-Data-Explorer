@@ -13,6 +13,12 @@ const Table = props => {
   const [data, setData] = useState([]);
   const [header, setHeader] = useState([]);
   const indicatorInfo = props.indicators;
+  // const indicatorFormatter = indicator => indicator.type === 'Percent' 
+  //     ? '0.0%'
+  //     : indicator.type === 'Ratio'
+  //       ? '0.0'
+  //       : '0,0';
+
   const selectedIndicators = props.selection.indicators
     ? props.selection.indicators.map(indicator => indicator.name)
     : [];
@@ -99,7 +105,7 @@ const Table = props => {
               {
                 c === 0
                   ? <div className='indicator-column'>{indicator.name}</div>
-                  : numeral(data[r][item]).format(indicator.type === 'Percent' ? '0.0%' : '0,0')
+                  : numeral(data[r][item]).format(indicator.formatter.replace(/"/g, ''))
               }
             </Cell>
           )

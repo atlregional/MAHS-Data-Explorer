@@ -20,6 +20,11 @@ const Chart = props => {
   const tractInfo = props.tractInfo;
   const selectedIndicator = props.selection.indicator;
   const indicatorType = props.selection.indicator.type;
+  const indicatorFormatter = indicatorType === 'Percent' 
+    ? '0.0%'
+    : indicatorType === 'Ratio' || 'Weighted Ratio'
+      ? '0.0'
+      : '0,0' 
 
   const handleAggregation = () => {
     const array = [];
@@ -86,9 +91,7 @@ const Chart = props => {
             {selectedIndicator.name}
           </div>
           <div id='chart-tooltip-indicator-value'>
-            {numeral(payload[0].value).format(
-              indicatorType === 'Percent' ? '0.0%' : '0,0'
-            )}
+            {numeral(payload[0].value).format(indicatorFormatter)}
           </div>
           
           <div className="chart-tooltip-comparison">
@@ -99,9 +102,7 @@ const Chart = props => {
               All of <span className='tooltip-geo'>{geo}{geoType !== 'City' ? ` ${geoType}` : ''}</span> at
               {' '}<span className="chart-tooltip-percent-comparison">
                 {data['All']
-                  ? numeral(data['All'].value).format(
-                      indicatorType === 'Percent' ? '0.0%' : '0,0'
-                    )
+                  ? numeral(data['All'].value).format(indicatorFormatter)
                   : null}
               </span>
             </div>
@@ -132,10 +133,7 @@ const Chart = props => {
             <YAxis
               // tickSize={} 
               tickFormatter={tick => 
-                numeral(tick).format(indicatorType === 'Percent'
-                  ? '0.0%'
-                  : '0,0'
-                )
+                numeral(tick).format(indicatorFormatter)
               }
             />
             <Tooltip content={<CustomTooltip />} />

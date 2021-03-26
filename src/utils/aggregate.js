@@ -89,22 +89,22 @@ export default (data, indicatorInfo, aggregator) => {
     const aggregatorId = tract[aggregatorField];
 
     const weightingFactor =
-      indicatorInfo.type === 'weighted average'
+      indicatorInfo.type.toLowerCase() === 'weighted ratio'
         ? tract.Data[denominatorID] / denominatorValues[aggregatorId]
         : 1;
 
     const allWeightingFactor =
-      indicatorInfo.type === 'weighted average'
+      indicatorInfo.type.toLowerCase() === 'weighted ratio'
         ? tract.Data[denominatorID] / denominatorValues['All']
         : 1;
 
     const weightingFactor2 =
-      indicatorInfo.type === 'weighted average' && changeType
+      indicatorInfo.type.toLowerCase() === 'weighted ratio' && changeType
         ? tract.Data[denominatorID2] / denominatorValues2[aggregatorId]
         : 1;
 
     const allWeightingFactor2 =
-      indicatorInfo.type === 'weighted average' && changeType
+      indicatorInfo.type.toLowerCase() === 'weighted ratio' && changeType
         ? tract.Data[denominatorID2] / denominatorValues2['All']
         : 1;
 
@@ -158,7 +158,7 @@ export default (data, indicatorInfo, aggregator) => {
             (aggregatedDataObj[aggregator] =
               numerator / denominatorValues[aggregator])
         )
-      : type === 'weighted average'
+      : type === 'weighted ratio'
       ? numeratorArray.map(
           ([aggregator, numerator]) => (aggregatedDataObj[aggregator] = numerator)
         )
@@ -168,7 +168,7 @@ export default (data, indicatorInfo, aggregator) => {
       type === 'average'
         ? numeratorArray2.map(
           ([aggregator, numerator]) =>
-            (aggregatedDataObj2[aggregator] = numerator / numberOfTracts2[aggregator])
+            (aggregatedDataObj2[aggregator] = numerator /denominatorValues2[aggregator])
         )
       : type === 'sum'
       ? numeratorArray2.map(
@@ -180,19 +180,30 @@ export default (data, indicatorInfo, aggregator) => {
             (aggregatedDataObj2[aggregator] =
               numerator / denominatorValues2[aggregator])
         )
-      : type === 'weighted average'
+      : type === 'weighted ratio'
       ? numeratorArray2.map(
           ([aggregator, numerator]) => (aggregatedDataObj2[aggregator] = numerator)
         )
       : console.log('No known calculation type define');
 
       changeType === 'Percent Change'
-        ? Object.entries(aggregatedDataObj2).forEach(([key,value]) => 
-            aggregatedDataObj[key] = (aggregatedDataObj[key] - value)/value
+        ? Object.entries(aggregatedDataObj2).forEach(([key,value]) =>
+            
+            aggregatedDataObj[key] && value
+              ? aggregatedDataObj[key] = (aggregatedDataObj[key] - value)/value
+              : aggregatedDataObj[key] = null
           )
-        : Object.entries(aggregatedDataObj2).forEach(([key,value]) => 
-              aggregatedDataObj[key] = aggregatedDataObj[key] - value
-        )
+        : changeType === 'Change in Percent'
+          ? Object.entries(aggregatedDataObj2).forEach(([key,value]) => 
+              aggregatedDataObj[key] && value
+                ? aggregatedDataObj[key] = 100 * (aggregatedDataObj[key] - value)
+                : aggregatedDataObj[key] = null
+            )
+          : Object.entries(aggregatedDataObj2).forEach(([key,value]) => 
+              aggregatedDataObj[key] && value
+                ? aggregatedDataObj[key] = aggregatedDataObj[key] - value
+                : aggregatedDataObj[key] = null
+            )
     }
 
 
