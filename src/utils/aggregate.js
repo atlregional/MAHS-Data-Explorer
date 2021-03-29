@@ -5,106 +5,140 @@ export default (data, indicatorInfo, aggregator) => {
     numeratorID2 = indicatorInfo.numeratorID2,
     denominatorID2 = indicatorInfo.denominatorID2,
     changeType = indicatorInfo.changeType,
+    type = indicatorInfo.type.toLowerCase(),
     numeratorValues = {},
     denominatorValues = {},
     numeratorValues2 = {},
-    denominatorValues2 = {},
-    numberOfTracts = {},
-    numberOfNulls = {},
-    numberOfTracts2 = {},
-    numberOfNulls2 = {};
+    denominatorValues2 = {};
+    // numberOfTracts = {},
+    // numberOfNulls = {},
+    // numberOfTracts2 = {},
+    // numberOfNulls2 = {};
 
 
-  data.forEach(tract => {
-    // console.log(JSON.stringify(tract))
-    const aggregatorId = tract[aggregatorField];
-    const notNull = tract.Data[numeratorID] 
-      ? true
-      : false;
+  // data.forEach(tract => {
+  //   // console.log(JSON.stringify(tract))
+  //   const aggregatorId = tract[aggregatorField];
+  //   const notNull = tract.Data[numeratorID] 
+  //     ? true
+  //     : false;
       
-    const notNull2 = tract.Data[numeratorID2] 
-      ? true
-      : false;
+  //   const notNull2 = tract.Data[numeratorID2] 
+  //     ? true
+  //     : false;
     
-    numberOfTracts[aggregatorId]
-      ? notNull
-        ? numberOfTracts[aggregatorId] = numberOfTracts[aggregatorId] + 1
-        : numberOfNulls[aggregatorId] = numberOfNulls[aggregatorId] + 1
-      : notNull
-        ? numberOfTracts[aggregatorId] = 1
-        : numberOfNulls[aggregatorId] = 1;
+  //   numberOfTracts[aggregatorId]
+  //     ? notNull
+  //       ? numberOfTracts[aggregatorId] = numberOfTracts[aggregatorId] + 1
+  //       : numberOfNulls[aggregatorId] = numberOfNulls[aggregatorId] + 1
+  //     : notNull
+  //       ? numberOfTracts[aggregatorId] = 1
+  //       : numberOfNulls[aggregatorId] = 1;
 
-    numberOfTracts['All']
-      ? notNull
-        ? numberOfTracts['All'] = numberOfTracts['All'] + 1
-        : numberOfNulls['All'] = numberOfNulls['All'] + 1
-      : notNull
-        ? numberOfTracts['All'] = 1
-        : numberOfNulls['All'] = 1;
+  //   numberOfTracts['All']
+  //     ? notNull
+  //       ? numberOfTracts['All'] = numberOfTracts['All'] + 1
+  //       : numberOfNulls['All'] = numberOfNulls['All'] + 1
+  //     : notNull
+  //       ? numberOfTracts['All'] = 1
+  //       : numberOfNulls['All'] = 1;
     
-    if (changeType) {
-      numberOfTracts2[aggregatorId]
-      ? notNull2
-        ? numberOfTracts2[aggregatorId] = numberOfTracts2[aggregatorId] + 1
-        : numberOfNulls2[aggregatorId] = numberOfNulls2[aggregatorId] + 1
-      : notNull2
-        ? numberOfTracts2[aggregatorId] = 1
-        : numberOfNulls2[aggregatorId] = 1;
+  //   if (changeType) {
+  //     numberOfTracts2[aggregatorId]
+  //     ? notNull2
+  //       ? numberOfTracts2[aggregatorId] = numberOfTracts2[aggregatorId] + 1
+  //       : numberOfNulls2[aggregatorId] = numberOfNulls2[aggregatorId] + 1
+  //     : notNull2
+  //       ? numberOfTracts2[aggregatorId] = 1
+  //       : numberOfNulls2[aggregatorId] = 1;
 
-      numberOfTracts2['All']
-      ? notNull2
-        ? numberOfTracts2['All'] = numberOfTracts2['All'] + 1
-        : numberOfNulls2['All'] = numberOfNulls2['All'] + 1
-      : notNull2
-        ? numberOfTracts2['All'] = 1
-        : numberOfNulls2['All'] = 1;    
-    }  
-  });
+  //     numberOfTracts2['All']
+  //     ? notNull2
+  //       ? numberOfTracts2['All'] = numberOfTracts2['All'] + 1
+  //       : numberOfNulls2['All'] = numberOfNulls2['All'] + 1
+  //     : notNull2
+  //       ? numberOfTracts2['All'] = 1
+  //       : numberOfNulls2['All'] = 1;    
+  //   }  
+  // });
 
+  data
+  .filter(tract => 
+    type !== 'sum' 
+      ? tract.Data[numeratorID] && tract.Data[denominatorID] 
+      : tract.Data[numeratorID]
+  )
+  .filter(tract => 
+    changeType
+      ? type !== 'sum' 
+        ? tract.Data[numeratorID2] && tract.Data[denominatorID2] 
+        : tract.Data[numeratorID2] 
+      : true
+  )
+  .forEach(tract => {
 
-  data.forEach(tract => {
+    // console.log(tract.Data[numeratorID]);
+    // console.log(tract.Data[numeratorID2]);
+
     // tract => the individual subarea for each tract that the data is aggregated by;
     const aggregatorId = tract[aggregatorField];
+    // const nullNumerator1 = tract.Data[numeratorID] === null;
+    // const nullNumerator2 = tract.Data[numeratorID2] === null;
 
     denominatorValues[aggregatorId]
       ? denominatorValues[aggregatorId] = denominatorValues[aggregatorId] + tract.Data[denominatorID]
-      : denominatorValues[aggregatorId] = tract.Data[denominatorID];
+      : denominatorValues[aggregatorId] = tract.Data[denominatorID]
+
+    // console.log(nullHolder);
 
     denominatorValues['All']
       ? denominatorValues['All'] = denominatorValues['All'] + tract.Data[denominatorID]
-      : denominatorValues['All'] = tract.Data[denominatorID];
+      : denominatorValues['All'] = tract.Data[denominatorID]
 
     if (changeType) {
       denominatorValues2[aggregatorId]
-      ? denominatorValues2[aggregatorId] = denominatorValues2[aggregatorId] + tract.Data[denominatorID2]
-      : denominatorValues2[aggregatorId] = tract.Data[denominatorID2];
+        ? denominatorValues2[aggregatorId] = denominatorValues2[aggregatorId] + tract.Data[denominatorID2]
+        : denominatorValues2[aggregatorId] = tract.Data[denominatorID2]
 
       denominatorValues2['All']
         ? denominatorValues2['All'] = denominatorValues2['All'] + tract.Data[denominatorID2]
-        : denominatorValues2['All'] = tract.Data[denominatorID2];
+        : denominatorValues2['All'] = tract.Data[denominatorID2]
     }
   });
 
-  data.forEach(tract => {
+  data
+  .filter(tract => 
+    type !== 'sum' 
+      ? tract.Data[numeratorID] && tract.Data[denominatorID] 
+      : tract.Data[numeratorID]
+  )
+  .filter(tract => 
+    changeType
+      ? type !== 'sum' 
+        ? tract.Data[numeratorID2] && tract.Data[denominatorID2] 
+        : tract.Data[numeratorID2] 
+      : true
+  )
+  .forEach(tract => {
     const aggregatorId = tract[aggregatorField];
 
     const weightingFactor =
-      indicatorInfo.type.toLowerCase() === 'weighted ratio'
+      type === 'weighted ratio'
         ? tract.Data[denominatorID] / denominatorValues[aggregatorId]
         : 1;
 
     const allWeightingFactor =
-      indicatorInfo.type.toLowerCase() === 'weighted ratio'
+      type === 'weighted ratio'
         ? tract.Data[denominatorID] / denominatorValues['All']
         : 1;
 
     const weightingFactor2 =
-      indicatorInfo.type.toLowerCase() === 'weighted ratio' && changeType
+      type === 'weighted ratio' && changeType
         ? tract.Data[denominatorID2] / denominatorValues2[aggregatorId]
         : 1;
 
     const allWeightingFactor2 =
-      indicatorInfo.type.toLowerCase() === 'weighted ratio' && changeType
+      type === 'weighted ratio' && changeType
         ? tract.Data[denominatorID2] / denominatorValues2['All']
         : 1;
 
@@ -136,12 +170,10 @@ export default (data, indicatorInfo, aggregator) => {
   });
 
   const calcAggregation = () => {
-    const type = indicatorInfo.type.toLowerCase();
     const numeratorArray = Object.entries(numeratorValues);
     const numeratorArray2 = changeType ? Object.entries(numeratorValues2) : [];
     const aggregatedDataObj = {};
     const aggregatedDataObj2 = {};
-
 
     type === 'average'
       ? numeratorArray.map(
@@ -189,7 +221,10 @@ export default (data, indicatorInfo, aggregator) => {
       changeType === 'Percent Change'
         ? Object.entries(aggregatedDataObj2).forEach(([key,value]) =>
             
-            aggregatedDataObj[key] && value
+            aggregatedDataObj[key] && 
+            value &&
+            aggregatedDataObj[key] !== 0 && 
+            value !== 0
               ? aggregatedDataObj[key] = (aggregatedDataObj[key] - value)/value
               : aggregatedDataObj[key] = null
           )
@@ -206,6 +241,7 @@ export default (data, indicatorInfo, aggregator) => {
             )
     }
 
+    console.log(aggregatedDataObj2);
 
     return aggregatedDataObj;
   };

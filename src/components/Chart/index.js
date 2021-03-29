@@ -19,12 +19,8 @@ const Chart = props => {
   const colormap = props.colormap;
   const tractInfo = props.tractInfo;
   const selectedIndicator = props.selection.indicator;
-  const indicatorType = props.selection.indicator.type;
-  const indicatorFormatter = indicatorType === 'Percent' 
-    ? '0.0%'
-    : indicatorType === 'Ratio' || 'Weighted Ratio'
-      ? '0.0'
-      : '0,0' 
+  // const indicatorType = props.selection.indicator.type;
+  const indicatorFormatter = props.selection.indicator.formatter.replace(/"/g, '')
 
   const handleAggregation = () => {
     const array = [];
