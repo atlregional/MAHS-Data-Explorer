@@ -10,7 +10,7 @@ const MapLegend = props => {
   const viewMapData = props.viewMapData;
   const colorArr = props.colors;
   // const inidicatorName = props.selection.indicator.name;
-  const indicatorType = props.selection.indicator.type;
+  // const indicatorType = props.selection.indicator.type;
   const formatter = props.selection.indicator.formatter.replace(/"/g, '');
 
   // console.log(formatter.replace(/"/g, ''));
@@ -25,7 +25,6 @@ const MapLegend = props => {
   //   console.log(colorScaleBlockWidth);
   return viewMapData 
     ? <div id="legend">
-          {/* <p className="map-legend-title">{inidicatorName}</p> */}
           {props.stats ? (
             <div className="color-row">
               <span className="min-value value-perimeter">{minVal}</span>

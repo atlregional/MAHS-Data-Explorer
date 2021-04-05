@@ -72,8 +72,6 @@ const MapTooltip = props => {
           <span className="tooltip-thic">
             {' '}
             {selectionInfo.geoType}
-            {/* {selectionInfo.geo}{' '} */}
-            {/* {selectionInfo.geoType !== 'City' ? selectionInfo.geoType : ' '} */}
           </span> at{' '}
           <strong>
             <span className="tooltip-percent-comparison">

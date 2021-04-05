@@ -66,7 +66,6 @@ const IndicatorDropdown = props => {
         onMouseLeave={() => {
           setDropdownOpen(false);
         }}
-
       >
         <div className="indicator-header">
           {!multiple ? props.selection.indicator.name : null}
@@ -81,7 +80,6 @@ const IndicatorDropdown = props => {
           <em>{props.placeholderText}</em>
           <Icon
             name="caret down"
-            // size=""
             className="indicator-selector-dropdown-icon"
           />
         </div>
@@ -101,15 +99,8 @@ const IndicatorDropdown = props => {
               key={`${category.split(' ').join('-')}-${
                 multipleSelections ? 'multiple' : 'single'
               }`}
-              // id={'unselected-indicator'}
               className={'indicator-selector-dropdown-category'}
-              // onClick={() => 
-              //   multiple
-              //     ? handleCategorySelection(category)
-              //     : null
-              // }
             >
-              {/* {multiple ? <Checkbox checked={selectedCategories.includes(category)} /> : null} */}
               {category}
             </div>
             {  
@@ -138,11 +129,6 @@ const IndicatorDropdown = props => {
                         : null
                     }
                     className={`indicator-selector-dropdown-option` 
-                    // ${
-                    //   multipleSelected
-                    //     ? 'indicator-selector-dropdown-option-multiple-selected'
-                    //     : ''
-                    // }`
                     }
                     onClick={() => {
                       multiple

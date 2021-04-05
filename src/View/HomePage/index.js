@@ -103,7 +103,6 @@ const HomePage = props => {
       <div
         id={!mobile ? 'subarea-selector' : 'subarea-selector-mobile'}
       >
-        {/* <div className={mobile && mobileVizView === 'table' ? 'hidden' : null}> */}
           <SubAreaSelector
             colormap={style.colormap}
             subareaOptions={subareaOptions}
@@ -185,7 +184,6 @@ const HomePage = props => {
             </div>
           ) : null}
         </div>
-        {/* <div id='chart-wrapper'> */}
           {
             tractInfo
               ? <Chart
@@ -205,9 +203,6 @@ const HomePage = props => {
               : null
           }        
         </div>
-      {/* </div> */}
-      {/* <div id='table-shadow-box'> */}
-
       {(mobile && mobileVizView === 'table') || !mobile ? (
         <div id="table-indicators-selector">
           <IndicatorDropdown
@@ -228,17 +223,6 @@ const HomePage = props => {
         }
         className={mobile && mobileVizView !== 'table' ? 'hidden' : null}
       >
-        {/* {mobile && mobileVizView === 'table' ? (
-          <div
-            className="arc-table-logo"
-            style={{ backgroundImage: `url${headerBackground}` }}
-          >
-            <img
-              src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/logo.svg"
-              alt="Atlanta Regional Commission logo"
-            />
-          </div>
-        ) : null} */}
         {tractInfo && selection.indicators.length > 0 ? (
           <Table
             mobile={mobile}
@@ -255,9 +239,6 @@ const HomePage = props => {
           </div>
         )}
       </div>
-      {/* </div> */}
-
-
       {mobile ? (
         <VizViewSelector
           mobileVizView={mobileVizView}
