@@ -103,7 +103,7 @@ const App = () => {
         />
       : <div id="app-loader-spinner">
           <RingLoader css={{ margin: 'auto' }} size="100px" />
-          <h1>Loading Data Explorer...</h1>
+          <h1>Loading MAHS Data Explorer...</h1>
         </div>
       }
     </div>

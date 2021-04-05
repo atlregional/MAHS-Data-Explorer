@@ -19,7 +19,8 @@ const Chart = props => {
   const colormap = props.colormap;
   const tractInfo = props.tractInfo;
   const selectedIndicator = props.selection.indicator;
-  // const indicatorType = props.selection.indicator.type;
+  const indicatorType = props.selection.indicator.type;
+  const changeType = props.selection.indicator.changeType;
   const indicatorFormatter = props.selection.indicator.formatter.replace(/"/g, '')
 
   const handleAggregation = () => {
@@ -120,14 +121,14 @@ const Chart = props => {
   return props.subareaData 
    ? <ResponsiveContainer
           className="chart-responsive-container"
-          width="90%"
+          width="85%"
           height="100%"
         >
           <ComposedChart className="bar-chart" data={props.subareaData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey={'Subarea'} />
             <YAxis
-              // tickSize={} 
+              tick={{fontSize: 12}} 
               tickFormatter={tick => 
                 numeral(tick).format(indicatorFormatter)
               }
@@ -178,12 +179,17 @@ const Chart = props => {
                 />
               ))}
             </Bar>
-            <Line
-              dataKey={props.selection.geo}
-              stroke="#000000"
-              strokeDasharray="4 4"
-              dot={false}
-            />
+
+            {
+              changeType || indicatorType !== 'Sum' 
+                ? <Line
+                    dataKey={props.selection.geo}
+                    stroke="#000000"
+                    strokeDasharray="4 4"
+                    dot={false}
+                  />
+                : null
+            }
           </ComposedChart>
         </ResponsiveContainer>
    : null;

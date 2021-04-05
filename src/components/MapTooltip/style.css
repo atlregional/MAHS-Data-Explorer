@@ -42,6 +42,9 @@
   font-size: 2em;
   /* font-size: x-large; */
 }
+#tooltip-key-indicator-value > span {
+  font-style: italic;
+}
 
 #tooltip-subarea {
   font-weight: 500;

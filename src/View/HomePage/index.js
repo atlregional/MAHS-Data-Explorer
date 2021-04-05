@@ -127,6 +127,8 @@ const HomePage = props => {
       >
         {mobile && viewMapData ? (
           <IndicatorDropdown
+            mobile
+            placeholderText={'Change Indicator'}
             options={indicators}
             selection={selection}
             setSelection={setSelection}
@@ -174,6 +176,8 @@ const HomePage = props => {
           {(mobile && mobileVizView === 'chart') || !mobile ? (
             <div id="chart-map-indicator-selector">
               <IndicatorDropdown
+                mobile={mobile && mobileVizView === 'chart'}
+                placeholderText={'Change Indicator'}
                 options={indicators}
                 selection={selection}
                 setSelection={setSelection}
@@ -208,6 +212,8 @@ const HomePage = props => {
         <div id="table-indicators-selector">
           <IndicatorDropdown
             multiple
+            mobile={mobile && mobileVizView === 'table'}
+            placeholderText={'Choose Indicators for Table'}
             options={indicators}
             selection={selection}
             setSelection={setSelection}

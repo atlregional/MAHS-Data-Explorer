@@ -1,16 +1,44 @@
 import React, { useState } from 'react';
-import { Icon, Checkbox } from 'semantic-ui-react';
+import { Icon, Checkbox, Input } from 'semantic-ui-react';
 import './style.css';
 
 const IndicatorDropdown = props => {
   const [dropDownOpen, setDropdownOpen] = useState(false);
+  const [search, setSearch] = useState();
   // const [selectedCategories, setSelectedCategories] = useState([]);
 
   const multiple = props.multiple;
   const multipleSelections = props.selection.indicators
     ? props.selection.indicators.map(indicator => indicator.name)
     : [];
-  const options = props.options;
+
+  const searchFilter = (search, item) => {
+    const searchArray = search.replace(/,/g, '').split(' ');
+
+    const searchFields = [
+      'name',
+      'type',
+      'category',
+      'source'
+    ];
+
+    const resultsString = item
+      ? Object.entries(item)
+        .filter(([key,]) => searchFields.includes(key))
+        .map(([, value]) => value).join(' ').toUpperCase().replace(/,/g, '')
+      : null;
+
+    const booleanArray = searchArray.map(searchItem =>
+      item
+        ? resultsString.includes(searchItem.trim().toUpperCase().replace(/,/g, ''))
+        : null
+    );
+
+    // console.log(booleanArray)
+
+    return booleanArray.includes(false) ? false : true;
+  };
+  const options = props.options
   const categories = [...new Set(options.map(option => option.category))];
   // console.log(categories);
 
@@ -30,17 +58,27 @@ const IndicatorDropdown = props => {
     });
   };
 
+
+
   return (
       <div
         className="indicator-selector-dropdown-box"
-        onMouseLeave={() => setDropdownOpen(false)}
-        onClick={() => setDropdownOpen(dropDownOpen ? false : true)}
+        onMouseLeave={() => {
+          setDropdownOpen(false);
+        }}
+
       >
         <div className="indicator-header">
           {!multiple ? props.selection.indicator.name : null}
         </div>
-        <div className="indicator-selector-dropdown-header">
-          <em>{multiple ? 'Choose Indicators' : 'Choose Indicator'}</em>
+        <div
+          onClick={() => {
+            setDropdownOpen(dropDownOpen ? false : true);
+            setSearch();
+          }}
+          className="indicator-selector-dropdown-header"
+        >
+          <em>{props.placeholderText}</em>
           <Icon
             name="caret down"
             // size=""
@@ -48,7 +86,15 @@ const IndicatorDropdown = props => {
           />
         </div>
         {dropDownOpen
-          ? <div className="indicator-dropdown-menu">
+          ? <>
+            { !props.mobile 
+              ? <Input 
+                  onFocus={() => setDropdownOpen(true)}
+                  onChange={(e,d) => setSearch(d.value)}
+                />
+              : null
+            } 
+            <div className="indicator-dropdown-menu">
             {categories.map(category =>
               <> 
               <div
@@ -70,6 +116,11 @@ const IndicatorDropdown = props => {
 
               options
               .filter(item => item.category === category)
+              .filter(item =>
+                search && item
+                  ? searchFilter(search, item)
+                  : true
+              )
               .map(item => {
                 const multipleSelected =
                   multiple && multipleSelections.includes(item.name);
@@ -119,7 +170,8 @@ const IndicatorDropdown = props => {
             </>)
             }
         </div>
-        : null}
+            </>
+          : null}
       </div>
   );
 };

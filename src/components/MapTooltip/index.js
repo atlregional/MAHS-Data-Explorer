@@ -37,7 +37,7 @@ const MapTooltip = props => {
       <div id="tooltip-key-indicator-value">
         {data[featureInfo.GEOID10]
           ? numeral(data[featureInfo.GEOID10].value).format(indicatorFormatter)
-          : null}
+          : <span>Data unavailable</span>}
       </div>
       <div id="tooltip-compare-metrics">
         <div className='tooltip-thic' id='tooltip-compare-header'>

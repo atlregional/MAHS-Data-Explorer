@@ -18,3 +18,9 @@
   text-align: center;
   margin: auto;
 }
+
+#app-loader-spinner > h1 {
+  font-size: 2em;
+  color: #4B7B90;
+  margin: 1em;
+}

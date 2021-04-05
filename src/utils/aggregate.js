@@ -241,7 +241,7 @@ export default (data, indicatorInfo, aggregator) => {
             )
     }
 
-    console.log(aggregatedDataObj2);
+    // console.log(aggregatedDataObj2);
 
     return aggregatedDataObj;
   };
