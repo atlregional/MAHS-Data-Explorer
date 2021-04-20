@@ -3,7 +3,12 @@
   font-weight: 750;
 }
 
+/* .indicator-selector-dropdown-box {
+  background-color: transparent;
+} */
+
 .indicator-dropdown-menu {
+  margin-top: .3em;
   padding: 0.5em;
   overflow: auto;
   max-height: 20vh;
@@ -38,7 +43,7 @@
 .indicator-selector-dropdown-header {
   font-weight: bold;
   font-size: 1.1em;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   border-radius: 5px;
   padding: 0.5em;
 }
@@ -46,4 +51,17 @@
 #selected-indicator,
 .indicator-selector-dropdown-option-multiple-selected {
   font-weight: bold;
+}
+
+.select-unselect-all-toggle {
+  text-decoration: underline;
+  margin-left: 10px;
+  color: rgb(112, 112, 194);
+  /* float: left; */
+}
+
+.top-level-select-all-toggle-wrapper {
+  width: 100%;
+  text-align: center;
+  height: 1.5em;
 }

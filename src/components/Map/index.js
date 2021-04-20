@@ -64,7 +64,7 @@ const MapComp = props => {
       parseFloat(item[props.selection.indicator.name])
     ).filter(item => !isNaN(item));
 
-    console.log(valueArray);
+    // console.log(valueArray);
     const maxValue = valueArray ? Math.max(...valueArray) : null;
     const minValue = valueArray ? Math.min(...valueArray) : null;
 
@@ -128,7 +128,7 @@ const MapComp = props => {
       ? data[tractInfo.GEOID].colorIndex
       : null;
     const color = viewMapData
-      ? props.colors[colorIndex]
+      ? colorIndex !== null ? props.colors[colorIndex] : 'transparent'
       : subarea
       ? config.style.colormap[subarea - 1]
       : null;

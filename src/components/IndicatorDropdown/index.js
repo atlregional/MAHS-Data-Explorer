@@ -39,7 +39,7 @@ const IndicatorDropdown = props => {
     return booleanArray.includes(false) ? false : true;
   };
   const options = props.options
-  const categories = [...new Set(options.map(option => option.category))];
+  // const categories = [...new Set(options.map(option => option.category))];
   // console.log(categories);
 
   const handleMultipleSelection = selection => {
@@ -54,9 +54,71 @@ const IndicatorDropdown = props => {
     );
     props.setSelection({
       ...props.selection,
-      indicators: modifiedIndicators,
+      indicators: modifiedIndicators
     });
   };
+
+  const handleSelectAll = category => {
+    const currentIndicators = [...multipleSelections].sort();
+    // console.log(currentIndicators);
+    const selectedIndicators = [...props.options]
+      .filter(item =>
+        search && item
+          ? searchFilter(search, item)
+          : true
+      )
+      .filter(option => 
+        category ? option.category === category : true)
+      .map(option => option.name);
+
+    selectedIndicators.forEach(indicator =>
+      !currentIndicators.includes(indicator)
+        ? currentIndicators.push(indicator)
+        : null
+    )
+
+    const modifiedIndicators = [...options]
+      .filter(option =>
+        currentIndicators.includes(option.name)
+      );
+
+    props.setSelection({
+      ...props.selection,
+      indicators: modifiedIndicators
+    });
+  };
+
+  const handleUnselectAll = category => {
+    const currentIndicators = [...multipleSelections].sort();
+    // console.log(currentIndicators);
+    const selectedIndicators = [...props.options]
+      .filter(item =>
+        search && item
+          ? searchFilter(search, item)
+          : true
+      )
+      .filter(option => 
+        category ? option.category === category : true)
+      .map(option => option.name).reverse();
+    // console.log(selectedIndicators)
+
+    selectedIndicators.forEach(indicator =>
+      currentIndicators.includes(indicator)
+        ? currentIndicators.splice(
+            currentIndicators.indexOf(indicator), 1
+          )
+        : null
+    )
+
+    const modifiedIndicators = [...options].filter(option =>
+      currentIndicators.includes(option.name)
+    );
+
+    props.setSelection({
+      ...props.selection,
+      indicators: modifiedIndicators
+    });
+  }
 
 
 
@@ -83,17 +145,50 @@ const IndicatorDropdown = props => {
             className="indicator-selector-dropdown-icon"
           />
         </div>
+        { multiple 
+            ? <div className='top-level-select-all-toggle-wrapper'>
+                <span 
+                  className='select-unselect-all-toggle' 
+                  onClick={() => handleSelectAll()}
+                >
+                  add all
+                </span>
+                <span 
+                  className='select-unselect-all-toggle' 
+                  onClick={() => handleUnselectAll()}
+                >
+                  remove all
+                </span>
+              </div> 
+            : null 
+        }  
         {dropDownOpen
           ? <>
             { !props.mobile 
-              ? <Input 
+              ? <Input
+                  fluid
+                  placeholder='Search indicators' 
                   onFocus={() => setDropdownOpen(true)}
                   onChange={(e,d) => setSearch(d.value)}
                 />
               : null
             } 
+
             <div className="indicator-dropdown-menu">
-            {categories.map(category =>
+         
+              {
+              options
+              .filter(item =>
+                search && item
+                  ? searchFilter(search, item)
+                  : true
+              ).length === 0 ? <div>No matching indicators</div> : null 
+            }
+            {[...new Set(options.filter(item =>
+                search && item
+                  ? searchFilter(search, item)
+                  : true
+              ).map(option => option.category))].map(category =>
               <> 
               <div
               key={`${category.split(' ').join('-')}-${
@@ -102,6 +197,25 @@ const IndicatorDropdown = props => {
               className={'indicator-selector-dropdown-category'}
             >
               {category}
+              { multiple 
+                  ? <span 
+                      className='select-unselect-all-toggle' 
+                      onClick={() => handleSelectAll(category)}
+                    >
+                      add all
+                    </span> 
+                  : null 
+              }
+              { multiple 
+                  ? <span 
+                      className='select-unselect-all-toggle' 
+                      onClick={() => handleUnselectAll(category)}
+                    >
+                      remove all
+                    </span> 
+                  : null 
+              }
+
             </div>
             {  
 
