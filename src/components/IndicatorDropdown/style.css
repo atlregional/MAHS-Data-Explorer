@@ -1,13 +1,16 @@
 .indicator-header {
   font-size: 1.5em;
   font-weight: 750;
+  cursor: pointer;
+
 }
 
-/* .indicator-selector-dropdown-box {
-  background-color: transparent;
-} */
+.indicator-selector-dropdown-box {
+  cursor: pointer;
+}
 
 .indicator-dropdown-menu {
+  cursor: pointer;
   margin-top: .3em;
   padding: 0.5em;
   overflow: auto;
@@ -58,6 +61,11 @@
   margin-left: 10px;
   color: rgb(112, 112, 194);
   /* float: left; */
+}
+
+.select-unselect-all-toggle:hover {
+  color: rgb(218, 165, 67);
+
 }
 
 .top-level-select-all-toggle-wrapper {

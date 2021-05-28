@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -50,6 +50,8 @@ const Chart = props => {
     // setData(array);
     props.setSubareaData(array);
   };
+
+  const [chartHover, setChartHover] = useState();
 
   const CustomTooltip = ({ active, payload, label }) => {
     const geoType = props.selection.geoType;
@@ -140,7 +142,8 @@ const Chart = props => {
                 <Cell
                   key={selectedIndicator.name + idx}
                   fillOpacity={
-                    barData.Subarea === props.highlightedSubarea
+                    barData.Subarea === props.highlightedSubarea ||
+                    barData.Subarea === chartHover
                       ? 1
                       : props.highlightedSubarea
                       ? props.clickedSubarea
@@ -149,24 +152,26 @@ const Chart = props => {
                       : 1
                   }
                   stroke={
-                    barData.Subarea === props.highlightedSubarea
-                      ? 'black'
+                    barData.Subarea === props.highlightedSubarea                      ? 'black'
                       : null
                   }
                   strokeWidth={
                     barData.Subarea === props.highlightedSubarea ? 3 : null
                   }
                   fill={colormap[barData.Subarea - 1]}
-                  onMouseEnter={() =>
+                  onMouseEnter={() => {
                     props.setHighlightedSubarea(
                       props.clickedSubarea
                         ? props.clickedSubarea
                         : barData.Subarea
-                    )
-                  }
-                  onMouseLeave={() =>
-                    props.setHighlightedSubarea(props.clickedSubarea)
-                  }
+                    );
+                    setChartHover(barData.Subarea)
+
+                  }}
+                  onMouseLeave={() => {
+                    props.setHighlightedSubarea(props.clickedSubarea);
+                    setChartHover();
+                  }}
                   onClick={() => {
                     props.setClickedSubarea(
                       props.clickedSubarea

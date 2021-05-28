@@ -177,7 +177,8 @@ const MapComp = props => {
     'Henry',
     'Cherokee',
     'Fayette',
-    'Rockdale'
+    'Rockdale',
+    "Forsyth"
   ]
 
   const handleBounds = featureBounds =>
@@ -221,7 +222,7 @@ const MapComp = props => {
                     key={`boundary-layer-${config.name}-${props.selection.geo}`}
                     data={boundary}
                     filter={feature =>
-                      props.selection.geo === '10-County'
+                      props.selection.geo === '11-County'
                         ? regionCounties.includes(feature.properties[config.geoField])
                         : feature.properties[config.geoField] ===
                           props.selection.geo
@@ -259,7 +260,7 @@ const MapComp = props => {
                   const tractInfo = props.tractInfo[geoID];
 
                   return tractInfo
-                    ? props.selection.geo === '10-County'
+                    ? props.selection.geo === '11-County'
                       ? true
                       : props.selection.geoType === 'County'
                       ? feature.properties['COUNTY_NM'] === props.selection.geo
@@ -274,6 +275,7 @@ const MapComp = props => {
                   style={{
                     border: 'solid #808080 1px',
                     borderRadius: '5px',
+                    boundaryColor: 'transparent'
                   }}
                 >
                   <MapTooltip 
