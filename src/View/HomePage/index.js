@@ -23,7 +23,7 @@ const HomePage = props => {
   const [subareaOptions, setSubareaOptions] = useState([]);
   const [selection, setSelection] = useState({
     ...props.config.selection,
-    indicator: props.indicators[0],
+    indicator: props.config.selection.indicator || props.indicators[0],
     indicators: props.indicators
   });
   const [highlightedSubarea, setHighlightedSubarea] = useState();
@@ -33,7 +33,7 @@ const HomePage = props => {
   const [clickedSubarea, setClickedSubarea] = useState();
   const [subareaData, setSubareaData] = useState();
   const [data, setData] = useState();
-  // console.log('data: ', data);
+  console.log(selection);
 
   // color gradient displayed on the map;
   const numBins = 100;
