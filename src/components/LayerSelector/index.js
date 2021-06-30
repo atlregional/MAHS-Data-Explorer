@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Checkbox, Icon } from 'semantic-ui-react';
-import './style.css';
-import 'semantic-ui-css/semantic.min.css';
+import React, { useState } from "react";
+import { Checkbox, Icon } from "semantic-ui-react";
+import "./style.css";
+import "semantic-ui-css/semantic.min.css";
 
-const LayerSelector = props => {
+const LayerSelector = (props) => {
   const [view, setView] = useState(false);
   const layers = props.layers ? props.layers : [];
 
@@ -12,12 +12,13 @@ const LayerSelector = props => {
       <div
         id={
           props.numberOfSubareas <= 5 || !props.mobile
-            ? 'layer-selection-header'
-            : 'layer-selection-header-shifted'
+            ? "layer-selection-header"
+            : "layer-selection-header-shifted"
         }
       >
         <Icon
-          name={'list alternate outline'}
+          className="layer-toggle-box"
+          name={"list alternate outline"}
           onClick={() => setView(view === true ? false : true)}
         />
       </div>
@@ -25,14 +26,16 @@ const LayerSelector = props => {
       <div
         id={
           props.numberOfSubareas <= 5 || !props.mobile
-            ? 'layer-selector-box'
-            : 'layer-selector-box-shifted'
+            ? "layer-selector-box"
+            : "layer-selector-box-shifted"
         }
-        className={view === true ? 'open' : 'closed'}
+        className={view === true ? "open" : "closed"}
       >
         {view === true
           ? layers
-              .filter(layer => layer.type === 'transportation' && !layer.disabled)
+              .filter(
+                (layer) => layer.type === "transportation" && !layer.disabled
+              )
               .map((layer, idx) => (
                 <div key={layer.name + idx} className="layer-selection-row">
                   <div className="layer-selection-checkbox">
@@ -40,7 +43,7 @@ const LayerSelector = props => {
                       checked={layer.visible}
                       onChange={() => {
                         const arr = [];
-                        layers.forEach(el => {
+                        layers.forEach((el) => {
                           // if element name is el.name
                           el.name === layer.name
                             ? arr.push({

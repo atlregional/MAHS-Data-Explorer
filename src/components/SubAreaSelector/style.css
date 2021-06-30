@@ -6,10 +6,9 @@
   align-content: center;
   height: 100%;
   width: 100%;
-  padding: .3em;
+  padding: 0.3em;
   /* z-index: 99999999999; */
   /* overflow: visible; */
-
 }
 
 .subarea-popup {
@@ -54,13 +53,12 @@
   /* padding-top: 15%; */
   height: 100%;
   width: 100%;
-  margin: .1em;
+  margin: 0.1em;
   justify-content: center;
   align-items: center;
   /* text-align: center; */
   vertical-align: middle;
   z-index: 99999999;
-
 }
 
 div.ui.right.center.transition.visible {
@@ -73,7 +71,7 @@ div.ui.right.center.transition.visible {
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
-    margin-left: -.1em;
+    margin-left: -0.1em;
   }
   .subarea-selector-button {
     padding: 0;

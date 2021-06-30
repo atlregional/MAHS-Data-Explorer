@@ -1,7 +1,6 @@
-
 .bar-chart {
-    margin-top: 3vh;
-} 
+  margin-top: 3vh;
+}
 
 .chart-custom-tooltip {
   display: flex;
@@ -19,22 +18,22 @@
 }
 
 .chart-tooltip-subarea {
-    font-weight: 800;
-    font-size: 1.5em;;
+  font-weight: 800;
+  font-size: 1.5em;
 }
 
 .chart-tooltip-geography-selection {
-    font-size: .8em;
+  font-size: 0.8em;
 }
 
 .tooltip-geo {
-    /* font-size: large; */
-    font-weight: 700;
+  /* font-size: large; */
+  font-weight: 700;
 }
 
 .chart-tooltip-indicator {
   font-weight: 650;
-  margin: 1em 0 .3em 0;
+  margin: 1em 0 0.3em 0;
   line-height: 1em;
   font-size: 1em;
 }
@@ -46,18 +45,18 @@
 }
 
 .chart-tooltip-comparison {
-  margin: .5em 0 0 0;
+  margin: 0.5em 0 0 0;
   line-height: 1.5em;
 }
 
 #tooltip-compare-header {
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 700;
   /* margin: 1em 0 0 0; */
 }
 
 .chart-tooltip-percent-comparison {
-/* padding-top: 10px; */
+  /* padding-top: 10px; */
   font-weight: 200;
   font-size: 1.4em;
 }
@@ -67,9 +66,9 @@
 }
 
 #tooltip-footer > div {
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 400;
-  
+
   /* max-width: 250px; */
 }
 #tooltip-footer > div > span {
@@ -78,11 +77,16 @@
 }
 
 .recharts-xAxis .recharts-cartesian-axis-ticks {
-    font-size: 20px;
-    font-weight: 600;
-    /* color: black; */
+  font-size: 20px;
+  font-weight: 600;
+  /* color: black; */
 }
 
 .recharts-responsive-container {
   margin: auto;
+}
+
+.chart-responsive-container {
+  position: relative;
+  right: 20px;
 }

@@ -17,7 +17,9 @@
 }
 
 #viz-view-selector {
+  margin-top: 10vh;
   position: fixed;
+  display: block;
   bottom: 0;
   width: 100%;
   height: 10vh;
@@ -27,4 +29,3 @@
 .viz-view-selector-button span {
   font-size: 15px;
 }
-

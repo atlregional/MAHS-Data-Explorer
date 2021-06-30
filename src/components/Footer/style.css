@@ -1,14 +1,17 @@
-
 .footer-parent-div {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #97b0ba32;
-    box-shadow: 0 0 10px #4B7B90;
-    padding: .25em;
-    height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #97b0ba32;
+  box-shadow: 0 0 10px #4b7b90;
+  padding: 0.25em;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .footer-parent-div img {
-    height: 5vh;
+  height: 5vh;
 }

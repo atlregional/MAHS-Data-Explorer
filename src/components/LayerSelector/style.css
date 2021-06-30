@@ -13,6 +13,8 @@
 }
 
 .open {
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.562);
+
   opacity: 1;
   /* animation: slideIn 1s ease-in; */
   transition: opacity 0.5s ease-in;
@@ -68,6 +70,10 @@
   color: rgb(75, 89, 104, 0.95);
 }
 
+.layer-toggle-box {
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
 @keyframes slideIn {
   0% {
     transform: scale(0);
@@ -104,8 +110,8 @@
 
   #layer-selection-header-shifted {
     position: fixed;
-    top: calc(77vh + 20px);
-    left: 65px;
+    top: 72vh;
+    left: 15px;
   }
 
   #layer-selector-box-shifted {

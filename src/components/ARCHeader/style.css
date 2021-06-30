@@ -1,64 +1,62 @@
-
 #ARC-Header {
-    z-index: 999999999999;
-    position: fixed;
-    top: 0;
-    height: 10vh;
-    width: 100vw;
-    display: grid;
-    grid-template-columns: 10vw 50vw 40vw;
-    color: whitesmoke;
+  z-index: 999999999999;
+  position: fixed;
+  top: 0;
+  height: 10vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 10vw 50vw 40vw;
+  color: whitesmoke;
 }
 
 .tool-header {
-    position: fixed;
-    /* padding-left: 10%; */
-    /* left: 10%; */
-    /* color: whitesmoke; */
-    top: 2vh;
+  position: fixed;
+  /* padding-left: 10%; */
+  /* left: 10%; */
+  /* color: whitesmoke; */
+  top: 2vh;
 }
 
 .arc-header-div {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    background-color: #4B7B90;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background-color: #4b7b90;
 }
 
-
 #geo-label-header {
-    /* margin-top: .5em; */
-    font-weight: 300;
-    font-size: 2.5em;
-    width: 100%;
+  /* margin-top: .5em; */
+  font-weight: 300;
+  font-size: 2.5em;
+  width: 100%;
 }
 
 .ARC-logo-div {
-    width: 100;
-    text-align: center;
+  width: 100;
+  text-align: center;
 }
 
 .ARC-logo {
-    height: 50px;
-    width: 400px;
+  height: 50px;
+  width: 400px;
 }
 
 .back-to-main-site-button {
-    margin-left: 15px;
-    width: 80%;
+  margin-left: 15px;
+  width: 80%;
 }
 
 .back-to-site {
   --wp-admin-theme-color: #007cba;
   --wp-admin-theme-color-darker-10: #006ba1;
   --wp-admin-theme-color-darker-20: #005a87;
-  font-family: "Roboto",sans-serif;
+  font-family: "Roboto", sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-align: center;
   /* box-sizing: inherit; */
-  color: #4B7A90;
-  transition: color .25s ease-out,background-color .25s ease;
+  color: #4b7a90;
+  transition: color 0.25s ease-out, background-color 0.25s ease;
   /* position: absolute;
   left: 0;
   top: 50%; */
@@ -75,65 +73,63 @@
 }
 
 @media only screen and (max-width: 800px) {
-
-    #ARC-Header {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        /* grid-template-columns: 30vw 70vw; */
-        align-items: center;
-        justify-content: space-between;
-    }
-    .ARC-logo-div {
-        /* position: fixed;
+  #ARC-Header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* grid-template-columns: 30vw 70vw; */
+    align-items: center;
+    justify-content: space-between;
+  }
+  .ARC-logo-div {
+    /* position: fixed;
         right: 5vw;
         top: 1.5vh; */
-        margin-right: 10px;
-        width: 10vw;
-        height: 5.5vh;
-        background-color: white;
-        border-radius: 5px;
-        /* color: white; */
-    }
-    .ARC-mobile-logo {
-        /* z-index: 999999999999; */
-        height: 5.25vh;
-        width: 8vw;
-        color: white;
-    }
+    margin-right: 10px;
+    width: 10vw;
+    height: 5.5vh;
+    background-color: white;
+    border-radius: 5px;
+    /* color: white; */
+  }
+  .ARC-mobile-logo {
+    /* z-index: 999999999999; */
+    height: 5.25vh;
+    width: 8vw;
+    color: white;
+  }
 
-    /* .arc-header-box {
+  /* .arc-header-box {
       display: flex;
       flex-direction: row;
     } */
 
-    .back-to-main-site-button {
-        margin-left: 10px;
-        border-radius: 5px;
-        width: 80px;
-        box-shadow: .5px .5px #989898 ;
-    }
-
-    #geo-label-header { 
-        /* margin: auto; */
-        /* width: 100%; */
-        font-size: 2em;
-        text-align: center;
-    }
-
-    .geo-selector-box {
-        position: relative;
-        /* position: fixed; */
-        width: 100%;
-        /* top: 1vh; */
-        text-align: center;
-        /* left: 26vw; */
-        /* padding-left: 0; */
-    }
-
-    .ui.inline.dropdown {
-        /* width: 140%; */
-        text-align: center;
-    }
- 
+  .back-to-main-site-button {
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 80px;
+    box-shadow: 0.5px 0.5px #989898;
   }
+
+  #geo-label-header {
+    /* margin: auto; */
+    /* width: 100%; */
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .geo-selector-box {
+    position: relative;
+    /* position: fixed; */
+    width: 100%;
+    /* top: 1vh; */
+    text-align: center;
+    /* left: 26vw; */
+    /* padding-left: 0; */
+  }
+
+  .ui.inline.dropdown {
+    /* width: 140%; */
+    text-align: center;
+  }
+}

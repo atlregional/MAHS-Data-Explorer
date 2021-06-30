@@ -33,3 +33,14 @@
   /* height: 100%;
   vertical-align: middle; */
 }
+
+@media screen and (max-width: 800px) {
+  .indicator-column {
+    font-size: 0.75em;
+    line-height: 1.1em;
+    width: 100px;
+    padding: 0 0.5em 0 0.5em;
+    white-space: normal;
+    font-weight: 500;
+  }
+}
