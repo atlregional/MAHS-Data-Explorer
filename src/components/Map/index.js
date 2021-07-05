@@ -393,7 +393,15 @@ const MapComp = (props) => {
         </div>
       )}
       {props.selection && stats ? (
-        <div id={props.mobile ? "map-legend-box-above" : "map-legend-box"}>
+        <div
+          id={
+            props.mobile && viewMapData === false
+              ? "map-legend-box-above"
+              : props.mobile && viewMapData === true
+              ? "map-legend-box-shifted"
+              : "map-legend-box"
+          }
+        >
           {/* <div
             id='map-data-toggle-wrapper'
           > */}

@@ -1,5 +1,4 @@
-#layer-selector-box,
-#layer-selector-box-shifted {
+#layer-selector-box {
   width: 11%;
   /* background-color: rgb(226, 202, 201, 0.65); */
   background-color: white;
@@ -9,6 +8,19 @@
   position: fixed;
   bottom: calc(16.5vh + 30px);
   left: calc(8.5vw + 40px);
+  padding: 1em 0 1em 0;
+}
+
+#layer-selector-box-shifted {
+  width: 11%;
+  /* background-color: rgb(226, 202, 201, 0.65); */
+  background-color: white;
+  border: solid thin rgb(119, 148, 123, 0.2);
+
+  border-radius: 10px;
+  position: fixed;
+  bottom: 80px;
+  left: 10px;
   padding: 1em 0 1em 0;
 }
 
@@ -26,8 +38,7 @@
   transition: opacity 0s ease-out;
 }
 
-#layer-selection-header,
-#layer-selection-header-shifted {
+#layer-selection-header {
   height: 40px;
   width: 40px;
   line-height: 40px;
@@ -37,6 +48,19 @@
   left: calc(8% + 15px);
   bottom: calc(15vh + 20px);
 
+  z-index: 9999;
+  /* border: solid 2px rgb(226, 202, 201, 0.65); */
+}
+
+#layer-selection-header-shifted {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  position: fixed;
+  padding: 0;
+  border-radius: 5px;
+  left: calc(8% + 15px);
+  bottom: calc(15vh + 20px);
   z-index: 9999;
   /* border: solid 2px rgb(226, 202, 201, 0.65); */
 }
@@ -104,7 +128,7 @@
   }
 
   #layer-selection-header {
-    top: calc(30vh + 20px);
+    top: calc(10vh + 20px);
     left: 20px;
   }
 
@@ -117,7 +141,7 @@
   #layer-selector-box-shifted {
     position: fixed;
     width: 50%;
-    top: calc(65vh + 40px);
-    left: 85px;
+    bottom: 19vh;
+    left: 50px;
   }
 }

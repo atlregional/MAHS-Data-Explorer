@@ -88,9 +88,26 @@
   align-items: center;
   background-color: #f8f8f8f8;
   z-index: 999999;
+  height: 60px;
+  left: 28%;
+  top: 21vh;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
+}
+
+#map-legend-box-shifted {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em;
+  /* flex-wrap: nowrap; */
+  align-items: center;
+  background-color: #f8f8f8f8;
+  z-index: 999999;
   height: 50px;
-  left: 30%;
-  top: 22vh;
+  left: 0;
+  width: 100%;
+  top: 30vh;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
 }

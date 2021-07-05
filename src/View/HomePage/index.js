@@ -111,142 +111,142 @@ const HomePage = (props) => {
           mobile={mobile}
         />
       }
-      <div id="mainwrapper">
-        <div id={!mobile ? "subarea-selector" : "subarea-selector-mobile"}>
-          <SubAreaSelector
-            mobile={mobile}
-            colormap={style.colormap}
-            subareaOptions={subareaOptions}
+      <div id={!mobile ? "subarea-selector" : "subarea-selector-mobile"}>
+        <SubAreaSelector
+          mobile={mobile}
+          colormap={style.colormap}
+          subareaOptions={subareaOptions}
+          selection={selection}
+          setSelection={setSelection}
+          highlightedSubarea={highlightedSubarea}
+          setHighlightedSubarea={setHighlightedSubarea}
+          selectedSubareas={selectedSubareas}
+          setSelectedSubareas={setSelectedSubareas}
+          clickedSubarea={clickedSubarea}
+          setClickedSubarea={setClickedSubarea}
+        />
+      </div>
+      <div
+        className={
+          mobile && mobileVizView === "map"
+            ? "mobile-map-indicator-selector"
+            : "hidden"
+        }
+      >
+        {mobile && viewMapData ? (
+          <IndicatorDropdown
+            mobile
+            placeholderText={"Change Indicator"}
+            options={indicators}
             selection={selection}
             setSelection={setSelection}
-            highlightedSubarea={highlightedSubarea}
-            setHighlightedSubarea={setHighlightedSubarea}
-            selectedSubareas={selectedSubareas}
-            setSelectedSubareas={setSelectedSubareas}
-            clickedSubarea={clickedSubarea}
-            setClickedSubarea={setClickedSubarea}
           />
-        </div>
-        <div
-          className={
-            mobile && mobileVizView === "map"
-              ? "mobile-map-indicator-selector"
-              : "hidden"
-          }
-        >
-          {mobile && viewMapData ? (
-            <IndicatorDropdown
-              mobile
-              placeholderText={"Change Indicator"}
-              options={indicators}
-              selection={selection}
-              setSelection={setSelection}
-            />
+        ) : null}
+      </div>
+      <div
+        id={
+          subareaOptions.length <= 5 || !mobile
+            ? "map-box"
+            : mobile && viewMapData
+            ? "map-box-reduced"
+            : "map-box-reduced-big"
+        }
+        className={mobile && mobileVizView !== "map" ? "hidden" : null}
+      >
+        <MapComp
+          subareaData={subareaData}
+          colors={colors}
+          viewMapData={viewMapData}
+          mobile={mobile}
+          tractInfo={tractInfo}
+          selection={selection}
+          config={props.config}
+          layers={layers}
+          subareaOptions={subareaOptions}
+          highlightedSubarea={highlightedSubarea}
+          numberOfSubareas={subareaOptions.length}
+          numBins={numBins}
+          data={data}
+          setData={setData}
+          setViewMapData={setViewMapData}
+        />
+      </div>
+      <div
+        id={
+          subareaOptions.length <= 5 || !mobile
+            ? "chart-box"
+            : "chart-box-reduced"
+        }
+        className={mobile && mobileVizView !== "chart" ? "hidden" : null}
+      >
+        <div className="chart-indicator-selector-box">
+          {(mobile && mobileVizView === "chart") || !mobile ? (
+            <div id="chart-map-indicator-selector">
+              <IndicatorDropdown
+                mobile={mobile && mobileVizView === "chart"}
+                placeholderText={"Change Indicator"}
+                options={indicators}
+                selection={selection}
+                setSelection={setSelection}
+              />
+            </div>
           ) : null}
         </div>
-        <div
-          id={
-            subareaOptions.length <= 5 || !mobile
-              ? "map-box"
-              : mobile && viewMapData
-              ? "map-box-reduced"
-              : "map-box-reduced-big"
-          }
-          className={mobile && mobileVizView !== "map" ? "hidden" : null}
-        >
-          <MapComp
+        {tractInfo ? (
+          <Chart
+            setSubareaData={setSubareaData}
             subareaData={subareaData}
-            colors={colors}
-            viewMapData={viewMapData}
+            indicators={indicators}
+            data={data}
+            mobile={mobile}
+            tractInfo={tractInfo}
+            highlightedSubarea={highlightedSubarea}
+            clickedSubarea={clickedSubarea}
+            setClickedSubarea={setClickedSubarea}
+            colormap={style.colormap}
+            selection={selection}
+            setHighlightedSubarea={setHighlightedSubarea}
+          />
+        ) : null}
+      </div>
+      {(mobile && mobileVizView === "table") || !mobile ? (
+        <div id="table-indicators-selector">
+          <IndicatorDropdown
+            multiple
+            mobile={mobile && mobileVizView === "table"}
+            placeholderText={"Choose Indicators for Table"}
+            options={indicators}
+            selection={selection}
+            setSelection={setSelection}
+          />
+        </div>
+      ) : null}
+      <div
+        id={
+          subareaOptions.length <= 5 || !mobile
+            ? "table-box"
+            : "table-box-reduced"
+        }
+        className={mobile && mobileVizView !== "table" ? "hidden" : null}
+      >
+        {tractInfo && selection.indicators.length > 0 ? (
+          <Table
             mobile={mobile}
             tractInfo={tractInfo}
             selection={selection}
-            config={props.config}
-            layers={layers}
-            subareaOptions={subareaOptions}
+            indicators={indicators}
             highlightedSubarea={highlightedSubarea}
-            numberOfSubareas={subareaOptions.length}
-            numBins={numBins}
-            data={data}
-            setData={setData}
-            setViewMapData={setViewMapData}
+            selectedSubareas={selectedSubareas}
+            selectedGeo={selection.geo}
           />
-        </div>
-        <div
-          id={
-            subareaOptions.length <= 5 || !mobile
-              ? "chart-box"
-              : "chart-box-reduced"
-          }
-          className={mobile && mobileVizView !== "chart" ? "hidden" : null}
-        >
-          <div className="chart-indicator-selector-box">
-            {(mobile && mobileVizView === "chart") || !mobile ? (
-              <div id="chart-map-indicator-selector">
-                <IndicatorDropdown
-                  mobile={mobile && mobileVizView === "chart"}
-                  placeholderText={"Change Indicator"}
-                  options={indicators}
-                  selection={selection}
-                  setSelection={setSelection}
-                />
-              </div>
-            ) : null}
+        ) : (
+          <div id="subarea-not-selected-box">
+            <p>Select INDICATOR(S) to display on table...</p>
           </div>
-          {tractInfo ? (
-            <Chart
-              setSubareaData={setSubareaData}
-              subareaData={subareaData}
-              indicators={indicators}
-              data={data}
-              mobile={mobile}
-              tractInfo={tractInfo}
-              highlightedSubarea={highlightedSubarea}
-              clickedSubarea={clickedSubarea}
-              setClickedSubarea={setClickedSubarea}
-              colormap={style.colormap}
-              selection={selection}
-              setHighlightedSubarea={setHighlightedSubarea}
-            />
-          ) : null}
-        </div>
-        {(mobile && mobileVizView === "table") || !mobile ? (
-          <div id="table-indicators-selector">
-            <IndicatorDropdown
-              multiple
-              mobile={mobile && mobileVizView === "table"}
-              placeholderText={"Choose Indicators for Table"}
-              options={indicators}
-              selection={selection}
-              setSelection={setSelection}
-            />
-          </div>
-        ) : null}
-        <div
-          id={
-            subareaOptions.length <= 5 || !mobile
-              ? "table-box"
-              : "table-box-reduced"
-          }
-          className={mobile && mobileVizView !== "table" ? "hidden" : null}
-        >
-          {tractInfo && selection.indicators.length > 0 ? (
-            <Table
-              mobile={mobile}
-              tractInfo={tractInfo}
-              selection={selection}
-              indicators={indicators}
-              highlightedSubarea={highlightedSubarea}
-              selectedSubareas={selectedSubareas}
-              selectedGeo={selection.geo}
-            />
-          ) : (
-            <div id="subarea-not-selected-box">
-              <p>Select INDICATOR(S) to display on table...</p>
-            </div>
-          )}
-        </div>
-        {mobile ? (
+        )}
+      </div>
+      <div className="bottom-bar">
+        {!mobile ? (
           <VizViewSelector
             mobileVizView={mobileVizView}
             setMobileVizView={setMobileVizView}
@@ -260,10 +260,10 @@ const HomePage = (props) => {
             numberOfSubareas={subareaOptions.length}
           />
         ) : null}
-      </div>
 
-      <div id="footer-box">
-        <Footer />
+        <div id="footer-box">
+          <Footer />
+        </div>
       </div>
     </>
   );
