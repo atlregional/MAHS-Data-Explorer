@@ -1,36 +1,36 @@
-import React from 'react';
-import './style.css';
-import { Icon } from 'semantic-ui-react';
+import React from "react";
+import "./style.css";
+import { Icon } from "semantic-ui-react";
 
-const VizViewSelector = props => {
+const VizViewSelector = (props) => {
   const buttonParamArr = [
     {
-      text: 'Map',
-      value: 'map',
-      icon: 'map',
+      text: "Map",
+      value: "map",
+      icon: "map",
     },
     {
-      text: 'Chart',
-      value: 'chart',
-      icon: 'chart bar',
+      text: "Chart",
+      value: "chart",
+      icon: "chart bar",
     },
     {
-      text: 'Table',
-      value: 'table',
-      icon: 'table',
+      text: "Table",
+      value: "table",
+      icon: "table",
     },
   ];
 
   return (
     <div id="viz-view-selector">
-      {buttonParamArr.map(item => (
+      {buttonParamArr.map((item) => (
         <div
           key={`${item.value}-viz-view-selector-button`}
           onClick={() => props.setMobileVizView(item.value)}
           className="viz-view-selector-button"
           id={
             props.mobileVizView === item.value
-              ? 'selected-viz-view-button'
+              ? "selected-viz-view-button"
               : null
           }
           style={{ width: `${100 / buttonParamArr.length}%` }}
@@ -40,7 +40,7 @@ const VizViewSelector = props => {
             className="viz-view-icon"
             name={item.icon}
             inverted={props.mobileVizView === item.value}
-            size="big"
+            size="large"
           />
         </div>
       ))}

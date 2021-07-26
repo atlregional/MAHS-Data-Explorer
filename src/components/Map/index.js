@@ -14,6 +14,7 @@ import { Icon } from "semantic-ui-react";
 import { Checkbox } from "semantic-ui-react";
 import RingLoader from "react-spinners/RingLoader";
 import MapTooltip from "../MapTooltip";
+import LayerSelector from "../LayerSelector";
 import "./style.css";
 
 const MapComp = (props) => {
@@ -329,6 +330,14 @@ const MapComp = (props) => {
         />
         <ZoomControl position="bottomleft" />
       </LeafletMap>
+      {props.mobile || props.mobileVizView === "map" ? (
+        <LayerSelector
+          setLayers={props.setLayers}
+          layers={props.layers}
+          mobile={props.mobile}
+          numberOfSubareas={props.subareaOptions.length}
+        />
+      ) : null}
       {mobile ? (
         <>
           <div
@@ -338,34 +347,33 @@ const MapComp = (props) => {
             }
           >
             <Icon name="map" size="big" />
-          </div>
-          <div
-            id={
-              openTileLayerSelector
-                ? "tile-layer-selector-open"
-                : "tile-layer-selector-closed"
-            }
-            className="tile-layer-selector"
-          >
-            {tileLayer.map((item, idx) => (
-              <img
-                className="tile-layer-thumb"
-                draggable="false"
-                alt="tile layer"
-                style={{
-                  border:
-                    tileLayer[tile].name === item.name
-                      ? "solid blue 3px"
-                      : null,
-                }}
-                onClick={() => {
-                  setTile(tileLayer.indexOf(item));
-                  setOpenTileLayerSelector(false);
-                }}
-                key={`${item.name}-thumb-${idx}`}
-                src={item.thumbUrl}
-              />
-            ))}
+            <div
+              id={
+                openTileLayerSelector
+                  ? "tile-layer-selector-open"
+                  : "tile-layer-selector-closed"
+              }
+            >
+              {tileLayer.map((item, idx) => (
+                <img
+                  className="tile-layer-thumb"
+                  draggable="false"
+                  alt="tile layer"
+                  style={{
+                    border:
+                      tileLayer[tile].name === item.name
+                        ? "solid blue 3px"
+                        : null,
+                  }}
+                  onClick={() => {
+                    setTile(tileLayer.indexOf(item));
+                    setOpenTileLayerSelector(false);
+                  }}
+                  key={`${item.name}-thumb-${idx}`}
+                  src={item.thumbUrl}
+                />
+              ))}
+            </div>
           </div>
         </>
       ) : (
@@ -394,13 +402,7 @@ const MapComp = (props) => {
       )}
       {props.selection && stats ? (
         <div
-          id={
-            props.mobile && viewMapData === false
-              ? "map-legend-box-above"
-              : props.mobile && viewMapData === true
-              ? "map-legend-box-shifted"
-              : "map-legend-box"
-          }
+          id={mobile && viewMapData ? "map-legend-box-data" : "map-legend-box"}
         >
           {/* <div
             id='map-data-toggle-wrapper'

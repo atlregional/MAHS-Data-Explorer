@@ -61,14 +61,14 @@
   z-index: 999999;
   height: 60px;
   right: 41vw;
-  top: 13vh;
+  top: 11vh;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
 }
 
 #tile-layer-icon {
   position: relative;
-  bottom: 70px;
+  bottom: 120px;
   margin-right: 10px;
   float: right;
   font-size: 20px;
@@ -77,39 +77,6 @@
   border-radius: 10px;
   box-shadow: 0 0 10px #000000;
   z-index: 99999999;
-}
-
-#map-legend-box-above {
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  padding: 0.5em;
-  /* flex-wrap: nowrap; */
-  align-items: center;
-  background-color: #f8f8f8f8;
-  z-index: 999999;
-  height: 60px;
-  left: 28%;
-  top: 21vh;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
-}
-
-#map-legend-box-shifted {
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  padding: 0.5em;
-  /* flex-wrap: nowrap; */
-  align-items: center;
-  background-color: #f8f8f8f8;
-  z-index: 999999;
-  height: 50px;
-  left: 0;
-  width: 100%;
-  top: 30vh;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
 }
 
 /* ************************************* */
@@ -122,16 +89,27 @@
 
 @media screen and (max-width: 800px) {
   #tile-layer-selector-open {
+    display: flex;
+    flex-direction: row;
     z-index: 999999;
     position: fixed;
-    bottom: 25vh;
-    left: 75%;
+    bottom: calc(18vh + 25px);
+    right: 80px;
+  }
+
+  .tile-layer-thumb {
+    display: block;
+    height: 9vh;
+    width: 9vh;
+    max-height: 65px;
+    max-width: 65px;
+    margin: 3px 3px 0 8px;
+    border-radius: 5px;
+    box-shadow: 4px 4px #6d5e5e7c;
   }
 
   #tile-layer-selector-closed {
-    position: fixed;
-    top: 20%;
-    right: -20%;
+    visibility: hidden;
   }
 
   #map-loading-spinner {
@@ -139,5 +117,31 @@
     z-index: 999999999999;
     top: 18vh;
     left: 0vw;
+  }
+
+  #map-legend-box {
+    position: fixed;
+
+    max-width: 80%;
+    right: calc(1vw + 10px);
+    /* left: 54vw; */
+    top: 21vh;
+  }
+
+  #map-legend-box-data {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5em;
+    /* flex-wrap: nowrap; */
+    align-items: center;
+    background-color: #f8f8f8f8;
+    z-index: 999999;
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
+    position: fixed;
+    width: 50%;
+    left: 25%;
+    top: 24vh;
   }
 }
