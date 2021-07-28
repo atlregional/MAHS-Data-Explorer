@@ -1,4 +1,5 @@
 .indicator-header {
+  /* margin-top: 1vh; */
   font-size: 1.5em;
   font-weight: 750;
   cursor: pointer;
@@ -6,6 +7,7 @@
 
 .indicator-selector-dropdown-box {
   cursor: pointer;
+  width: 100%;
 }
 
 #chart-map-indicator-selector {
@@ -51,7 +53,6 @@
   font-size: 1.1em;
   /* background-color: #ffffff; */
   border-radius: 5px;
-  padding: 0.5em;
 }
 
 #selected-indicator,

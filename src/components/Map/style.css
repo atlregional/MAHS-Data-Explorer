@@ -31,6 +31,7 @@
   width: 80px;
   white-space: normal;
   /* float: left; */
+  font-size: 14px;
 }
 
 .tile-layer-thumb {
@@ -67,16 +68,22 @@
 }
 
 #tile-layer-icon {
+  height: 50px;
+  width: 70px;
   position: relative;
   bottom: 120px;
   margin-right: 10px;
   float: right;
   font-size: 20px;
   background-color: lightgrey;
-  padding: 5px;
+  padding: 2px;
   border-radius: 10px;
   box-shadow: 0 0 10px #000000;
   z-index: 99999999;
+}
+
+#tile-layer-icon i {
+  margin: auto;
 }
 
 /* ************************************* */
@@ -95,15 +102,16 @@
     position: fixed;
     bottom: calc(18vh + 25px);
     right: 80px;
+    margin-right: 10px;
   }
 
   .tile-layer-thumb {
     display: block;
-    height: 9vh;
-    width: 9vh;
+    height: 5.5vh;
+    width: 5.5vh;
     max-height: 65px;
     max-width: 65px;
-    margin: 3px 3px 0 8px;
+    margin: 3px 0px 0 8px;
     border-radius: 5px;
     box-shadow: 4px 4px #6d5e5e7c;
   }
@@ -135,13 +143,16 @@
     /* flex-wrap: nowrap; */
     align-items: center;
     background-color: #f8f8f8f8;
+    justify-content: center;
     z-index: 999999;
     height: 50px;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
     position: fixed;
-    width: 50%;
-    left: 25%;
-    top: 24vh;
+    width: 76%;
+    left: 12%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 150px;
   }
 }

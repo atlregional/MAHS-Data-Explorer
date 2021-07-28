@@ -330,14 +330,12 @@ const MapComp = (props) => {
         />
         <ZoomControl position="bottomleft" />
       </LeafletMap>
-      {props.mobile || props.mobileVizView === "map" ? (
-        <LayerSelector
-          setLayers={props.setLayers}
-          layers={props.layers}
-          mobile={props.mobile}
-          numberOfSubareas={props.subareaOptions.length}
-        />
-      ) : null}
+      <LayerSelector
+        setLayers={props.setLayers}
+        layers={props.layers}
+        mobile={props.mobile}
+        numberOfSubareas={props.subareaOptions.length}
+      />
       {mobile ? (
         <>
           <div

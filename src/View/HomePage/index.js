@@ -156,6 +156,7 @@ const HomePage = (props) => {
             tractInfo={tractInfo}
             selection={selection}
             config={props.config}
+            setLayers={setLayers}
             layers={layers}
             subareaOptions={subareaOptions}
             highlightedSubarea={highlightedSubarea}
@@ -166,6 +167,7 @@ const HomePage = (props) => {
             setViewMapData={setViewMapData}
           />
         </div>
+
         <div
           id={"chart-box"}
           className={mobile && mobileVizView !== "chart" ? "hidden" : null}
@@ -200,6 +202,7 @@ const HomePage = (props) => {
             />
           ) : null}
         </div>
+
         {(mobile && mobileVizView === "table") || !mobile ? (
           <div id="table-indicators-selector">
             <IndicatorDropdown
@@ -212,6 +215,7 @@ const HomePage = (props) => {
             />
           </div>
         ) : null}
+
         <div
           id={"table-box"}
           className={mobile && mobileVizView !== "table" ? "hidden" : null}

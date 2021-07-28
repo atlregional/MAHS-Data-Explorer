@@ -89,4 +89,5 @@
 .chart-responsive-container {
   position: relative;
   right: 20px;
+  max-width: 100vw;
 }

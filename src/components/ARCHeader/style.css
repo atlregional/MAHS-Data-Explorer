@@ -80,6 +80,7 @@
     /* grid-template-columns: 30vw 70vw; */
     align-items: center;
     justify-content: space-between;
+    height: 50px;
   }
   .ARC-logo-div {
     /* position: fixed;
@@ -116,6 +117,7 @@
     /* width: 100%; */
     font-size: 2em;
     text-align: center;
+    margin-bottom: 3px;
   }
 
   .geo-selector-box {
