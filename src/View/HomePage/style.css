@@ -7,10 +7,10 @@ body {
 }
 
 #footer-box {
-  position: fixed;
+  /* position: fixed; */
   height: 17vh;
   width: 100vw;
-  bottom: 0;
+  /* bottom: 0; */
 }
 
 .hidden {
@@ -74,7 +74,7 @@ body {
 }
 
 #map-box {
-  position: fixed;
+  position: relative;
   left: 7.5%;
   top: 10vh;
   width: 53.5%;
@@ -204,8 +204,9 @@ body {
   }
 
   #mobile-mainwrapper {
+    min-height: 80vh;
+    flex: 1;
     display: flex;
-    height: 80vh;
     width: 100%;
     flex-direction: column;
   }

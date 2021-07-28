@@ -74,6 +74,7 @@
 
 @media only screen and (max-width: 800px) {
   #ARC-Header {
+    position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
