@@ -128,7 +128,7 @@ const Chart = (props) => {
       <ResponsiveContainer
         className="chart-responsive-container"
         width={"100%"}
-        height={"100%"}
+        height={"90%"}
       >
         <ComposedChart className="bar-chart" data={props.subareaData}>
           <CartesianGrid strokeDasharray="3 3" />

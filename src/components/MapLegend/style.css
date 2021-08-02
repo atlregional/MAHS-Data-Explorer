@@ -4,17 +4,16 @@
 }
 
 .map-legend-title {
-    margin: 0 auto;
-    padding: 8px;
-    font-size: 14px;
-    font-weight: 400;
+  margin: 0 auto;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .color-row {
-    display: flex;
-    flex-direction: row;
-    height: 30px;
-    /* background-color: transparent; */
+  display: flex;
+  flex-direction: row;
+  height: 30px;
 }
 
 .color-scale-block {
@@ -22,12 +21,11 @@
   height: 100%;
 }
 
-.value-perimeter{
+.value-perimeter {
   font-weight: 600;
   font-size: 1em;
   height: 100%;
   line-height: 30px;
   margin: 0 auto;
   padding: 0 5px 0 5px;
-  /* background-color: transparent; */
 }

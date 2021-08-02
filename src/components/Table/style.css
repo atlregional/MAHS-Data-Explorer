@@ -1,21 +1,16 @@
 .sticky-table-table,
 .sticky-table {
-  /* height: 100%; */
-  /* overflow: auto; */
+  height: 100%;
+  overflow: auto;
   align-items: center;
   max-width: 100%;
   white-space: pre-wrap;
   word-wrap: normal;
-  /* vertical-align: middle; */
 }
+
 .hidden {
   visibility: hidden;
 }
-
-/* .header-cell {
-  padding: .5em;
-  background-color: orange;
-} */
 
 .indicator-column {
   font-size: 0.9em;
@@ -27,11 +22,7 @@
 }
 
 .table-cells {
-  /* padding: 0; */
   white-space: normal;
-
-  /* height: 100%;
-  vertical-align: middle; */
 }
 
 @media screen and (max-width: 800px) {
@@ -42,5 +33,11 @@
     padding: 0 0.5em 0 0.5em;
     white-space: normal;
     font-weight: 500;
+  }
+
+  #table {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 }

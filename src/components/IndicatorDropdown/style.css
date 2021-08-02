@@ -1,5 +1,4 @@
 .indicator-header {
-  /* margin-top: 1vh; */
   font-size: 1.5em;
   font-weight: 750;
   cursor: pointer;
@@ -34,7 +33,6 @@
 }
 
 .indicator-selector-dropdown-option {
-  /* border-bottom: 0.025rem #808080 solid; */
   padding: 0.5em 0 0.5em 1.5em;
 }
 
@@ -51,7 +49,6 @@
 .indicator-selector-dropdown-header {
   font-weight: bold;
   font-size: 1.1em;
-  /* background-color: #ffffff; */
   border-radius: 5px;
 }
 
@@ -64,7 +61,6 @@
   text-decoration: underline;
   margin-left: 10px;
   color: rgb(112, 112, 194);
-  /* float: left; */
 }
 
 .select-unselect-all-toggle:hover {

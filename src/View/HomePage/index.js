@@ -127,6 +127,7 @@ const HomePage = (props) => {
             setClickedSubarea={setClickedSubarea}
           />
         </div>
+
         <div
           className={
             mobile && mobileVizView === "map"
@@ -203,23 +204,23 @@ const HomePage = (props) => {
           ) : null}
         </div>
 
-        {(mobile && mobileVizView === "table") || !mobile ? (
-          <div id="table-indicators-selector">
-            <IndicatorDropdown
-              multiple
-              mobile={mobile && mobileVizView === "table"}
-              placeholderText={"Choose Indicators for Table"}
-              options={indicators}
-              selection={selection}
-              setSelection={setSelection}
-            />
-          </div>
-        ) : null}
-
         <div
           id={"table-box"}
           className={mobile && mobileVizView !== "table" ? "hidden" : null}
         >
+          {(mobile && mobileVizView === "table") || !mobile ? (
+            <div id="table-indicators-selector">
+              <IndicatorDropdown
+                multiple
+                mobile={mobile && mobileVizView === "table"}
+                placeholderText={"Choose Indicators for Table"}
+                options={indicators}
+                selection={selection}
+                setSelection={setSelection}
+              />
+            </div>
+          ) : null}
+
           {tractInfo && selection.indicators.length > 0 ? (
             <Table
               mobile={mobile}

@@ -89,10 +89,6 @@ const App = () => {
 
   useEffect(handleStart, []);
 
-  // console.log(tractInfo);
-  // console.log('tractInfo :', tractInfo);
-  // console.log('config :', config);
-
   return (
     <div className="App">
       {tractInfo && config && indicators ? (

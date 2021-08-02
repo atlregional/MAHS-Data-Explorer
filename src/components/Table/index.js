@@ -1,47 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { StickyTable, Row, Cell } from 'react-sticky-table';
-import utils from '../../utils';
-import numeral from 'numeral';
-import moment from 'moment';
-import ExportButton from '../ExportButton';
+import React, { useState, useEffect } from "react";
+import { StickyTable, Row, Cell } from "react-sticky-table";
+import utils from "../../utils";
+import numeral from "numeral";
+import moment from "moment";
+import ExportButton from "../ExportButton";
 
-import './style.css';
+import "./style.css";
 
-const Table = props => {
+const Table = (props) => {
   const tractInfo = props.tractInfo;
-  const headerArray = ['indicator'];
+  const headerArray = ["indicator"];
   const [data, setData] = useState([]);
   const [header, setHeader] = useState([]);
   const indicatorInfo = props.indicators;
-  // const indicatorFormatter = indicator => indicator.type === 'Percent' 
+  // const indicatorFormatter = indicator => indicator.type === 'Percent'
   //     ? '0.0%'
   //     : indicator.type === 'Ratio'
   //       ? '0.0'
   //       : '0,0';
 
   const selectedIndicators = props.selection.indicators
-    ? props.selection.indicators.map(indicator => indicator.name)
+    ? props.selection.indicators.map((indicator) => indicator.name)
     : [];
 
   const handleAggregation = () => {
     const array = [];
-    const data = Object.values(tractInfo).filter(tract =>
+    const data = Object.values(tractInfo).filter((tract) =>
       utils.filterBySelection(tract, props.selection)
     );
-    indicatorInfo.forEach(indicator => {
-      const aggregatedData = utils.aggregate(data, indicator, 'Subarea');
-      aggregatedData['indicator'] = indicator.name;
+    indicatorInfo.forEach((indicator) => {
+      const aggregatedData = utils.aggregate(data, indicator, "Subarea");
+      aggregatedData["indicator"] = indicator.name;
       array.push(aggregatedData);
     });
 
-    data.forEach(tract =>
+    data.forEach((tract) =>
       !headerArray.includes(tract.Subarea)
         ? headerArray.push(tract.Subarea)
         : null
     );
 
     headerArray.sort((a, b) =>
-      parseInt(a.replace('Subarea ', '')) < parseInt(b.replace('Subarea ', ''))
+      parseInt(a.replace("Subarea ", "")) < parseInt(b.replace("Subarea ", ""))
         ? -1
         : 1
     );
@@ -57,36 +57,38 @@ const Table = props => {
     const headerCells = header.map((header, i) => (
       <Cell
         key={`header-${i}`}
-        className={`table-cells ${i !== 0 ? 'header-cell' : ''}`}
+        className={`table-cells ${i !== 0 ? "header-cell" : ""}`}
         style={{
           backgroundColor:
             header === `Subarea ${props.highlightedSubarea}`
-              ? 'lightgrey'
+              ? "lightgrey"
               : null,
-          padding: '1em'
+          padding: "1em",
         }}
       >
-        {i === 0 
-          ? <ExportButton
-              data={dataForExport(data)}
-              //
-              csvTitle={
-                `TITLE: MAHS Submarket Summary ${props.selectedGeo} ` +
-                '\nSOURCE: MAHS DATA EXPLORER - https://metroatlhousing.org/dataexplorer'
-              }
-              csvFilename={`MAHS-Submarket-Summary-${props.selectedGeo
-                .split(' ')
-                .join('-')}-${moment().format('M/DD/YYYY')}`}
-              content={'Download Data'}
-            /> 
-          : header.replace('Subarea','Submarket')}
+        {i === 0 ? (
+          <ExportButton
+            data={dataForExport(data)}
+            //
+            csvTitle={
+              `TITLE: MAHS Submarket Summary ${props.selectedGeo} ` +
+              "\nSOURCE: MAHS DATA EXPLORER - https://metroatlhousing.org/dataexplorer"
+            }
+            csvFilename={`MAHS-Submarket-Summary-${props.selectedGeo
+              .split(" ")
+              .join("-")}-${moment().format("M/DD/YYYY")}`}
+            content={"Download Data"}
+          />
+        ) : (
+          header.replace("Subarea", "Submarket")
+        )}
       </Cell>
     ));
 
     rows.push(<Row key="header-row">{headerCells}</Row>);
 
     indicatorInfo
-      .filter(indicator => selectedIndicators.includes(indicator.name))
+      .filter((indicator) => selectedIndicators.includes(indicator.name))
       .forEach((indicator, r) => {
         const cells = [];
 
@@ -94,19 +96,21 @@ const Table = props => {
           cells.push(
             <Cell
               key={`${c}-${r}`}
-              className='table-cell'
+              className="table-cell"
               style={{
                 backgroundColor:
                   item === `Subarea ${props.highlightedSubarea}`
-                    ? 'lightgrey'
+                    ? "lightgrey"
                     : null,
               }}
             >
-              {
-                c === 0
-                  ? <div className='indicator-column'>{indicator.name}</div>
-                  : numeral(data[r][item]).format(indicator.formatter.replace(/"/g, ''))
-              }
+              {c === 0 ? (
+                <div className="indicator-column">{indicator.name}</div>
+              ) : (
+                numeral(data[r][item]).format(
+                  indicator.formatter.replace(/"/g, "")
+                )
+              )}
             </Cell>
           )
         );
@@ -114,15 +118,19 @@ const Table = props => {
       });
   };
 
-  const dataForExport = inputDataArray => {
+  const dataForExport = (inputDataArray) => {
     const outputDataArray = [];
     const headerArray = [...header];
 
     inputDataArray
-      .filter(inputData => selectedIndicators.includes(inputData.indicator))
-      .forEach(inputData => {
+      .filter((inputData) => selectedIndicators.includes(inputData.indicator))
+      .forEach((inputData) => {
         const dataObj = {};
-        headerArray.forEach(header => (dataObj[header.replace('Subarea','Submarket')] = inputData[header]));
+        headerArray.forEach(
+          (header) =>
+            (dataObj[header.replace("Subarea", "Submarket")] =
+              inputData[header])
+        );
         outputDataArray.push(dataObj);
       });
 
@@ -136,9 +144,9 @@ const Table = props => {
   return (
     <div
       style={{
-        width: '100%',
-        height: '100%',
-        padding: '4px',
+        width: "100%",
+        height: "100%",
+        padding: "4px",
       }}
       id="table"
     >

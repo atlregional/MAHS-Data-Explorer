@@ -3,10 +3,9 @@
   align-items: center;
   background-color: #97b0ba32;
   box-shadow: 0 0 10px #4b7b90;
-  padding: 0.25em;
-  padding-bottom: 0;
-  height: 50%;
-  position: absolute;
+  padding: 0;
+  height: 100px;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -14,5 +13,11 @@
 }
 
 .footer-parent-div img {
-  height: 5vh;
+  height: 35px;
+}
+
+@media screen and (max-width: 800px) {
+  .footer-parent-div {
+    height: 50px;
+  }
 }
