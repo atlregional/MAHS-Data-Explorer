@@ -83,7 +83,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   #layer-selection-header {
     left: 5px;
   }

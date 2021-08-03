@@ -37,7 +37,7 @@ body {
 
 .chart-indicator-selector-box {
   z-index: 99999999;
-  height: fit-content;
+  margin-top: 20px;
 }
 
 #chart-map-indicator-selector {
@@ -80,10 +80,11 @@ body {
   position: fixed;
   height: 34vh;
   width: 40%;
-  top: 14vh;
+  top: 125px;
   right: 0;
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 15% 85%;
+  align-content: center;
 }
 
 #table-box {
@@ -148,7 +149,7 @@ body {
   color: rgb(75, 89, 104, 0.95);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   #map-box,
   #chart-box,
   #table-box {
@@ -176,6 +177,11 @@ body {
     z-index: 0;
   }
 
+  .chart-indicator-selector-box {
+    margin: 0;
+    z-index: 99999999999;
+  }
+
   #table-box {
     display: flex;
     flex-direction: column;
@@ -183,7 +189,7 @@ body {
     bottom: 0;
     height: 100%;
     width: 100%;
-    padding-bottom: 120px;
+    padding: 50px 10px 80px 10px;
     margin: 0;
     z-index: 0;
   }
@@ -206,8 +212,8 @@ body {
     padding-right: 0;
     padding-left: 0;
     margin-left: 0;
+    margin-top: 35px;
     padding-top: 0.5vh;
-
     z-index: 0;
   }
 
@@ -237,7 +243,7 @@ body {
     margin-bottom: 0;
     padding-bottom: 0;
   }
-
+  /* 
   .mobile-map-indicator-selector {
     display: flex;
     width: 100%;
@@ -245,13 +251,13 @@ body {
     top: 0;
     left: 0vw;
     z-index: 999999;
-  }
+  } */
 
   #chart-map-indicator-selector {
     width: 95%;
-    top: 24vh;
-    left: 2.5%;
-    z-index: 999999;
+    /* top: 24vh;
+    left: 2.5%; */
+    z-index: 9999999999;
   }
 
   #table-indicators-selector {
@@ -290,16 +296,24 @@ body {
     flex-direction: row;
   }
   #subarea-selector-mobile {
-    width: fit-content;
+    width: 55px;
+    /* height: 70%; */
   }
   #subarea-selector-container {
+    width: 55px;
+    height: calc(100vh - 125px);
     flex-direction: column;
-    margin: none;
+    justify-content: stretch;
+    position: fixed;
+    /* top: 180px; */
   }
   .subarea-selector-button {
-    height: 90%;
+    height: 100%;
+    width: 60px;
     padding: 0;
-    margin: auto;
+    /* margin: 0 2px; */
+    font-size: 1em;
+    border-radius: 0;
   }
   .mobile-map-indicator-selector {
     width: fit-content;
@@ -314,5 +328,16 @@ body {
   }
   #ARC-Header {
     height: 75px;
+  }
+  #map-legend-box,
+  #map-legend-box-data {
+    top: 80px;
+  }
+  #map-legend-box-data {
+    left: 20%;
+    max-width: 60%;
+  }
+  #table-box {
+    padding: 0 35px 35px 0;
   }
 }

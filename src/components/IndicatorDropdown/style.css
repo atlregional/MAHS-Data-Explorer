@@ -72,3 +72,12 @@
   text-align: center;
   height: 1.5em;
 }
+
+@media screen and (max-width: 850px) {
+  .indicator-selector-dropdown-box {
+    position: fixed;
+    top: 170px;
+    width: calc(100% - 20px);
+    z-index: 9999999999999;
+  }
+}

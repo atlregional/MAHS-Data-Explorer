@@ -128,9 +128,13 @@ const Chart = (props) => {
       <ResponsiveContainer
         className="chart-responsive-container"
         width={"100%"}
-        height={"90%"}
+        height={"100%"}
       >
-        <ComposedChart className="bar-chart" data={props.subareaData}>
+        <ComposedChart
+          margin={{ bottom: 20, left: 10 }}
+          className="bar-chart"
+          data={props.subareaData}
+        >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={"Subarea"} />
           <YAxis

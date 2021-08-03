@@ -18,7 +18,7 @@ import LayerSelector from "../LayerSelector";
 import "./style.css";
 
 const MapComp = (props) => {
-  const mobile = window.screen.width < 800;
+  const mobile = props.mobile;
 
   const [tile, setTile] = useState(1);
   const [stats, setStats] = useState();

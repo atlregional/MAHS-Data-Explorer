@@ -1,6 +1,6 @@
 import React from "react";
-import "./style.css";
 import { Icon } from "semantic-ui-react";
+import "./style.css";
 
 const VizViewSelector = (props) => {
   const buttonParamArr = [
@@ -35,12 +35,10 @@ const VizViewSelector = (props) => {
           }
           style={{ width: `${100 / buttonParamArr.length}%` }}
         >
-          <span> {item.text} </span>
           <Icon
             className="viz-view-icon"
             name={item.icon}
             inverted={props.mobileVizView === item.value}
-            size="large"
           />
         </div>
       ))}

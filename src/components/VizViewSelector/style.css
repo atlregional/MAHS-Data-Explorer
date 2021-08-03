@@ -27,7 +27,11 @@
   font-size: 15px;
 }
 
-@media screen and (max-width: 800px) {
+#viz-view-selector i {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 850px) {
   .viz-view-selector-button span {
     font-size: 12px;
   }

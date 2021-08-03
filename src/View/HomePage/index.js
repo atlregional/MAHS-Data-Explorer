@@ -16,7 +16,7 @@ import "./style.css";
 
 const HomePage = (props) => {
   // console.log('HomePage - props: ', props);
-  const mobile = window.screen.width < 800;
+  const mobile = window.screen.width < 850;
 
   const [mobileVizView, setMobileVizView] = useState("map");
   const [tractInfo, setTractInfo] = useState();
