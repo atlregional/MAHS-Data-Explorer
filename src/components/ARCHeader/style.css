@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   color: whitesmoke;
+  z-index: 0;
 }
 
 .tool-header {
@@ -69,11 +70,10 @@
     flex-direction: row;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
     height: 100px;
   }
   .ARC-logo-div {
-    margin-right: 10px;
+    margin-right: 5px;
     width: 50px;
     height: 30px;
     background-color: white;
@@ -89,7 +89,6 @@
   }
 
   .back-to-main-site-button {
-    margin-left: 10px;
     border-radius: 5px;
     width: 80px;
     box-shadow: 0.5px 0.5px #989898;
@@ -99,9 +98,12 @@
     font-size: 2em;
     text-align: center;
     margin-bottom: 3px;
+    width: 100%;
   }
 
   .geo-selector-box {
+    display: flex;
+    flex-direction: column;
     position: relative;
     width: 100%;
     text-align: center;
@@ -109,5 +111,9 @@
 
   .ui.inline.dropdown {
     text-align: center;
+  }
+
+  .dropdown-box {
+    align-items: center;
   }
 }

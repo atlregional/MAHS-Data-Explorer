@@ -9,7 +9,7 @@ body {
 #footer-box {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: fixed;
   bottom: 0;
   width: 100vw;
   height: fit-content;
@@ -78,7 +78,7 @@ body {
 
 #chart-box {
   position: fixed;
-  height: 34vh;
+  height: 38vh;
   width: 40%;
   top: 125px;
   right: 0;
@@ -176,7 +176,9 @@ body {
     margin: 0;
     z-index: 0;
   }
-
+  #footer-box {
+    position: relative;
+  }
   .chart-indicator-selector-box {
     margin: 0;
     z-index: 99999999999;
@@ -243,15 +245,10 @@ body {
     margin-bottom: 0;
     padding-bottom: 0;
   }
-  /* 
-  .mobile-map-indicator-selector {
-    display: flex;
-    width: 100%;
-    position: relative;
-    top: 0;
-    left: 0vw;
-    z-index: 999999;
-  } */
+
+  .leaflet-container {
+    border-radius: 0;
+  }
 
   #chart-map-indicator-selector {
     width: 95%;
@@ -296,28 +293,33 @@ body {
     flex-direction: row;
   }
   #subarea-selector-mobile {
+    display: flex;
     width: 55px;
-    /* height: 70%; */
   }
   #subarea-selector-container {
     width: 55px;
-    height: calc(100vh - 125px);
     flex-direction: column;
-    justify-content: stretch;
-    position: fixed;
-    /* top: 180px; */
+    justify-content: space-around;
   }
   .subarea-selector-button {
-    height: 100%;
-    width: 60px;
-    padding: 0;
-    /* margin: 0 2px; */
-    font-size: 1em;
+    padding: 0 0 0 0;
+    font-size: 0.8em;
     border-radius: 0;
+    margin: 1px auto 1px auto;
+    z-index: 0;
   }
   .mobile-map-indicator-selector {
     width: fit-content;
     display: flex;
+  }
+  .indicator-header {
+    width: 100%;
+  }
+  .indicator-selector-dropdown-box {
+    top: 78px;
+    left: 0;
+    width: 100%;
+    z-index: 9999999999;
   }
   .footer-parent-div {
     display: none;
@@ -329,15 +331,32 @@ body {
   #ARC-Header {
     height: 75px;
   }
-  #map-legend-box,
-  #map-legend-box-data {
+  #map-legend-box {
     top: 80px;
   }
   #map-legend-box-data {
+    top: 115px;
     left: 20%;
     max-width: 60%;
   }
   #table-box {
-    padding: 0 35px 35px 0;
+    padding: 30px 65px 10px 15px;
+  }
+  #map-box {
+    padding: 0 2px 0 2px;
+  }
+
+  #map-box-data {
+    padding: 0 2px 38px 2px;
+  }
+  #tile-layer-selector-open {
+    bottom: 80px;
+  }
+  #layer-selection-header {
+    bottom: 50px;
+    left: 50px;
+  }
+  .indicator-dropdown-menu {
+    max-height: 40vh;
   }
 }

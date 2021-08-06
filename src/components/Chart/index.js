@@ -131,7 +131,7 @@ const Chart = (props) => {
         height={"100%"}
       >
         <ComposedChart
-          margin={{ bottom: 20, left: 10 }}
+          margin={{ bottom: 20, left: 30 }}
           className="bar-chart"
           data={props.subareaData}
         >
