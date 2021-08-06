@@ -1,5 +1,4 @@
 #ARC-Header {
-  z-index: 999999999999;
   position: relative;
   top: 0;
   height: 125px;
@@ -7,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   color: whitesmoke;
-  z-index: 0;
+  z-index: 99999999999999;
 }
 
 .tool-header {
