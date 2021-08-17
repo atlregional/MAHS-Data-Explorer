@@ -1,33 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Dropdown } from 'semantic-ui-react';
-import './style.css';
+import React, { useState, useEffect } from "react";
+import { Dropdown } from "semantic-ui-react";
+import utils from "./utils";
+import "./style.css";
 
-const GeoSelector = props => {
+const GeoSelector = (props) => {
   const topMenu = props.geoTypeOptions;
   const [subMenus, setSubMenus] = useState();
 
-  const handleGeoOptions = () => {
-    const subMenusObj = {};
-
-    topMenu.forEach(geoType => {
-      const type = geoType;
-      const options = [];
-      const data = [...props.data];
-      type === 'City'
-        ? data.forEach(tract =>
-            tract.Cities.forEach(city => options.push(city))
-          )
-        : type === 'County'
-        ? data.forEach(tract => options.push(tract.County))
-        : options.push('11-County');
-      const geoSet = [...new Set(options)].sort((a, b) => (a > b ? 1 : -1));
-      subMenusObj[type] = geoSet;
-    });
-
-    setSubMenus(subMenusObj);
-  };
-
-  useEffect(handleGeoOptions, []);
+  useEffect(() => {
+    const subMenuGeoData = utils.handleGeoOptions(props, topMenu);
+    setSubMenus(subMenuGeoData);
+  }, []);
 
   return (
     <>

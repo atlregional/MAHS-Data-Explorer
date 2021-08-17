@@ -10,9 +10,9 @@ import {
   Tooltip,
   Cell,
 } from "recharts";
-import "./style.css";
 import numeral from "numeral";
-import utils from "../../utils";
+import utils from "./utils";
+import "./style.css";
 
 const Chart = (props) => {
   const data = props.data;
@@ -25,35 +25,6 @@ const Chart = (props) => {
     /"/g,
     ""
   );
-
-  const handleAggregation = () => {
-    const array = [];
-    const tractData = Object.values(tractInfo).filter((tract) =>
-      utils.filterBySelection(tract, props.selection)
-    );
-    const aggregatedData = utils.aggregate(
-      tractData,
-      selectedIndicator,
-      "Subarea"
-    );
-
-    Object.entries(aggregatedData)
-      .filter(([key]) => key !== "All")
-      .forEach(([key, value]) =>
-        array.push({
-          name: key,
-          Subarea: parseInt(key.replace("Subarea ", "")),
-          [selectedIndicator.name]: value,
-          [props.selection.geo]: aggregatedData["All"],
-        })
-      );
-
-    array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
-    // console.log(array);
-    // setData(array);
-    props.setSubareaData(array);
-  };
-
   const [chartHover, setChartHover] = useState();
 
   const CustomTooltip = ({ active, payload, label }) => {
@@ -121,7 +92,14 @@ const Chart = (props) => {
     ) : null;
   };
 
-  useEffect(handleAggregation, [props.selection]);
+  useEffect(() => {
+    const aggregatedSubareaData = utils.handleAggregation(
+      tractInfo,
+      selectedIndicator,
+      props
+    );
+    props.setSubareaData(aggregatedSubareaData);
+  }, [props.selection]);
 
   return props.subareaData ? (
     <>

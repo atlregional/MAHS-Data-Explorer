@@ -1,26 +1,10 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
+import config from "./config";
 import "./style.css";
 
 const VizViewSelector = (props) => {
-  const buttonParamArr = [
-    {
-      text: "Map",
-      value: "map",
-      icon: "map",
-    },
-    {
-      text: "Chart",
-      value: "chart",
-      icon: "chart bar",
-    },
-    {
-      text: "Table",
-      value: "table",
-      icon: "table",
-    },
-  ];
-
+  const buttonParamArr = config.buttonParams;
   return (
     <div id="viz-view-selector">
       {buttonParamArr.map((item) => (

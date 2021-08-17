@@ -2,7 +2,6 @@ import React from "react";
 import GeoSelector from "../GeoSelector";
 import headerBackground from "../../header-background.png";
 import { Icon } from "semantic-ui-react";
-// import mobileHouseLogo from '../../home-icon.svg';
 import "./style.css";
 
 const ARCHeader = (props) => {
@@ -41,22 +40,19 @@ const ARCHeader = (props) => {
         </div>
       </div>
       <div className="ARC-logo-div">
-        {
-          !props.mobile ? (
-            <img
-              className="ARC-logo"
-              src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/logo.svg"
-              alt="Atlanta Regional Commission logo"
-            />
-          ) : (
-            <img
-              className="ARC-mobile-logo"
-              src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/icon-home.svg"
-              alt="ARC mobile logo"
-            />
-          )
-          // <img className="ARC-logo" src={mobileHouseLogo} />
-        }
+        {!props.mobile ? (
+          <img
+            className="ARC-logo"
+            src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/logo.svg"
+            alt="Atlanta Regional Commission logo"
+          />
+        ) : (
+          <img
+            className="ARC-mobile-logo"
+            src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/icon-home.svg"
+            alt="ARC mobile logo"
+          />
+        )}
       </div>
     </div>
   );

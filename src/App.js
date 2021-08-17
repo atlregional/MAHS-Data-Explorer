@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import utils from "./utils";
+import globalUtils from "./globalUtils";
 import queryString from "query-string";
 import HomePage from "./View/HomePage";
 import RingLoader from "react-spinners/RingLoader";
@@ -49,7 +49,7 @@ const App = () => {
   //   ];
 
   const handleStart = () => {
-    utils
+    globalUtils
       .getData("https://mahs-api-server.herokuapp.com/api/tractinfo")
       .then((res) => {
         console.log(res.data);
@@ -57,7 +57,7 @@ const App = () => {
       })
       .catch((err) => console.log(err));
 
-    utils
+    globalUtils
       .getData("https://mahs-api-server.herokuapp.com/api/datainfo")
       .then((res) => {
         console.log(res.data);
@@ -65,7 +65,7 @@ const App = () => {
       })
       .catch((err) => console.log(err));
 
-    utils
+    globalUtils
       .getData("https://mahs-api-server.herokuapp.com/api/config")
       .then((res) =>
         queryObj.geo && queryObj.geotype

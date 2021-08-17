@@ -10,14 +10,13 @@ import IndicatorDropdown from "../../components/IndicatorDropdown";
 import Footer from "../../components/Footer";
 import ARCHeader from "../../components/ARCHeader";
 import gradient from "gradient-color";
-import utils from "../../utils";
-// import headerBackground from '../../header-background.png';
+import globalUtils from "../../globalUtils";
+import util from "./util";
+import config from "../config";
 import "./style.css";
 
 const HomePage = (props) => {
-  // console.log('HomePage - props: ', props);
   const mobile = window.screen.width < 850;
-
   const [mobileVizView, setMobileVizView] = useState("map");
   const [tractInfo, setTractInfo] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
@@ -33,46 +32,20 @@ const HomePage = (props) => {
   const [clickedSubarea, setClickedSubarea] = useState();
   const [subareaData, setSubareaData] = useState();
   const [data, setData] = useState();
-  console.log(selection);
 
   // color gradient displayed on the map;
   const numBins = 100;
   // DIVERGENT COLOR SCALE;
   const colors = gradient(
     selection.indicator.changeType
-      ? [
-          "#a5b2ad",
-          "#cfdfd9",
-          // '#cfe6d9',
-          "#d2edd7",
-          // '#d8f3d3',
-          "#e2f8cd",
-          "#effcc7",
-          "#ffffc1",
-          "#f9e39d",
-          "#f4c57f",
-          // '#efa667',
-          "#e98658",
-          "#e16451",
-          "#d43d51",
-        ]
-      : [
-          "#effcc7",
-          "#ffffc1",
-          "#f9e39d",
-          // '#f4c57f',
-          "#efa667",
-          "#e98658",
-          // '#e16451',
-          "#d43d51",
-        ],
+      ? config.indicatorColors1
+      : config.indicatorColors2,
     numBins
   );
 
   const style = props.config.style;
   const geoTypeOptions = ["Region", "City", "County"];
   const indicators = props.indicators;
-  // console.log(JSON.stringify(indicators));
 
   const handleTractInfo = () => {
     const data = [...props.tractInfo];
@@ -84,7 +57,7 @@ const HomePage = (props) => {
   const handleSubareaOptions = () => {
     const subareaArray = [];
     const data = [...props.tractInfo].filter((tract) =>
-      utils.filterBySelection(tract, selection)
+      globalUtils.filterBySelection(tract, selection)
     );
     data.forEach((tract) =>
       subareaArray.push(parseInt(tract.Subarea.replace("Subarea ", "")))
@@ -97,6 +70,12 @@ const HomePage = (props) => {
 
   useEffect(handleTractInfo, []);
   useEffect(handleSubareaOptions, [selection.geo]);
+  useEffect(() => {
+    const tractInfo = util.handleTractInfo(props);
+    const subareaOptions = util.handleSubareaOptions(props, tractInfo);
+    setSubareaData(subareaOptions);
+    setTractInfo(tractInfo);
+  }, []);
 
   return (
     <>

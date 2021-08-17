@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import utils from "../../utils";
+import globalUtils from "../../globalUtils";
 import {
   Map as LeafletMap,
   TileLayer,
@@ -15,18 +15,19 @@ import { Checkbox } from "semantic-ui-react";
 import RingLoader from "react-spinners/RingLoader";
 import MapTooltip from "../MapTooltip";
 import LayerSelector from "../LayerSelector";
+import util from "./util";
+import config from "./config";
 import "./style.css";
 
 const MapComp = (props) => {
   const mobile = props.mobile;
-
   const [tile, setTile] = useState(1);
   const [stats, setStats] = useState();
   const [geoJSONs, setGeoJSONs] = useState();
   const [hoverBin, setHoverBin] = useState();
   const [hoverFeature, setHoverFeature] = useState({});
   const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
-
+  const [bounds, setBounds] = useState();
   const data = props.data;
   const setData = props.setData;
   const layerConfigs = props.layers;
@@ -34,159 +35,21 @@ const MapComp = (props) => {
   const indicatorFormatter = props.selection.indicator.formatter;
   const setViewMapData = props.setViewMapData;
   const viewMapData = props.viewMapData;
-
-  const handleTractData = () => {
-    const array = [];
-    const tractInfo = props.tractInfo;
-    const dataObj = {};
-    const tractData = tractInfo
-      ? Object.values(tractInfo).filter((tract) =>
-          utils.filterBySelection(tract, props.selection)
-        )
-      : null;
-
-    const aggregatedData = tractData
-      ? utils.aggregate(tractData, props.selection.indicator, "GEOID")
-      : {};
-
-    // console.log(aggregatedData);
-
-    Object.entries(aggregatedData).forEach(([key, value]) =>
-      key !== "All"
-        ? array.push({
-            name: key,
-            Subarea: parseInt(key.replace("Subarea ", "")),
-            [props.selection.indicator.name]: value,
-          })
-        : null
-    );
-
-    const valueArray = array
-      .map((item) => parseFloat(item[props.selection.indicator.name]))
-      .filter((item) => !isNaN(item));
-
-    // console.log(valueArray);
-    const maxValue = valueArray ? Math.max(...valueArray) : null;
-    const minValue = valueArray ? Math.min(...valueArray) : null;
-
-    Object.entries(aggregatedData).forEach(([key, value]) => {
-      const disFromMin = value - minValue;
-      const binningRatio = disFromMin / (maxValue - minValue);
-      const colorIndex = Math.floor(binningRatio * props.numBins) - 1;
-
-      dataObj[key] = {
-        value: value,
-        colorIndex: colorIndex < 0 ? 0 : colorIndex,
-      };
-    });
-    // console.log('dataObj :', dataObj);
-
-    setData(dataObj);
-    setStats({ max: maxValue, min: minValue, range: maxValue - minValue });
-  };
-
-  const handleGeoJSONs = () => {
-    const getGeoJSON = (key, url) =>
-      new Promise((resolve) =>
-        utils
-          .getData(url)
-          .then((res) => [key, res.data])
-          .catch((err) => console.log(err))
-          .then((data) => resolve(data))
-          .catch((err) => console.log(err))
-      );
-
-    let returnedGeoJSONs = [];
-
-    layerConfigs
-      .filter((config) => !config.disabled)
-      .forEach((config) =>
-        returnedGeoJSONs.push(getGeoJSON(config.name, config.url))
-      );
-
-    Promise.all(returnedGeoJSONs)
-      .then((geoJSONS) => {
-        console.log("returnedGeoJSONs: ", returnedGeoJSONs);
-        const geoJSONsObj = {};
-        [...geoJSONS].forEach(([key, value]) => (geoJSONsObj[key] = value));
-        setGeoJSONs(geoJSONsObj);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const [bounds, setBounds] = useState();
-
   const tractIDField = layerConfigs.find(
     (info) => info.name === "tracts"
   ).geoField;
+  const regionCounties = config.regionCounties;
 
-  const tractStyle = (tractInfo) => {
-    const viewMapData = props.viewMapData;
-    const subarea = tractInfo
-      ? parseInt(tractInfo.Subarea.replace("Subarea ", ""))
-      : null;
-    const config = props.config;
-
-    const colorIndex = data[tractInfo.GEOID]
-      ? data[tractInfo.GEOID].colorIndex
-      : null;
-    const color = viewMapData
-      ? colorIndex !== null
-        ? props.colors[colorIndex]
-        : "transparent"
-      : subarea
-      ? config.style.colormap[subarea - 1]
-      : null;
-
-    return {
-      fillColor: color,
-      color: viewMapData ? "black" : color,
-    };
-  };
-
-  const geoJSONStyle = (feature, config) => {
-    const geoID = feature.properties[tractIDField];
-    const tractInfo = props.tractInfo[geoID];
-    const subarea = tractInfo["Subarea"];
-    const highlight = subarea === `Subarea ${props.highlightedSubarea}`;
-    const style = tractStyle(tractInfo);
-    return {
-      ...style,
-      color:
-        props.highlightedSubarea && highlight ? "black" : config.boundaryColor,
-      weight:
-        props.highlightedSubarea && highlight
-          ? 1
-          : props.highlightedSubarea
-          ? 0
-          : config.boundaryWidth,
-      fillOpacity:
-        props.highlightedSubarea && highlight
-          ? 1
-          : props.highlightedSubarea
-          ? 0.2
-          : 1,
-    };
-  };
-
-  const regionCounties = [
-    "Fulton",
-    "DeKalb",
-    "Cobb",
-    "Gwinnett",
-    "Clayton",
-    "Douglas",
-    "Henry",
-    "Cherokee",
-    "Fayette",
-    "Rockdale",
-    "Forsyth",
-  ];
-
-  const handleBounds = (featureBounds) =>
-    Object.keys(featureBounds).length > 0 ? setBounds(featureBounds) : null;
-  useEffect(handleGeoJSONs, []);
-  useEffect(handleTractData, [geoJSONs, props.selection]);
+  useEffect(async () => {
+    const geoJSONs = await util.handleGeoJSONs(globalUtils, layerConfigs);
+    setGeoJSONs(geoJSONs);
+  }, []);
+  useEffect(() => {
+    const tractsData = util.handleTractData(props, globalUtils).dataObj;
+    const tractsStats = util.handleTractData(props, globalUtils).statsObj;
+    setData(tractsData);
+    setStats(tractsStats);
+  }, [geoJSONs, props.selection]);
 
   return (
     <>
@@ -219,7 +82,8 @@ const MapComp = (props) => {
                     onAdd={(e) => {
                       e.target.bringToFront();
                       const featureBounds = e.target.getBounds();
-                      handleBounds(featureBounds);
+                      const returnedBounds = util.handleBounds(featureBounds);
+                      setBounds(returnedBounds);
                     }}
                     key={`boundary-layer-${config.name}-${props.selection.geo}`}
                     data={boundary}
@@ -248,7 +112,9 @@ const MapComp = (props) => {
                 key={`data-layer-${config.name}-${props.selection.geo}-${
                   props.viewMapData ? "data" : "nodata"
                 }`}
-                style={(feature) => geoJSONStyle(feature, config)}
+                style={(feature) =>
+                  util.geoJSONStyle(feature, config, tractIDField, props, data)
+                }
                 onmouseout={() => setHoverBin()}
                 onmouseover={(e) => {
                   setHoverBin(
