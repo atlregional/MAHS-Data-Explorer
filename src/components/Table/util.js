@@ -5,13 +5,13 @@ import moment from "moment";
 import numeral from "numeral";
 import globalUtils from "../../globalUtils";
 
-const rows = [];
 export default {
   handleAggregation(headerArray, props, indicatorInfo, tractInfo) {
     const array = [];
     const data = Object.values(tractInfo).filter((tract) =>
       globalUtils.filterBySelection(tract, props.selection)
     );
+    console.log(data);
     indicatorInfo.forEach((indicator) => {
       const aggregatedData = globalUtils.aggregate(data, indicator, "Subarea");
       aggregatedData["indicator"] = indicator.name;
@@ -31,14 +31,16 @@ export default {
     );
 
     array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
-
+    console.log(array);
     return {
       headerArray: headerArray,
-      data: data,
+      data: array,
     };
   },
 
   handleCreateRows(indicatorInfo, selectedIndicators, props, data, header) {
+    const rows = [];
+    console.log(data);
     const headerCells = header.map((header, i) => (
       <Cell
         key={`header-${i}`}
@@ -53,7 +55,7 @@ export default {
       >
         {i === 0 ? (
           <ExportButton
-            data={this.dataForExport(data)}
+            data={this.dataForExport(data, header, selectedIndicators)}
             //
             csvTitle={
               `TITLE: MAHS Submarket Summary ${props.selectedGeo} ` +
@@ -101,16 +103,16 @@ export default {
         );
         rows.push(<Row key={r}>{cells}</Row>);
       });
-    console.log(rows);
     return rows;
   },
 
   dataForExport(inputDataArray, header, selectedIndicators) {
     const outputDataArray = [];
     const headerArray = [...header];
-
+    console.log(inputDataArray);
+    console.log(headerArray);
     inputDataArray
-      .filter((inputData) => selectedIndicators.includes(inputData.indicator))
+      // .filter((inputData) => selectedIndicators.includes(inputData.indicator))
       .forEach((inputData) => {
         const dataObj = {};
         headerArray.forEach(
@@ -120,7 +122,7 @@ export default {
         );
         outputDataArray.push(dataObj);
       });
-
+    console.log(outputDataArray);
     return outputDataArray;
   },
 };
