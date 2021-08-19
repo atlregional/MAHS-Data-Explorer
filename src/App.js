@@ -3,56 +3,19 @@ import globalUtils from "./globalUtils";
 import queryString from "query-string";
 import HomePage from "./View/HomePage";
 import RingLoader from "react-spinners/RingLoader";
-
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 
 const App = () => {
   const queryObj = queryString.parse(document.location.search);
-  // console.log(queryObj);
-
   const [tractInfo, setTractInfo] = useState();
   const [indicators, setIndicators] = useState();
   const [config, setConfig] = useState();
-
-  // const indicators = require('./data/indicator-list.json');
-  // [
-  //     {
-  //       name: 'Percent Renters, 2017',
-  //       type: 'percent',
-  //       category: 'Housing',
-  //       numeratorID: 'ID093',
-  //       denominatorID: 'ID094',
-  //       universe: 'Total Occupied Housing Units, 2017',
-  //       source: 'American Community Survey, 5-year estimates, 2013-17'
-  //     },
-
-  //     {
-  //       name: 'Change in Percent Owner Households, 2010 to 2017',
-  //       type: 'weighted average',
-  //       category: 'Housing',
-  //       numeratorID: 'ID008',
-  //       denominatorID: 'ID091',
-  //       universe: 'Total Occupied Housing Units, 2010 & 2017',
-  //       source: 'American Community Survey, 5-year estimates, 2006-10 & 2013-17'
-  //     },
-  //     {
-  //       name: 'Averge Population in Poverty 2017',
-  //       type: 'average',
-  //       category: 'Economic',
-  //       numeratorID: 'ID088',
-  //       denominatorID: 'ID088',
-  //       universe: 'Total Population for which Poverty Status was Determined, 2017',
-  //       source: 'American Community Survey, 5-year estimates, 2013-17'
-
-  //     }
-  //   ];
 
   const handleStart = () => {
     globalUtils
       .getData("https://mahs-api-server.herokuapp.com/api/tractinfo")
       .then((res) => {
-        console.log(res.data);
         setTractInfo(res.data);
       })
       .catch((err) => console.log(err));
@@ -60,7 +23,6 @@ const App = () => {
     globalUtils
       .getData("https://mahs-api-server.herokuapp.com/api/datainfo")
       .then((res) => {
-        console.log(res.data);
         setIndicators(res.data);
       })
       .catch((err) => console.log(err));
