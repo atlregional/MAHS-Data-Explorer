@@ -42,41 +42,18 @@ const HomePage = (props) => {
       : config.indicatorColors2,
     numBins
   );
-
   const style = props.config.style;
   const geoTypeOptions = ["Region", "City", "County"];
   const indicators = props.indicators;
 
-  const handleTractInfo = () => {
-    const data = [...props.tractInfo];
-    const dataObj = {};
-    data.forEach((tract) => (dataObj[tract.GEOID] = tract));
-    setTractInfo(dataObj);
-  };
-
-  const handleSubareaOptions = () => {
-    const subareaArray = [];
-    const data = [...props.tractInfo].filter((tract) =>
-      globalUtils.filterBySelection(tract, selection)
-    );
-    data.forEach((tract) =>
-      subareaArray.push(parseInt(tract.Subarea.replace("Subarea ", "")))
-    );
-    const subareaSet = [...new Set(subareaArray)].sort((a, b) =>
-      a > b ? 1 : -1
-    );
-    setSubareaOptions(subareaSet);
-  };
-
-  useEffect(handleTractInfo, []);
-  useEffect(handleSubareaOptions, [selection.geo]);
   useEffect(() => {
     const tractInfo = util.handleTractInfo(props);
-    const subareaOptions = util.handleSubareaOptions(props, tractInfo);
-    setSubareaData(subareaOptions);
     setTractInfo(tractInfo);
   }, []);
-
+  useEffect(() => {
+    const subareaOptions = util.handleSubareaOptions(props, selection);
+    setSubareaOptions(subareaOptions);
+  }, [selection.geo]);
   return (
     <>
       {
