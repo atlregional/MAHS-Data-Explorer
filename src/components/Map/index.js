@@ -57,6 +57,8 @@ const MapComp = (props) => {
     setStats(tractsStats);
   }, [geoJSONs, props.selection]);
 
+  console.log(geoJSONs);
+
   return (
     <>
       <LeafletMap
@@ -78,8 +80,12 @@ const MapComp = (props) => {
       >
         {geoJSONs
           ? layerConfigs
-              .filter((config) => config.visible && config.type === "boundary")
+              .filter((config) => 
+                props.selection.geo === "11-County"
+                  ? config.visible && config.type === "boundary" && config.name === 'counties'
+                  : config.visible && config.type === "boundary")
               .map((config) => {
+                console.log(config);
                 const boundary = geoJSONs[config.name].features.map((feature) =>
                   polygonToLine(feature)
                 );

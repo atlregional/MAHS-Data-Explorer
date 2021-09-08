@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // import { Popup } from "semantic-ui-react";
 import { submarkets } from "../../globalUtils/submarkets";
 import "./style.css";

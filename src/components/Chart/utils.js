@@ -1,6 +1,4 @@
-import React from "react";
 import globalUtils from "../../globalUtils";
-import numeral from "numeral";
 
 export default {
   handleAggregation(tractInfo, selectedIndicator, props) {
