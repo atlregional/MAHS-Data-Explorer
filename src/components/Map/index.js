@@ -40,9 +40,15 @@ const MapComp = (props) => {
   ).geoField;
   const regionCounties = config.regionCounties;
 
-  useEffect(async () => {
+  const asyncWrapper = async () => {
     const geoJSONs = await util.handleGeoJSONs(globalUtils, layerConfigs);
-    setGeoJSONs(geoJSONs);
+    return geoJSONs;
+  };
+
+  useEffect(() => {
+    asyncWrapper().then((geoJSONs) => {
+      setGeoJSONs(geoJSONs);
+    });
   }, []);
   useEffect(() => {
     const tractsData = util.handleTractData(props, globalUtils).dataObj;
