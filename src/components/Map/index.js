@@ -57,7 +57,7 @@ const MapComp = (props) => {
     setStats(tractsStats);
   }, [geoJSONs, props.selection]);
 
-  console.log(geoJSONs);
+  console.log(layerConfigs);
 
   return (
     <>
@@ -95,7 +95,10 @@ const MapComp = (props) => {
                       e.target.bringToFront();
                       const featureBounds = e.target.getBounds();
                       const returnedBounds = util.handleBounds(featureBounds);
-                      setBounds(returnedBounds);
+                      console.log(returnedBounds);
+                      if (returnedBounds) {
+                        setBounds(returnedBounds)
+                      };
                     }}
                     key={`boundary-layer-${config.name}-${props.selection.geo}`}
                     data={boundary}
@@ -283,8 +286,8 @@ const MapComp = (props) => {
           {/* <div
             id='map-data-toggle-wrapper'
           > */}
-          <div id="map-data-toggle-label">Show Data on Map</div>
-          <Checkbox
+          <div id="map-data-toggle-label">{viewMapData ? 'Hide ' : 'Show '} Data on Map</div>
+          <Checkbox 
             toggle
             onChange={() =>
               setViewMapData(viewMapData === false ? true : false)

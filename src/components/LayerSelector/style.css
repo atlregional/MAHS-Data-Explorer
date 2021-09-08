@@ -26,7 +26,7 @@
 #layer-selection-header {
   display: flex;
   height: 40px;
-  width: fit-content;
+  /* width: fit-content; */
   line-height: 40px;
   position: relative;
   margin-right: 0;

@@ -21,3 +21,9 @@
     height: 50px;
   }
 }
+@media screen and (max-height: 400px) {
+
+  .footer-parent-div {
+    height: 100px;
+  }
+}

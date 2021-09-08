@@ -12,7 +12,7 @@ body {
   position: fixed;
   bottom: 0;
   width: 100vw;
-  height: fit-content;
+  height: 100px;
 }
 
 .hidden {
@@ -60,6 +60,7 @@ body {
   position: relative;
   left: 0;
   width: 8%;
+  height: 76vh;
   z-index: 999999;
 }
 
@@ -71,14 +72,14 @@ body {
 #map-box {
   position: relative;
   width: 53.5%;
-  height: 82.5vh;
+  height: 77vh;
   padding: 1em;
   opacity: 1;
 }
 
 #chart-box {
   position: fixed;
-  height: 38vh;
+  height: 36vh;
   width: 40%;
   top: 125px;
   right: 0;
@@ -90,9 +91,9 @@ body {
 #table-box {
   padding: 2em;
   position: fixed;
-  height: 38vh;
+  height: 36vh;
   width: 40%;
-  bottom: 7.5vh;
+  bottom: 100px;
   right: 0;
 }
 
@@ -172,7 +173,7 @@ body {
     top: 0;
     height: 100%;
     width: 100%;
-    padding: 0;
+    padding: 0 0 2em 0;
     margin: 0;
     z-index: 0;
   }
@@ -192,7 +193,7 @@ body {
     bottom: 0;
     height: 100%;
     width: 100%;
-    padding: 50px 10px 80px 10px;
+    padding: 50px 10px 100px 10px;
     margin: 0;
     z-index: 0;
   }
@@ -300,6 +301,7 @@ body {
     display: flex;
     width: 55px;
   }
+  
   #subarea-selector-container {
     width: 55px;
     flex-direction: column;
@@ -325,9 +327,9 @@ body {
     width: 100%;
     z-index: 9999999999;
   }
-  .footer-parent-div {
+  /* .footer-parent-div {
     display: none;
-  }
+  } */
   #map-legend-box {
     position: fixed;
     top: 110px;

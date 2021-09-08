@@ -34,7 +34,7 @@ const HomePage = (props) => {
   const [data, setData] = useState();
 
   // color gradient displayed on the map;
-  const numBins = 100;
+  const numBins = 50;
   // DIVERGENT COLOR SCALE;
   const colors = gradient(
     selection.indicator.changeType

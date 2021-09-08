@@ -1,8 +1,8 @@
 #tile-layer-selector {
   position: fixed;
-  bottom: 40px;
+  bottom: 68px;
   height: 15vh;
-  right: calc(40% + 5px);
+  right: calc(39% + 10px);
   z-index: 9999999;
   width: 250px;
   border-radius: 5px;
@@ -57,7 +57,7 @@
   background-color: #f8f8f8f8;
   z-index: 999999;
   height: 60px;
-  right: 41vw;
+  right: calc(40%);
   top: 150px;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
