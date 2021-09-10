@@ -10,8 +10,8 @@
 
 .subarea-popup {
   position: fixed;
-  left: calc(8% + 20px);
-  top: 13vh;
+  left: calc(8% + 25px);
+  top: 150px;
   background-color: white;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
   text-align: left;

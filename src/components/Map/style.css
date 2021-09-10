@@ -57,7 +57,7 @@
   background-color: #f8f8f8f8;
   z-index: 999999;
   height: 60px;
-  right: calc(40%);
+  right: calc(39% + 20px);
   top: 150px;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
@@ -88,7 +88,7 @@
     flex-direction: row;
     z-index: 999999;
     position: fixed;
-    bottom: 130px;
+    top: calc(var(--app-height) - 210px);
     right: 80px;
     margin-right: 10px;
   }

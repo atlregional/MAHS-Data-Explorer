@@ -139,8 +139,8 @@ const MapComp = (props) => {
   return (
     <>
       <LeafletMap
-        key={`subarea-map-${props.numberOfSubareas}-${viewMapData}-${mobile}-${hidden}`}
-        animate
+        key={`subarea-map-${props.numberOfSubareas}-${viewMapData}-${hidden}`}
+        // animate
         boxZoom
         trackResize
         doubleClickZoom

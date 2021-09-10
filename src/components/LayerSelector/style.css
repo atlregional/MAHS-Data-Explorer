@@ -3,10 +3,10 @@
   border: solid thin rgb(119, 148, 123, 0.2);
   border-radius: 10px;
   position: relative;
-  left: -10px;
-  bottom: calc(0% + 108px);
+  left: -12px;
+  bottom: 100px;
   padding: 1em 0 1em 0;
-  z-index: 999999999999999999999;
+  z-index: -1;
   height: fit-content;
   width: fit-content;
 }
@@ -32,9 +32,9 @@
   margin-right: 0;
   padding: 0;
   border-radius: 5px;
-  left: 0.3vw;
+  left: 10px;
   bottom: 125px;
-  z-index: 9999;
+  z-index: 99999999999;
 }
 
 .layer-selection-checkbox {

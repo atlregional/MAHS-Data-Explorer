@@ -12,6 +12,13 @@ const App = () => {
   const [indicators, setIndicators] = useState();
   const [config, setConfig] = useState();
 
+  const appHeight = () => {
+      const doc = document.documentElement
+      doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+  }
+  window.addEventListener('resize', appHeight)
+  appHeight()
+
   const handleStart = () => {
     globalUtils
       .getData("https://mahs-api-server.herokuapp.com/api/tractinfo")
