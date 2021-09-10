@@ -9,22 +9,25 @@ import VizViewSelector from "../../components/VizViewSelector";
 import IndicatorDropdown from "../../components/IndicatorDropdown";
 import Footer from "../../components/Footer";
 import ARCHeader from "../../components/ARCHeader";
-import gradient from "gradient-color";
+// import tinygradient from "tinygradient";
+// import { by3Points } from 'get-parabola';
+
 // import globalUtils from "../../globalUtils";
 import util from "./util";
-import config from "../config";
+// import config from "./config";
 import "./style.css";
 
 const HomePage = (props) => {
   const mobile = window.screen.width < 850;
-  const [mobileVizView, setMobileVizView] = useState("map");
-  const [tractInfo, setTractInfo] = useState();
-  const [subareaOptions, setSubareaOptions] = useState([]);
-  const [selection, setSelection] = useState({
+  const defaultSelection = {
     ...props.config.selection,
     indicator: props.config.selection.indicator || props.indicators[0],
     indicators: props.indicators,
-  });
+  }
+  const [mobileVizView, setMobileVizView] = useState("map");
+  const [tractInfo, setTractInfo] = useState();
+  const [subareaOptions, setSubareaOptions] = useState([]);
+  const [selection, setSelection] = useState(defaultSelection);
   const [highlightedSubarea, setHighlightedSubarea] = useState();
   const [selectedSubareas, setSelectedSubareas] = useState([]);
   const [layers, setLayers] = useState(props.config.layers);
@@ -34,14 +37,44 @@ const HomePage = (props) => {
   const [data, setData] = useState();
 
   // color gradient displayed on the map;
-  const numBins = 50;
-  // DIVERGENT COLOR SCALE;
-  const colors = gradient(
-    selection.indicator.changeType
-      ? config.indicatorColors1
-      : config.indicatorColors2,
-    numBins
-  );
+//   const numBins = 100;
+//   const zeroPos = .3;
+
+//   const calibrateToCenter = (initPos, centerPosition) => {
+//     // const scaler = centerPosition / .25;
+//     // const rescaledPos = scaler * initPos * initPos;
+//     const points = [[0,0], [.5, centerPosition], [1,1]]
+//     const coeffs = by3Points(points.map(point => ({
+//       x: point[0], y: point[1]
+//     })));
+//     // console.log(coeffs);
+//     const rescaledPos = (coeffs.a * initPos * initPos) + (coeffs.b * initPos) + coeffs.c
+//     // console.log(rescaledPos);
+//     return rescaledPos > 1 ? 1 : rescaledPos < 0 ? 0 : rescaledPos;
+
+//   }
+//   // DIVERGENT COLOR SCALE;
+//   const colors = tinygradient(
+//     selection.indicator.changeType
+//       ? config.indicatorColors1.map((color,i) => 
+//           ({
+//             color : color, 
+//             pos: calibrateToCenter(i/(config.indicatorColors1.length - 1), zeroPos)
+//           })
+//         )
+//       : config.indicatorColors2.map((color,i) => 
+//           ({
+//             color : color, 
+//             pos: i/(config.indicatorColors2.length - 1)
+//           })
+//         )
+//   ).rgb(numBins);
+
+//   console.log(colors.map(color => {
+//     const { _r, _g, _b} = color;
+//     return `rgb(${_r}, ${_g}, ${_b})`
+// }))
+  
   const style = props.config.style;
   const geoTypeOptions = ["Region", "City", "County"];
   const indicators = props.indicators;
@@ -107,7 +140,7 @@ const HomePage = (props) => {
         >
           <MapComp
             subareaData={subareaData}
-            colors={colors}
+            // colors={colors}
             viewMapData={viewMapData}
             mobile={mobile}
             tractInfo={tractInfo}
@@ -118,7 +151,8 @@ const HomePage = (props) => {
             subareaOptions={subareaOptions}
             highlightedSubarea={highlightedSubarea}
             numberOfSubareas={subareaOptions.length}
-            numBins={numBins}
+            // numBins={numBins}
+            hidden={mobile && mobileVizView !== "map"}
             data={data}
             setData={setData}
             setViewMapData={setViewMapData}

@@ -10,6 +10,9 @@ import {
 import MapLegend from "../MapLegend";
 import polygonToLine from "@turf/polygon-to-line";
 import { Icon } from "semantic-ui-react";
+import tinygradient from "tinygradient";
+import { by3Points } from 'get-parabola';
+
 // import numeral from 'numeral';
 import { Checkbox } from "semantic-ui-react";
 import RingLoader from "react-spinners/RingLoader";
@@ -20,7 +23,7 @@ import config from "./config";
 import "./style.css";
 
 const MapComp = (props) => {
-  const mobile = props.mobile;
+  // const mobile = props.mobile;
   const [tile, setTile] = useState(1);
   const [stats, setStats] = useState();
   const [geoJSONs, setGeoJSONs] = useState();
@@ -28,13 +31,86 @@ const MapComp = (props) => {
   const [hoverFeature, setHoverFeature] = useState({});
   const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
   const [bounds, setBounds] = useState();
-  const data = props.data;
-  const setData = props.setData;
-  const layerConfigs = props.layers;
-  const tileLayer = props.config.tilelayers;
-  const indicatorFormatter = props.selection.indicator.formatter;
-  const setViewMapData = props.setViewMapData;
-  const viewMapData = props.viewMapData;
+  const [colors, setColors] = useState();
+
+  const {
+    mobile,
+    data,
+    viewMapData,
+    setData,
+    hidden,
+    setViewMapData,
+    layers: layerConfigs,
+    config : {
+      tilelayers: tileLayer
+    },
+    selection: {
+      indicator: {
+        formatter: indicatorFormatter,
+        changeType
+      }
+    }
+  } = props;
+
+  // console.log(props)
+
+  const numBins = 40;
+  // const [ zeroPos, setZeroPos ] = useState(.3);
+
+  const calibrateToCenter = (initPos, centerPosition) => {
+    // const scaler = centerPosition / .25;
+    // const rescaledPos = scaler * initPos * initPos;
+    const points = [[0,0], [.5, centerPosition], [1,1]]
+    const coeffs = by3Points(points.map(point => ({
+      x: point[0], y: point[1]
+    })));
+    // console.log(coeffs);
+    const rescaledPos = (coeffs.a * initPos * initPos) + (coeffs.b * initPos) + coeffs.c
+    // console.log(rescaledPos);
+    return rescaledPos > 1 ? 1 : rescaledPos < 0 ? 0 : rescaledPos;
+
+  };
+
+  const calcZeroPos = ({max, min, range}) => {
+    const pos = max > 0 && min < 0 
+      ? (range - max)/range
+      : max <= 0
+        ? -1
+        : null;
+    return pos;
+
+  }
+
+  // DIVERGENT COLOR SCALE;
+  const calibrateColors = statsObj => {
+
+    const zeroPos = calcZeroPos(statsObj);
+    const colorArray = tinygradient(
+      changeType && zeroPos > 0
+        ? config.indicatorColors1.map((color,i) => 
+            ({
+              color : color, 
+              pos: calibrateToCenter(i/(config.indicatorColors1.length - 1), zeroPos)
+            })
+          )
+        : config.indicatorColors2.map((color,i) => 
+            ({
+              color : color, 
+              pos: i/(config.indicatorColors2.length - 1)
+            })
+          )
+          
+    )
+    .rgb(numBins)
+    .map(color => {
+      const { _r, _g, _b} = color;
+      return `rgb(${parseInt(_r)}, ${parseInt(_g)}, ${parseInt(_b)})`
+    });
+    setColors(zeroPos < 0 
+      ? colorArray.reverse()
+      : colorArray)
+  }
+
   const tractIDField = layerConfigs.find(
     (info) => info.name === "tracts"
   ).geoField;
@@ -51,18 +127,19 @@ const MapComp = (props) => {
     });
   }, []);
   useEffect(() => {
-    const tractsData = util.handleTractData(props, globalUtils).dataObj;
-    const tractsStats = util.handleTractData(props, globalUtils).statsObj;
-    setData(tractsData);
-    setStats(tractsStats);
+    const { dataObj, statsObj } = util.handleTractData(props, globalUtils, numBins);
+    // console.log(statsObj);
+    setData(dataObj);
+    setStats(statsObj);
+    calibrateColors(statsObj)
   }, [geoJSONs, props.selection]);
 
-  console.log(layerConfigs);
+  // console.log(layerConfigs);
 
   return (
     <>
       <LeafletMap
-        key={`subarea-map-${props.numberOfSubareas}`}
+        key={`subarea-map-${props.numberOfSubareas}-${viewMapData}-${mobile}-${hidden}`}
         animate
         boxZoom
         trackResize
@@ -85,7 +162,7 @@ const MapComp = (props) => {
                   ? config.visible && config.type === "boundary" && config.name === 'counties'
                   : config.visible && config.type === "boundary")
               .map((config) => {
-                console.log(config);
+                // console.log(config);
                 const boundary = geoJSONs[config.name].features.map((feature) =>
                   polygonToLine(feature)
                 );
@@ -95,7 +172,7 @@ const MapComp = (props) => {
                       e.target.bringToFront();
                       const featureBounds = e.target.getBounds();
                       const returnedBounds = util.handleBounds(featureBounds);
-                      console.log(returnedBounds);
+                      // console.log(returnedBounds);
                       if (returnedBounds) {
                         setBounds(returnedBounds)
                       };
@@ -125,10 +202,10 @@ const MapComp = (props) => {
               <GeoJSON
                 onAdd={(e) => e.target.bringToBack()}
                 key={`data-layer-${config.name}-${props.selection.geo}-${
-                  props.viewMapData ? "data" : "nodata"
+                  viewMapData ? "data" : "nodata"
                 }`}
                 style={(feature) =>
-                  util.geoJSONStyle(feature, config, tractIDField, props, data)
+                  util.geoJSONStyle(feature, config, tractIDField, props, data, colors)
                 }
                 onmouseout={() => setHoverBin()}
                 onmouseover={(e) => {
@@ -298,7 +375,7 @@ const MapComp = (props) => {
             hoverBin={hoverBin}
             viewMapData={props.viewMapData}
             selection={props.selection}
-            colors={props.colors}
+            colors={colors}
             stats={stats}
           />
         </div>

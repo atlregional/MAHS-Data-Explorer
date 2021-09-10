@@ -1,5 +1,5 @@
 const util = {
-  handleTractData(props, globalUtils) {
+  handleTractData(props, globalUtils, numBins) {
     const array = [];
     const tractInfo = props.tractInfo;
     const dataObj = {};
@@ -33,7 +33,7 @@ const util = {
     Object.entries(aggregatedData).forEach(([key, value]) => {
       const disFromMin = value - minValue;
       const binningRatio = disFromMin / (maxValue - minValue);
-      const colorIndex = Math.floor(binningRatio * props.numBins) - 1;
+      const colorIndex = Math.floor(binningRatio * numBins) - 1;
 
       dataObj[key] = {
         value: value,
@@ -68,7 +68,7 @@ const util = {
     const geoJSONsObj = {};
     await Promise.all(returnedGeoJSONs)
       .then((geoJSONS) => {
-        console.log("returnedGeoJSONs: ", returnedGeoJSONs);
+        // console.log("returnedGeoJSONs: ", returnedGeoJSONs);
         [...geoJSONS].forEach(([key, value]) => (geoJSONsObj[key] = value));
       })
       .then(() => {
@@ -77,7 +77,8 @@ const util = {
       .catch((err) => console.log(err));
     return geoJSONsObj;
   },
-  tractStyle(tractInfo, props, data) {
+  tractStyle(tractInfo, props, data, colors) {
+    // console.log(props)
     const viewMapData = props.viewMapData;
     const subarea = tractInfo
       ? parseInt(tractInfo.Subarea.replace("Subarea ", ""))
@@ -89,7 +90,7 @@ const util = {
       : null;
     const color = viewMapData
       ? colorIndex !== null
-        ? props.colors[colorIndex]
+        ? colors[colorIndex]
         : "transparent"
       : subarea
       ? config.style.colormap[subarea - 1]
@@ -99,12 +100,13 @@ const util = {
       color: viewMapData ? "black" : color,
     };
   },
-  geoJSONStyle(feature, config, tractIDField, props, data) {
+  geoJSONStyle(feature, config, tractIDField, props, data, colors) {
     const geoID = feature.properties[tractIDField];
     const tractInfo = props.tractInfo[geoID];
     const subarea = tractInfo["Subarea"];
     const highlight = subarea === `Subarea ${props.highlightedSubarea}`;
-    const style = this.tractStyle(tractInfo, props, data);
+    const style = this.tractStyle(tractInfo, props, data, colors);
+    // console.log(style);
     return {
       ...style,
       color:

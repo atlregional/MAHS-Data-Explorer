@@ -77,7 +77,9 @@
   .indicator-selector-dropdown-box {
     position: fixed;
     top: 170px;
-    width: calc(100% - 20px);
-    z-index: 9999999999999;
+    width: 100%;
+    /* margin-right: auto;
+    margin-left: auto; */
+    z-index: 99999998;
   }
 }

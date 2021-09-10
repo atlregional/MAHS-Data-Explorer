@@ -180,6 +180,7 @@ body {
 
   #footer-box {
     position: relative;
+    height: 120px;
   }
   .chart-indicator-selector-box {
     margin: 0;
@@ -216,7 +217,7 @@ body {
     padding-right: 0;
     padding-left: 0;
     margin-left: 0;
-    margin-top: 35px;
+    margin-top: 60px;
     padding-top: 0.5vh;
     z-index: 0;
   }
@@ -287,9 +288,26 @@ body {
 
   .indicator-header {
     font-size: 1em;
+    padding: 5px 5% 0 5%;
+    /* padding-right: 5%;
+    padding-left: 5%; */
+    height: 35px;
+    width: 100%;
+    /* text-align: center; */
+    display: flex;
+    align-self: middle;
+    flex-direction: column;
   }
   .dropdown-box {
-    z-index: 99999999999999999999;
+    z-index: 99999999999;
+  }
+
+  .indicator-dropdown-menu {
+    max-height: 50vh;
+    width: 80%;
+    margin: 10px auto 0 auto;
+    /* margin-left: auto;
+    margin-right: auto; */
   }
 }
 
@@ -300,6 +318,10 @@ body {
   #subarea-selector-mobile {
     display: flex;
     width: 55px;
+  }
+  #footer-box {
+    height: 60px;
+    flex-direction: row;
   }
   
   #subarea-selector-container {
@@ -322,10 +344,16 @@ body {
     width: 100%;
   }
   .indicator-selector-dropdown-box {
-    top: 78px;
-    left: 0;
-    width: 100%;
+    top: 80px;
+    border-radius: 5px;
+    right : 0;
+    width: 300px;
     z-index: 9999999999;
+    background-color: #f8f8f8f8;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.383);
+
+    padding: 5px;
+    margin-right: 20px;
   }
   /* .footer-parent-div {
     display: none;
@@ -341,19 +369,27 @@ body {
     top: 80px;
   }
   #map-legend-box-data {
-    top: 115px;
-    left: 20%;
-    max-width: 60%;
+    top: 150px;
+    right: 10px;
+    position: fixed;
+    width: 300px;
+    margin-right: 10px;
   }
   #table-box {
-    padding: 30px 65px 10px 15px;
+    padding: 30px 60px 10px 15px;
   }
   #map-box {
-    padding: 0 2px 0 2px;
+    padding: 0;
+  }
+
+  #chart-box {
+    padding: 0;
   }
 
   #map-box-data {
-    padding: 0 2px 38px 2px;
+    padding: 0;
+    margin: 0;
+    height: 100%;
   }
   #tile-layer-selector-open {
     bottom: 80px;
@@ -364,5 +400,6 @@ body {
   }
   .indicator-dropdown-menu {
     max-height: 40vh;
+    width: 100%;
   }
 }

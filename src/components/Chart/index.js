@@ -16,6 +16,9 @@ import CustomTooltip from "../CustomTooltip";
 import "./style.css";
 
 const Chart = (props) => {
+
+  const [chartHover, setChartHover] = useState();
+
   const data = props.data;
   const colormap = props.colormap;
   const tractInfo = props.tractInfo;
@@ -24,15 +27,13 @@ const Chart = (props) => {
   const changeType = props.selection.indicator.changeType;
   const indicatorFormatter = props.selection.indicator.formatter.replace(
     /"/g,
-    ""
+    ''
   );
-  const [chartHover, setChartHover] = useState();
 
   useEffect(() => {
     const aggregatedSubareaData = utils.handleAggregation(
       tractInfo,
-      selectedIndicator,
-      props
+      props.selection
     );
     props.setSubareaData(aggregatedSubareaData);
   }, [props.selection]);

@@ -12,6 +12,7 @@
     "@turf/polygon-to-line": "^6.0.3",
     "axios": "^0.20.0",
     "export-to-csv": "^0.2.1",
+    "get-parabola": "^1.1.9",
     "gradient-color": "^2.0.1",
     "leaflet": "^1.7.1",
     "moment": "^2.29.1",
@@ -27,7 +28,8 @@
     "react-sticky-table": "^5.1.7",
     "recharts": "^1.8.5",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.0"
+    "semantic-ui-react": "^2.0.0",
+    "tinygradient": "^1.1.5"
   },
   "eslintConfig": {
     "extends": "react-app"

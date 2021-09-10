@@ -1,14 +1,14 @@
 import globalUtils from "../../globalUtils";
 
 export default {
-  handleAggregation(tractInfo, selectedIndicator, props) {
+  handleAggregation(tractInfo, selection) {
     const array = [];
     const tractData = Object.values(tractInfo).filter((tract) =>
-      globalUtils.filterBySelection(tract, props.selection)
+      globalUtils.filterBySelection(tract, selection)
     );
     const aggregatedData = globalUtils.aggregate(
       tractData,
-      selectedIndicator,
+      selection.indicator,
       "Subarea"
     );
 
@@ -18,8 +18,8 @@ export default {
         array.push({
           name: key,
           Subarea: parseInt(key.replace("Subarea ", "")),
-          [selectedIndicator.name]: value,
-          [props.selection.geo]: aggregatedData["All"],
+          [selection.indicator.name]: value,
+          [selection.geo]: aggregatedData["All"],
         })
       );
 

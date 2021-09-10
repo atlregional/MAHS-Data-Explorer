@@ -118,7 +118,7 @@
   #map-legend-box {
     position: fixed;
     top: 170px;
-    max-width: 80%;
+    /* max-width: 80%; */
     right: calc(1vw + 10px);
   }
 
@@ -138,6 +138,6 @@
     left: 12%;
     margin-left: auto;
     margin-right: auto;
-    top: 220px;
+    top: 240px;
   }
 }
