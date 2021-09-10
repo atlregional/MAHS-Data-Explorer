@@ -44,7 +44,6 @@ export default {
     search,
     searchFilter,
     options,
-    modifiedIndicators,
     category
   ) {
     const currentIndicators = [...multipleSelections].sort();
@@ -59,7 +58,7 @@ export default {
         : null
     );
 
-    modifiedIndicators = [...options].filter((option) =>
+    const modifiedIndicators = [...options].filter((option) =>
       currentIndicators.includes(option.name)
     );
 

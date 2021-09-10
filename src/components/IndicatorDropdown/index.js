@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Icon, Checkbox, Input } from "semantic-ui-react";
 import util from "./util";
 import "./style.css";
@@ -118,7 +118,7 @@ const IndicatorDropdown = (props) => {
                           props.search,
                           props.searchFilter,
                           options,
-                          options.category
+                          category
                         );
                         props.setSelection({
                           ...props.selection,
@@ -177,10 +177,9 @@ const IndicatorDropdown = (props) => {
                           if (multiple) {
                             const multiSelectionIndicators =
                               util.handleMultipleSelection(
-                                props.selection,
-                                props.multipleSelections,
-                                props.options,
-                                item
+                                item,
+                                multipleSelections,
+                                options,
                               );
                             props.setSelection({
                               ...props.selection,
