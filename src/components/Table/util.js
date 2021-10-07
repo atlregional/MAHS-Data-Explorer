@@ -41,7 +41,7 @@ export default {
     const headerArray = header;
     const headerCells = header.map((header, i) => (
       <Cell
-        key={`header-${i}`}
+        key={`header-${i}-${header.split(' ').join('-')}`}
         className={`table-cells ${i !== 0 ? "header-cell" : ""}`}
         style={{
           backgroundColor:
@@ -70,7 +70,9 @@ export default {
       </Cell>
     ));
 
-    rows.push(<Row key="header-row">{headerCells}</Row>);
+    rows.push(<Row key={`header-row-${props.selectedGeo.split(' ').join('-')}`}>{headerCells}</Row>);
+
+    const dataFiltered = data.filter(item => selectedIndicators.includes(item.indicator))
 
     indicatorInfo
       .filter((indicator) => selectedIndicators.includes(indicator.name))
@@ -80,7 +82,7 @@ export default {
         header.forEach((item, c) =>
           cells.push(
             <Cell
-              key={`${c}-${r}`}
+              key={`cell-${indicator.name.split(' ').join('-')}}-${item.split(' ').join('-')}}`}
               className="table-cell"
               style={{
                 backgroundColor:
@@ -92,14 +94,14 @@ export default {
               {c === 0 ? (
                 <div className="indicator-column">{indicator.name}</div>
               ) : (
-                numeral(data[r][item]).format(
+                numeral(dataFiltered[r][item]).format(
                   indicator.formatter.replace(/"/g, "")
                 )
               )}
             </Cell>
           )
         );
-        rows.push(<Row key={r}>{cells}</Row>);
+        rows.push(<Row key={`row-${r}-${indicator.name}`}>{cells}</Row>);
       });
     return rows;
   },

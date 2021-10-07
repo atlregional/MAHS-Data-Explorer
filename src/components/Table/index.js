@@ -30,7 +30,6 @@ const Table = (props) => {
         height: "100%",
         padding: "4px",
       }}
-      id="table"
     >
       <StickyTable stickyHeaderCount={1}>
         {util.handleCreateRows(
