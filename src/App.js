@@ -29,9 +29,14 @@ const App = () => {
 
     globalUtils
       .getData("https://mahs-api-server.herokuapp.com/api/datainfo")
-      .then((res) => {
-        setIndicators(res.data);
-      })
+      .then((res) => 
+        setIndicators(
+          res.data
+            .sort((a,b) => a.name > b.name ? 1 : -1)
+            .sort((a,b) => a.changeType ? -1 : 0)
+            .reverse()
+        )
+      )
       .catch((err) => console.log(err));
 
     globalUtils

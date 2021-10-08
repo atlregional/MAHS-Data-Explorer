@@ -109,7 +109,7 @@ export default {
   dataForExport(inputDataArray, headerArray, selectedIndicators) {
     const outputDataArray = [];
     inputDataArray
-      // .filter((inputData) => selectedIndicators.includes(inputData.indicator))
+      .filter((inputData) => selectedIndicators.includes(inputData.indicator))
       .forEach((inputData) => {
         const dataObj = {};
         headerArray.forEach(

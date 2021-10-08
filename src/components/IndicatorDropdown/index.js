@@ -10,7 +10,9 @@ const IndicatorDropdown = (props) => {
   const multipleSelections = props.selection.indicators
     ? props.selection.indicators.map((indicator) => indicator.name)
     : [];
-  const options = props.options;
+  const options = props.options
+
+
 
   return (
     <div

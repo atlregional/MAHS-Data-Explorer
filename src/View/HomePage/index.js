@@ -77,7 +77,7 @@ const HomePage = (props) => {
   
   const style = props.config.style;
   const geoTypeOptions = ["Region", "City", "County"];
-  const indicators = props.indicators;
+  const indicators = props.indicators.sort((a,b) => a.name - b.name);
 
   useEffect(() => {
     const tractInfo = util.handleTractInfo(props);
