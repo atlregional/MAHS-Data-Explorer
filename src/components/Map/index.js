@@ -139,7 +139,7 @@ const MapComp = (props) => {
   return (
     <>
       <LeafletMap
-        key={`subarea-map-${props.numberOfSubareas}-${viewMapData}-${hidden}`}
+        key={`subarea-map-${hidden}`}
         // animate
         boxZoom
         trackResize
@@ -225,7 +225,7 @@ const MapComp = (props) => {
                     ? props.selection.geo === "11-County"
                       ? true
                       : props.selection.geoType === "County"
-                      ? feature.properties["COUNTY_NM"] === props.selection.geo
+                      ? feature.properties["COUNTY"] === props.selection.geo
                       : props.selection.geoType === "City"
                       ? tractInfo.Cities.includes(props.selection.geo)
                       : true

@@ -4,7 +4,7 @@ import "./style.css";
 
 const MapTooltip = (props) => {
   const featureInfo = props.hoverFeature.properties;
-  const tractInfo = featureInfo ? props.tractInfo[featureInfo.GEOID10] : null;
+  const tractInfo = featureInfo ? props.tractInfo[featureInfo.GEOID] : null;
   const subarea = tractInfo ? tractInfo.Subarea : null;
   const data = props.data;
   const indicatorFormatter = props.indicatorFormatter.replace(/"/g, "");
@@ -23,16 +23,16 @@ const MapTooltip = (props) => {
 
   return data && featureInfo ? (
     <div id="map-custom-tooltip">
-      <div id="tooltip-header">{featureInfo.NAMELSAD10}</div>
+      <div id="tooltip-header">{featureInfo.LONGNAME.split(',')[0]}</div>
       <div id="tooltip-subheader">
         {/* <span className="tooltip-thic"> */}
-        in{featureInfo.COUNTY_NM ? ` ${featureInfo.COUNTY_NM} County` : null}
+        in{featureInfo.LONGNAME.split(',')[1]}
         {/* </span> */}
       </div>
       <div id="tooltip-key-indicator">{selectionInfo.indicator.name}</div>
       <div id="tooltip-key-indicator-value">
-        {data[featureInfo.GEOID10] ? (
-          numeral(data[featureInfo.GEOID10].value).format(indicatorFormatter)
+        {data[featureInfo.GEOID] ? (
+          numeral(data[featureInfo.GEOID].value).format(indicatorFormatter)
         ) : (
           <span>Data unavailable</span>
         )}
