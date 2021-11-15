@@ -22,7 +22,8 @@ const LayerSelector = (props) => {
           {view === true || props.mobile
             ? layers
                 .filter(
-                  (layer) => layer.type === "transportation" && !layer.disabled
+                  (layer) => !layer.disabled && 
+                    layer.type === "transportation"
                 )
                 .map((layer, idx) => (
                   <div key={layer.name + idx} className="layer-selection-row">

@@ -100,9 +100,10 @@ const util = {
       color: viewMapData ? "black" : color,
     };
   },
-  geoJSONStyle(feature, config, tractIDField, props, data, colors) {
+  geoJSONStyle(feature, config, tractIDField, props, data, colors, hoverFeature) {
     const geoID = feature.properties[tractIDField];
     const tractInfo = props.tractInfo[geoID];
+    const hovered = hoverFeature.properties ? geoID === hoverFeature.properties.GEOID : null;
     const subarea = tractInfo["Subarea"];
     const highlight = subarea === `Subarea ${props.highlightedSubarea}`;
     const style = this.tractStyle(tractInfo, props, data, colors);
@@ -118,11 +119,13 @@ const util = {
           ? 0
           : config.boundaryWidth,
       fillOpacity:
-        props.highlightedSubarea && highlight
-          ? 1
-          : props.highlightedSubarea
-          ? 0.2
-          : 1,
+        hovered
+          ? .1
+          : props.highlightedSubarea && highlight
+            ? 1
+            : props.highlightedSubarea
+            ? 0.2
+            : 1,
     };
   },
   handleBounds(featureBounds) {

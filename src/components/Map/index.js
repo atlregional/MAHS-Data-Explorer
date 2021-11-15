@@ -5,7 +5,8 @@ import {
   TileLayer,
   GeoJSON,
   ZoomControl,
-  Tooltip,
+  // Tooltip,
+  Popup
 } from "react-leaflet";
 import MapLegend from "../MapLegend";
 import polygonToLine from "@turf/polygon-to-line";
@@ -24,8 +25,6 @@ import "./style.css";
 
 const MapComp = (props) => {
 
-  console.log(props);
-  // const mobile = props.mobile;
   const [tile, setTile] = useState(1);
   const [stats, setStats] = useState();
   const [geoJSONs, setGeoJSONs] = useState();
@@ -34,6 +33,8 @@ const MapComp = (props) => {
   const [openTileLayerSelector, setOpenTileLayerSelector] = useState(false);
   const [bounds, setBounds] = useState();
   const [colors, setColors] = useState();
+  const [clickFeature, setClickFeature] = useState({});
+  // const [revealBaseMap, setRevealBasemap] = useState();
 
   const {
     mobile,
@@ -54,11 +55,7 @@ const MapComp = (props) => {
     }
   } = props;
 
-  // console.log(props)
-
   const numBins = 40;
-  // const [ zeroPos, setZeroPos ] = useState(.3);
-
   const calibrateToCenter = (initPos, centerPosition) => {
     // const scaler = centerPosition / .25;
     // const rescaledPos = scaler * initPos * initPos;
@@ -101,7 +98,6 @@ const MapComp = (props) => {
               pos: i/(config.indicatorColors2.length - 1)
             })
           )
-          
     )
     .rgb(numBins)
     .map(color => {
@@ -133,10 +129,9 @@ const MapComp = (props) => {
     // console.log(statsObj);
     setData(dataObj);
     setStats(statsObj);
-    calibrateColors(statsObj)
+    calibrateColors(statsObj);
+    // setRevealBasemap();
   }, [geoJSONs, props.selection]);
-
-  console.log(layerConfigs);
 
   return (
     <>
@@ -207,13 +202,25 @@ const MapComp = (props) => {
             .map((config) => (
               <GeoJSON
                 onAdd={(e) => e.target.bringToBack()}
-                key={`data-layer-${config.name}-${props.selection.geo}-${
-                  viewMapData ? "data" : "nodata"
-                }`}
+                key={`data-layer-${config.name}-${props.selection.geo}-${viewMapData ? "data" : ''}`}
                 style={(feature) =>
-                  util.geoJSONStyle(feature, config, tractIDField, props, data, colors)
+                  util.geoJSONStyle(feature, config, tractIDField, props, data, colors, hoverFeature)
                 }
-                onmouseout={() => setHoverBin()}
+                onmouseout={e => {
+                  setHoverBin();
+                  setHoverFeature({});
+                  // setClickFeature({});
+                  e.target.closePopup();
+                  // setClickFeature({});
+
+                  // setRevealBasemap(false);
+                }}
+                onclick={e => 
+                  setClickFeature(e.propagatedFrom.feature)
+
+                }
+                // onmousedown={() => setRevealBasemap(revealBaseMap ? false : true)}
+
                 onmouseover={(e) => {
                   setHoverBin(
                     data[e.propagatedFrom.feature.properties[tractIDField]]
@@ -222,6 +229,7 @@ const MapComp = (props) => {
                       : null
                   );
                   setHoverFeature(e.propagatedFrom.feature);
+
                 }}
                 filter={(feature) => {
                   const geoID = feature.properties[config.geoField].toString();
@@ -239,20 +247,21 @@ const MapComp = (props) => {
                 }}
                 data={geoJSONs[config.name]}
               >
-                <Tooltip
+                <Popup
                   style={{
                     border: "solid #808080 1px",
                     borderRadius: "5px",
                     boundaryColor: "transparent",
                   }}
+                  
                 >
                   <MapTooltip
                     {...props}
                     data={data}
-                    hoverFeature={hoverFeature}
+                    hoverFeature={clickFeature}
                     indicatorFormatter={indicatorFormatter}
                   />
-                </Tooltip>
+                </Popup>
               </GeoJSON>
             ))
         ) : (
@@ -366,17 +375,7 @@ const MapComp = (props) => {
         <div
           id={mobile && viewMapData ? "map-legend-box-data" : "map-legend-box"}
         >
-          {/* <div
-            id='map-data-toggle-wrapper'
-          > */}
-          <div id="map-data-toggle-label">{viewMapData ? 'Hide ' : 'Show '} Data on Map</div>
-          <Checkbox 
-            toggle
-            onChange={() =>
-              setViewMapData(viewMapData === false ? true : false)
-            }
-          />
-          {/* </div> */}
+
           <MapLegend
             hoverBin={hoverBin}
             viewMapData={props.viewMapData}
@@ -384,8 +383,20 @@ const MapComp = (props) => {
             colors={colors}
             stats={stats}
           />
+          <Checkbox 
+            toggle
+            onChange={() =>
+              setViewMapData(viewMapData === false ? true : false)
+            }
+          />
+          <div id="map-data-toggle-label">
+            Show Data on Map
+          </div>
+
         </div>
       ) : null}
+ 
+
     </>
   );
 };
