@@ -23,6 +23,8 @@ import config from "./config";
 import "./style.css";
 
 const MapComp = (props) => {
+
+  console.log(props);
   // const mobile = props.mobile;
   const [tile, setTile] = useState(1);
   const [stats, setStats] = useState();
@@ -134,7 +136,7 @@ const MapComp = (props) => {
     calibrateColors(statsObj)
   }, [geoJSONs, props.selection]);
 
-  // console.log(layerConfigs);
+  console.log(layerConfigs);
 
   return (
     <>
@@ -157,10 +159,14 @@ const MapComp = (props) => {
       >
         {geoJSONs
           ? layerConfigs
-              .filter((config) => 
-                props.selection.geo === "11-County"
-                  ? config.visible && config.type === "boundary" && config.name === 'counties'
-                  : config.visible && config.type === "boundary")
+              .filter(config => 
+                config.visible && 
+                config.type === "boundary"
+                  ? props.selection.geoType === "Region" || props.selection.geoType === 'County'
+                    ? config.name === 'counties'
+                    : config.name === 'cities'
+                : false
+              )
               .map((config) => {
                 // console.log(config);
                 const boundary = geoJSONs[config.name].features.map((feature) =>
