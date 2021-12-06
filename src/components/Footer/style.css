@@ -14,7 +14,16 @@
 }
 
 .footer-parent-div img {
-  height: 50%;
+  height: 75%;
+}
+
+#footer-logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+  height: 70px;
+  width: 100%;
 }
 
 @media screen and (max-width: 850px) {
