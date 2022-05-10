@@ -11,7 +11,7 @@ const Footer = () => {
           alt='ARC-logo'
         />
         <img
-          src='https://neighborhoodnexus.org/wp-content/uploads/2022/01/neighborhood-nexus-logo.png'
+          src='https://neighborhoodnexus.org/wp-content/uploads/2022/03/NeighborhoodNexus_Logo_PrimaryRegular_Black.svg'
           alt='NN-logo'
         />
       </div>

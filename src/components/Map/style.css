@@ -111,8 +111,9 @@
     z-index: 999999;
     position: fixed;
     top: calc(var(--app-height) - 210px);
-    right: 80px;
+    right: 100px;
     margin-right: 10px;
+    bottom: 160px;
   }
 
   .tile-layer-thumb {
@@ -135,6 +136,12 @@
     z-index: 999999999999;
     top: 18vh;
     left: 0vw;
+  }
+
+  #tile-layer-icon {
+    position: fixed;
+    bottom: 160px;
+    right: 10px;
   }
 
   #map-legend-box {

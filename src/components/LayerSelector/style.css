@@ -89,5 +89,6 @@
 @media screen and (max-width: 850px) {
   #layer-selection-header {
     left: 5px;
+    width: 0;
   }
 }

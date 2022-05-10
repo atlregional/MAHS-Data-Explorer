@@ -23,7 +23,11 @@
   justify-content: center;
   gap: 40px;
   height: 70px;
-  width: 100%;
+  /* width: 200px; */
+}
+
+#footer-logos img {
+  max-width: 200px;
 }
 
 @media screen and (max-width: 850px) {

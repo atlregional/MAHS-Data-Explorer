@@ -336,7 +336,8 @@ const MapComp = (props) => {
                         ? "solid blue 3px"
                         : null,
                   }}
-                  onClick={() => {
+                  onClick={e => {
+                    console.log(e);
                     setTile(tileLayer.indexOf(item));
                     setOpenTileLayerSelector(false);
                   }}
