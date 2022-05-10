@@ -23,16 +23,42 @@ export default {
         : null
     );
 
+    // Sort based on sub area but also ensure indicator is first in array
     headerArray.sort((a, b) =>
-      parseInt(a.replace("Subarea ", "")) < parseInt(b.replace("Subarea ", ""))
+      parseInt(a.replace('Subarea ', '')) < parseInt(b.replace('Subarea ', '')) ||
+      a === 'indicator'
         ? -1
         : 1
     );
 
-    array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
+    // map each object to be in correct format for table
+    const dataArray = array.map(obj => {
+      const result = {};
+    
+      result['All'] = obj['All'];
+    
+      // Sort all Subarea keys based on subarea number
+      Object.keys(obj)
+        .filter(key => key !== 'All' && key !== 'indicator')
+        .sort((a, b) =>
+          parseInt(a.replace('Subarea ', '')) < parseInt(b.replace('Subarea ', ''))
+            ? -1
+            : 1
+        )
+        .forEach(item => {
+          result[item] = obj[item];
+        });
+    
+      result['indicator'] = obj['indicator'];
+    
+      return result;
+    });
+
+    // array.sort((a, b) => (a.Subarea < b.Subarea ? -1 : 1));
+
     return {
       headerArray: headerArray,
-      data: array,
+      data: dataArray,
     };
   },
 
@@ -82,7 +108,7 @@ export default {
         header.forEach((item, c) =>
           cells.push(
             <Cell
-              key={`cell-${indicator.name.split(' ').join('-')}}-${item.split(' ').join('-')}}`}
+              key={`cell-${indicator.name.split(' ').join('-')}-${item.split(' ').join('-')}`}
               className="table-cell"
               style={{
                 backgroundColor:
