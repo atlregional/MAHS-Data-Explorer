@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import globalUtils from "../../globalUtils";
 import {
-  Map as LeafletMap,
+  MapContainer as LeafletMap,
   TileLayer,
   GeoJSON,
   ZoomControl,
@@ -169,16 +169,18 @@ const MapComp = (props) => {
                 );
                 return (
                   <GeoJSON
-                    onAdd={(e) => {
-                      e.target.bringToFront();
-                      const featureBounds = e.target.getBounds();
-                      const returnedBounds = util.handleBounds(featureBounds);
-                      // console.log(returnedBounds);
-                      if (returnedBounds) {
-                        setBounds(returnedBounds)
-                      };
-                    }}
                     key={`boundary-layer-${config.name}-${props.selection.geo}`}
+                    eventHandlers={{
+                      add: e => {
+                        e.target.bringToFront();
+                        const featureBounds = e.target.getBounds();
+                        const returnedBounds = util.handleBounds(featureBounds);
+                        // console.log(returnedBounds);
+                        if (returnedBounds) {
+                          setBounds(returnedBounds)
+                        };
+                      }
+                    }}
                     data={boundary}
                     filter={(feature) =>
                       props.selection.geo === "11-County"
