@@ -2,6 +2,7 @@
 
 ```
 npm outdated
+npm update
 npx npm-check-updates -u
 npm install --legacy-peer-deps
 ```
