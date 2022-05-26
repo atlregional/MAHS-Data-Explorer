@@ -73,8 +73,14 @@ const App = () => {
         />
       ) : (
         <div id="app-loader-spinner">
-          <RingLoader css={{ margin: "auto" }} size="100px" />
-          <h1>Loading MAHS Data Explorer...</h1>
+          <RingLoader 
+            css={{ 
+              top: '5vh',
+              margin: 'auto',
+              right: '50px' 
+            }} 
+            size="100px" />
+          <h1>Loading MAHS Data Explorer</h1>
         </div>
       )}
     </div>

@@ -270,8 +270,9 @@ const MapComp = (props) => {
           <div id="map-loading-spinner">
             <RingLoader
               css={{
-                margin: "35vh auto",
+                margin: "auto",
                 zIndex: "9999999",
+                top: '30vh'
               }}
               color="#4B7B90"
               size="75px"
@@ -339,7 +340,6 @@ const MapComp = (props) => {
                         : null,
                   }}
                   onClick={e => {
-                    console.log(e);
                     setTile(tileLayer.indexOf(item));
                     setOpenTileLayerSelector(false);
                   }}

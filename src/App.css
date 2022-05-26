@@ -29,15 +29,25 @@
 #app-loader-spinner {
   position: fixed;
   width: 100%;
-  top: 40vh;
-  text-align: center;
-  margin: auto;
+  height: 100vh;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; */
+  padding-top: 40vh;
+
+  /* display: flex; */
 }
 
 #app-loader-spinner > h1 {
   font-size: 2em;
   color: #4b7b90;
-  margin: 1em;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+
+  /* margin: auto; */
 }
 @media screen and (max-width: 850px) {
   .App {
