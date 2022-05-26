@@ -83,7 +83,7 @@ export default {
             //
             csvTitle={
               `TITLE: MAHS Submarket Summary ${props.selectedGeo} ` +
-              "\nSOURCE: MAHS DATA EXPLORER - https://metroatlhousing.org/dataexplorer"
+              "\nSOURCE: MAHS DATA EXPLORER - https://data.metroatlhousing.org/"
             }
             csvFilename={`MAHS-Submarket-Summary-${props.selectedGeo
               .split(" ")

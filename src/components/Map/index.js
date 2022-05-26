@@ -5,6 +5,7 @@ import {
   TileLayer,
   GeoJSON,
   ZoomControl,
+  useMap,
   // Tooltip,
   Popup
 } from "react-leaflet";
@@ -24,6 +25,7 @@ import config from "./config";
 import "./style.css";
 
 const MapComp = (props) => {
+
 
   const [tile, setTile] = useState(1);
   const [stats, setStats] = useState();
@@ -136,7 +138,7 @@ const MapComp = (props) => {
   return (
     <>
       <LeafletMap
-        key={`subarea-map-${hidden}`}
+        key={`subarea-map-${hidden}-${props.selection.geo}`}
         // animate
         boxZoom
         trackResize
@@ -145,7 +147,6 @@ const MapComp = (props) => {
         dragging
         center={[33.753, -84.386]}
         zoom={8}
-        bounds={bounds ? bounds : null}
         zoomDelta={0.3}
         zoomSnap={0.3}
         maxZoom={16}
@@ -175,9 +176,8 @@ const MapComp = (props) => {
                         e.target.bringToFront();
                         const featureBounds = e.target.getBounds();
                         const returnedBounds = util.handleBounds(featureBounds);
-                        // console.log(returnedBounds);
                         if (returnedBounds) {
-                          setBounds(returnedBounds)
+                          e.target._map.fitBounds(returnedBounds)
                         };
                       }
                     }}
