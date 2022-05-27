@@ -19,13 +19,23 @@ const Chart = (props) => {
 
   const [chartHover, setChartHover] = useState();
 
-  const data = props.data;
-  const colormap = props.colormap;
-  const tractInfo = props.tractInfo;
-  const selectedIndicator = props.selection.indicator;
-  const indicatorType = props.selection.indicator.type;
-  const changeType = props.selection.indicator.changeType;
-  const indicatorFormatter = props.selection.indicator.formatter.replace(
+  const {
+    mobile,
+    data,
+    colormap,
+    tractInfo,
+    selection: {
+      indicator: selectedIndicator
+    },
+    subareaData
+  } = props;
+
+  console.log(subareaData);
+
+
+  const indicatorType = selectedIndicator.type;
+  const changeType = selectedIndicator.changeType;
+  const indicatorFormatter = selectedIndicator.formatter.replace(
     /"/g,
     ''
   );
@@ -38,17 +48,20 @@ const Chart = (props) => {
     props.setSubareaData(aggregatedSubareaData);
   }, [props.selection]);
 
-  return props.subareaData ? (
+  return subareaData ? (
     <>
       <ResponsiveContainer
         className="chart-responsive-container"
-        width={"100%"}
-        height={"100%"}
+        // aspect={.5}
+        width={mobile ? 340 : '100%'}
+        height={mobile ? 300 : '100%'}
       >
         <ComposedChart
           margin={{ bottom: 20, left: 30 }}
+          // height={100}
+          // width={100}
           className="bar-chart"
-          data={props.subareaData}
+          data={subareaData}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={"Subarea"} />
@@ -57,7 +70,7 @@ const Chart = (props) => {
             tickFormatter={(tick) => numeral(tick).format(indicatorFormatter)}
           />
 
-          {!props.mobile ? (
+          {/* {!props.mobile ? ( */}
             <Tooltip
               content={(obj) =>
                 CustomTooltip(
@@ -69,7 +82,7 @@ const Chart = (props) => {
                 )
               }
             />
-          ) : null}
+          {/* ) : null} */}
 
           <Bar dataKey={selectedIndicator.name}>
             {props.subareaData.map((barData, idx) => (
