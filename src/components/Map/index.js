@@ -203,36 +203,29 @@ const MapComp = (props) => {
             .filter((config) => config.visible && config.type === "data")
             .map((config) => (
               <GeoJSON
-                onAdd={(e) => e.target.bringToBack()}
                 key={`data-layer-${config.name}-${props.selection.geo}-${viewMapData ? "data" : ''}`}
                 style={(feature) =>
                   util.geoJSONStyle(feature, config, tractIDField, props, data, colors, hoverFeature)
                 }
-                onmouseout={e => {
-                  setHoverBin();
-                  setHoverFeature({});
-                  // setClickFeature({});
-                  e.target.closePopup();
-                  // setClickFeature({});
-
-                  // setRevealBasemap(false);
+                eventHandlers={{
+                  add: e => e.target.bringToBack(),
+                  mouseout: e => {
+                    setHoverBin();
+                    setHoverFeature({});
+                    e.target.closePopup();
+                  },
+                  click: e => setClickFeature(e.propagatedFrom.feature),
+                  mouseover: e => {
+                    setHoverBin(
+                      data[e.propagatedFrom.feature.properties[tractIDField]]
+                        ? data[e.propagatedFrom.feature.properties[tractIDField]]
+                            .colorIndex
+                        : null
+                    );
+                    setHoverFeature(e.propagatedFrom.feature);
+                  }
                 }}
-                onclick={e => 
-                  setClickFeature(e.propagatedFrom.feature)
 
-                }
-                // onmousedown={() => setRevealBasemap(revealBaseMap ? false : true)}
-
-                onmouseover={(e) => {
-                  setHoverBin(
-                    data[e.propagatedFrom.feature.properties[tractIDField]]
-                      ? data[e.propagatedFrom.feature.properties[tractIDField]]
-                          .colorIndex
-                      : null
-                  );
-                  setHoverFeature(e.propagatedFrom.feature);
-
-                }}
                 filter={(feature) => {
                   const geoID = feature.properties[config.geoField].toString();
                   const tractInfo = props.tractInfo[geoID];
