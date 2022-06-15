@@ -1,3 +1,3 @@
-export default (params) => {
-    console.log(params);
-  };
+export default params => {
+  console.log(params);
+};

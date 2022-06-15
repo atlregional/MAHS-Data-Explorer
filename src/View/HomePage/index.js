@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 // import GeoSelector from '../../components/GeoSelector';
-import SubAreaSelector from "../../components/SubAreaSelector";
-import Chart from "../../components/Chart";
-import Table from "../../components/Table";
-import MapComp from "../../components/Map";
-import VizViewSelector from "../../components/VizViewSelector";
+import SubAreaSelector from '../../components/SubAreaSelector';
+import Chart from '../../components/Chart';
+import Table from '../../components/Table';
+import MapComp from '../../components/Map';
+import VizViewSelector from '../../components/VizViewSelector';
 // import LayerSelector from "../../components/LayerSelector";
-import IndicatorDropdown from "../../components/IndicatorDropdown";
-import Footer from "../../components/Footer";
-import ARCHeader from "../../components/ARCHeader";
+import IndicatorDropdown from '../../components/IndicatorDropdown';
+import Footer from '../../components/Footer';
+import ARCHeader from '../../components/ARCHeader';
 // import tinygradient from "tinygradient";
 // import { by3Points } from 'get-parabola';
-
 // import globalUtils from "../../globalUtils";
-import util from "./util";
+import util from './util';
 // import config from "./config";
-import "./style.css";
+import './style.css';
 
-const HomePage = (props) => {
+const HomePage = props => {
   const mobile = window.screen.width < 850;
   const defaultSelection = {
     ...props.config.selection,
     indicator: props.config.selection.indicator || props.indicators[0],
-    indicators: props.indicators,
-  }
-  const [mobileVizView, setMobileVizView] = useState("map");
+    indicators: props.indicators
+  };
+  const [mobileVizView, setMobileVizView] = useState('map');
   const [tractInfo, setTractInfo] = useState();
   const [subareaOptions, setSubareaOptions] = useState([]);
   const [selection, setSelection] = useState(defaultSelection);
@@ -37,54 +37,54 @@ const HomePage = (props) => {
   const [data, setData] = useState();
 
   // color gradient displayed on the map;
-//   const numBins = 100;
-//   const zeroPos = .3;
+  //   const numBins = 100;
+  //   const zeroPos = .3;
 
-//   const calibrateToCenter = (initPos, centerPosition) => {
-//     // const scaler = centerPosition / .25;
-//     // const rescaledPos = scaler * initPos * initPos;
-//     const points = [[0,0], [.5, centerPosition], [1,1]]
-//     const coeffs = by3Points(points.map(point => ({
-//       x: point[0], y: point[1]
-//     })));
-//     // console.log(coeffs);
-//     const rescaledPos = (coeffs.a * initPos * initPos) + (coeffs.b * initPos) + coeffs.c
-//     // console.log(rescaledPos);
-//     return rescaledPos > 1 ? 1 : rescaledPos < 0 ? 0 : rescaledPos;
+  //   const calibrateToCenter = (initPos, centerPosition) => {
+  //     // const scaler = centerPosition / .25;
+  //     // const rescaledPos = scaler * initPos * initPos;
+  //     const points = [[0,0], [.5, centerPosition], [1,1]]
+  //     const coeffs = by3Points(points.map(point => ({
+  //       x: point[0], y: point[1]
+  //     })));
+  //     // console.log(coeffs);
+  //     const rescaledPos = (coeffs.a * initPos * initPos) + (coeffs.b * initPos) + coeffs.c
+  //     // console.log(rescaledPos);
+  //     return rescaledPos > 1 ? 1 : rescaledPos < 0 ? 0 : rescaledPos;
 
-//   }
-//   // DIVERGENT COLOR SCALE;
-//   const colors = tinygradient(
-//     selection.indicator.changeType
-//       ? config.indicatorColors1.map((color,i) => 
-//           ({
-//             color : color, 
-//             pos: calibrateToCenter(i/(config.indicatorColors1.length - 1), zeroPos)
-//           })
-//         )
-//       : config.indicatorColors2.map((color,i) => 
-//           ({
-//             color : color, 
-//             pos: i/(config.indicatorColors2.length - 1)
-//           })
-//         )
-//   ).rgb(numBins);
+  //   }
+  //   // DIVERGENT COLOR SCALE;
+  //   const colors = tinygradient(
+  //     selection.indicator.changeType
+  //       ? config.indicatorColors1.map((color,i) =>
+  //           ({
+  //             color : color,
+  //             pos: calibrateToCenter(i/(config.indicatorColors1.length - 1), zeroPos)
+  //           })
+  //         )
+  //       : config.indicatorColors2.map((color,i) =>
+  //           ({
+  //             color : color,
+  //             pos: i/(config.indicatorColors2.length - 1)
+  //           })
+  //         )
+  //   ).rgb(numBins);
 
-//   console.log(colors.map(color => {
-//     const { _r, _g, _b} = color;
-//     return `rgb(${_r}, ${_g}, ${_b})`
-// }))
-  
+  //   console.log(colors.map(color => {
+  //     const { _r, _g, _b} = color;
+  //     return `rgb(${_r}, ${_g}, ${_b})`
+  // }))
+
   const style = props.config.style;
-  const geoTypeOptions = ["Region", "City", "County"];
-  const indicators = props.indicators.sort((a,b) => a.name - b.name);
+  const geoTypeOptions = ['Region', 'City', 'County'];
+  const indicators = props.indicators.sort((a, b) => a.name - b.name);
 
   useEffect(() => {
-    const tractInfo = util.handleTractInfo(props);
+    const tractInfo = util.handleTractInfo(props.tractInfo);
     setTractInfo(tractInfo);
   }, []);
   useEffect(() => {
-    const subareaOptions = util.handleSubareaOptions(props, selection);
+    const subareaOptions = util.handleSubareaOptions(props.tractInfo, selection);
     setSubareaOptions(subareaOptions);
   }, [selection.geo]);
   return (
@@ -100,8 +100,8 @@ const HomePage = (props) => {
           mobile={mobile}
         />
       }
-      <div id="mobile-mainwrapper">
-        <div id={!mobile ? "subarea-selector" : "subarea-selector-mobile"}>
+      <div id='mobile-mainwrapper'>
+        <div id={!mobile ? 'subarea-selector' : 'subarea-selector-mobile'}>
           <SubAreaSelector
             mobile={mobile}
             colormap={style.colormap}
@@ -118,16 +118,12 @@ const HomePage = (props) => {
         </div>
 
         <div
-          className={
-            mobile && mobileVizView === "map"
-              ? "mobile-map-indicator-selector"
-              : "hidden"
-          }
+          className={mobile && mobileVizView === 'map' ? 'mobile-map-indicator-selector' : 'hidden'}
         >
           {mobile && viewMapData ? (
             <IndicatorDropdown
               mobile
-              placeholderText={"Change Indicator"}
+              placeholderText={'Change Indicator'}
               options={indicators}
               selection={selection}
               setSelection={setSelection}
@@ -135,8 +131,8 @@ const HomePage = (props) => {
           ) : null}
         </div>
         <div
-          id={mobile && viewMapData ? "map-box-data" : "map-box"}
-          className={mobile && mobileVizView !== "map" ? "hidden" : null}
+          id={mobile && viewMapData ? 'map-box-data' : 'map-box'}
+          className={mobile && mobileVizView !== 'map' ? 'hidden' : null}
         >
           <MapComp
             subareaData={subareaData}
@@ -152,23 +148,21 @@ const HomePage = (props) => {
             highlightedSubarea={highlightedSubarea}
             numberOfSubareas={subareaOptions.length}
             // numBins={numBins}
-            hidden={mobile && mobileVizView !== "map"}
+            hidden={mobile && mobileVizView !== 'map'}
             data={data}
             setData={setData}
             setViewMapData={setViewMapData}
           />
         </div>
 
-        <div
-          id={"chart-box"}
-          className={mobile && mobileVizView !== "chart" ? "hidden" : null}
-        >
-          <div className="chart-indicator-selector-box">
-            {(mobile && mobileVizView === "chart") || !mobile ? (
-              <div id="chart-map-indicator-selector">
+        <div id={'chart-box'} className={mobile && mobileVizView !== 'chart' ? 'hidden' : null}>
+          <div className='chart-indicator-selector-box'>
+            {(mobile && mobileVizView === 'chart') || !mobile ? (
+              <div id='chart-map-indicator-selector'>
                 <IndicatorDropdown
-                  mobile={mobile && mobileVizView === "chart"}
-                  placeholderText={"Change Indicator"}
+                  key={'indicator-dropdown'}
+                  mobile={mobile && mobileVizView === 'chart'}
+                  placeholderText={'Change Indicator'}
                   options={indicators}
                   selection={selection}
                   setSelection={setSelection}
@@ -194,16 +188,13 @@ const HomePage = (props) => {
           ) : null}
         </div>
 
-        <div
-          id={"table-box"}
-          className={mobile && mobileVizView !== "table" ? "hidden" : null}
-        >
-          {(mobile && mobileVizView === "table") || !mobile ? (
-            <div id="table-indicators-selector">
+        <div id={'table-box'} className={mobile && mobileVizView !== 'table' ? 'hidden' : null}>
+          {(mobile && mobileVizView === 'table') || !mobile ? (
+            <div id='table-indicators-selector'>
               <IndicatorDropdown
                 multiple
-                mobile={mobile && mobileVizView === "table"}
-                placeholderText={"Choose Indicators for Table"}
+                mobile={mobile && mobileVizView === 'table'}
+                placeholderText={'Choose Indicators for Table'}
                 options={indicators}
                 selection={selection}
                 setSelection={setSelection}
@@ -222,24 +213,27 @@ const HomePage = (props) => {
               selectedGeo={selection.geo}
             />
           ) : (
-            <div id="subarea-not-selected-box">
+            <div id='subarea-not-selected-box'>
               <p>Select INDICATOR(S) to display on table...</p>
             </div>
           )}
         </div>
       </div>
-      <div id="footer-box">
+      <div id='footer-box'>
         {mobile ? (
-          <VizViewSelector
-            mobileVizView={mobileVizView}
-            setMobileVizView={setMobileVizView}
-          />
+          <VizViewSelector mobileVizView={mobileVizView} setMobileVizView={setMobileVizView} />
         ) : null}
 
         <Footer />
       </div>
     </>
   );
+};
+
+HomePage.propTypes = {
+  config: PropTypes.object,
+  indicators: PropTypes.array,
+  tractInfo: PropTypes.array
 };
 
 export default HomePage;

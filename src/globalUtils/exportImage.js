@@ -1,3 +1,3 @@
-export default (divID) => {
+export default divID => {
   console.log(divID);
 };

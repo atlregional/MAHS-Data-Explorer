@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -8,50 +9,43 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Cell,
-} from "recharts";
-import numeral from "numeral";
-import utils from "./utils";
-import CustomTooltip from "../CustomTooltip";
-import "./style.css";
+  Cell
+} from 'recharts';
+import numeral from 'numeral';
+import utils from './utils';
+import CustomTooltip from '../CustomTooltip';
+import './style.css';
 
-const Chart = (props) => {
-
+const Chart = ({
+  clickedSubarea,
+  colormap,
+  data,
+  highlightedSubarea,
+  // indicators,
+  mobile,
+  selection,
+  setClickedSubarea,
+  setHighlightedSubarea,
+  setSubareaData,
+  subareaData,
+  tractInfo
+}) => {
   const [chartHover, setChartHover] = useState();
 
-  const {
-    mobile,
-    data,
-    colormap,
-    tractInfo,
-    selection: {
-      indicator: selectedIndicator
-    },
-    subareaData
-  } = props;
-
-  console.log(subareaData);
-
-
+  const selectedIndicator = selection.indicator;
   const indicatorType = selectedIndicator.type;
   const changeType = selectedIndicator.changeType;
-  const indicatorFormatter = selectedIndicator.formatter.replace(
-    /"/g,
-    ''
-  );
+  const indicatorFormatter = selectedIndicator.formatter.replace(/"/g, '');
 
   useEffect(() => {
-    const aggregatedSubareaData = utils.handleAggregation(
-      tractInfo,
-      props.selection
-    );
-    props.setSubareaData(aggregatedSubareaData);
-  }, [props.selection]);
+    const aggregatedSubareaData = utils.handleAggregation(tractInfo, selection);
+    setSubareaData(aggregatedSubareaData);
+  }, [selection]);
 
   return subareaData ? (
     <>
       <ResponsiveContainer
-        className="chart-responsive-container"
+        className='chart-responsive-container'
         // aspect={.5}
         width={mobile ? 340 : '100%'}
         height={mobile ? 300 : '100%'}
@@ -60,69 +54,54 @@ const Chart = (props) => {
           margin={{ bottom: 20, left: 30 }}
           // height={100}
           // width={100}
-          className="bar-chart"
+          className='bar-chart'
           data={subareaData}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={"Subarea"} />
+          <CartesianGrid strokeDasharray='3 3' />
+          <XAxis dataKey={'Subarea'} />
           <YAxis
             tick={{ fontSize: 12 }}
-            tickFormatter={(tick) => numeral(tick).format(indicatorFormatter)}
+            tickFormatter={tick => numeral(tick).format(indicatorFormatter)}
           />
 
-          {/* {!props.mobile ? ( */}
-            <Tooltip
-              content={(obj) =>
-                CustomTooltip(
-                  obj,
-                  props,
-                  data,
-                  selectedIndicator,
-                  indicatorFormatter
-                )
-              }
-            />
+          {/* {!mobile ? ( */}
+          <Tooltip
+            content={obj =>
+              CustomTooltip(obj, selection, colormap, data, selectedIndicator, indicatorFormatter)
+            }
+          />
           {/* ) : null} */}
 
           <Bar dataKey={selectedIndicator.name}>
-            {props.subareaData.map((barData, idx) => (
+            {subareaData.map((barData, idx) => (
               <Cell
                 key={selectedIndicator.name + idx}
                 fillOpacity={
-                  barData.Subarea === props.highlightedSubarea ||
-                  barData.Subarea === chartHover
+                  barData.Subarea === highlightedSubarea || barData.Subarea === chartHover
                     ? 1
-                    : props.highlightedSubarea
-                    ? props.clickedSubarea
-                      ? 0.3
-                      : 0.6
-                    : 1
+                    : highlightedSubarea
+                      ? clickedSubarea
+                        ? 0.3
+                        : 0.6
+                      : 1
                 }
-                stroke={
-                  barData.Subarea === props.highlightedSubarea ? "black" : null
-                }
-                strokeWidth={
-                  barData.Subarea === props.highlightedSubarea ? 3 : null
-                }
+                stroke={barData.Subarea === highlightedSubarea ? 'black' : null}
+                strokeWidth={barData.Subarea === highlightedSubarea ? 3 : null}
                 fill={colormap[barData.Subarea - 1]}
                 onMouseEnter={() => {
-                  props.setHighlightedSubarea(
-                    props.clickedSubarea
-                      ? props.clickedSubarea
-                      : barData.Subarea
-                  );
+                  setHighlightedSubarea(clickedSubarea ? clickedSubarea : barData.Subarea);
                   setChartHover(barData.Subarea);
                 }}
                 onMouseLeave={() => {
-                  props.setHighlightedSubarea(props.clickedSubarea);
+                  setHighlightedSubarea(clickedSubarea);
                   setChartHover();
                 }}
                 onClick={() => {
-                  props.setClickedSubarea(
-                    props.clickedSubarea
-                      ? barData.Subarea === props.clickedSubarea
+                  setClickedSubarea(
+                    clickedSubarea
+                      ? barData.Subarea === clickedSubarea
                         ? null
-                        : props.clickedSubarea
+                        : clickedSubarea
                       : barData.Subarea
                   );
                 }}
@@ -130,19 +109,29 @@ const Chart = (props) => {
             ))}
           </Bar>
 
-          {changeType || indicatorType !== "Sum" ? (
-            <Line
-              dataKey={props.selection.geo}
-              stroke="#000000"
-              strokeDasharray="4 4"
-              dot={false}
-            />
+          {changeType || indicatorType !== 'Sum' ? (
+            <Line dataKey={selection.geo} stroke='#000000' strokeDasharray='4 4' dot={false} />
           ) : null}
         </ComposedChart>
       </ResponsiveContainer>
       <div></div>
     </>
   ) : null;
+};
+
+Chart.propTypes = {
+  clickedSubarea: PropTypes.number,
+  colormap: PropTypes.array,
+  data: PropTypes.object,
+  highlightedSubarea: PropTypes.number,
+  // indicators: PropTypes.array,
+  mobile: PropTypes.bool,
+  selection: PropTypes.object,
+  setClickedSubarea: PropTypes.func,
+  setHighlightedSubarea: PropTypes.func,
+  setSubareaData: PropTypes.func,
+  subareaData: PropTypes.array,
+  tractInfo: PropTypes.object
 };
 
 export default Chart;

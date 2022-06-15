@@ -15,10 +15,8 @@ const Footer = () => {
           alt='NN-logo'
         />
       </div>
-
     </div>
   );
 };
+
 export default Footer;
-
-

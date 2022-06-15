@@ -1,60 +1,78 @@
-import React from "react";
-import GeoSelector from "../GeoSelector";
-import headerBackground from "../../header-background.png";
-import { Icon } from "semantic-ui-react";
-import "./style.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import GeoSelector from '../GeoSelector';
+import headerBackground from '../../header-background.png';
+import { Icon } from 'semantic-ui-react';
+import './style.css';
 
-const ARCHeader = (props) => {
-  const selection = props.selection;
+const ARCHeader = ({
+  data,
+  geoTypeOptions,
+  mobile,
+  selection,
+  setClickedSubarea,
+  setHighlightedSubarea,
+  setSelection
+}) => {
   return (
     <div
-      id="ARC-Header"
-      className="arc-header-div"
+      id='ARC-Header'
+      className='arc-header-div'
       style={{ backgroundImage: `url(${headerBackground})` }}
     >
-      {!props.mobile ? (
-        <a class="back-to-site" href="https://metroatlhousing.org">
+      {!mobile ? (
+        <a className='back-to-site' href='https://metroatlhousing.org'>
           ← Back<span> to Main Site</span>
         </a>
       ) : (
-        <a class="back-to-site" href="https://metroatlhousing.org">
-          <Icon name="chevron left" />
+        <a className='back-to-site' href='https://metroatlhousing.org'>
+          <Icon name='chevron left' />
         </a>
       )}
-      <div className="arc-header-box">
-        <div className="geo-selector-box">
-          <div id="geo-label-header">
-            {selection.geo}{" "}
-            {selection.geoType !== "City" ? selection.geoType : ""}
+      <div className='arc-header-box'>
+        <div className='geo-selector-box'>
+          <div id='geo-label-header'>
+            {selection.geo} {selection.geoType !== 'City' ? selection.geoType : ''}
           </div>
-          <div className="dropdown-box">
+          <div className='dropdown-box'>
             <GeoSelector
-              geoTypeOptions={props.geoTypeOptions}
+              geoTypeOptions={geoTypeOptions}
               selection={selection}
-              setClickedSubarea={props.setClickedSubarea}
-              setHighlightedSubarea={props.setHighlightedSubarea}
-              setSelection={props.setSelection}
-              data={props.data}
+              setClickedSubarea={setClickedSubarea}
+              setHighlightedSubarea={setHighlightedSubarea}
+              setSelection={setSelection}
+              data={data}
             />
           </div>
         </div>
       </div>
-      <div className="ARC-logo-div">
-        {!props.mobile ? (
+      <div className='ARC-logo-div'>
+        {!mobile ? (
           <img
-            className="ARC-logo"
-            src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/logo.svg"
-            alt="Atlanta Regional Commission logo"
+            className='ARC-logo'
+            src='https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/logo.svg'
+            alt='Atlanta Regional Commission logo'
           />
         ) : (
           <img
-            className="ARC-mobile-logo"
-            src="https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/icon-home.svg"
-            alt="ARC mobile logo"
+            className='ARC-mobile-logo'
+            src='https://metroatlhousing.org/wp-content/themes/bsc-arcmahs/images/icon-home.svg'
+            alt='ARC mobile logo'
           />
         )}
       </div>
     </div>
   );
 };
+
+ARCHeader.propTypes = {
+  data: PropTypes.array,
+  geoTypeOptions: PropTypes.array,
+  mobile: PropTypes.bool,
+  selection: PropTypes.object,
+  setClickedSubarea: PropTypes.func,
+  setHighlightedSubarea: PropTypes.func,
+  setSelection: PropTypes.func
+};
+
 export default ARCHeader;

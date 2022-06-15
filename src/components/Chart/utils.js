@@ -1,25 +1,21 @@
-import globalUtils from "../../globalUtils";
+import globalUtils from '../../globalUtils';
 
 export default {
   handleAggregation(tractInfo, selection) {
     const array = [];
-    const tractData = Object.values(tractInfo).filter((tract) =>
+    const tractData = Object.values(tractInfo).filter(tract =>
       globalUtils.filterBySelection(tract, selection)
     );
-    const aggregatedData = globalUtils.aggregate(
-      tractData,
-      selection.indicator,
-      "Subarea"
-    );
+    const aggregatedData = globalUtils.aggregate(tractData, selection.indicator, 'Subarea');
 
     Object.entries(aggregatedData)
-      .filter(([key]) => key !== "All")
+      .filter(([key]) => key !== 'All')
       .forEach(([key, value]) =>
         array.push({
           name: key,
-          Subarea: parseInt(key.replace("Subarea ", "")),
+          Subarea: parseInt(key.replace('Subarea ', '')),
           [selection.indicator.name]: value,
-          [selection.geo]: aggregatedData["All"],
+          [selection.geo]: aggregatedData['All']
         })
       );
 
@@ -27,5 +23,5 @@ export default {
     // console.log(array);
     // setData(array);
     return array;
-  },
+  }
 };
