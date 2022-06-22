@@ -36,7 +36,7 @@ const IndicatorDropdown = props => {
           <span
             className='select-unselect-all-toggle'
             onClick={() => {
-              console.log(props.search, props.searchFilter);
+              // console.log(props.search, props.searchFilter);
               const selectAllIndicators = util.handleSelectAll(
                 multipleSelections,
                 props,
@@ -56,14 +56,15 @@ const IndicatorDropdown = props => {
           <span
             className='select-unselect-all-toggle'
             onClick={() => {
+              console.log(multipleSelections);
               const unselectAllIndicators = util.handleUnselectAll(
                 multipleSelections,
-                props,
                 props.search,
                 props.searchFilter,
                 options,
                 options.category
               );
+              console.log(unselectAllIndicators);
               props.setSelection({
                 ...props.selection,
                 indicators: unselectAllIndicators
@@ -110,6 +111,7 @@ const IndicatorDropdown = props => {
                       onClick={() => {
                         const selectAllIndicators = util.handleSelectAll(
                           multipleSelections,
+                          props,
                           props.search,
                           props.searchFilter,
                           options,
@@ -130,7 +132,6 @@ const IndicatorDropdown = props => {
                       onClick={() => {
                         const unselectAllIndicators = util.handleUnselectAll(
                           multipleSelections,
-                          props,
                           props.search,
                           props.searchFilter,
                           options,
