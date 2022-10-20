@@ -1,0 +1,17 @@
+.popup-title {
+  text-align: center;
+  font-size: 20px;
+  padding: 4%;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.download-buttons {
+  display: flex;
+  white-space: nowrap;
+}
+
+.download-buttons > button {
+  width: 150px;
+  margin: 0 3% !important;
+}

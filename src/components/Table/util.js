@@ -81,6 +81,7 @@ export default {
               .split(' ')
               .join('-')}-${moment().format('M/DD/YYYY')}`}
             content={'Download Data'}
+            selection={props.selection}
           />
         ) : (
           header.replace('Subarea', 'Submarket')
