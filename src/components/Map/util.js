@@ -50,7 +50,7 @@ const util = {
     const getGeoJSON = (key, url) =>
       new Promise(resolve =>
         globalUtils
-          .getData(url)
+          .getData(url, 'arcgis')
           .then(res => [key, res.data])
           .catch(err => console.log(err))
           .then(data => resolve(data))

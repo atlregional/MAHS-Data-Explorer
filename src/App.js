@@ -21,14 +21,14 @@ const App = () => {
 
   const handleStart = () => {
     globalUtils
-      .getData('https://mahs-api-server.herokuapp.com/api/tractinfo')
+      .getData('/api/tractinfo', 'mahs')
       .then(res => {
         setTractInfo(res.data);
       })
       .catch(err => console.log(err));
 
     globalUtils
-      .getData('https://mahs-api-server.herokuapp.com/api/datainfo')
+      .getData('/api/datainfo', 'mahs')
       .then(res =>
         setIndicators(
           res.data
@@ -40,7 +40,7 @@ const App = () => {
       .catch(err => console.log(err));
 
     globalUtils
-      .getData('https://mahs-api-server.herokuapp.com/api/config')
+      .getData('/api/config', 'mahs')
       .then(res =>
         queryObj.geo && queryObj.geotype
           ? setConfig({

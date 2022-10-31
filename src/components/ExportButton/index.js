@@ -7,6 +7,7 @@ import './style.css';
 
 const ExportButton = ({ csvFilename, csvTitle, csvHeaders, data, selection }) => (
   <Popup
+    className='export-popup'
     on='click'
     closeOnPortalMouseLeave
     basic
