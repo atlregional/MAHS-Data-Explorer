@@ -17,12 +17,12 @@ const ExportButton = ({ csvFilename, csvTitle, csvHeaders, data, selection, mobi
     <div className='download-buttons'>
       <Button
         size={!mobile ? 'medium' : 'mini'}
-        content='Subarea'
+        content='Submarket'
         onClick={() => exportCSV.subarea(csvTitle, csvFilename, csvHeaders, data)}
       />
       <Button
         size={!mobile ? 'medium' : 'mini'}
-        content='Census Tracts'
+        content='Census Tract'
         onClick={() => exportCSV.censusTracts(selection)}
       />
     </div>

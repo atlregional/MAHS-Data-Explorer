@@ -1,11 +1,13 @@
 .export-popup {
-  width: 400px;
+  width: fit-content;
+  background-color: #f8f8f8;
+  border-radius: 10px;
 }
 
 .popup-title {
   text-align: center;
-  font-size: 16px;
-  padding: 4%;
+  font-size: 14px;
+  padding-bottom: 5px;
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
 }
@@ -16,23 +18,22 @@
 }
 
 .download-buttons > button {
-  width: 150px;
-  margin: 0 2% !important;
+  width: fit-content;
+  /* margin: 0 2% !important; */
 }
 
 /* Mobile Classes */
 @media screen and (max-width: 850px) {
   .export-popup {
-    width: 200px;
+    width: fit-content;
   }
 
   .popup-title {
     font-size: 14px;
+    margin-top: 0;
   }
 
   .download-buttons > button {
-    width: 100px;
-    margin: 0 1% !important;
     font-size: 10px;
   }
 }
