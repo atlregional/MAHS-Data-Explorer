@@ -47,10 +47,10 @@ const util = {
     };
   },
   handleGeoJSONs: async function (globalUtils, layerConfigs) {
-    const getGeoJSON = (key, url) =>
+    const getGeoJSON = (key, url, geosID) =>
       new Promise(resolve =>
         globalUtils
-          .getData(url, 'arcgis')
+          .getData(geosID ? `/api/geo/?_id=${geosID}` : url, geosID ? 'mahs' : 'arcgis')
           .then(res => [key, res.data])
           .catch(err => console.log(err))
           .then(data => resolve(data))
@@ -61,7 +61,7 @@ const util = {
 
     layerConfigs
       .filter(config => !config.disabled)
-      .forEach(config => returnedGeoJSONs.push(getGeoJSON(config.name, config.url)));
+      .forEach(config => returnedGeoJSONs.push(getGeoJSON(config.name, config.url, config.geosID)));
 
     const geoJSONsObj = {};
     await Promise.all(returnedGeoJSONs)

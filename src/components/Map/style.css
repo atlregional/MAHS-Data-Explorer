@@ -134,8 +134,8 @@
   #map-loading-spinner {
     position: fixed;
     z-index: 999999999999;
-    top: 18vh;
-    left: 0vw;
+    bottom: 30vh;
+    left: 40vw;
   }
 
   #tile-layer-icon {
