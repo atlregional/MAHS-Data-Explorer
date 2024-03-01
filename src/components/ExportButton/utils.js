@@ -1,4 +1,4 @@
-import { ExportToCsv } from 'export-to-csv';
+import { generateCsv, download } from 'export-to-csv';
 import moment from 'moment';
 
 // Takes in API url and returns a blob and filename
@@ -34,19 +34,23 @@ const exportCSV = {
       useKeysAsHeaders: csvHeaders ? false : true
     };
 
-    const csvExporter = new ExportToCsv(csvOptions);
+    // console.log(csvData);
 
-    return csvData[0] ? csvExporter.generateCsv(csvData) : null;
+    if (csvData[0] ){
+      const csv = generateCsv(csvOptions)(csvData);
+      download(csvOptions)(csv);
+    }
+
+    return; 
   },
   censusTracts: async selectionObj => {
     try {
       const { geo, geoType, indicators } = selectionObj;
       const indicatorIdsStr = [...indicators].map(({ _id }) => _id).join(',');
 
-      const baseURL = 
-        process.env.NODE_ENV === 'development' 
-          ? 'http://localhost:3001' 
-          : 'https://mahs-api-server.herokuapp.com';
+      const baseURL = 'https://mahs-api-server.herokuapp.com';
+      // 'http://localhost:3001' 
+      // 'https://mahs-api-server.herokuapp.com';
 
       const url = `${baseURL}/api/tractinfo/csv-download?geo=${geo}&geoType=${geoType}&indicatorIDs=${indicatorIdsStr}`;
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StickyTable } from 'react-sticky-table';
+import Rows from './Rows.jsx';
 import util from './util';
 import './style.css';
 
@@ -28,7 +29,14 @@ const Table = props => {
       }}
     >
       <StickyTable stickyHeaderCount={1}>
-        {util.handleCreateRows(indicatorInfo, selectedIndicators, props, data, header)}
+        <Rows
+          {...props} 
+          indicatorInfo={indicatorInfo}
+          selectedIndicators={selectedIndicators}
+          data={data}
+          header={header}
+        />
+        {/* {util.handleCreateRows(indicatorInfo, selectedIndicators, props, data, header)} */}
       </StickyTable>
     </div>
   );
