@@ -17,7 +17,7 @@ const util = {
       key !== 'All'
         ? array.push({
           name: key,
-          Subarea: parseInt(key.replace('Subarea ', '')),
+          Subarea: parseInt(key?.replace('Subarea ', '')),
           [props.selection.indicator.name]: value
         })
         : null
@@ -78,7 +78,7 @@ const util = {
   tractStyle(tractInfo, props, data, colors) {
     // console.log(props)
     const viewMapData = props.viewMapData;
-    const subarea = tractInfo ? parseInt(tractInfo.Subarea.replace('Subarea ', '')) : null;
+    const subarea = tractInfo ? parseInt(tractInfo.Subarea?.replace('Subarea ', '')) : null;
     const config = props.config;
 
     const colorIndex = data[tractInfo.GEOID] ? data[tractInfo.GEOID].colorIndex : null;

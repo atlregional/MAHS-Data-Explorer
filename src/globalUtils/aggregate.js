@@ -64,8 +64,8 @@ export default (data, indicatorInfo, aggregator) => {
   data
     .filter(tract =>
       type !== 'sum'
-        ? tract.Data[numeratorID] && tract.Data[denominatorID]
-        : tract.Data[numeratorID]
+        ? tract.Data?.[numeratorID] && tract.Data?.[denominatorID]
+        : tract.Data?.[numeratorID]
     )
     .filter(tract =>
       changeType
@@ -109,14 +109,14 @@ export default (data, indicatorInfo, aggregator) => {
   data
     .filter(tract =>
       type !== 'sum'
-        ? tract.Data[numeratorID] && tract.Data[denominatorID]
-        : tract.Data[numeratorID]
+        ? tract.Data?.[numeratorID] && tract.Data?.[denominatorID]
+        : tract.Data?.[numeratorID]
     )
     .filter(tract =>
       changeType
         ? type !== 'sum'
-          ? tract.Data[numeratorID2] && tract.Data[denominatorID2]
-          : tract.Data[numeratorID2]
+          ? tract.Data?.[numeratorID2] && tract.Data?.[denominatorID2]
+          : tract.Data?.[numeratorID2]
         : true
     )
     .forEach(tract => {

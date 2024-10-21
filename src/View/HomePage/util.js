@@ -14,7 +14,7 @@ export default {
       globalUtils.filterBySelection(tract, selection)
     );
     data.forEach(tract =>
-      subareaArray.push(parseInt(tract.Subarea.replace('Subarea ', '')))
+      subareaArray.push(parseInt(tract.Subarea?.replace('Subarea ', '')))
     );
     const subareaSet = [...new Set(subareaArray)].sort((a, b) =>
       a > b ? 1 : -1

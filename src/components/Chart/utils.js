@@ -13,7 +13,7 @@ export default {
       .forEach(([key, value]) =>
         array.push({
           name: key,
-          Subarea: parseInt(key.replace('Subarea ', '')),
+          Subarea: parseInt(key?.replace('Subarea ', '')),
           [selection.indicator.name]: value,
           [selection.geo]: aggregatedData['All']
         })

@@ -23,7 +23,7 @@ export default {
 
     // Sort based on sub area but also ensure indicator is first in array
     headerArray.sort((a, b) =>
-      parseInt(a.replace('Subarea ', '')) < parseInt(b.replace('Subarea ', '')) || a === 'indicator'
+      parseInt(a?.replace('Subarea ', '')) < parseInt(b?.replace('Subarea ', '')) || a === 'indicator'
         ? -1
         : 1
     );
@@ -38,7 +38,7 @@ export default {
       Object.keys(obj)
         .filter(key => key !== 'All' && key !== 'indicator')
         .sort((a, b) =>
-          parseInt(a.replace('Subarea ', '')) < parseInt(b.replace('Subarea ', '')) ? -1 : 1
+          parseInt(a?.replace('Subarea ', '')) < parseInt(b?.replace('Subarea ', '')) ? -1 : 1
         )
         .forEach(item => {
           result[item] = obj[item];

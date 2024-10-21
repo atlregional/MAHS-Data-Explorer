@@ -10,6 +10,7 @@ const SubAreaSelector = props => {
   const colormap = props.colormap;
   const setHighlightedSubarea = number => props.setHighlightedSubarea(number);
 
+  console.log(subareas);
   return subareas ? (
     <div id='subarea-selector-container'>
       {subareas.map(subarea => (

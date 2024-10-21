@@ -9,7 +9,7 @@ const MapTooltip = props => {
   const subarea = tractInfo ? tractInfo.Subarea : null;
   const data = props.data;
   const indicatorFormatter = props.indicatorFormatter.replace(/"/g, '');
-  const subareaNumber = subarea ? parseInt(subarea.replace('Subarea ', '')) : null;
+  const subareaNumber = subarea ? parseInt(subarea?.replace('Subarea ', '')) : null;
   const selectionInfo = props.selection;
   const subareaValue =
     props.subareaData && subarea
@@ -18,12 +18,26 @@ const MapTooltip = props => {
         : null
       : null;
 
+  const countyDictionary = {
+    "113": "Fayette",
+    "247": "Rockdale",
+    "067": "Cobb",
+    "117": "Forsyth",
+    "063": "Clayton",
+    "151": "Henry",
+    "135": "Gwinnett",
+    "121": "Fulton",
+    "097": "Douglas",
+    "089": "DeKalb",
+    "057": "Cherokee"
+  };     
+
   return data && featureInfo ? (
     <div id='map-custom-tooltip'>
-      <div id='tooltip-header'>{featureInfo.LONGNAME.split(',')[0]}</div>
+      <div id='tooltip-header'>Census Tract {featureInfo.NAME}</div>
       <div id='tooltip-subheader'>
         {/* <span className="tooltip-thic"> */}
-        in{featureInfo.LONGNAME.split(',')[1]}
+        in {countyDictionary?.[featureInfo.COUNTYFP] || 'Unknown'} County
         {/* </span> */}
       </div>
       <div id='tooltip-key-indicator'>{selectionInfo.indicator.name}</div>

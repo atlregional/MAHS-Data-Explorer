@@ -15,6 +15,8 @@ import polygonToLine from '@turf/polygon-to-line';
 import { Icon } from 'semantic-ui-react';
 import tinygradient from 'tinygradient';
 import { by3Points } from 'get-parabola';
+import { scaleLog } from 'd3-scale'; // Import a log scale helper from d3
+
 
 // import numeral from 'numeral';
 import { Checkbox } from 'semantic-ui-react';
@@ -219,12 +221,24 @@ const MapComp = props => {
                 filter={feature => {
                   const geoID = feature.properties[config.geoField].toString();
                   const tractInfo = props.tractInfo[geoID];
-
+                  const countyDictionary = {
+                    "113": "Fayette",
+                    "247": "Rockdale",
+                    "067": "Cobb",
+                    "117": "Forsyth",
+                    "063": "Clayton",
+                    "151": "Henry",
+                    "135": "Gwinnett",
+                    "121": "Fulton",
+                    "097": "Douglas",
+                    "089": "DeKalb",
+                    "057": "Cherokee"
+                  };                  
                   return tractInfo
                     ? props.selection.geo === '11-County'
                       ? true
                       : props.selection.geoType === 'County'
-                        ? feature.properties['COUNTY'] === props.selection.geo
+                        ? countyDictionary?.[feature.properties['COUNTYFP']] === props.selection.geo
                         : props.selection.geoType === 'City'
                           ? tractInfo.Cities.includes(props.selection.geo)
                           : true

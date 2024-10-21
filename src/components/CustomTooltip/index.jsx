@@ -21,7 +21,7 @@ const CustomTooltip = (
           color: colormap[label - 1]
         }}
       >
-        {`${payload[0].payload.name.replace('Subarea', 'Submarket')}`}
+        {`${payload[0]?.payload?.name?.replace('Subarea', 'Submarket')}`}
       </div>
       <div className='chart-tooltip-geography-selection'>
         {geo ? (
@@ -44,7 +44,7 @@ const CustomTooltip = (
       </div>
       <div className='chart-tooltip-indicator'>{selectedIndicator.name}</div>
       <div id='chart-tooltip-indicator-value'>
-        {numeral(payload[0].value).format(indicatorFormatter)}
+        {numeral(payload[0]?.value).format(indicatorFormatter)}
       </div>
 
       <div className='chart-tooltip-comparison'>
