@@ -48,7 +48,7 @@ const exportCSV = {
       const { geo, geoType, indicators } = selectionObj;
       const indicatorIdsStr = [...indicators].map(({ _id }) => _id).join(',');
 
-      const baseURL = 'http://localhost:3001';
+      const baseURL = 'https://mahs-api-dev-cf279de7185e.herokuapp.com';
       // 'http://localhost:3001' 
       // 'https://mahs-api-server.herokuapp.com';
 

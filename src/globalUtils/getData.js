@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const getData = async (url, server) => {
-  const baseURL =  'http://localhost:3001';
+  const baseURL =  'https://mahs-api-dev-cf279de7185e.herokuapp.com';
   // 'http://localhost:3001'; 
   // 'https://mahs-api-server.herokuapp.com';
 
