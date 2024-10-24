@@ -19,7 +19,7 @@
     "express": "^4.18.2",
     "get-parabola": "^1.1.9",
     "gradient-color": "^2.0.1",
-    "leaflet": "^1.8.0",
+    "leaflet": "^1.9.4",
     "moment": "^2.29.3",
     "normalize.css": "^8.0.1",
     "numeral": "^2.0.6",

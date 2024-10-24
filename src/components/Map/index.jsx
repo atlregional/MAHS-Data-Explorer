@@ -312,7 +312,7 @@ const MapComp = props => {
             id='tile-layer-icon'
             onClick={() => setOpenTileLayerSelector(openTileLayerSelector ? false : true)}
           >
-            <Icon name='map' size='big' />
+            <Icon name='map' size='large' />
             <div
               id={openTileLayerSelector ? 'tile-layer-selector-open' : 'tile-layer-selector-closed'}
             >

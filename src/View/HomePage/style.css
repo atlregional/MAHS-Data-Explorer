@@ -38,19 +38,24 @@ body {
 .chart-indicator-selector-box {
   z-index: 99999999;
   margin-top: 20px;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
 }
 
 #chart-map-indicator-selector {
   z-index: 999999;
   display: flex;
   justify-content: center;
-  width: 100%;
+  align-content: center;
+  width: 80%;
+  max-width: 400px;
 }
 
 #table-indicators-selector {
   position: fixed;
   width: 30%;
-  top: 52vh;
+  top: 51.5vh;
   right: 5%;
   z-index: 999999;
   background-color: rgba(255, 255, 255);
@@ -138,7 +143,11 @@ body {
 .leaflet-control-zoom a,
 .leaflet-touch .leaflet-control-layers,
 .leaflet-touch .leaflet-bar {
-  font-size: 35px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  /* font-size: 60px; */
   border: solid thin rgb(119, 148, 123, 0.2);
   color: rgb(75, 89, 104, 0.95);
 }
@@ -384,6 +393,7 @@ body {
   }
   #map-box {
     padding: 0;
+    height: calc(var(--app-height) - 20px);
   }
 
   #chart-box {
