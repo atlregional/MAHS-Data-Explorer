@@ -1,56 +1,53 @@
 const submarkets = {
   1: {
     name: 'SUBMARKET 1',
-    description: 'Higher-priced core neighborhoods.',
+    description: 'Higher-priced urban neighborhoods.',
     link: 'https://metroatlhousing.org/submarkets/submarket-1/'
   },
   2: {
     name: 'SUBMARKET 2',
-    description: 'Higher-priced near core and employment corridor neighborhoods.',
+    description: 'Higher-priced urban employment centers.',
     link: 'https://metroatlhousing.org/submarkets/submarket-2/'
   },
   3: {
     name: 'SUBMARKET 3',
     description:
-      'Rapidly changing core neighborhoods experiencing the greatest increase in housing costs regionally.',
+      'Rapidly changing urban neighborhoods.',
     link: 'https://metroatlhousing.org/submarkets/submarket-3/'
   },
   4: {
     name: 'SUBMARKET 4',
-    description: 'Lower-priced core neighborhoods vulnerable to increasing housing costs.',
+    description: 'Below-median priced urban neighborhoods.',
     link: 'https://metroatlhousing.org/submarkets/submarket-4/'
   },
   5: {
     name: 'SUBMARKET 5',
-    description:
-      'Suburban neighborhoods along employment corridors with moderate-to-higher-priced mix of single family and multifamily housing.',
+    description: 'Higher-priced suburban employment corridors & town centers.',
     link: 'https://metroatlhousing.org/submarkets/submarket-5/'
   },
   6: {
     name: 'SUBMARKET 6',
-    description: 'Suburban neighborhoods with moderate-to-higher-priced housing.',
+    description: 'Higher-priced suburban neighborhoods.',
     link: 'https://metroatlhousing.org/submarkets/submarket-6/'
   },
   7: {
     name: 'SUBMARKET 7',
-    description:
-      'Suburban neighborhoods with lower-to-moderate-priced housing, biggest increase in renters.',
+    description: 'Below-median priced suburban neighborhoods.',
     link: 'https://metroatlhousing.org/submarkets/submarket-7/'
   },
   8: {
     name: 'SUBMARKET 8',
-    description:
-      'Suburban neighborhoods with lowest-priced single-family homes, mix of renters and owners.',
+    description: 'Below-median priced suburban employment corridors & town centers.',
     link: 'https://metroatlhousing.org/submarkets/submarket-8/'
   },
   9: {
     name: 'SUBMARKET 9',
-    description: 'Lower-priced rural areas.',
+    description: 'Below-median priced rural.',
     link: 'https://metroatlhousing.org/submarkets/submarket-9/'
   },
   10: {
     name: 'SUBMARKET 10',
-    description: 'Higher-priced rural areas.',
+    description: 'Higher-priced rural.',
     link: 'https://metroatlhousing.org/submarkets/submarket-10/'
   }
 };
