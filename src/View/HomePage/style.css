@@ -64,8 +64,8 @@ body {
 #subarea-selector {
   position: relative;
   left: 0;
-  width: 8%;
-  height: 76vh;
+  width: 10vw;
+  height: calc(var(--app-height) - 230px + .4em);
   z-index: 999999;
 }
 
@@ -76,9 +76,9 @@ body {
 
 #map-box {
   position: relative;
-  width: 53.5%;
-  height: 77vh;
-  padding: 1em;
+  width: 51vw;
+  height: calc(var(--app-height) - 230px + .4em);
+  padding: .5em 1em .5em .5em;
   opacity: 1;
 }
 
@@ -94,7 +94,7 @@ body {
 }
 
 #table-box {
-  padding: 2em;
+  padding: 1.5em 1em .5em 1em;
   position: fixed;
   height: 36vh;
   width: 40%;
