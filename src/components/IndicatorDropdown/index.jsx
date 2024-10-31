@@ -1,10 +1,12 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Checkbox, Input } from 'semantic-ui-react';
 import util from './util';
 import './style.css';
 
 const IndicatorDropdown = (props) => {
+  const dropdownTimeout = useRef(null);
+
   const [dropDownOpen, setDropdownOpen] = useState(false);
   const [search, setSearch] = useState('');
   const multiple = props.multiple;
@@ -15,13 +17,25 @@ const IndicatorDropdown = (props) => {
 
   // Clear search function
   const clearSearch = () => setSearch('');
+  const handleMouseLeave = () => {
+    dropdownTimeout.current = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 1000); // delay in milliseconds
+  };
+
+  const handleMouseEnter = () => {
+    clearTimeout(dropdownTimeout.current); // clear the timeout if the mouse re-enters
+  };
 
   return (
     <div
       className="indicator-selector-dropdown-box"
-      onMouseLeave={() => {
-        setDropdownOpen(false);
-      }}
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter} // prevents closing when mouse re-enters
+      // onMouseLeave={() => {
+      //   handleMouseLeave()
+      //   // setDropdownOpen(false);
+      // }}
     >
       <div className="indicator-header">
         {!multiple ? props.selection.indicator.name : null}

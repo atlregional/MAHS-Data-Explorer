@@ -33,6 +33,8 @@ const Chart = ({
   const [chartHover, setChartHover] = useState();
 
   const selectedIndicator = selection.indicator;
+  console.log(selectedIndicator)
+
   const indicatorType = selectedIndicator.type;
   const changeType = selectedIndicator.changeType;
   const indicatorFormatter = selectedIndicator.formatter.replace(/"/g, '');
@@ -109,7 +111,11 @@ const Chart = ({
             ))}
           </Bar>
 
-          {changeType || indicatorType !== 'Sum' ? (
+          {
+          (!changeType && indicatorType !== 'Sum') || 
+          changeType.match(new RegExp('percent', 'i')) ||
+          indicatorType === 'Average'
+          ? (
             <Line dataKey={selection.geo} stroke='#000000' strokeDasharray='4 4' dot={false} />
           ) : null}
         </ComposedChart>
