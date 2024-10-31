@@ -113,7 +113,7 @@ const Chart = ({
 
           {
           (!changeType && indicatorType !== 'Sum') || 
-          changeType.match(new RegExp('percent', 'i')) ||
+          changeType?.match(new RegExp('percent', 'i')) ||
           indicatorType === 'Average'
           ? (
             <Line dataKey={selection.geo} stroke='#000000' strokeDasharray='4 4' dot={false} />
